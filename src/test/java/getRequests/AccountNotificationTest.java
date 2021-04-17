@@ -32,7 +32,7 @@ public class AccountNotificationTest {
     }
 
     @Test
-    void showGlobalNotification() throws IOException{
+    void testShowGlobalNotification() throws IOException{
 
         AccountNotification accountNotification = client.getAccountNotification();
 
@@ -44,7 +44,7 @@ public class AccountNotificationTest {
     }
 
     @Test
-    void closeGlobalNotification() throws IOException{
+    void testCloseGlobalNotification() throws IOException{
 
         AccountNotification accountNotification = client.getAccountNotification();
 
@@ -52,6 +52,16 @@ public class AccountNotificationTest {
         accountNotification.setNotificationId(334);
 
         client.closeGlobalNotification(client);
+
+    }
+
+    @Test
+    void testCreateGlobalNotification() throws IOException{
+
+        AccountNotification accountNotification = client.getAccountNotification();
+
+        accountNotification.setAccountId(112);
+        accountNotification.setNotificationId(334);
 
     }
 
