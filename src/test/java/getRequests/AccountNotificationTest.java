@@ -43,4 +43,16 @@ public class AccountNotificationTest {
 
     }
 
+    @Test
+    void closeGlobalNotification() throws IOException{
+
+        AccountNotification accountNotification = client.getAccountNotification();
+
+        accountNotification.setAccountId(112);
+        accountNotification.setNotificationId(334);
+
+        client.closeGlobalNotification(client);
+
+    }
+
 }
