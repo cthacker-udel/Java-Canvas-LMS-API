@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="getRequests.AccountDomainTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-17T15:01:03" hostname="DESKTOP-A9D0H9B" time="1.09">
+  <properties/>
+  <testcase name="testSearchAccountDomain()" classname="getRequests.AccountDomainTests" time="1.09"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

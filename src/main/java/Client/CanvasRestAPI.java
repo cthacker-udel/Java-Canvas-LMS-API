@@ -132,7 +132,7 @@ public class CanvasRestAPI{
 
     public GlobalAccountNotification indexOfActiveGlobalNotifactionCurrUser(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/account_notifications/",client.getClientId());
+        String url = baseUrl + String.format("/api/v1/accounts/%s/account_notifications/",client.getAccountNotification().getAccountId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -141,7 +141,7 @@ public class CanvasRestAPI{
 
         accountNotificationInterface accountNotificationInterface = retrofit.create(Model.accountNotificationInterface.class);
 
-        Call<GlobalAccountNotification> call = accountNotificationInterface.getGlobalNotification(client.getClientId(),getTokenString(client));
+        Call<GlobalAccountNotification> call = accountNotificationInterface.getGlobalNotification(client.getAccountNotification().getAccountId(),getTokenString(client));
 
         Response<GlobalAccountNotification> response = call.execute();
 
@@ -151,7 +151,7 @@ public class CanvasRestAPI{
 
     public GlobalAccountNotification showGlobalNotification(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/account_notifications/%s/",client.getClientId());
+        String url = baseUrl + String.format("/api/v1/accounts/%s/account_notifications/%s/",client.getAccountNotification().getAccountId(),client.getAccountNotification().getNotificationId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -161,6 +161,25 @@ public class CanvasRestAPI{
         accountNotificationInterface accountNotificationInterface = retrofit.create(Model.accountNotificationInterface.class);
 
         Call<GlobalAccountNotification> call = accountNotificationInterface.showGlobalNotification(client.getAccountNotification().getAccountId(),client.getAccountNotification().getNotificationId(),getTokenString(client));
+
+        Response<GlobalAccountNotification> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public GlobalAccountNotification closeGlobalNotification(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts%s/account_notifications/%s",client.getAccountNotification().getAccountId(),client.getAccountNotification().getNotificationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountNotificationInterface accountNotificationInterface = retrofit.create(Model.accountNotificationInterface.class);
+
+        Call<GlobalAccountNotification> call = accountNotificationInterface.closeGlobalNotification(client.getAccountNotification().getAccountId(),client.getAccountNotification().getNotificationId(),getTokenString(client));
 
         Response<GlobalAccountNotification> response = call.execute();
 
