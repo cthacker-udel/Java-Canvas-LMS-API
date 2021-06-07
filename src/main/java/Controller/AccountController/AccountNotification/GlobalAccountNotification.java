@@ -27,7 +27,7 @@ public class GlobalAccountNotification {
     private List<String> roles = null;
     @SerializedName("role_ids")
     @Expose
-    private List<Integer> roleIds = null;
+    private List<Double> roleIds = null;
 
     public String getSubject() {
         return subject;
@@ -77,11 +77,11 @@ public class GlobalAccountNotification {
         this.roles = roles;
     }
 
-    public List<Integer> getRoleIds() {
+    public List<Double> getRoleIds() {
         return roleIds;
     }
 
-    public void setRoleIds(List<Integer> roleIds) {
+    public void setRoleIds(List<Double> roleIds) {
         this.roleIds = roleIds;
     }
 

@@ -17,6 +17,9 @@ public class CanvasClient extends CanvasRestAPI {
 
     public CanvasClient(String newClientId, String newClientSecret){
 
+        // temp
+        this.token = newClientId;
+
         this.clientId = newClientId;
         this.clientSecret = newClientSecret;
         this.accountDomain = new AccountDomain();

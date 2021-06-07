@@ -2,3 +2,5 @@ oAuthTests/TokenTests.java
  oAuthTests.TokenTests
 getRequests/AccountDomainTests.java
  getRequests.AccountDomainTests
+getRequests/AccountNotificationTest.java
+ getRequests.AccountNotificationTest

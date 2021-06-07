@@ -14,7 +14,7 @@ public class AccountNotificationTest {
     static{
 
         client = new CanvasClient("","");
-        client.setToken("//");
+        client.setToken("25~NmaQj2tMIYEgzqOZgqalHlhXVMVvshkmzfLxco98V2YpE9llKzuS7PPsvtUuqXCP");
 
 
     }
