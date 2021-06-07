@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class AccountNotification extends CanvasClient {
 
-    private Integer accountId;
+
     private Integer notificationId;
     private String subject;
     private String message;
@@ -19,11 +19,7 @@ public class AccountNotification extends CanvasClient {
     private String roles;
 
     public AccountNotification() {
-        this.accountId = 0;
-    }
 
-    public Integer getAccountId() {
-        return accountId;
     }
 
     public Map<String,Object> generateQueries(){
@@ -108,7 +104,4 @@ public class AccountNotification extends CanvasClient {
         this.notificationId = notificationId;
     }
 
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
-    }
 }

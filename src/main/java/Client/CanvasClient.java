@@ -8,6 +8,7 @@ public class CanvasClient extends CanvasRestAPI {
     private String token;
     private String clientId;
     private String clientSecret;
+    private Integer accountId;
     private AccountDomain accountDomain;
     private AccountNotification accountNotification;
 
@@ -25,6 +26,14 @@ public class CanvasClient extends CanvasRestAPI {
         this.accountDomain = new AccountDomain();
         this.accountNotification = new AccountNotification();
 
+    }
+
+    public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
     }
 
     public AccountNotification getAccountNotification() {
