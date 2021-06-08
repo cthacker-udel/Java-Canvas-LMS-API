@@ -16,4 +16,9 @@ public interface accountReportInterface {
     @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/reports/{reportId}")
     Call<CreatedReport> startReport(@Path("accountId") Integer accountId, @Path("reportId") String reportId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://api.udel.instructure.com/api/v1/accounts/{accountId}/reports/{reportId}")
+    Call<List<CreatedReport>> indexOfReports(@Path("accountId") Integer accountId, @Path("reportId") String reportId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://api.udel.instructure.com/api/v1/accounts/{accountId}/reports/{reportType}/{reportId}")
+    Call<CreatedReport> reportStatus(@Path("accountId") Integer accountId, @Path("reportType") String reportType, @Path("reportId") String reportId, @Header("Authorization") String auth);
 }

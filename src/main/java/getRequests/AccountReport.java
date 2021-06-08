@@ -9,6 +9,7 @@ import java.util.Map;
 public class AccountReport extends CanvasClient {
 
     private String reportId;
+    private String reportType;
     private Integer courseId;
     private Boolean users;
     private Integer enrollmentTermId;
@@ -112,6 +113,14 @@ public class AccountReport extends CanvasClient {
         this.startAt = null;
         this.endAt = null;
 
+    }
+
+    public String getReportType() {
+        return reportType;
+    }
+
+    public void setReportType(String reportType) {
+        this.reportType = reportType;
     }
 
     public String getReportId() {

@@ -255,7 +255,7 @@ public class CanvasRestAPI{
 
     public CreatedReport startReport(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/reports/%s/",client.getAccountId(),client.getAccountReport().getReportId());
+        String url = baseUrl + String.format("/api/v1/accounts/%s/reports/%s/",client.getAccountId(),client.getAccountReport().getReportType());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -264,11 +264,48 @@ public class CanvasRestAPI{
 
         accountReportInterface accountReportInterface = retrofit.create(Model.accountReportInterface.class);
 
-        Call<CreatedReport> call = accountReportInterface.startReport(client.getAccountId(),client.getAccountReport().getReportId(),client.getToken(),client.getAccountReport().generateQueries());
+        Call<CreatedReport> call = accountReportInterface.startReport(client.getAccountId(),client.getAccountReport().getReportType(),client.getToken(),client.getAccountReport().generateQueries());
 
         Response<CreatedReport> response = call.execute();
 
         return response.body();
+    }
+
+    public List<CreatedReport> IndexOfReports(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/reports/%s/",client.getAccountId(),client.getAccountReport().getReportType());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountReportInterface accountReportInterface = retrofit.create(Model.accountReportInterface.class);
+
+        Call<List<CreatedReport>> call = accountReportInterface.indexOfReports(client.getAccountId(),client.getAccountReport().getReportType(),client.getToken(),client.getAccountReport().generateQueries());
+
+        Response<List<CreatedReport>> response = call.execute();
+
+        return response.body();
+    }
+
+    public CreatedReport getReportStatus(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/reports/%s/%s/",client.getAccountId(),client.getAccountReport().getReportType(),client.getAccountReport().getReportId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountReportInterface accountReportInterface = retrofit.create(Model.accountReportInterface.class);
+
+        Call<CreatedReport> call = accountReportInterface.reportStatus(client.getAccountId(),client.getAccountReport().getReportType(),client.getAccountReport().getReportId(),client.getToken());
+
+        Response<CreatedReport> response = call.execute();
+
+        return response.body();
+
     }
 
 
