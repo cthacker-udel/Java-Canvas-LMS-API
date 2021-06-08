@@ -308,6 +308,26 @@ public class CanvasRestAPI{
 
     }
 
+    public CreatedReport deleteReport(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/reports/%s/%s/",client.getAccountId(),client.getAccountReport().getReportType(),client.getAccountReport().getReportId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountReportInterface accountReportInterface = retrofit.create(Model.accountReportInterface.class);
+
+        Call<CreatedReport> call = accountReportInterface.deleteReport(client.getAccountId(),client.getAccountReport().getReportType(),client.getAccountReport().getReportId(),client.getToken());
+
+        Response<CreatedReport> response = call.execute();
+
+        return response.body();
+    }
+
+
+
 
 
 }

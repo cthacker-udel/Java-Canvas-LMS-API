@@ -21,4 +21,8 @@ public interface accountReportInterface {
 
     @GET("https://api.udel.instructure.com/api/v1/accounts/{accountId}/reports/{reportType}/{reportId}")
     Call<CreatedReport> reportStatus(@Path("accountId") Integer accountId, @Path("reportType") String reportType, @Path("reportId") String reportId, @Header("Authorization") String auth);
+
+    @DELETE("https://api.udel.instructure.com/api/v1/accounts/{accountId}/reports/{reportType}/{reportId}")
+    Call<CreatedReport> deleteReport(@Path("accountId") Integer accountId, @Path("reportType") String reportType, @Path("reportId") String reportId, @Header("Authorization") String auth);
+
 }
