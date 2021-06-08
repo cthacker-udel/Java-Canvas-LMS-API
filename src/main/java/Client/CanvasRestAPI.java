@@ -4,6 +4,7 @@ import Controller.AccountController.AccountDomain.AccountDomainSearchResponse;
 import Controller.AccountController.AccountNotification.GlobalAccountNotification;
 import Controller.AccountController.AccountNotification.GlobalCreatedNotification;
 import Controller.AccountController.AccountReport.AvailableReports.AvailableReport;
+import Controller.AccountController.AccountReport.CreatedReport.CreatedReport;
 import Model.accountReportInterface;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
@@ -250,6 +251,24 @@ public class CanvasRestAPI{
 
         return response.body();
 
+    }
+
+    public CreatedReport startReport(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/reports/%s/",client.getAccountId(),client.getAccountReport().getReportId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountReportInterface accountReportInterface = retrofit.create(Model.accountReportInterface.class);
+
+        Call<CreatedReport> call = accountReportInterface.startReport(client.getAccountId(),client.getAccountReport().getReportId(),client.getToken(),client.getAccountReport().generateQueries());
+
+        Response<CreatedReport> response = call.execute();
+
+        return response.body();
     }
 
 

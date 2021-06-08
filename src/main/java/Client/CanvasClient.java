@@ -2,6 +2,7 @@ package Client;
 
 import getRequests.AccountDomain;
 import getRequests.AccountNotification;
+import getRequests.AccountReport;
 
 public class CanvasClient extends CanvasRestAPI {
 
@@ -11,6 +12,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Integer accountId;
     private AccountDomain accountDomain;
     private AccountNotification accountNotification;
+    private AccountReport accountReport;
 
     public CanvasClient(){
         super();
@@ -25,7 +27,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.clientSecret = newClientSecret;
         this.accountDomain = new AccountDomain();
         this.accountNotification = new AccountNotification();
+        this.accountReport = new AccountReport();
 
+    }
+
+    public AccountReport getAccountReport() {
+        return accountReport;
+    }
+
+    public void setAccountReport(AccountReport accountReport) {
+        this.accountReport = accountReport;
     }
 
     public Integer getAccountId() {
