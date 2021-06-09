@@ -5,7 +5,9 @@ import Controller.AccountController.AccountNotification.GlobalAccountNotificatio
 import Controller.AccountController.AccountNotification.GlobalCreatedNotification;
 import Controller.AccountController.AccountReport.AvailableReports.AvailableReport;
 import Controller.AccountController.AccountReport.CreatedReport.CreatedReport;
+import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Model.accountReportInterface;
+import Model.calendarEventInterface;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
 import org.openqa.selenium.WebDriver;
@@ -23,6 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Calendar;
 import java.util.List;
 
 import Model.accountDomainInterface;
@@ -331,6 +334,26 @@ public class CanvasRestAPI{
     Calendar Events
 
      */
+
+    public List<CalendarEvent> listCalendarEvents(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/calendar_events/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
+
+        Call<List<CalendarEvent>> call = calendarEventInterface.getListOfCalendarEvents(client.getToken(),client.getCalendarEvent().generateQueries());
+
+        Response<List<CalendarEvent>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

@@ -1,5 +1,7 @@
 package Client;
 
+import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
+import getRequests.AccountCalendarEvent;
 import getRequests.AccountDomain;
 import getRequests.AccountNotification;
 import getRequests.AccountReport;
@@ -13,6 +15,7 @@ public class CanvasClient extends CanvasRestAPI {
     private AccountDomain accountDomain;
     private AccountNotification accountNotification;
     private AccountReport accountReport;
+    private AccountCalendarEvent calendarEvent;
 
     public CanvasClient(){
         super();
@@ -28,7 +31,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.accountDomain = new AccountDomain();
         this.accountNotification = new AccountNotification();
         this.accountReport = new AccountReport();
+        this.calendarEvent = new AccountCalendarEvent();
 
+    }
+
+    public AccountCalendarEvent getCalendarEvent() {
+        return calendarEvent;
+    }
+
+    public void setCalendarEvent(AccountCalendarEvent calendarEvent) {
+        this.calendarEvent = calendarEvent;
     }
 
     public AccountReport getAccountReport() {
