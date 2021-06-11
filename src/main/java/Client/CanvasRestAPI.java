@@ -8,6 +8,7 @@ import Controller.AccountController.AccountReport.CreatedReport.CreatedReport;
 import Controller.AccountController.Accounts.Account;
 import Controller.AccountController.Accounts.AccountPermissions.AccountPermissions;
 import Controller.AccountController.Accounts.AccountSettings.AccountSettings;
+import Controller.AccountController.Accounts.TermsOfService.TermsOfService;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Model.*;
 import com.google.gson.Gson;
@@ -462,6 +463,25 @@ public class CanvasRestAPI{
         Call<List<Account>> call = accountsInterface.getSubAccountsOfAccount(client.getAccountList().getAccountListId(),client.getToken(),client.getAccountList().getRecursive());
 
         Response<List<Account>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public TermsOfService getAccountTermsOfService(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/terms_of_service/",client.getAccountList().getAccountListId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountsInterface accountsInterface = retrofit.create(Model.accountsInterface.class);
+
+        Call<TermsOfService> call = accountsInterface.getAccountsTermsOfService(client.getAccountList().getAccountListId(),client.getToken());
+
+        Response<TermsOfService> response = call.execute();
 
         return response.body();
 
