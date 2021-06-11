@@ -12,6 +12,8 @@ public class AccountList extends CanvasClient {
 
     private ArrayList<String> permissions = new ArrayList<>();
 
+    private Boolean recursive;
+
     private String accountListId;
 
     public Map<String,Object> generateQueries(){
@@ -35,6 +37,14 @@ public class AccountList extends CanvasClient {
         this.include.clear();
         this.permissions.clear();
 
+    }
+
+    public Boolean getRecursive() {
+        return recursive;
+    }
+
+    public void setRecursive(Boolean recursive) {
+        this.recursive = recursive;
     }
 
     public ArrayList<String> getPermissions() {

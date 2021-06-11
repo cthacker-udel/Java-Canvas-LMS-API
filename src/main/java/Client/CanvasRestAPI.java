@@ -448,7 +448,24 @@ public class CanvasRestAPI{
 
     }
 
+    public List<Account> getSubAccountsOfAnAccount(CanvasClient client) throws IOException {
 
+        String url = baseUrl + String.format("/api/v1/accounts/%s/sub_accounts/",client.getAccountList().getAccountListId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountsInterface accountsInterface = retrofit.create(Model.accountsInterface.class);
+
+        Call<List<Account>> call = accountsInterface.getSubAccountsOfAccount(client.getAccountList().getAccountListId(),client.getToken(),client.getAccountList().getRecursive());
+
+        Response<List<Account>> response = call.execute();
+
+        return response.body();
+
+    }
 
 
 
