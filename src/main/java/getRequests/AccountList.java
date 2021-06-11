@@ -10,6 +10,8 @@ public class AccountList extends CanvasClient {
 
     private ArrayList<String> include = new ArrayList<>();
 
+    private ArrayList<String> permissions = new ArrayList<>();
+
     private String accountListId;
 
     public Map<String,Object> generateQueries(){
@@ -18,6 +20,9 @@ public class AccountList extends CanvasClient {
 
         if(this.include.size() > 0){
             queries.put("include[]",this.include.toArray(String[]::new));
+        }
+        if(this.permissions.size() > 0){
+            queries.put("permissions[]",this.permissions.toArray(String[]::new));
         }
 
         return queries;
@@ -28,7 +33,16 @@ public class AccountList extends CanvasClient {
     public void clearQueries(){
 
         this.include.clear();
+        this.permissions.clear();
 
+    }
+
+    public ArrayList<String> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(ArrayList<String> permissions) {
+        this.permissions = permissions;
     }
 
     public ArrayList<String> getInclude() {

@@ -6,6 +6,7 @@ import Controller.AccountController.AccountNotification.GlobalCreatedNotificatio
 import Controller.AccountController.AccountReport.AvailableReports.AvailableReport;
 import Controller.AccountController.AccountReport.CreatedReport.CreatedReport;
 import Controller.AccountController.Accounts.Account;
+import Controller.AccountController.Accounts.AccountPermissions.AccountPermissions;
 import Controller.AccountController.Accounts.AccountSettings.AccountSettings;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Model.*;
@@ -423,6 +424,25 @@ public class CanvasRestAPI{
         Call<AccountSettings> call = accountsInterface.getAccountSettings(client.getAccountList().getAccountListId(),client.getToken());
 
         Response<AccountSettings> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public AccountPermissions getAccountPermissions(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/permissions/",client.getAccountList().getAccountListId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountsInterface accountsInterface = retrofit.create(Model.accountsInterface.class);
+
+        Call<AccountPermissions> call = accountsInterface.getAccountPermissions(client.getAccountList().getAccountListId(),client.getToken(),client.getAccountList().generateQueries());
+
+        Response<AccountPermissions> response = call.execute();
 
         return response.body();
 
