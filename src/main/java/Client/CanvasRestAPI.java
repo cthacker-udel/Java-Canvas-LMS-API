@@ -8,8 +8,10 @@ import Controller.AccountController.AccountReport.CreatedReport.CreatedReport;
 import Controller.AccountController.Accounts.Account;
 import Controller.AccountController.Accounts.AccountPermissions.AccountPermissions;
 import Controller.AccountController.Accounts.AccountSettings.AccountSettings;
+import Controller.AccountController.Accounts.HelpLinks.HelpLinks;
 import Controller.AccountController.Accounts.TermsOfService.TermsOfService;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
+import Controller.CourseController.Course;
 import Model.*;
 import com.google.gson.Gson;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -485,6 +487,43 @@ public class CanvasRestAPI{
 
         return response.body();
 
+    }
+
+    public HelpLinks getAccountHelpLinks(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/help_links/",client.getAccountList().getAccountListId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountsInterface accountsInterface = retrofit.create(Model.accountsInterface.class);
+
+        Call<HelpLinks> call = accountsInterface.getAccountHelpLinks(client.getAccountList().getAccountListId(),client.getToken());
+
+        Response<HelpLinks> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<Course> listAcitveCoursesInAccount(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/courses/",client.getAccountList().getAccountListId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountsInterface accountsInterface = retrofit.create(Model.accountsInterface.class);
+
+        Call<List<Course>> call = accountsInterface.getActiveCoursesInAccount(client.getAccountList().getAccountListId(),client.getToken(),client.getAccountList().generateQueries());
+
+        Response<List<Course>> response = call.execute();
+
+        return response.body();
     }
 
 

@@ -3,7 +3,9 @@ package Model;
 import Controller.AccountController.Accounts.Account;
 import Controller.AccountController.Accounts.AccountPermissions.AccountPermissions;
 import Controller.AccountController.Accounts.AccountSettings.AccountSettings;
+import Controller.AccountController.Accounts.HelpLinks.HelpLinks;
 import Controller.AccountController.Accounts.TermsOfService.TermsOfService;
+import Controller.CourseController.Course;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -35,5 +37,11 @@ public interface accountsInterface {
 
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/terms_of_service")
     Call<TermsOfService> getAccountsTermsOfService(@Path("accountId") String accountId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/help_links")
+    Call<HelpLinks> getAccountHelpLinks(@Path("accountId") String accountId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/courses")
+    Call<List<Course>> getActiveCoursesInAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 }
