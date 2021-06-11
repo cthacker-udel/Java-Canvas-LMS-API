@@ -51,6 +51,55 @@ public class AccountList extends CanvasClient {
 
     private ZonedDateTime endsAfter;
 
+    private String accountName;
+
+    private String accountSisId;
+
+    private String defaultTimeZone;
+
+    private Integer accountDefaultStorageQuota;
+
+    private Integer defaultUserStorageQuota;
+
+    private Integer defaultGroupStorageQuota;
+
+    private Integer courseTemplateId;
+
+    private Boolean restrictStudentPastViewValue;
+
+    private Boolean restrictStudentPastViewLocked;
+
+    private Boolean restrictStudentFutureViewValue;
+
+    private Boolean accountMicrosoftSyncEnabled;
+
+    private String miscrosoftSyncTenant;
+
+    private String microsoftSyncLoginAttribute;
+
+    private Boolean restrictStudentFutureView;
+
+    private Boolean lockAllAnnouncementsValue;
+
+    private Boolean lockAllAnnouncementsLocked;
+
+    private Boolean usageRightsRequiredValue;
+
+    private Boolean usageRightsRequiredLocked;
+
+    private Boolean restrictStudentFutureListingValue;
+
+    private Boolean restrictStudentFutureListingLocked;
+
+    private Boolean lockOutcomeProficiencyValue;
+
+    private Boolean lockOutcomeProficiencyLocked;
+
+    private Boolean lockProficiencyCalculationValue;
+
+    private Boolean lockProficiencyCalculationLocked;
+
+    private String accountServices;
 
     public Map<String,Object> generateQueries(){
 

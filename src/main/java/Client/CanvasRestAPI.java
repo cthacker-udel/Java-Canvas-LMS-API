@@ -526,6 +526,12 @@ public class CanvasRestAPI{
         return response.body();
     }
 
+    public void updateAnAccount(CanvasClient client){
+
+
+
+    }
+
 
 
     /*
