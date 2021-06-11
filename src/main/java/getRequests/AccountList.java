@@ -10,6 +10,8 @@ public class AccountList extends CanvasClient {
 
     private ArrayList<String> include = new ArrayList<>();
 
+    private String accountListId;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
@@ -29,6 +31,19 @@ public class AccountList extends CanvasClient {
 
     }
 
+    public ArrayList<String> getInclude() {
+        return include;
+    }
 
+    public void setInclude(ArrayList<String> include) {
+        this.include = include;
+    }
 
+    public String getAccountListId() {
+        return accountListId;
+    }
+
+    public void setAccountListId(String accountListId) {
+        this.accountListId = accountListId;
+    }
 }

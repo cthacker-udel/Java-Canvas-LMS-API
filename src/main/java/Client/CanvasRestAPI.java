@@ -8,6 +8,7 @@ import Controller.AccountController.AccountReport.CreatedReport.CreatedReport;
 import Controller.AccountController.Accounts.Account;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Model.*;
+import com.google.gson.Gson;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
 import org.openqa.selenium.WebDriver;
@@ -344,7 +345,7 @@ public class CanvasRestAPI{
 
         accountsInterface accountsInterface = retrofit.create(Model.accountsInterface.class);
 
-        Call<List<Account>> call = accountsInterface.listAccounts(client.getToken());
+        Call<List<Account>> call = accountsInterface.listAccounts(client.getToken(),client.getAccountList().generateQueries());
 
         Response<List<Account>> response = call.execute();
 
@@ -368,6 +369,43 @@ public class CanvasRestAPI{
         Response<List<Account>> response = call.execute();
 
         return response.body();
+    }
+
+    public List<Account> listAccountsForCourseAdmins(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/course_accounts/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountsInterface accountsInterface = retrofit.create(Model.accountsInterface.class);
+
+        Call<List<Account>> call = accountsInterface.listAccountsForCourseAdmins(client.getToken());
+
+        Response<List<Account>> response = call.execute();
+
+        return response.body();
+    }
+
+    public Account getAccount(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/",client.getAccountList().getAccountListId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountsInterface accountsInterface = retrofit.create(Model.accountsInterface.class);
+
+        Call<Account> call = accountsInterface.getAccount(client.getAccountList().getAccountListId(),client.getToken());
+
+        Response<Account> response = call.execute();
+
+        return response.body();
+
     }
 
 
