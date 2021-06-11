@@ -12,4 +12,7 @@ public interface accountsInterface {
     @GET("https://udel.instructure.com/api/v1/accounts")
     Call<List<Account>> listAccounts(@Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/manageable_accounts")
+    Call<List<Account>> listAdminManageableAccounts(@Header("Authorization") String auth);
+
 }

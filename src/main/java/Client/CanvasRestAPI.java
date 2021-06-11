@@ -352,6 +352,24 @@ public class CanvasRestAPI{
 
     }
 
+    public List<Account> listAccountsAdminManageable(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/manageable_accounts/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        accountsInterface accountsInterface = retrofit.create(Model.accountsInterface.class);
+
+        Call<List<Account>> call = accountsInterface.listAdminManageableAccounts(client.getToken());
+
+        Response<List<Account>> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 
