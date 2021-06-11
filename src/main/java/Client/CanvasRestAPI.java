@@ -5,9 +5,9 @@ import Controller.AccountController.AccountNotification.GlobalAccountNotificatio
 import Controller.AccountController.AccountNotification.GlobalCreatedNotification;
 import Controller.AccountController.AccountReport.AvailableReports.AvailableReport;
 import Controller.AccountController.AccountReport.CreatedReport.CreatedReport;
+import Controller.AccountController.Accounts.Account;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
-import Model.accountReportInterface;
-import Model.calendarEventInterface;
+import Model.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
 import org.openqa.selenium.WebDriver;
@@ -27,9 +27,6 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.List;
-
-import Model.accountDomainInterface;
-import Model.accountNotificationInterface;
 
 public class CanvasRestAPI{
 
@@ -328,6 +325,36 @@ public class CanvasRestAPI{
 
         return response.body();
     }
+
+    /*
+
+    Accounts API
+
+     */
+
+    public List<Account> listAccounts(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/accounts/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
+        accountsInterface accountsInterface = retrofit.create(Model.accountsInterface.class);
+
+        Call<List<Account>> call = accountsInterface.listAccounts(client.getToken());
+
+        Response<List<Account>> response = call.execute();
+
+        return response.body();
+
+    }
+
+
+
+
 
     /*
 
