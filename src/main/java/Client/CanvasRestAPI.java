@@ -526,7 +526,22 @@ public class CanvasRestAPI{
         return response.body();
     }
 
-    public void updateAnAccount(CanvasClient client){
+    public boolean updateAnAccount(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s",client.getAccountList().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        accountsInterface accountsInterface = retrofit.create(accountsInterface.class);
+
+        Call<Void> call = accountsInterface.updateAccount(client.getAccountList().getAccountId(), client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.is_successful();
 
 
 

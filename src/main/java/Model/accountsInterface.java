@@ -44,4 +44,6 @@ public interface accountsInterface {
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/courses")
     Call<List<Course>> getActiveCoursesInAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}")
+    Call<Void> updateAccount(@Path("accountId") String accountId, @Header("Authorization") String auth);
 }
