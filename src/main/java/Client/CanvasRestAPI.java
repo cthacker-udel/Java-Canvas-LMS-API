@@ -620,9 +620,22 @@ public class CanvasRestAPI{
     }
 
 
-    public void removeAccountAdmin(CanvasClient client){
+    public Admin removeAccountAdmin(CanvasClient client){
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/admins/%s",client.getAccountId(),client.getAdmin())
+        String url = baseUrl + String.format("/api/v1/accounts/%s/admins/%s",client.getAccountId(),client.getAdmin());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        adminInterface adminInterface = retrofit.create(adminInterface.class);
+
+        Call<Admin> call = adminInterface.removeAdmin(client.getAccountId(),client.getAdmin().getUserId(),client.getToken(),client.getAdmin().generateQueries());
+
+        Response<Admin> response = call.execute();
+
+        return response.body();
 
     }
 
