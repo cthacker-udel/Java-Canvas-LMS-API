@@ -45,5 +45,9 @@ public interface accountsInterface {
     Call<List<Course>> getActiveCoursesInAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
     @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}")
-    Call<Void> updateAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<Account> updateAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/users/{userId}")
+    Call<User> deleteUserFromRootAccount(@Path("accountId") String accountId, @Path("userId") String userId, @Header("Authorization") String auth);
+
 }

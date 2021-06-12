@@ -537,12 +537,30 @@ public class CanvasRestAPI{
 
         accountsInterface accountsInterface = retrofit.create(accountsInterface.class);
 
-        Call<Void> call = accountsInterface.updateAccount(client.getAccountList().getAccountId(), client.getToken(),client.getAccountList().generateQueries());
+        Call<Account> call = accountsInterface.updateAccount(client.getAccountList().getAccountId(), client.getToken(),client.getAccountList().generateQueries());
 
-        Response<Void> response = call.execute();
+        Response<Account> response = call.execute();
 
         return response.is_successful();
 
+    }
+
+    public User deleteUserFromRootAccount(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/users/%s/",client.getAccountList().getAccountId(),client.getClientId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        accountsInterface accountsInterface = retrofit.create(accountsInterface.class);
+
+        Call<User> call = accountsInterface.deleteUserFromRootAccount(client.getAccountList().getAccountId() + "", client.getClientId() + "", client.getToken());
+
+        Response<User> response = call.execute();
+
+        return response.body();
     }
 
 
