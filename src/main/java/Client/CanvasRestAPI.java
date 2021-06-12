@@ -537,15 +537,15 @@ public class CanvasRestAPI{
 
         accountsInterface accountsInterface = retrofit.create(accountsInterface.class);
 
-        Call<Void> call = accountsInterface.updateAccount(client.getAccountList().getAccountId(), client.getToken());
+        Call<Void> call = accountsInterface.updateAccount(client.getAccountList().getAccountId(), client.getToken(),client.getAccountList().generateQueries());
 
         Response<Void> response = call.execute();
 
         return response.is_successful();
 
-
-
     }
+
+
 
 
 
