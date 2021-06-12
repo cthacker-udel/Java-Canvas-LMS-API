@@ -101,6 +101,8 @@ public class AccountList extends CanvasClient {
 
     private String accountServices;
 
+    private String subAccountId;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
@@ -351,5 +353,13 @@ public class AccountList extends CanvasClient {
 
     public void setAccountListId(String accountListId) {
         this.accountListId = accountListId;
+    }
+
+    public String getSubAccountId(){
+        return this.subAccountId;
+    }
+
+    public void setSubAccountId(String newSubAccountId){
+        this.subAccountId = newSubAccountId;
     }
 }

@@ -582,6 +582,24 @@ public class CanvasRestAPI{
 
     }
 
+    public Account deleteSubAccount(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/sub_accounts/%s",client.getAccountList().getAccountId(),client.getAccountList().getSubAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        accountsInterface accountsInterface = retrofit.create(accountsInterface.class);
+
+        Call<Account> call = accountsInterface.deleteSubAccount(client.getAccountList().getAccountId(), client.getAccountList().getSubAccountId(), client.getToken());
+
+        Response<Account> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 
