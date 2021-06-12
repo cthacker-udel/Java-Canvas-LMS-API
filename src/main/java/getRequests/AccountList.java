@@ -162,10 +162,76 @@ public class AccountList extends CanvasClient {
         if(this.endsAfter != null){
             queries.put("ends_after",this.endsAfter);
         }
-
+        if(this.accountName != null){
+            queries.put("account[name]",this.accountName);
+        }
+        if(this.accountSisId != null){
+            queries.put("account[sis_account_id]",this.accountSisId);
+        }
+        if(this.defaultTimeZone != null){
+            queries.put("account[default_time_zone]",this.defaultTimeZone);
+        }
+        if(this.accountDefaultStorageQuota != null){
+            queries.put("account[default_user_storage_quota_mb]",this.accountDefaultStorageQuota);
+        }
+        if(this.defaultGroupStorageQuota != null){
+            queries.put("account[default_group_storage_quota_mb]",this.defaultGroupStorageQuota);
+        }
+        if(this.courseTemplateId != null){
+            queries.put("account[course_template_id]",this.courseTemplateId);
+        }
+        if(this.restrictStudentPastViewValue != null){
+            queries.put("account[settings][restrict_student_past_view][value]",this.restrictStudentPastViewValue);
+        }
+        if(this.restrictStudentPastViewLocked != null){
+            queries.put("account[settings][restrict_student_past_view][locked]",this.restrictStudentPastViewLocked);
+        }
+        if(this.restrictStudentFutureListingValue != null){
+            queries.put("account[settings][restrict_student_future_view][value]",this.restrictStudentFutureViewValue);
+        }
+        if(this.accountMicrosoftSyncEnabled != null){
+            queries.put("account[settings][microsoft_sync_enabled]",this.accountMicrosoftSyncEnabled);
+        }
+        if(this.miscrosoftSyncTenant != null){
+            queries.put("account[settings][microsoft_sync_tenant]",this.miscrosoftSyncTenant);
+        }
+        if(this.microsoftSyncLoginAttribute != null){
+            queries.put("account[settings][microsoft_sync_login_attribute]",this.microsoftSyncLoginAttribute);
+        }
+        if(this.lockAllAnnouncementsValue != null){
+            queries.put("account[settings][lock_all_announcements][value]",this.lockAllAnnouncementsValue);
+        }
+        if(this.lockAllAnnouncementsLocked != null){
+            queries.put("account[settings][lock_all_announcements][locked]",this.lockAllAnnouncementsLocked);
+        }
+        if(this.usageRightsRequiredValue != null){
+            queries.put("account[settings][usage_rights_required][value]",this.usageRightsRequiredValue);
+        }
+        if(this.usageRightsRequiredLocked != null){
+            queries.put("account[settings][usage_rights_required][locked]",this.usageRightsRequiredLocked);
+        }
+        if(this.restrictStudentFutureListingValue != null){
+            queries.put("account[settings][restrict_student_future_listing][value]",this.restrictStudentFutureListingValue);
+        }
+        if(this.restrictStudentFutureListingLocked != null){
+            queries.put("account[settings][restrict_student_future_listing][locked]",this.restrictStudentFutureListingLocked);
+        }
+        if(this.lockOutcomeProficiencyValue != null){
+            queries.put("account[settings][lock_outcome_proficiency][value]",this.lockOutcomeProficiencyValue);
+        }
+        if(this.lockOutcomeProficiencyLocked != null){
+            queries.put("account[lock_outcome_proficiency][locked]",this.lockOutcomeProficiencyLocked);
+        }
+        if(this.lockProficiencyCalculationValue != null){
+            queries.put("account[settings][lock_proficiency_calculation][value]",this.lockProficiencyCalculationValue);
+        }
+        if(this.lockProficiencyCalculationLocked != null){
+            queries.put("account[lock_proficiency_calculation][locked]",this.lockOutcomeProficiencyLocked);
+        }
+        if(this.accountServices != null){
+            queries.put("account[services]",this.accountServices);
+        }
         return queries;
-
-
     }
 
     public void clearQueries(){
@@ -175,36 +241,83 @@ public class AccountList extends CanvasClient {
         this.with_enrollments = null;
         ArrayList<String> enrollmentType = new ArrayList<>();
 
-        Boolean published= null;
+        published= null;
 
-        Boolean completed= null;
+        completed= null;
 
-        Boolean blueprint= null;
+        blueprint= null;
 
-        Boolean blueprintAssociated= null;
+        blueprintAssociated= null;
 
-        ArrayList<Integer> byTeachers = new ArrayList<>();
+        byTeachers = new ArrayList<>();
 
-        ArrayList<Integer> bySubaccounts = new ArrayList<>();
+        bySubaccounts = new ArrayList<>();
 
-        Boolean hideEnrollmentsCourses= null;
+        hideEnrollmentsCourses= null;
 
-        ArrayList<String> state = new ArrayList<>();
+        state = new ArrayList<>();
 
-        Integer enrollmentTermId= null;
+        enrollmentTermId= null;
 
-        String searchTerm= null;
+        searchTerm= null;
 
-        String sort= null;
+        sort= null;
 
-        String order= null;
+        order= null;
 
-        String searchBy= null;
+        searchBy= null;
 
-        ZonedDateTime startsBefore= null;
+        startsBefore= null;
 
-        ZonedDateTime endsAfter= null;
+        endsAfter= null;
 
+        this.accountName = null;
+
+        this.accountSisId = null;
+
+        this.defaultTimeZone = null;
+
+        this.defaultGroupStorageQuota = null;
+
+        this.defaultUserStorageQuota = null;
+
+        this.defaultGroupStorageQuota = null;
+
+        this.courseTemplateId = null;
+
+        this.restrictStudentPastViewValue = null;
+
+        this.restrictStudentPastViewLocked = null;
+
+        this.restrictStudentFutureViewValue = null;
+
+        this.restrictStudentFutureView = null;
+
+        this.miscrosoftSyncTenant = null;
+
+        this.microsoftSyncLoginAttribute = null;
+
+        this.lockAllAnnouncementsValue = null;
+
+        this.lockAllAnnouncementsLocked = null;
+
+        this.usageRightsRequiredValue = null;
+
+        this.usageRightsRequiredLocked = null;
+
+        this.restrictStudentFutureListingValue = null;
+
+        this.restrictStudentFutureListingLocked = null;
+
+        this.lockOutcomeProficiencyValue = null;
+
+        this.lockOutcomeProficiencyLocked = null;
+
+        this.lockProficiencyCalculationValue = null;
+
+        this.lockProficiencyCalculationLocked = null;
+
+        this.accountServices = null;
 
     }
 
