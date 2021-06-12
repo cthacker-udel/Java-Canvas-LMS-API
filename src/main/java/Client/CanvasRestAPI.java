@@ -600,6 +600,27 @@ public class CanvasRestAPI{
         return response.body();
     }
 
+    public Admin createAccountAdmin(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/admins",client.getAccountId()+"");
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        adminInterface adminInterface = retrofit.create(adminInterface.class);
+
+        Call<Admin> call = adminInterface.createAdmin(client.getAccountId(),client.getToken(),client.getAdmin().generateQueries());
+
+        Response<Admin> response = call.execute();
+
+        return response.body();
+
+        
+
+    }
+
 
 
 
