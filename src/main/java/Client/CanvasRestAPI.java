@@ -617,7 +617,12 @@ public class CanvasRestAPI{
 
         return response.body();
 
-        
+    }
+
+
+    public void removeAccountAdmin(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/admins/%s",client.getAccountId(),client.getAdmin())
 
     }
 

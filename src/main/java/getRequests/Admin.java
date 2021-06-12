@@ -38,5 +38,44 @@ public class Admin extends CanvasClient{
 
     }
 
+    public Integer getUserId(){
+
+        return this.userId;
+
+    }
+
+    public String getRole(){
+
+        return this.role;
+
+    }
+
+    public Integer getRoleId(){
+
+        return this.roleId;
+
+    }
+
+    public Boolean getSendConfirmation(){
+
+        return this.sendConfirmation;
+
+    }
+
+    public void setUserId(Integer userId){
+        this.userId = userId;
+    }
+
+    public void setRoleId(Integer roleId){
+        this.roleId = roleId;
+    }
+
+    public void setRole(String role){
+        this.role = role;
+    }
+
+    public void setSendConfirmation(Boolean sendConfirmation){
+        this.sendConfirmation = sendConfirmation;
+    }
 
 }
