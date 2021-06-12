@@ -556,7 +556,7 @@ public class CanvasRestAPI{
 
         accountsInterface accountsInterface = retrofit.create(accountsInterface.class);
 
-        Call<User> call = accountsInterface.deleteUserFromRootAccount(client.getAccountList().getAccountId() + "", client.getClientId() + "", client.getToken());
+        Call<User> call = accountsInterface.deleteUserFromRootAccount(client.getAccountList().getAccountId(), client.getClientId(), client.getToken());
 
         Response<User> response = call.execute();
 
@@ -574,7 +574,7 @@ public class CanvasRestAPI{
 
         accountsInterface accountsInterface = retrofit.create(accountsInterface.class);
 
-        Call<Account> call = accountsInterface.createSubAccount(client.getAccountList().getAccountId() + "", client.getToken(), client.getAccountList().generateQueries());
+        Call<Account> call = accountsInterface.createSubAccount(client.getAccountList().getAccountId(), client.getToken(), client.getAccountList().generateQueries());
 
         Response<Account> response = call.execute();
 
@@ -599,6 +599,8 @@ public class CanvasRestAPI{
 
         return response.body();
     }
+
+
 
 
 

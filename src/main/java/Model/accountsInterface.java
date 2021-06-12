@@ -45,15 +45,15 @@ public interface accountsInterface {
     Call<List<Course>> getActiveCoursesInAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
     @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}")
-    Call<Account> updateAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<Account> updateAccount(@Path("accountId") Integer accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
     @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/users/{userId}")
-    Call<User> deleteUserFromRootAccount(@Path("accountId") String accountId, @Path("userId") String userId, @Header("Authorization") String auth);
+    Call<User> deleteUserFromRootAccount(@Path("accountId") Integer accountId, @Path("userId") Integer userId, @Header("Authorization") String auth);
 
     @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/sub_accounts")
-    Call<Account> createSubAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<Account> createSubAccount(@Path("accountId") Integer accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
     @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/sub_accounts/{subaccountId}")
-    Call<Account> deleteSubAccount(@Path("accountId") String accountId, @Path("subaccountId") String subaccountId, @Header("Authorization") String auth);
+    Call<Account> deleteSubAccount(@Path("accountId") Integer accountId, @Path("subaccountId") Integer subaccountId, @Header("Authorization") String auth);
 
 }
