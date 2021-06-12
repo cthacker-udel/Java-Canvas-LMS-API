@@ -639,6 +639,25 @@ public class CanvasRestAPI{
 
     }
 
+    public List<Integer> listAccountAdmins(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/admins/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        adminInterface adminInterface = retrofit.create(adminInterface.class);
+
+        Call<List<Admin>> call = adminInterface.listAccountAdmins(client.getAccountId(),client.getToken(),client.getAdmin().generateQueries());
+
+        Response<List<Admin>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

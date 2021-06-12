@@ -6,5 +6,7 @@ public interface adminInterface{
     @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/admins/{userId}")
     Call<Admin> removeAdmin(@Path("accountId") Integer accountId, @Path("userId") Integer userId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/admins")
+    Call<List<Admin>> listAccountAdmins(@Path("accountId") Integer accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 }

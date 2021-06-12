@@ -8,6 +8,8 @@ public class Admin extends CanvasClient{
 
     private Boolean sendConfirmation;
 
+    private ArrayList<Integer> userIds = new ArrayList<Integer>();
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
@@ -24,6 +26,9 @@ public class Admin extends CanvasClient{
         if(this.sendConfirmation != null){
             queries.put("send_confirmation",this.sendConfirmation);
         }
+        if(this.userIds.size() > 0){
+            queries.put("user_id[]",this.userIds.toArray(Integer[]::new));
+        }
 
         return queries;
 
@@ -35,6 +40,7 @@ public class Admin extends CanvasClient{
         this.userId = null;
         this.roleId = null;
         this.sendConfirmation = null;
+        this.userIds.clear();
 
     }
 
@@ -42,6 +48,14 @@ public class Admin extends CanvasClient{
 
         return this.userId;
 
+    }
+
+    public ArrayList<Integer> getUserIds(){
+        return this.userIds;
+    }
+
+    public void setUserIds(ArrayList<Integer> userIds){
+        this.userIds = userIds;
     }
 
     public String getRole(){
