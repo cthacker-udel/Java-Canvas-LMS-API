@@ -563,6 +563,25 @@ public class CanvasRestAPI{
         return response.body();
     }
 
+    public Account createNewSubAccount(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/sub_accounts",client.getAccountList().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        accountsInterface accountsInterface = retrofit.create(accountsInterface.class);
+
+        Call<Account> call = accountsInterface.createSubAccount(client.getAccountList().getAccountId() + "", client.getToken(), client.getAccountList().generateQueries());
+
+        Response<Account> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

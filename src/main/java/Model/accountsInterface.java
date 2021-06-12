@@ -50,4 +50,7 @@ public interface accountsInterface {
     @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/users/{userId}")
     Call<User> deleteUserFromRootAccount(@Path("accountId") String accountId, @Path("userId") String userId, @Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/sub_accounts")
+    Call<Account> createSubAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
