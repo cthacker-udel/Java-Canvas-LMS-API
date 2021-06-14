@@ -697,6 +697,26 @@ public class CanvasRestAPI{
     }
 
 
+    public DepartmentLevelParticipation getCompletedDepartmentLevelParticipation(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/completed/activity",client.getAnalytics().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
+
+        Call<DepartmentLevelParticipation> call = analyticsInterface.getCompletedDepartmentLevelParticipation(client.getAnalytics().getAccountId(),client.getToken());
+
+        Response<DepartmentLevelParticipation> response = call.execute();
+
+        return response.body();
+
+    }
+
+
 
 
 
