@@ -658,6 +658,44 @@ public class CanvasRestAPI{
 
     }
 
+    public DepartmentLevelParticipation getDepartmentLevelAnalyticsByDate(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/terms/%s/activity",client.getAnalytics().getAccountId(),client.getAnalytics().getTermId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        analyticsInterface analyticsInterface  = retrofit.create(analyticsInterface.class);
+
+        Call<DepartmentLevelParticipation> call = analyticsInterface.getDepartmentLevelParticipation(client.getAnalaytics().getTermId(),client.getToken());
+
+        Response<DepartmentLevelParticipation> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public DepartmentLevelParticipation getCurrentDepartmentLevelParticipation(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/current/activity/",client.getAnalytics().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
+
+        Call<DepartmentLevelParticipation> call = analyticsInterface.getCurrentDepartmentLevelParticipation(client.getAnalytics().getAccountId(),client.getToken());
+
+        Response<DepartmentLevelParticipation> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

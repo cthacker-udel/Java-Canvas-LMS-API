@@ -15,6 +15,7 @@ public class CanvasClient extends CanvasRestAPI {
     private AccountCalendarEvent calendarEvent;
     private AccountList accountList;
     private Admin admin;
+    private Analytics analytics;
 
     public CanvasClient(){
         super();
@@ -33,6 +34,15 @@ public class CanvasClient extends CanvasRestAPI {
         this.calendarEvent = new AccountCalendarEvent();
         this.accountList = new AccountList();
         this.admin = new Admin();
+        this.analytics = new Analytics();
+    }
+
+    public Analytics getAnalytics(){
+        return this.analytics;
+    }
+
+    public void setAnalytics(Analytics newAnalytics){
+        this.analytics = newAnalytics;
     }
 
     public Admin getAdmin(){
