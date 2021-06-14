@@ -8,8 +8,15 @@ public interface analyticsInterface{
 
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/analytics/completed/activity")
     Call<DepartmentLevelParticipation> getCompletedDepartmentLevelParticipation(@Path("accountId") String accountId, @Header("Authorization") String auth);
-    
 
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/analytics/terms/{termId}/grades")
+    Call<DepartmentLevelGrades> getDepartmentLevelGradesByDate(@Path("accountId") String accountId, @Path("termId") String termId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/analytics/current/grades")
+    Call<DepartmentLevelGrades> getCurrentDepartmentLevelGrades(@Path("accountId") String accountId, @Header("Authorization") String authorization);
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/analytics/completed/grades")
+    Call<DepartmentLevelGrades> getCompletedDepartmentLevelGrades(@Path("accountId") String accountId, @Header("Authorization") String auth);
 
 
 }

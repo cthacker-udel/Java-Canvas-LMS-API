@@ -716,6 +716,35 @@ public class CanvasRestAPI{
 
     }
 
+    public DepartmentLevelGrades getDepartmentLevelGradeDataByDate(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/terms/%s/grades/",client.getAnalytics().getAccountId(),client.getAnalytics().getTermId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
+
+        Call<DepartmentLevelGrades> call = analyticsInterface.getDepartmentLevelGradeDataByDate(client.getAnalytics().getAccountId(),client.getAnalytics().getTermId(),client.getToken());
+
+        Response<DepartmentLevelGrades> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public void getCurrentDepartmentLevelGradeData(CanvasClient client){
+
+
+    }
+
+    public void getCompletedDepartmentLevelGradeData(CanvasClient client){
+
+
+    }
+
 
 
 
