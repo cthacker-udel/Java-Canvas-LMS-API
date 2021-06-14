@@ -774,6 +774,63 @@ public class CanvasRestAPI{
 
     }
 
+    public DepartmentLevelStatistics getByDateDepartmentLevelStatistics(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/terms/%s/statistics/",client.getAnalytics().getAccountId(),client.getAnalytics().getTermId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
+
+        Call<DepartmentLevelStatistics> call = analyticsInterface.getDepartmentLevelStatisticsByDate(client.getAnalytics().getAccountId(),client.getAnalytics.getTermId(),client.getToken());
+
+        Response<DepartmentLevelStatistics> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public DepartmentLevelStatistics getCurrentDeparmentLevelStatistics(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/current/statistics/",client.getAnalytics().getAccountId(),client.getToken());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+        
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
+
+        Call<DepartmentLevelStatistics> call = analyticsInterface.getCurrentDepartmentLevelStatistics(client.getAnalytics().getAccountId(),client.getToken());
+
+        Response<DepartmentLevelStatistics> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public DepartmentLevelStatistics getCompletedDepartmentLevelStatistics(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/completed/statistics/",client.getAnalytics().getAccountId(),client.getToken());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory().create())
+            .build();
+
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterfacec.class);
+
+        Call<DepartmentLevelStatistics> call = analyticsInterface.getCompletedDepartmentLevelStatistics(client.getAnalytics().getAccountId(),client.getToken());
+
+        Response<DepartmentLevelStatistics> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
