@@ -735,13 +735,42 @@ public class CanvasRestAPI{
 
     }
 
-    public void getCurrentDepartmentLevelGradeData(CanvasClient client){
+    public DepartmentLevelGrades getCurrentDepartmentLevelGradeData(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/current/grades",client.getAnalytics().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
+
+        Call<DepartmentLevelGrades> call = analyticsInterface.getCurrentDepartmentLevelGradeData(client.getAnalytics().getAccountId(),client.getToken());
+
+        Response<DepartmentLevelGrades> response = call.execute();
+
+        return response.body();
 
 
     }
 
-    public void getCompletedDepartmentLevelGradeData(CanvasClient client){
+    public DepartmentLevelGrades getCompletedDepartmentLevelGradeData(CanvasClient client){
 
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/completed/grades",client.getAnalytics().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
+
+        Call<DepartmentLevelGrades> call = analyticsInterface.getCompletedDepartmentLevelGradeData(client.getAnalytics().getAccountId(),client.getToken());
+
+        Response<DepartmentLevelGrades> response = call.execute();
+
+        return response.body();
 
     }
 
