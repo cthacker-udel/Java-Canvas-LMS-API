@@ -2,15 +2,15 @@ package Model;
 
 import Controller.AnalyticsController.CourseLevelAssignmentData.CourseLevelAssignmentData;
 import Controller.AnalyticsController.CourseLevelParticipation.CourseLevelParticipationData;
+import Controller.AnalyticsController.CourseLevelStudentSummaryData.CourseLevelStudentSummaryData;
 import Controller.AnalyticsController.DepartmentLevelGrades.DepartmentLevelGrades;
 import Controller.AnalyticsController.DepartmentLevelParticipation.DepartmentLevelParticipation;
 import Controller.AnalyticsController.DepartmentLevelStatistics.DepartmentLevelStatistics;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.Path;
+import retrofit2.http.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface analyticsInterface{
 
@@ -42,9 +42,12 @@ public interface analyticsInterface{
     Call<DepartmentLevelStatistics> getCompletedDepartmentLevelStatistics(@Path("accountId") String accountId, @Header("Authorization") String auth);
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/analytics/activity")
-    Call<List<CourseLevelParticipationData>> getCourseLevelParticipationData(@Path("courseId") String courseId, @Header("Authorization") String auth);
+    Call<List<CourseLevelParticipationData>> getCourseLevelParticipationData(@Path("courseId") String courseId, @QueryMap Map<String,Object> queries, @Header("Authorization") String auth);
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/analytics/assignments")
     Call<List<CourseLevelAssignmentData>> getCourseLevelAssignmentData(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/analytics/student_summaries")
+    Call<List<CourseLevelStudentSummaryData>> getCourseLevelStudentSummaryData(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 }

@@ -13,6 +13,7 @@ import Controller.AccountController.Accounts.TermsOfService.TermsOfService;
 import Controller.AdminController.Admin;
 import Controller.AnalyticsController.CourseLevelAssignmentData.CourseLevelAssignmentData;
 import Controller.AnalyticsController.CourseLevelParticipation.CourseLevelParticipationData;
+import Controller.AnalyticsController.CourseLevelStudentSummaryData.CourseLevelStudentSummaryData;
 import Controller.AnalyticsController.DepartmentLevelGrades.DepartmentLevelGrades;
 import Controller.AnalyticsController.DepartmentLevelParticipation.DepartmentLevelParticipation;
 import Controller.AnalyticsController.DepartmentLevelStatistics.DepartmentLevelStatistics;
@@ -850,7 +851,7 @@ public class CanvasRestAPI{
 
         analyticsInterface analyticsInterface = retrofit.create(Model.analyticsInterface.class);
 
-        Call<List<CourseLevelParticipationData>> call = analyticsInterface.getCourseLevelParticipationData(client.getAnalytics().getCourseId()+"",client.getToken());
+        Call<List<CourseLevelParticipationData>> call = analyticsInterface.getCourseLevelParticipationData(client.getAnalytics().getCourseId()+"",client.getAnalytics().generateQueries(),client.getToken());
 
         Response<List<CourseLevelParticipationData>> response = call.execute();
 
@@ -875,6 +876,26 @@ public class CanvasRestAPI{
         return response.body();
 
     }
+
+    public List<CourseLevelStudentSummaryData> getCourseLevelStudentSummaryData(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%d/analytics/student_summaries/",client.getAnalytics().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        analyticsInterface analyticsInterface = retrofit.create(Model.analyticsInterface.class);
+
+        Call<List<CourseLevelStudentSummaryData>> call = analyticsInterface.getCourseLevelStudentSummaryData(client.getAnalytics().getCourseId()+"",client.getToken(),client.getAnalytics().generateQueries());
+
+        Response<List<CourseLevelStudentSummaryData>> response = call.execute();
+
+        return response.body();
+    }
+
+
 
 
 

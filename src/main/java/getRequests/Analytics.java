@@ -13,9 +13,25 @@ public class Analytics extends CanvasClient {
 
     private Integer courseId;
 
+    private Boolean async;
+
+    private String sortColumn;
+
+    private String studentId;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
+
+        if(async != null){
+            queries.put("async",async);
+        }
+        if(sortColumn != null){
+            queries.put("sort_column",this.sortColumn);
+        }
+        if(this.studentId != null){
+            queries.put("student_id",this.studentId);
+        }
 
         return queries;
 
@@ -26,7 +42,34 @@ public class Analytics extends CanvasClient {
 
         this.accountId = null;
         this.termId = null;
+        this.async = null;
+        this.sortColumn = null;
+        this.studentId = null;
 
+    }
+
+    public Boolean getAsync() {
+        return async;
+    }
+
+    public void setAsync(Boolean async) {
+        this.async = async;
+    }
+
+    public String getSortColumn() {
+        return sortColumn;
+    }
+
+    public void setSortColumn(String sortColumn) {
+        this.sortColumn = sortColumn;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
     public Integer getCourseId() {
