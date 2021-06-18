@@ -11,6 +11,8 @@ public class Analytics extends CanvasClient {
 
     private Integer termId;
 
+    private Integer courseId;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
@@ -25,6 +27,14 @@ public class Analytics extends CanvasClient {
         this.accountId = null;
         this.termId = null;
 
+    }
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
     }
 
     public Integer getAccountId(){

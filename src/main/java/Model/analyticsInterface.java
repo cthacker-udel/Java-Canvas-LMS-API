@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.AnalyticsController.CourseLevelParticipation.CourseLevelParticipationData;
 import Controller.AnalyticsController.DepartmentLevelGrades.DepartmentLevelGrades;
 import Controller.AnalyticsController.DepartmentLevelParticipation.DepartmentLevelParticipation;
 import Controller.AnalyticsController.DepartmentLevelStatistics.DepartmentLevelStatistics;
@@ -36,5 +37,8 @@ public interface analyticsInterface{
 
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/analytics/completed/statistics")
     Call<DepartmentLevelStatistics> getCompletedDepartmentLevelStatistics(@Path("accountId") String accountId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/analytics/activity")
+    Call<CourseLevelParticipationData> getCourseLevelParticipationData(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
 }
