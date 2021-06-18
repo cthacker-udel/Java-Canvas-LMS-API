@@ -838,7 +838,7 @@ public class CanvasRestAPI{
 
     }
 
-    public CourseLevelParticipationData getCourseLevelParticipationData(CanvasClient client) throws IOException {
+    public List<CourseLevelParticipationData> getCourseLevelParticipationData(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%d/analytics/activity/",client.getAnalytics().getCourseId());
 
@@ -849,11 +849,15 @@ public class CanvasRestAPI{
 
         analyticsInterface analyticsInterface = retrofit.create(Model.analyticsInterface.class);
 
-        Call<CourseLevelParticipationData> call = analyticsInterface.getCourseLevelParticipationData(client.getAnalytics().getCourseId()+"",client.getToken());
+        Call<List<CourseLevelParticipationData>> call = analyticsInterface.getCourseLevelParticipationData(client.getAnalytics().getCourseId()+"",client.getToken());
 
-        Response<CourseLevelParticipationData> response = call.execute();
+        Response<List<CourseLevelParticipationData>> response = call.execute();
 
         return response.body();
+    }
+
+    public void getCourseLevelAssignmentData(CanvasClient client){
+
     }
 
 

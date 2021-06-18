@@ -9,6 +9,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Path;
 
+import java.util.List;
+
 public interface analyticsInterface{
 
     @GET("https://udel.instructure.com/api/v1/accounts/analytics/terms/{termId}/activity")
@@ -39,6 +41,6 @@ public interface analyticsInterface{
     Call<DepartmentLevelStatistics> getCompletedDepartmentLevelStatistics(@Path("accountId") String accountId, @Header("Authorization") String auth);
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/analytics/activity")
-    Call<CourseLevelParticipationData> getCourseLevelParticipationData(@Path("courseId") String courseId, @Header("Authorization") String auth);
+    Call<List<CourseLevelParticipationData>> getCourseLevelParticipationData(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
 }
