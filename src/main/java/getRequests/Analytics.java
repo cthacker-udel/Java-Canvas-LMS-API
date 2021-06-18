@@ -1,4 +1,11 @@
-public class Analytics extends CanvasClient{
+package getRequests;
+
+import Client.CanvasClient;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class Analytics extends CanvasClient {
 
     private Integer accountId;
 

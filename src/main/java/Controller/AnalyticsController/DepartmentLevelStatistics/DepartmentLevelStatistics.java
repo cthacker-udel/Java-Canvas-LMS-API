@@ -1,3 +1,8 @@
+package Controller.AnalyticsController.DepartmentLevelStatistics;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class DepartmentLevelStatistics{
 
     @SerializedName("courses")

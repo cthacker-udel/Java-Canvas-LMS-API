@@ -1,3 +1,8 @@
+package Controller.AnalyticsController.DepartmentLevelGrades;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class DepartmentLevelGrades{
 
     @SerializedName("0")

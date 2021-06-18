@@ -10,9 +10,15 @@ import Controller.AccountController.Accounts.AccountPermissions.AccountPermissio
 import Controller.AccountController.Accounts.AccountSettings.AccountSettings;
 import Controller.AccountController.Accounts.HelpLinks.HelpLinks;
 import Controller.AccountController.Accounts.TermsOfService.TermsOfService;
+import Controller.AdminController.Admin;
+import Controller.AnalyticsController.DepartmentLevelGrades.DepartmentLevelGrades;
+import Controller.AnalyticsController.DepartmentLevelParticipation.DepartmentLevelParticipation;
+import Controller.AnalyticsController.DepartmentLevelStatistics.DepartmentLevelStatistics;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
+import Controller.UserController.User;
 import Model.*;
+
 import com.google.gson.Gson;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
@@ -526,7 +532,7 @@ public class CanvasRestAPI{
         return response.body();
     }
 
-    public boolean updateAnAccount(CanvasClient client){
+    public boolean updateAnAccount(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s",client.getAccountList().getAccountId());
 
@@ -541,11 +547,11 @@ public class CanvasRestAPI{
 
         Response<Account> response = call.execute();
 
-        return response.is_successful();
+        return response.isSuccessful();
 
     }
 
-    public User deleteUserFromRootAccount(CanvasClient client){
+    public User deleteUserFromRootAccount(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/users/%s/",client.getAccountList().getAccountId(),client.getClientId());
 
@@ -556,14 +562,14 @@ public class CanvasRestAPI{
 
         accountsInterface accountsInterface = retrofit.create(accountsInterface.class);
 
-        Call<User> call = accountsInterface.deleteUserFromRootAccount(client.getAccountList().getAccountId(), client.getClientId(), client.getToken());
+        Call<User> call = accountsInterface.deleteUserFromRootAccount(client.getAccountList().getAccountId(), Integer.parseInt(client.getClientId()), client.getToken());
 
         Response<User> response = call.execute();
 
         return response.body();
     }
 
-    public Account createNewSubAccount(CanvasClient client){
+    public Account createNewSubAccount(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/sub_accounts",client.getAccountList().getAccountId());
 
@@ -582,7 +588,7 @@ public class CanvasRestAPI{
 
     }
 
-    public Account deleteSubAccount(CanvasClient client){
+    public Account deleteSubAccount(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/sub_accounts/%s",client.getAccountList().getAccountId(),client.getAccountList().getSubAccountId());
 
@@ -593,14 +599,14 @@ public class CanvasRestAPI{
 
         accountsInterface accountsInterface = retrofit.create(accountsInterface.class);
 
-        Call<Account> call = accountsInterface.deleteSubAccount(client.getAccountList().getAccountId(), client.getAccountList().getSubAccountId(), client.getToken());
+        Call<Account> call = accountsInterface.deleteSubAccount(client.getAccountList().getAccountId(), Integer.parseInt(client.getAccountList().getSubAccountId()), client.getToken());
 
         Response<Account> response = call.execute();
 
         return response.body();
     }
 
-    public Admin createAccountAdmin(CanvasClient client){
+    public Admin createAccountAdmin(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/admins",client.getAccountId()+"");
 
@@ -620,7 +626,7 @@ public class CanvasRestAPI{
     }
 
 
-    public Admin removeAccountAdmin(CanvasClient client){
+    public Admin removeAccountAdmin(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/admins/%s",client.getAccountId(),client.getAdmin());
 
@@ -639,7 +645,7 @@ public class CanvasRestAPI{
 
     }
 
-    public List<Integer> listAccountAdmins(CanvasClient client){
+    public List<Admin> listAccountAdmins(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/admins/");
 
@@ -658,7 +664,7 @@ public class CanvasRestAPI{
 
     }
 
-    public DepartmentLevelParticipation getDepartmentLevelAnalyticsByDate(CanvasClient client){
+    public DepartmentLevelParticipation getDepartmentLevelAnalyticsByDate(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/terms/%s/activity",client.getAnalytics().getAccountId(),client.getAnalytics().getTermId());
 
@@ -669,7 +675,7 @@ public class CanvasRestAPI{
 
         analyticsInterface analyticsInterface  = retrofit.create(analyticsInterface.class);
 
-        Call<DepartmentLevelParticipation> call = analyticsInterface.getDepartmentLevelParticipation(client.getAnalaytics().getTermId(),client.getToken());
+        Call<DepartmentLevelParticipation> call = analyticsInterface.getDepartmentLevelParticipation(client.getAnalytics().getTermId()+"",client.getToken());
 
         Response<DepartmentLevelParticipation> response = call.execute();
 
@@ -677,7 +683,7 @@ public class CanvasRestAPI{
 
     }
 
-    public DepartmentLevelParticipation getCurrentDepartmentLevelParticipation(CanvasClient client){
+    public DepartmentLevelParticipation getCurrentDepartmentLevelParticipation(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/current/activity/",client.getAnalytics().getAccountId());
 
@@ -688,7 +694,7 @@ public class CanvasRestAPI{
 
         analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
 
-        Call<DepartmentLevelParticipation> call = analyticsInterface.getCurrentDepartmentLevelParticipation(client.getAnalytics().getAccountId(),client.getToken());
+        Call<DepartmentLevelParticipation> call = analyticsInterface.getCurrentDepartmentLevelParticipation(client.getAnalytics().getAccountId()+"",client.getToken());
 
         Response<DepartmentLevelParticipation> response = call.execute();
 
@@ -697,7 +703,7 @@ public class CanvasRestAPI{
     }
 
 
-    public DepartmentLevelParticipation getCompletedDepartmentLevelParticipation(CanvasClient client){
+    public DepartmentLevelParticipation getCompletedDepartmentLevelParticipation(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/completed/activity",client.getAnalytics().getAccountId());
 
@@ -708,7 +714,7 @@ public class CanvasRestAPI{
 
         analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
 
-        Call<DepartmentLevelParticipation> call = analyticsInterface.getCompletedDepartmentLevelParticipation(client.getAnalytics().getAccountId(),client.getToken());
+        Call<DepartmentLevelParticipation> call = analyticsInterface.getCompletedDepartmentLevelParticipation(client.getAnalytics().getAccountId()+"",client.getToken());
 
         Response<DepartmentLevelParticipation> response = call.execute();
 
@@ -716,7 +722,7 @@ public class CanvasRestAPI{
 
     }
 
-    public DepartmentLevelGrades getDepartmentLevelGradeDataByDate(CanvasClient client){
+    public DepartmentLevelGrades getDepartmentLevelGradeDataByDate(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/terms/%s/grades/",client.getAnalytics().getAccountId(),client.getAnalytics().getTermId());
 
@@ -727,7 +733,7 @@ public class CanvasRestAPI{
 
         analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
 
-        Call<DepartmentLevelGrades> call = analyticsInterface.getDepartmentLevelGradeDataByDate(client.getAnalytics().getAccountId(),client.getAnalytics().getTermId(),client.getToken());
+        Call<DepartmentLevelGrades> call = analyticsInterface.getDepartmentLevelGradesByDate(client.getAnalytics().getAccountId()+"",client.getAnalytics().getTermId()+"",client.getToken());
 
         Response<DepartmentLevelGrades> response = call.execute();
 
@@ -735,7 +741,7 @@ public class CanvasRestAPI{
 
     }
 
-    public DepartmentLevelGrades getCurrentDepartmentLevelGradeData(CanvasClient client){
+    public DepartmentLevelGrades getCurrentDepartmentLevelGradeData(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/current/grades",client.getAnalytics().getAccountId());
 
@@ -746,7 +752,7 @@ public class CanvasRestAPI{
 
         analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
 
-        Call<DepartmentLevelGrades> call = analyticsInterface.getCurrentDepartmentLevelGradeData(client.getAnalytics().getAccountId(),client.getToken());
+        Call<DepartmentLevelGrades> call = analyticsInterface.getCurrentDepartmentLevelGrades(client.getAnalytics().getAccountId()+"",client.getToken());
 
         Response<DepartmentLevelGrades> response = call.execute();
 
@@ -755,7 +761,7 @@ public class CanvasRestAPI{
 
     }
 
-    public DepartmentLevelGrades getCompletedDepartmentLevelGradeData(CanvasClient client){
+    public DepartmentLevelGrades getCompletedDepartmentLevelGradeData(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/completed/grades",client.getAnalytics().getAccountId());
 
@@ -766,7 +772,7 @@ public class CanvasRestAPI{
 
         analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
 
-        Call<DepartmentLevelGrades> call = analyticsInterface.getCompletedDepartmentLevelGradeData(client.getAnalytics().getAccountId(),client.getToken());
+        Call<DepartmentLevelGrades> call = analyticsInterface.getCompletedDepartmentLevelGrades(client.getAnalytics().getAccountId()+"",client.getToken());
 
         Response<DepartmentLevelGrades> response = call.execute();
 
@@ -774,7 +780,7 @@ public class CanvasRestAPI{
 
     }
 
-    public DepartmentLevelStatistics getByDateDepartmentLevelStatistics(CanvasClient client){
+    public DepartmentLevelStatistics getByDateDepartmentLevelStatistics(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/terms/%s/statistics/",client.getAnalytics().getAccountId(),client.getAnalytics().getTermId());
 
@@ -785,7 +791,7 @@ public class CanvasRestAPI{
 
         analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
 
-        Call<DepartmentLevelStatistics> call = analyticsInterface.getDepartmentLevelStatisticsByDate(client.getAnalytics().getAccountId(),client.getAnalytics.getTermId(),client.getToken());
+        Call<DepartmentLevelStatistics> call = analyticsInterface.getDepartmentLevelStatisticsByDate(client.getAnalytics().getAccountId()+"",client.getAnalytics().getTermId()+"",client.getToken());
 
         Response<DepartmentLevelStatistics> response = call.execute();
 
@@ -793,7 +799,7 @@ public class CanvasRestAPI{
 
     }
 
-    public DepartmentLevelStatistics getCurrentDeparmentLevelStatistics(CanvasClient client){
+    public DepartmentLevelStatistics getCurrentDeparmentLevelStatistics(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/current/statistics/",client.getAnalytics().getAccountId(),client.getToken());
 
@@ -804,7 +810,7 @@ public class CanvasRestAPI{
         
         analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
 
-        Call<DepartmentLevelStatistics> call = analyticsInterface.getCurrentDepartmentLevelStatistics(client.getAnalytics().getAccountId(),client.getToken());
+        Call<DepartmentLevelStatistics> call = analyticsInterface.getCurrentDepartmentLevelStatistics(client.getAnalytics().getAccountId()+"",client.getToken());
 
         Response<DepartmentLevelStatistics> response = call.execute();
 
@@ -812,18 +818,18 @@ public class CanvasRestAPI{
 
     }
 
-    public DepartmentLevelStatistics getCompletedDepartmentLevelStatistics(CanvasClient client){
+    public DepartmentLevelStatistics getCompletedDepartmentLevelStatistics(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/completed/statistics/",client.getAnalytics().getAccountId(),client.getToken());
 
         Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
-            .addConverterFactory(GsonConverterFactory().create())
+            .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-        analyticsInterface analyticsInterface = retrofit.create(analyticsInterfacec.class);
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
 
-        Call<DepartmentLevelStatistics> call = analyticsInterface.getCompletedDepartmentLevelStatistics(client.getAnalytics().getAccountId(),client.getToken());
+        Call<DepartmentLevelStatistics> call = analyticsInterface.getCompletedDepartmentLevelStatistics(client.getAnalytics().getAccountId()+"",client.getToken());
 
         Response<DepartmentLevelStatistics> response = call.execute();
 

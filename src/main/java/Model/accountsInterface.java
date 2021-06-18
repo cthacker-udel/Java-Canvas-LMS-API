@@ -6,6 +6,7 @@ import Controller.AccountController.Accounts.AccountSettings.AccountSettings;
 import Controller.AccountController.Accounts.HelpLinks.HelpLinks;
 import Controller.AccountController.Accounts.TermsOfService.TermsOfService;
 import Controller.CourseController.Course;
+import Controller.UserController.User;
 import retrofit2.Call;
 import retrofit2.http.*;
 

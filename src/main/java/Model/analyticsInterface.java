@@ -1,3 +1,13 @@
+package Model;
+
+import Controller.AnalyticsController.DepartmentLevelGrades.DepartmentLevelGrades;
+import Controller.AnalyticsController.DepartmentLevelParticipation.DepartmentLevelParticipation;
+import Controller.AnalyticsController.DepartmentLevelStatistics.DepartmentLevelStatistics;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Path;
+
 public interface analyticsInterface{
 
     @GET("https://udel.instructure.com/api/v1/accounts/analytics/terms/{termId}/activity")

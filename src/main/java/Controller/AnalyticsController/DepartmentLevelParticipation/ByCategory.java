@@ -1,3 +1,8 @@
+package Controller.AnalyticsController.DepartmentLevelParticipation;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class ByCategory{
 
     @SerializedName("announcements")

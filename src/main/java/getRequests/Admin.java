@@ -1,4 +1,12 @@
-public class Admin extends CanvasClient{
+package getRequests;
+
+import Client.CanvasClient;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class Admin extends CanvasClient {
 
     private Integer userId;
 
