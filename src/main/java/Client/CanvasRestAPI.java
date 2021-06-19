@@ -18,6 +18,7 @@ import Controller.AnalyticsController.DepartmentLevelGrades.DepartmentLevelGrade
 import Controller.AnalyticsController.DepartmentLevelParticipation.DepartmentLevelParticipation;
 import Controller.AnalyticsController.DepartmentLevelStatistics.DepartmentLevelStatistics;
 import Controller.AnalyticsController.UserInCourseAssignmentData.UserInCourseAssignmentData;
+import Controller.AnalyticsController.UserInCourseMessagingData.UserInCourseMessagingData;
 import Controller.AnalyticsController.UserInCourseParticipationData.UserInCourseParticipationData;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
@@ -932,6 +933,25 @@ public class CanvasRestAPI{
         Call<List<UserInCourseAssignmentData>> call = analyticsInterface.getUserInCourseAssignmentData(client.getAnalytics().getCourseId()+"",client.getAnalytics().getStudentId(),client.getToken());
 
         Response<List<UserInCourseAssignmentData>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public UserInCourseMessagingData getUserInCourseMessagingData(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/analytics/users/%s/communication/",client.getAnalytics().getCourseId(),client.getAnalytics().getStudentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
+
+        Call<UserInCourseMessagingData> call = analyticsInterface.getUserInCourseMessagingData(client.getAnalytics().getCourseId(),client.getAnalytics().getStudentId(),client.getToken());
+
+        Response<UserInCourseMessagingData> response = call.execute();
 
         return response.body();
 
