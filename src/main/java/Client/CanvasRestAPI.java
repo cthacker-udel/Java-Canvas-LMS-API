@@ -1002,6 +1002,24 @@ public class CanvasRestAPI{
         return response.body();
     }
 
+    public ExternalFeed createExternalFeedByCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/external_feeds/",client.getExternalFeed().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalFeedInterface externalFeedInterface = retrofit.create(externalFeedInterface.class);
+
+        Call<ExternalFeed> call = externalFeedInterface.createExternalFeedByCourseId(client.getExternalFeed().getCourseId(),client.getToken(),client.getExternalFeed().generateQueries());
+
+        Response<ExternalFeed> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 
