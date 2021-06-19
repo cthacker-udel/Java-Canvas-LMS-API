@@ -25,4 +25,19 @@ public class ExternalFeed extends CanvasClient {
 
     }
 
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
 }

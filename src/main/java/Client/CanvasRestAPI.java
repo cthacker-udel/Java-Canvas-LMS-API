@@ -22,6 +22,7 @@ import Controller.AnalyticsController.UserInCourseMessagingData.UserInCourseMess
 import Controller.AnalyticsController.UserInCourseParticipationData.UserInCourseParticipationData;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
+import Controller.ExternalFeedController.ExternalFeed;
 import Controller.UserController.User;
 import Model.*;
 
@@ -956,6 +957,34 @@ public class CanvasRestAPI{
         return response.body();
 
     }
+
+    /*
+
+    AnnouncementExternalFeed API
+
+     */
+
+
+    public List<ExternalFeed> getListOfExternalFeeds(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/external_feeds/",client.getExternalFeed().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalFeedInterface externalFeedInterface = retrofit.create(Model.externalFeedInterface.class);
+
+        Call<List<ExternalFeed>> call = externalFeedInterface.listExternalFeeds(client.getExternalFeed().getCourseId(),client.getToken());
+
+        Response<List<ExternalFeed>> response = call.execute();
+
+        return response.body();
+
+    }
+
+
 
 
 
