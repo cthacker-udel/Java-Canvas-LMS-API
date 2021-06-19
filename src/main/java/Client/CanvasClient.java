@@ -16,6 +16,7 @@ public class CanvasClient extends CanvasRestAPI {
     private AccountList accountList;
     private Admin admin;
     private Analytics analytics;
+    private ExternalFeed externalFeed;
 
     public CanvasClient(){
         super();
@@ -35,6 +36,15 @@ public class CanvasClient extends CanvasRestAPI {
         this.accountList = new AccountList();
         this.admin = new Admin();
         this.analytics = new Analytics();
+        this.externalFeed = new ExternalFeed();
+    }
+
+    public ExternalFeed getExternalFeed() {
+        return externalFeed;
+    }
+
+    public void setExternalFeed(ExternalFeed externalFeed) {
+        this.externalFeed = externalFeed;
     }
 
     public Analytics getAnalytics(){
