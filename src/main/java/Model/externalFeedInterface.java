@@ -18,4 +18,7 @@ public interface externalFeedInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/external_feeds")
     Call<ExternalFeed> createExternalFeedByCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
 
+    @POST("https://udel.instructure.com/api/v1/groups/{groupId}/external_feeds")
+    Call<ExternalFeed> createExternalFeedByGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
+
 }

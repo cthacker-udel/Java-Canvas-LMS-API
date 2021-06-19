@@ -1021,6 +1021,27 @@ public class CanvasRestAPI{
     }
 
 
+    public ExternalFeed createExternalFeedByGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/external_feeds/",client.getExternalFeed().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalFeedInterface externalFeedInterface = retrofit.create(externalFeedInterface.class);
+
+        Call<ExternalFeed> call = externalFeedInterface.createExternalFeedByGroupId(client.getExternalFeed().getGroupId(),client.getToken(),client.getExternalFeed().generateQueries());
+
+        Response<ExternalFeed> response = call.execute();
+
+        return response.body();
+    }
+
+
+
+
 
 
 
