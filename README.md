@@ -1,6 +1,12 @@
 ## Java Canvas-LMS API
 > Author : Cameron Thacker (University of Delaware)
 
+![dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen)
+![Retrofit](https://img.shields.io/badge/retrofit-2.7.2-green)
+![Gson](https://img.shields.io/badge/gson-2.9.0-green)
+![Selenium](https://img.shields.io/badge/selenium-4.0.0-green)
+![WebdriverManager](https://img.shields.io/badge/WebdriverManager-3.7.1-green)
+
 #### Description :
 This project includes brief implementation of the Canvas-LMS(Learning Management System) API using Java. The dependencies utilized are Retrofit, Gson, Selenium, and Webdriver Manager(Selenium and Webdriver Manager are mainly used for the Oauth2 methods)
 
