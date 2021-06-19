@@ -1040,7 +1040,7 @@ public class CanvasRestAPI{
 
     }
 
-    public ExternalFeed deleteAnExternalFeedByCourseId(CanvasClient client) throws IOException {
+    public ExternalFeed deleteExternalFeedByCourseId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/external_feeds/%s/",client.getExternalFeed().getCourseId(),client.getExternalFeed().getExternalFeedId());
 
@@ -1052,6 +1052,25 @@ public class CanvasRestAPI{
         externalFeedInterface externalFeedInterface = retrofit.create(Model.externalFeedInterface.class);
 
         Call<ExternalFeed> call = externalFeedInterface.deleteExternalFeedByCourseId(client.getExternalFeed().getCourseId(),client.getExternalFeed().getExternalFeedId(),client.getToken());
+
+        Response<ExternalFeed> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public ExternalFeed deleteExternalFeedByGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/external_feeds/%s/",client.getExternalFeed().getGroupId(),client.getExternalFeed().getExternalFeedId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalFeedInterface externalFeedInterface = retrofit.create(Model.externalFeedInterface.class);
+
+        Call<ExternalFeed> call = externalFeedInterface.deleteExternalFeedByGroupId(client.getExternalFeed().getGroupId(),client.getExternalFeed().getExternalFeedId(),client.getToken());
 
         Response<ExternalFeed> response = call.execute();
 
