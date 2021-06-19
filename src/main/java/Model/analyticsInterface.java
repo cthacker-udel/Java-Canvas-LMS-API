@@ -6,6 +6,7 @@ import Controller.AnalyticsController.CourseLevelStudentSummaryData.CourseLevelS
 import Controller.AnalyticsController.DepartmentLevelGrades.DepartmentLevelGrades;
 import Controller.AnalyticsController.DepartmentLevelParticipation.DepartmentLevelParticipation;
 import Controller.AnalyticsController.DepartmentLevelStatistics.DepartmentLevelStatistics;
+import Controller.AnalyticsController.UserInCourseParticipationData.UserInCourseParticipationData;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -49,5 +50,8 @@ public interface analyticsInterface{
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/analytics/student_summaries")
     Call<List<CourseLevelStudentSummaryData>> getCourseLevelStudentSummaryData(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/analytics/users/{studentId}/activity")
+    Call<UserInCourseParticipationData> getUserInCourseParticipationData(@Path("courseId") String courseId, @Path("studentId") String studentId, @Header("Authorization") String auth);
 
 }

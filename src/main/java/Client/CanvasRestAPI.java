@@ -17,6 +17,7 @@ import Controller.AnalyticsController.CourseLevelStudentSummaryData.CourseLevelS
 import Controller.AnalyticsController.DepartmentLevelGrades.DepartmentLevelGrades;
 import Controller.AnalyticsController.DepartmentLevelParticipation.DepartmentLevelParticipation;
 import Controller.AnalyticsController.DepartmentLevelStatistics.DepartmentLevelStatistics;
+import Controller.AnalyticsController.UserInCourseParticipationData.UserInCourseParticipationData;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.UserController.User;
@@ -893,6 +894,27 @@ public class CanvasRestAPI{
         Response<List<CourseLevelStudentSummaryData>> response = call.execute();
 
         return response.body();
+    }
+
+    public UserInCourseParticipationData getUserInCourseLevelParticipationData(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/analytics/users/%s/activity/",client.getAnalytics().getCourseId(),client.getAnalytics().getStudentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        analyticsInterface analyticsInterface = retrofit.create(analyticsInterface.class);
+
+        Call<UserInCourseParticipationData> call = analyticsInterface.getUserInCourseParticipationData(client.getAnalytics().getCourseId()+"",client.getAnalytics().getStudentId(),client.getToken());
+
+        Response<UserInCourseParticipationData> response = call.execute();
+
+        return response.body();
+
+
+
     }
 
 
