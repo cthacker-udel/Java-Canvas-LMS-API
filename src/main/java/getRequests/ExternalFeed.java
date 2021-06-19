@@ -12,6 +12,7 @@ public class ExternalFeed extends CanvasClient {
     private String url;
     private Boolean headerMatch;
     private String verbosity;
+    private String externalFeedId;
 
     public Map<String,Object> generateQueries(){
 
@@ -37,6 +38,14 @@ public class ExternalFeed extends CanvasClient {
         this.headerMatch = null;
         this.verbosity = null;
 
+    }
+
+    public String getExternalFeedId() {
+        return externalFeedId;
+    }
+
+    public void setExternalFeedId(String externalFeedId) {
+        this.externalFeedId = externalFeedId;
     }
 
     public String getUrl() {

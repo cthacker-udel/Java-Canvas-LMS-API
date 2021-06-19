@@ -21,4 +21,7 @@ public interface externalFeedInterface {
     @POST("https://udel.instructure.com/api/v1/groups/{groupId}/external_feeds")
     Call<ExternalFeed> createExternalFeedByGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
 
+    @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/external_feeds/{externalFeedId}")
+    Call<ExternalFeed> deleteExternalFeedByCourseId(@Path("courseId") String courseId, @Path("externalFeedId") String externalFeedId, @Header("Authorization") String auth);
+
 }
