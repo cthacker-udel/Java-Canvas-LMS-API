@@ -11,6 +11,9 @@ import java.util.List;
 public interface externalFeedInterface {
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/external_feeds")
-    Call<List<ExternalFeed>> listExternalFeeds(@Path("courseId") String courseId, @Header("Authorization") String auth);
+    Call<List<ExternalFeed>> listExternalFeedsByCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/external_feeds")
+    Call<List<ExternalFeed>> listExternalFeedsByGroupID(@Path("groupId") String groupId, @Header("Authorization") String auth);
 
 }
