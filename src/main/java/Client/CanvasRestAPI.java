@@ -1114,7 +1114,7 @@ public class CanvasRestAPI{
 
     public List<AppointmentGroup> listAppointmentGroups(CanvasClient client) throws IOException {
 
-        String url = baseUrl + "/api/v1/appointment_groups";
+        String url = baseUrl + "/api/v1/appointment_groups/";
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -1128,6 +1128,12 @@ public class CanvasRestAPI{
         Response<List<AppointmentGroup>> response = call.execute();
 
         return response.body();
+
+    }
+
+    public void createAppointmentGroup(CanvasClient client){
+
+        String url = baseUrl + "/api/v1/appointment_groups/";
 
     }
 
