@@ -24,6 +24,7 @@ public class AppointmentGroups extends CanvasClient {
     private Integer maxAppointmentsPerParticipant;
     private String newAppointments;
     private String participantVisibility;
+    private String appointmentID;
 
 
     public Map<String,Object> generateQueries(){
@@ -103,4 +104,139 @@ public class AppointmentGroups extends CanvasClient {
 
     }
 
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    public ArrayList<String> getContextCodes() {
+        return contextCodes;
+    }
+
+    public void setContextCodes(ArrayList<String> contextCodes) {
+        this.contextCodes = contextCodes;
+    }
+
+    public Boolean getIncludePastAppointments() {
+        return includePastAppointments;
+    }
+
+    public void setIncludePastAppointments(Boolean includePastAppointments) {
+        this.includePastAppointments = includePastAppointments;
+    }
+
+    public ArrayList<String> getInclude() {
+        return include;
+    }
+
+    public void setInclude(ArrayList<String> include) {
+        this.include = include;
+    }
+
+    public ArrayList<String> getContextCodesCreateAppointmentGroup() {
+        return contextCodesCreateAppointmentGroup;
+    }
+
+    public void setContextCodesCreateAppointmentGroup(ArrayList<String> contextCodesCreateAppointmentGroup) {
+        this.contextCodesCreateAppointmentGroup = contextCodesCreateAppointmentGroup;
+    }
+
+    public ArrayList<String> getSubContextCodes() {
+        return subContextCodes;
+    }
+
+    public void setSubContextCodes(ArrayList<String> subContextCodes) {
+        this.subContextCodes = subContextCodes;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public String getLocationAddress() {
+        return locationAddress;
+    }
+
+    public void setLocationAddress(String locationAddress) {
+        this.locationAddress = locationAddress;
+    }
+
+    public Boolean getPublish() {
+        return publish;
+    }
+
+    public void setPublish(Boolean publish) {
+        this.publish = publish;
+    }
+
+    public Integer getParticipantsPerAppointment() {
+        return participantsPerAppointment;
+    }
+
+    public void setParticipantsPerAppointment(Integer participantsPerAppointment) {
+        this.participantsPerAppointment = participantsPerAppointment;
+    }
+
+    public Integer getMinAppointmentsPerParticipant() {
+        return minAppointmentsPerParticipant;
+    }
+
+    public void setMinAppointmentsPerParticipant(Integer minAppointmentsPerParticipant) {
+        this.minAppointmentsPerParticipant = minAppointmentsPerParticipant;
+    }
+
+    public Integer getMaxAppointmentsPerParticipant() {
+        return maxAppointmentsPerParticipant;
+    }
+
+    public void setMaxAppointmentsPerParticipant(Integer maxAppointmentsPerParticipant) {
+        this.maxAppointmentsPerParticipant = maxAppointmentsPerParticipant;
+    }
+
+    public String getNewAppointments() {
+        return newAppointments;
+    }
+
+    public void setNewAppointments(String newAppointments) {
+        this.newAppointments = newAppointments;
+    }
+
+    public String getParticipantVisibility() {
+        return participantVisibility;
+    }
+
+    public void setParticipantVisibility(String participantVisibility) {
+        this.participantVisibility = participantVisibility;
+    }
+
+    public String getAppointmentID() {
+        return appointmentID;
+    }
+
+    public void setAppointmentID(String appointmentID) {
+        this.appointmentID = appointmentID;
+    }
 }

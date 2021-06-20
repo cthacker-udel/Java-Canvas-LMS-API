@@ -1150,6 +1150,12 @@ public class CanvasRestAPI{
 
     }
 
+    public void getSingleAppointmentGroup(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/appointment_groups/%s",
+
+    }
+
 
 
 
