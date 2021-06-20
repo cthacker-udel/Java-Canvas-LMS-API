@@ -27,3 +27,7 @@ This project includes brief implementation of the Canvas-LMS(Learning Management
 - Admins API
 - Analytics API
 - Account External Feeds API
+
+### TODO:
+
+- Implement [Create appointment group](https://canvas.instructure.com/doc/api/appointment_groups.html)
