@@ -29,6 +29,7 @@ import Controller.UserController.User;
 import Model.*;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
 import org.openqa.selenium.WebDriver;
@@ -1152,7 +1153,16 @@ public class CanvasRestAPI{
 
     public void getSingleAppointmentGroup(CanvasClient client){
 
-        String url = baseUrl + String.format("/api/v1/appointment_groups/%s",
+        String url = baseUrl + String.format("/api/v1/appointment_groups/%s",client.getAppointmentGroups().getAppointmentID());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        appointmentGroupsInterface appointmentGroupsInterface = retrofit.create(Model.appointmentGroupsInterface.class);
+
+        Call
 
     }
 
