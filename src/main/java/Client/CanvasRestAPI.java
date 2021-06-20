@@ -1151,7 +1151,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void getSingleAppointmentGroup(CanvasClient client){
+    public AppointmentGroup getSingleAppointmentGroup(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/appointment_groups/%s",client.getAppointmentGroups().getAppointmentID());
 
@@ -1162,7 +1162,11 @@ public class CanvasRestAPI{
 
         appointmentGroupsInterface appointmentGroupsInterface = retrofit.create(Model.appointmentGroupsInterface.class);
 
-        Call
+        Call<AppointmentGroup> call = appointmentGroupsInterface.getAppointment(client.getAppointmentGroups().getAppointmentID(),client.getToken());
+
+        Response<AppointmentGroup> response = call.execute();
+
+        return response.body();
 
     }
 
