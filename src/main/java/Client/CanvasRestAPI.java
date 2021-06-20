@@ -21,6 +21,7 @@ import Controller.AnalyticsController.UserInCourseAssignmentData.UserInCourseAss
 import Controller.AnalyticsController.UserInCourseMessagingData.UserInCourseMessagingData;
 import Controller.AnalyticsController.UserInCourseParticipationData.UserInCourseParticipationData;
 import Controller.AnnouncementsController.Announcement;
+import Controller.AppointmentGroupsController.AppointmentGroup.AppointmentGroup;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -1111,7 +1112,7 @@ public class CanvasRestAPI{
 
      */
 
-    public void listAppointmentGroups(CanvasClient client){
+    public List<AppointmentGroup> listAppointmentGroups(CanvasClient client) throws IOException {
 
         String url = baseUrl + "/api/v1/appointment_groups";
 
@@ -1120,7 +1121,13 @@ public class CanvasRestAPI{
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        appointmentGroupsInterface appointmentGroupsInterface = retrofit.create(Model.appointmentGroupsInterface.class);
 
+        Call<List<AppointmentGroup>> call = appointmentGroupsInterface.getAppointmentGroupList(client.getAppointmentGroups().generateQueries(),client.getToken());
+
+        Response<List<AppointmentGroup>> response = call.execute();
+
+        return response.body();
 
     }
 

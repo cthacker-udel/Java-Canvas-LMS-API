@@ -44,6 +44,14 @@ public class CanvasClient extends CanvasRestAPI {
 
     }
 
+    public AppointmentGroups getAppointmentGroups() {
+        return appointmentGroups;
+    }
+
+    public void setAppointmentGroups(AppointmentGroups appointmentGroups) {
+        this.appointmentGroups = appointmentGroups;
+    }
+
     public Announcements getAnnouncements() {
         return announcements;
     }
