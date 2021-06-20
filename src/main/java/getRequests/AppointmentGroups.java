@@ -22,7 +22,7 @@ public class AppointmentGroups extends CanvasClient {
     private Integer participantsPerAppointment;
     private Integer minAppointmentsPerParticipant;
     private Integer maxAppointmentsPerParticipant;
-    private String newAppointments;
+    private ArrayList<String[]> newAppointments = new ArrayList<String[]>();
     private String participantVisibility;
     private String appointmentID;
 
@@ -61,8 +61,8 @@ public class AppointmentGroups extends CanvasClient {
         if(this.maxAppointmentsPerParticipant != null){
             queries.put("appointment_group[max_appointments_per_participant]",this.maxAppointmentsPerParticipant);
         }
-        if(this.newAppointments != null){
-            queries.put("appointment_group[new_appointments][X][]",this.newAppointments);
+        if(this.newAppointments.size() > 0){
+            queries.put("appointment_group[new_appointments][X][]",this.newAppointments.toArray(String[][]::new));
         }
         if(this.participantVisibility != null) {
             queries.put("appointment_group[participant_visibility]", this.participantVisibility);
@@ -216,11 +216,11 @@ public class AppointmentGroups extends CanvasClient {
         this.maxAppointmentsPerParticipant = maxAppointmentsPerParticipant;
     }
 
-    public String getNewAppointments() {
+    public ArrayList<String[]> getNewAppointments() {
         return newAppointments;
     }
 
-    public void setNewAppointments(String newAppointments) {
+    public void setNewAppointments(ArrayList<String[]> newAppointments) {
         this.newAppointments = newAppointments;
     }
 
