@@ -1135,6 +1135,13 @@ public class CanvasRestAPI{
 
         String url = baseUrl + "/api/v1/appointment_groups/";
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        appointmentGroupsInterface appointmentGroupsInterface = retrofit.create(Model.appointmentGroupsInterface.class);
+
     }
 
 
