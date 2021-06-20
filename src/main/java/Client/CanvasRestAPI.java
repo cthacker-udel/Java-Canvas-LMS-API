@@ -1104,6 +1104,26 @@ public class CanvasRestAPI{
         return response.body();
     }
 
+    /*
+
+
+    Appointment Groups API
+
+     */
+
+    public void listAppointmentGroups(CanvasClient client){
+
+        String url = baseUrl + "/api/v1/appointment_groups";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
+
+    }
+
 
 
 

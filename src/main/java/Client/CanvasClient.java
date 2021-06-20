@@ -18,6 +18,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Analytics analytics;
     private ExternalFeed externalFeed;
     private Announcements announcements;
+    private AppointmentGroups appointmentGroups;
 
     public CanvasClient(){
         super();
@@ -39,6 +40,8 @@ public class CanvasClient extends CanvasRestAPI {
         this.analytics = new Analytics();
         this.externalFeed = new ExternalFeed();
         this.announcements = new Announcements();
+        this.appointmentGroups = new AppointmentGroups();
+
     }
 
     public Announcements getAnnouncements() {
