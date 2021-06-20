@@ -1131,7 +1131,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void createAppointmentGroup(CanvasClient client){
+    public boolean createAppointmentGroup(CanvasClient client) throws IOException {
 
         String url = baseUrl + "/api/v1/appointment_groups/";
 
@@ -1141,6 +1141,12 @@ public class CanvasRestAPI{
                 .build();
 
         appointmentGroupsInterface appointmentGroupsInterface = retrofit.create(Model.appointmentGroupsInterface.class);
+
+        Call<Void> call = appointmentGroupsInterface.createAppointmentGroups(client.getAppointmentGroups().generateQueries(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
 
     }
 
