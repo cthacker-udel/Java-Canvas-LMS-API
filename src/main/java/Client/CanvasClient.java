@@ -17,6 +17,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Admin admin;
     private Analytics analytics;
     private ExternalFeed externalFeed;
+    private Announcements announcements;
 
     public CanvasClient(){
         super();
@@ -37,6 +38,15 @@ public class CanvasClient extends CanvasRestAPI {
         this.admin = new Admin();
         this.analytics = new Analytics();
         this.externalFeed = new ExternalFeed();
+        this.announcements = new Announcements();
+    }
+
+    public Announcements getAnnouncements() {
+        return announcements;
+    }
+
+    public void setAnnouncements(Announcements announcements) {
+        this.announcements = announcements;
     }
 
     public ExternalFeed getExternalFeed() {

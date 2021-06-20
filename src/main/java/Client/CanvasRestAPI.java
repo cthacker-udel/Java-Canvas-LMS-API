@@ -20,6 +20,7 @@ import Controller.AnalyticsController.DepartmentLevelStatistics.DepartmentLevelS
 import Controller.AnalyticsController.UserInCourseAssignmentData.UserInCourseAssignmentData;
 import Controller.AnalyticsController.UserInCourseMessagingData.UserInCourseMessagingData;
 import Controller.AnalyticsController.UserInCourseParticipationData.UserInCourseParticipationData;
+import Controller.AnnouncementsController.Announcement;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -1076,6 +1077,31 @@ public class CanvasRestAPI{
 
         return response.body();
 
+    }
+
+    /*
+
+    Announcements API
+
+     */
+
+
+    public List<Announcement> listAnnouncements(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/announcements/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        announcementsInterface announcementsInterface = retrofit.create(Model.announcementsInterface.class);
+
+        Call<List<Announcement>> call = announcementsInterface.getAnnouncementsList(client.getAnnouncements().generateQueries(),client.getToken());
+
+        Response<List<Announcement>> response = call.execute();
+
+        return response.body();
     }
 
 
