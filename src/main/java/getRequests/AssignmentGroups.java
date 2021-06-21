@@ -15,6 +15,7 @@ public class AssignmentGroups extends CanvasClient {
     private Boolean overrideAssignmentDates;
     private Integer gradingPeriodId;
     private Boolean scopeAssignmentToStudent;
+    private String assignmentGroupId;
 
     public Map<String,Object> generateQueries(){
 
@@ -50,6 +51,14 @@ public class AssignmentGroups extends CanvasClient {
         this.gradingPeriodId = null;
         this.scopeAssignmentToStudent = null;
 
+    }
+
+    public String getAssignmentGroupId() {
+        return assignmentGroupId;
+    }
+
+    public void setAssignmentGroupId(String assignmentGroupId) {
+        this.assignmentGroupId = assignmentGroupId;
     }
 
     public String getCourseId() {

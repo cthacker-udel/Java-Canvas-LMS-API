@@ -15,4 +15,7 @@ public interface assignmentGroupsInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/assignment_groups")
     Call<List<AssignmentGroup>> getAssignmentGroupList(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/assignment_groups/{assignmentGroupId}")
+    Call<AssignmentGroup> getSingularAssignmentGroup(@Path("courseId") String courseId, @Path("assignmentGroupId") String assignmentGroupId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
