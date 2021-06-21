@@ -27,12 +27,16 @@ public class AppointmentGroups extends CanvasClient {
     private String appointmentID;
     private String cancelReason;
     private String registrationStatus;
+    public ArrayList<String> appointmentGroupIds = new ArrayList<>();
 
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.appointmentGroupIds.size() > 0){
+            queries.put("appointment_group_ids",this.appointmentGroupIds.toArray(String[]::new));
+        }
         if(this.registrationStatus != null){
             queries.put("registration_status",this.registrationStatus);
         }
@@ -99,16 +103,18 @@ public class AppointmentGroups extends CanvasClient {
         this.include.clear();
         ArrayList<String> contextCodesCreateAppointmentGroup = new ArrayList<>();
         ArrayList<String> subContextCodes = new ArrayList<>();
-        String title= null;
-        String description= null;
-        String locationName= null;
-        String locationAddress= null;
-        Boolean publish= null;
-        Integer participantsPerAppointment= null;
-        Integer minAppointmentsPerParticipant= null;
-        Integer maxAppointmentsPerParticipant= null;
-        String newAppointments= null;
-        String participantVisibility= null;
+        title= null;
+        description= null;
+        locationName= null;
+        locationAddress= null;
+        publish= null;
+        participantsPerAppointment= null;
+        minAppointmentsPerParticipant= null;
+        maxAppointmentsPerParticipant= null;
+        newAppointments= null;
+        participantVisibility= null;
+        appointmentGroupIds.clear();
+
 
     }
 
