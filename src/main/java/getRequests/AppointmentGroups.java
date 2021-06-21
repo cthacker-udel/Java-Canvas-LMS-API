@@ -25,12 +25,16 @@ public class AppointmentGroups extends CanvasClient {
     private ArrayList<String[]> newAppointments = new ArrayList<String[]>();
     private String participantVisibility;
     private String appointmentID;
+    private String cancelReason;
 
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.cancelReason != null){
+            queries.put("cancel_reason",this.cancelReason);
+        }
         if(this.contextCodesCreateAppointmentGroup.size() > 0){
             queries.put("appointment_group[sub_context_codes][]",this.contextCodesCreateAppointmentGroup.toArray(String[]::new));
         }

@@ -1188,6 +1188,26 @@ public class CanvasRestAPI{
         return response.body();
     }
 
+    public boolean deleteAppointmentGroup(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/appointment_groups/%s/",client.getAppointmentGroups().getAppointmentID());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        appointmentGroupsInterface appointmentGroupsInterface = retrofit.create(Model.appointmentGroupsInterface.class);
+
+        Call<Void> call = appointmentGroupsInterface.deleteAppointmentGroup(client.getAppointmentGroups().getAppointmentID(),client.getToken(), client.getAppointmentGroups().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+
+    }
+
 
 
 

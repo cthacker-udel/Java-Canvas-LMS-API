@@ -21,4 +21,7 @@ public interface appointmentGroupsInterface {
     @PUT("https://udel.instructure.com/api/v1/appointment_groups/{appointmentId}")
     Call<AppointmentGroup> updateAppointment(@Path("appointmentId") String appointmentId, @Header("Authorization") String auth);
 
+    @DELETE("https://udel.instructure.com/api/v1/appointment_groups/{appointmentId}")
+    Call<Void> deleteAppointmentGroup(@Path("appointmentId") String appointmentId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
