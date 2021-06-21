@@ -24,4 +24,7 @@ public interface appointmentGroupsInterface {
     @DELETE("https://udel.instructure.com/api/v1/appointment_groups/{appointmentId}")
     Call<Void> deleteAppointmentGroup(@Path("appointmentId") String appointmentId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/appointment_groups/{appointmentId}/users")
+    Call<List<AppointmentGroup>> listUserParticipants(@Path("appointmentId") String appointmentId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }

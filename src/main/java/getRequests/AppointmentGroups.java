@@ -26,12 +26,16 @@ public class AppointmentGroups extends CanvasClient {
     private String participantVisibility;
     private String appointmentID;
     private String cancelReason;
+    private String registrationStatus;
 
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.registrationStatus != null){
+            queries.put("registration_status",this.registrationStatus);
+        }
         if(this.cancelReason != null){
             queries.put("cancel_reason",this.cancelReason);
         }
@@ -106,6 +110,22 @@ public class AppointmentGroups extends CanvasClient {
         String newAppointments= null;
         String participantVisibility= null;
 
+    }
+
+    public String getCancelReason() {
+        return cancelReason;
+    }
+
+    public void setCancelReason(String cancelReason) {
+        this.cancelReason = cancelReason;
+    }
+
+    public String getRegistrationStatus() {
+        return registrationStatus;
+    }
+
+    public void setRegistrationStatus(String registrationStatus) {
+        this.registrationStatus = registrationStatus;
     }
 
     public String getScope() {

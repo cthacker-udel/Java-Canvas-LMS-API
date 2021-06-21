@@ -1204,7 +1204,24 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+    }
 
+    public List<AppointmentGroup> listUserParticipants(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/appointment_groups/%s/users/",client.getAppointmentGroups().getAppointmentID());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        appointmentGroupsInterface appointmentGroupsInterface = retrofit.create(Model.appointmentGroupsInterface.class);
+
+        Call<List<AppointmentGroup>> call = appointmentGroupsInterface.listUserParticipants(client.getAppointmentGroups().getAppointmentID(),client.getToken(),client.getAppointmentGroups().generateQueries());
+
+        Response<List<AppointmentGroup>> response = call.execute();
+
+        return response.body();
 
     }
 
