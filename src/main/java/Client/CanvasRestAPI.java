@@ -1244,7 +1244,7 @@ public class CanvasRestAPI{
 
     }
 
-    public AppointmentGroup getNextAppointment(CanvasClient client) throws IOException {
+    public List<CalendarEvent> getNextAppointment(CanvasClient client) throws IOException {
 
         String url = baseUrl + "/api/v1/appointment_groups/next_appointment/";
 
@@ -1255,9 +1255,9 @@ public class CanvasRestAPI{
 
         appointmentGroupsInterface appointmentGroupsInterface = retrofit.create(Model.appointmentGroupsInterface.class);
 
-        Call<AppointmentGroup> call = appointmentGroupsInterface.getNextAppointment(client.getToken(),client.getAppointmentGroups().generateQueries());
+        Call<List<CalendarEvent>> call = appointmentGroupsInterface.getNextAppointment(client.getToken(),client.getAppointmentGroups().generateQueries());
 
-        Response<AppointmentGroup> response = call.execute();
+        Response<List<CalendarEvent>> response = call.execute();
 
         return response.body();
 

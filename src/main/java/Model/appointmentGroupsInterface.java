@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.AppointmentGroupsController.AppointmentGroup.AppointmentGroup;
+import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -31,6 +32,6 @@ public interface appointmentGroupsInterface {
     Call<List<AppointmentGroup>> listStudentGroupParticipants(@Path("appointmentId") String appointmentId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
     @GET("https://udel.instructure.com/api/v1/appointment_groups/next_appointment")
-    Call<AppointmentGroup> getNextAppointment(@Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<List<CalendarEvent>> getNextAppointment(@Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 }
