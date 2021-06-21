@@ -23,6 +23,7 @@ import Controller.AnalyticsController.UserInCourseParticipationData.UserInCourse
 import Controller.AnnouncementsController.Announcement;
 import Controller.AppointmentGroupsController.AppointmentGroup.AppointmentGroup;
 import Controller.AssignmentExtensionController.SetExtensions.SetExtensions;
+import Controller.AssignmentGroupsController.AssignmentGroup.AssignmentGroup;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -1289,6 +1290,32 @@ public class CanvasRestAPI{
         return response.body();
 
 
+
+    }
+
+    /*
+
+    Assignment Groups API
+
+     */
+
+
+    public List<AssignmentGroup> listAssignmentGroups(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/assignment_groups/",client.getAssignmentGroups().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentGroupsInterface assignmentGroupsInterface = retrofit.create(Model.assignmentGroupsInterface.class);
+
+        Call<List<AssignmentGroup>> call = assignmentGroupsInterface.getAssignmentGroupList(client.getAssignmentGroups().getCourseId(),client.getToken(),client.getAssignmentGroups().generateQueries());
+
+        Response<List<AssignmentGroup>> response = call.execute();
+
+        return response.body();
 
     }
 

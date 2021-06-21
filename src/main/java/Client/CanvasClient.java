@@ -20,6 +20,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Announcements announcements;
     private AppointmentGroups appointmentGroups;
     private AssignmentExtensions assignmentExtensions;
+    private AssignmentGroups assignmentGroups;
 
     public CanvasClient(){
         super();
@@ -43,7 +44,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.announcements = new Announcements();
         this.appointmentGroups = new AppointmentGroups();
         this.assignmentExtensions = new AssignmentExtensions();
+        this.assignmentGroups = new AssignmentGroups();
 
+    }
+
+    public AssignmentGroups getAssignmentGroups() {
+        return assignmentGroups;
+    }
+
+    public void setAssignmentGroups(AssignmentGroups assignmentGroups) {
+        this.assignmentGroups = assignmentGroups;
     }
 
     public AppointmentGroups getAppointmentGroups() {
