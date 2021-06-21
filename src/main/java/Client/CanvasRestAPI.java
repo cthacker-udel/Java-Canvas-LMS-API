@@ -1245,7 +1245,6 @@ public class CanvasRestAPI{
     }
 
     public AppointmentGroup getNextAppointment(CanvasClient client) throws IOException {
-        getNextAppointment(CanvasClient client) throws IOException {
 
         String url = baseUrl + "/api/v1/appointment_groups/next_appointment/";
 
