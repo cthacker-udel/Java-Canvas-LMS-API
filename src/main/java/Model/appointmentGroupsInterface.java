@@ -30,5 +30,7 @@ public interface appointmentGroupsInterface {
     @GET("https://udel.instructure.com/api/v1/appointment_groups/{appointmentId}/groups")
     Call<List<AppointmentGroup>> listStudentGroupParticipants(@Path("appointmentId") String appointmentId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/appointment_groups/next_appointment")
+    Call<AppointmentGroup> getNextAppointment(@Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 }
