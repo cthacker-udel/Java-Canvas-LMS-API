@@ -19,6 +19,7 @@ public class CanvasClient extends CanvasRestAPI {
     private ExternalFeed externalFeed;
     private Announcements announcements;
     private AppointmentGroups appointmentGroups;
+    private AssignmentExtensions assignmentExtensions;
 
     public CanvasClient(){
         super();
@@ -41,6 +42,7 @@ public class CanvasClient extends CanvasRestAPI {
         this.externalFeed = new ExternalFeed();
         this.announcements = new Announcements();
         this.appointmentGroups = new AppointmentGroups();
+        this.assignmentExtensions = new AssignmentExtensions();
 
     }
 
@@ -50,6 +52,14 @@ public class CanvasClient extends CanvasRestAPI {
 
     public void setAppointmentGroups(AppointmentGroups appointmentGroups) {
         this.appointmentGroups = appointmentGroups;
+    }
+
+    public AssignmentExtensions getAssignmentExtensions() {
+        return assignmentExtensions;
+    }
+
+    public void setAssignmentExtensions(AssignmentExtensions assignmentExtensions) {
+        this.assignmentExtensions = assignmentExtensions;
     }
 
     public Announcements getAnnouncements() {

@@ -22,6 +22,7 @@ import Controller.AnalyticsController.UserInCourseMessagingData.UserInCourseMess
 import Controller.AnalyticsController.UserInCourseParticipationData.UserInCourseParticipationData;
 import Controller.AnnouncementsController.Announcement;
 import Controller.AppointmentGroupsController.AppointmentGroup.AppointmentGroup;
+import Controller.AssignmentExtensionController.SetExtensions.SetExtensions;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -1269,6 +1270,27 @@ public class CanvasRestAPI{
 
 
      */
+
+    public SetExtensions setExtensionsForStudentAssignmentSubmissions(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%d/assignments/%d/extensions/",client.getAssignmentExtensions().getCourseId(),client.getAssignmentExtensions().getAssignmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentExtensionInterface assignmentExtensionInterface = retrofit.create(Model.assignmentExtensionInterface.class);
+
+        Call<SetExtensions> call = assignmentExtensionInterface.setExtensionsForStudentAssignmentSubmissions(client.getToken(),client.getAssignmentExtensions().generateQueries());
+
+        Response<SetExtensions> response = call.execute();
+
+        return response.body();
+
+
+
+    }
 
 
 
