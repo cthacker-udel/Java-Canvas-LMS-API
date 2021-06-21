@@ -18,4 +18,7 @@ public interface appointmentGroupsInterface {
     @GET("https://udel.instructure.com/api/v1/appointment_groups/{appointmentId}")
     Call<AppointmentGroup> getAppointment(@Path("appointmentId") String appointmentId, @Header("Authorization") String auth);
 
+    @PUT("https://udel.instructure.com/api/v1/appointment_groups/{appointmentId}")
+    Call<AppointmentGroup> updateAppointment(@Path("appointmentId") String appointmentId, @Header("Authorization") String auth);
+
 }
