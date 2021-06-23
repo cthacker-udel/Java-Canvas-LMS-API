@@ -1401,6 +1401,12 @@ public class CanvasRestAPI{
 
      */
 
+    public void deleteAnAssignment(CanvasClient client){
+
+
+
+    }
+
 
 
 
