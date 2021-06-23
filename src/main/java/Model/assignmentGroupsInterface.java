@@ -18,4 +18,7 @@ public interface assignmentGroupsInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/assignment_groups")
     Call<AssignmentGroup> createAssignmentGroup(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/assignment_groups/{assignmentGroupsId}")
+    Call<AssignmentGroup> editAssignmentGroup(@Path("courseId") String courseId, @Path("assignmentGroupsId") String assignmentGroupsId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
