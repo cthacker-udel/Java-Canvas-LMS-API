@@ -24,6 +24,7 @@ import Controller.AnnouncementsController.Announcement;
 import Controller.AppointmentGroupsController.AppointmentGroup.AppointmentGroup;
 import Controller.AssignmentExtensionController.SetExtensions.SetExtensions;
 import Controller.AssignmentGroupsController.AssignmentGroup.AssignmentGroup;
+import Controller.AssignmentsController.Assignment.Assignment;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -1401,9 +1402,22 @@ public class CanvasRestAPI{
 
      */
 
-    public void deleteAnAssignment(CanvasClient client){
+    public Assignment deleteAnAssignment(CanvasClient client) throws IOException {
 
+        String url = baseUrl + String.format("/api/v1/courses/%s/assignments/%s/",client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId());
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentsInterface assignmentsInterface = retrofit.create(Model.assignmentsInterface.class);
+
+        Call<Assignment> call = assignmentsInterface.deleteAssignment(client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId(),client.getToken());
+
+        Response<Assignment> response = call.execute();
+
+        return response.body();
 
     }
 
