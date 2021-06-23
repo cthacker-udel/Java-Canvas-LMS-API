@@ -17,6 +17,7 @@ public class Assignment extends CanvasClient {
     private String assignmentIds;
     private String orderBy;
     private Boolean postToSis;
+    private String userId;
 
     public Map<String,Object> generateQueries(){
 
@@ -62,6 +63,78 @@ public class Assignment extends CanvasClient {
         this.postToSis = null;
 
 
+    }
+
+    public String getInclude() {
+        return include;
+    }
+
+    public void setInclude(String include) {
+        this.include = include;
+    }
+
+    public String getSearchTerm() {
+        return searchTerm;
+    }
+
+    public void setSearchTerm(String searchTerm) {
+        this.searchTerm = searchTerm;
+    }
+
+    public Boolean getOverrideAssignmentDates() {
+        return overrideAssignmentDates;
+    }
+
+    public void setOverrideAssignmentDates(Boolean overrideAssignmentDates) {
+        this.overrideAssignmentDates = overrideAssignmentDates;
+    }
+
+    public Boolean getNeedsGradingCountBySection() {
+        return needsGradingCountBySection;
+    }
+
+    public void setNeedsGradingCountBySection(Boolean needsGradingCountBySection) {
+        this.needsGradingCountBySection = needsGradingCountBySection;
+    }
+
+    public String getBucket() {
+        return bucket;
+    }
+
+    public void setBucket(String bucket) {
+        this.bucket = bucket;
+    }
+
+    public String getAssignmentIds() {
+        return assignmentIds;
+    }
+
+    public void setAssignmentIds(String assignmentIds) {
+        this.assignmentIds = assignmentIds;
+    }
+
+    public String getOrderBy() {
+        return orderBy;
+    }
+
+    public void setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+    }
+
+    public Boolean getPostToSis() {
+        return postToSis;
+    }
+
+    public void setPostToSis(Boolean postToSis) {
+        this.postToSis = postToSis;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getCourseId() {

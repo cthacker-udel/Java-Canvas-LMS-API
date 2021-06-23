@@ -18,4 +18,7 @@ public interface assignmentsInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/assignment_groups/{assignmentsGroupId}/assignments")
     Call<List<Assignment>> listAssignmentsV2(@Path("courseId") String courseId, @Path("assignmentsGroupId") String assignmentsGroupId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/courses/{courseId}/assignments")
+    Call<List<Assignment>> listUserAssignments(@Path("userId") String userId, @Path("courseId") String courseId, @Header("Authorization") String auth);
+
 }
