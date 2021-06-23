@@ -22,10 +22,14 @@ public class AssignmentGroups extends CanvasClient {
     private String sisSourceId;
     private Object integrationData;
     private String rules;
+    private Integer moveAssignmentsTo;
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> body = new LinkedHashMap<>();
+        if(this.moveAssignmentsTo != null){
+            body.put("move_assignments_to",this.moveAssignmentsTo);
+        }
         if(this.name != null){
             body.put("name",this.name);
         }
@@ -80,7 +84,66 @@ public class AssignmentGroups extends CanvasClient {
         this.sisSourceId = null;
         this.integrationData = null;
         this.rules = null;
+        this.moveAssignmentsTo = null;
 
+    }
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    public Integer getGroupWeight() {
+        return groupWeight;
+    }
+
+    public void setGroupWeight(Integer groupWeight) {
+        this.groupWeight = groupWeight;
+    }
+
+    public String getSisSourceId() {
+        return sisSourceId;
+    }
+
+    public void setSisSourceId(String sisSourceId) {
+        this.sisSourceId = sisSourceId;
+    }
+
+    public Object getIntegrationData() {
+        return integrationData;
+    }
+
+    public void setIntegrationData(Object integrationData) {
+        this.integrationData = integrationData;
+    }
+
+    public String getRules() {
+        return rules;
+    }
+
+    public void setRules(String rules) {
+        this.rules = rules;
+    }
+
+    public Integer getMoveAssignmentsTo() {
+        return moveAssignmentsTo;
+    }
+
+    public void setMoveAssignmentsTo(Integer moveAssignmentsTo) {
+        this.moveAssignmentsTo = moveAssignmentsTo;
     }
 
     public String getAssignmentGroupId() {

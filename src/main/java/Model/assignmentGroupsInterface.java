@@ -21,4 +21,7 @@ public interface assignmentGroupsInterface {
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/assignment_groups/{assignmentGroupsId}")
     Call<AssignmentGroup> editAssignmentGroup(@Path("courseId") String courseId, @Path("assignmentGroupsId") String assignmentGroupsId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/assignment_groups/{assignmentGroupsId}")
+    Call<AssignmentGroup> deleteAssignmentGroup(@Path("courseId") String courseId, @Path("assignmentGroupsId") String assignmentGroupsId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }

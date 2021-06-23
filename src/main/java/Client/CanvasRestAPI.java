@@ -1376,6 +1376,25 @@ public class CanvasRestAPI{
 
     }
 
+    public AssignmentGroup destroyAssignmentGroup(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/assignment_groups/%s",client.getAssignmentGroups().getCourseId(),client.getAssignmentGroups().getAssignmentGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentGroupsInterface assignmentGroupsInterface = retrofit.create(Model.assignmentGroupsInterface.class);
+
+        Call<AssignmentGroup> call = assignmentGroupsInterface.deleteAssignmentGroup(client.getAssignmentGroups().getCourseId(),client.getAssignmentGroups().getAssignmentGroupId(),client.getToken(),client.getAssignmentGroups().generateQueries());
+
+        Response<AssignmentGroup> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
