@@ -16,10 +16,34 @@ public class AssignmentGroups extends CanvasClient {
     private Integer gradingPeriodId;
     private Boolean scopeAssignmentToStudent;
     private String assignmentGroupId;
+    private String name;
+    private Integer position;
+    private Integer groupWeight;
+    private String sisSourceId;
+    private Object integrationData;
+    private String rules;
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> body = new LinkedHashMap<>();
+        if(this.name != null){
+            body.put("name",this.name);
+        }
+        if(this.position != null){
+            body.put("position",this.position);
+        }
+        if(this.groupWeight != null){
+            body.put("group_weight",this.groupWeight);
+        }
+        if(this.sisSourceId != null){
+            body.put("sis_source_id",this.sisSourceId);
+        }
+        if(this.integrationData != null){
+            body.put("integration_data",this.integrationData);
+        }
+        if(this.rules != null){
+            body.put("rules",this.rules);
+        }
         if(this.include.size() > 0){
             body.put("include[]",this.include.toArray(String[]::new));
         }
@@ -50,6 +74,12 @@ public class AssignmentGroups extends CanvasClient {
         this.overrideAssignmentDates = null;
         this.gradingPeriodId = null;
         this.scopeAssignmentToStudent = null;
+        this.name = null;
+        this.position = null;
+        this.groupWeight = null;
+        this.sisSourceId = null;
+        this.integrationData = null;
+        this.rules = null;
 
     }
 
