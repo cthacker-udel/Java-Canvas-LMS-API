@@ -20,7 +20,7 @@ public interface accountNotificationInterface {
     Call<GlobalAccountNotification> closeGlobalNotification(@Path("accountId") Integer accountId, @Path("notificationId") Integer notificationId, @Header("Authorization") String auth);
 
     @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/account_notifications")
-    Call<GlobalCreatedNotification> createGlobalNotification(@Path("accountId") Integer accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<GlobalCreatedNotification> createGlobalNotification(@Path("accountId") Integer accountId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
 
     @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/account_notifications/{notificationId}")
     Call<GlobalCreatedNotification> updateGlobalNotification(@Path("accountId") Integer accountId, @Path("notificationId") Integer notificationId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
