@@ -1478,6 +1478,21 @@ public class CanvasRestAPI{
 
     }
 
+    public void duplicateAssignment(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/assignments/%s/duplicate/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentsInterface assignmentsInterface = retrofit.create(Model.assignmentsInterface.class);
+
+        Call<Assignment> call = assignmentsInterface.duplicateAssignment(client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId(),client.getToken(),client.getAssignment().generateQueries());
+
+    }
+
 
 
 

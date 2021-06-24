@@ -18,11 +18,15 @@ public class Assignment extends CanvasClient {
     private String orderBy;
     private Boolean postToSis;
     private String userId;
+    private String resultType;
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<String,Object>();
 
+        if(this.resultType != null){
+            queries.put("result_type",this.resultType);
+        }
         if(this.include != null){
             queries.put("include[]",this.include);
         }

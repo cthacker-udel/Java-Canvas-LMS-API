@@ -21,4 +21,7 @@ public interface assignmentsInterface {
     @GET("https://udel.instructure.com/api/v1/users/{userId}/courses/{courseId}/assignments")
     Call<List<Assignment>> listUserAssignments(@Path("userId") String userId, @Path("courseId") String courseId, @Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}/duplicate")
+    Call<Assignment> duplicateAssignment(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
