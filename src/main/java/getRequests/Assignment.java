@@ -19,11 +19,15 @@ public class Assignment extends CanvasClient {
     private Boolean postToSis;
     private String userId;
     private String resultType;
+    private Boolean allDates;
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<String,Object>();
 
+        if(this.allDates != null){
+            queries.put("all_dates",this.allDates);
+        }
         if(this.resultType != null){
             queries.put("result_type",this.resultType);
         }
@@ -65,8 +69,25 @@ public class Assignment extends CanvasClient {
         this.assignmentIds = null;
         this.orderBy = null;
         this.postToSis = null;
+        this.resultType = null;
+        this.allDates = null;
 
+    }
 
+    public String getResultType() {
+        return resultType;
+    }
+
+    public void setResultType(String resultType) {
+        this.resultType = resultType;
+    }
+
+    public Boolean getAllDates() {
+        return allDates;
+    }
+
+    public void setAllDates(Boolean allDates) {
+        this.allDates = allDates;
     }
 
     public String getInclude() {
