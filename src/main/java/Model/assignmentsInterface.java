@@ -22,9 +22,12 @@ public interface assignmentsInterface {
     Call<List<Assignment>> listUserAssignments(@Path("userId") String userId, @Path("courseId") String courseId, @Header("Authorization") String auth);
 
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}/duplicate")
-    Call<Assignment> duplicateAssignment(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<Assignment> duplicateAssignment(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}")
     Call<Assignment> getAssignment(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/assignments")
+    Call<Assignment> createAssignment(@Path("courseId") String courseId, @Header("Authorization") String auth,@Body Map<String,Object> body);
 
 }
