@@ -1478,7 +1478,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void duplicateAssignment(CanvasClient client){
+    public Assignment duplicateAssignment(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/assignments/%s/duplicate/");
 
@@ -1491,7 +1491,12 @@ public class CanvasRestAPI{
 
         Call<Assignment> call = assignmentsInterface.duplicateAssignment(client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId(),client.getToken(),client.getAssignment().generateQueries());
 
+        Response<Assignment> response = call.execute();
+
+        return response.body();
     }
+
+
 
 
 
