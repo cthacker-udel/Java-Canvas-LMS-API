@@ -1536,6 +1536,13 @@ public class CanvasRestAPI{
 
     public Assignment editAssignment(CanvasClient client) throws IOException {
 
+        /*
+
+        make sure query parameters are implemented in assignment class in getRequests
+        https://canvas.instructure.com/doc/api/assignments.html
+
+         */
+
         String url = baseUrl + String.format("/api/v1/courses/%s/assignments/%s/",client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId());
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -1550,6 +1557,21 @@ public class CanvasRestAPI{
         Response<Assignment> response = call.execute();
 
         return response.body();
+
+    }
+
+    public void bulkUpdateAssignmentDates(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/assignments/bulk_update/",client.getAssignment().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentsInterface assignmentsInterface = retrofit.create(Model.assignmentsInterface.class);
+
+        Call<Progress>
 
     }
 
