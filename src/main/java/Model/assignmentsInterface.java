@@ -30,4 +30,7 @@ public interface assignmentsInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/assignments")
     Call<Assignment> createAssignment(@Path("courseId") String courseId, @Header("Authorization") String auth,@Body Map<String,Object> body);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}")
+    Call<Assignment> editAssignment(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }

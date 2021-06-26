@@ -1534,6 +1534,25 @@ public class CanvasRestAPI{
 
     }
 
+    public Assignment editAssignment(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/assignments/%s/",client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentsInterface assignmentsInterface = retrofit.create(Model.assignmentsInterface.class);
+
+        Call<Assignment> call = assignmentsInterface.editAssignment(client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId(),client.getToken(),client.getAssignment().generateQueries());
+
+        Response<Assignment> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
