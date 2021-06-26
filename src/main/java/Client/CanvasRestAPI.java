@@ -28,6 +28,7 @@ import Controller.AssignmentsController.Assignment.Assignment;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
+import Controller.ProgressController.Progress;
 import Controller.UserController.User;
 import Model.*;
 
@@ -1560,7 +1561,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void bulkUpdateAssignmentDates(CanvasClient client){
+    public Progress bulkUpdateAssignmentDates(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/assignments/bulk_update/",client.getAssignment().getCourseId());
 
@@ -1571,7 +1572,11 @@ public class CanvasRestAPI{
 
         assignmentsInterface assignmentsInterface = retrofit.create(Model.assignmentsInterface.class);
 
-        Call<Progress>
+        Call<Progress> call = assignmentsInterface.bulkUpdateAssignmentDates(client.getAssignment().getCourseId(),client.getToken());
+
+        Response<Progress> response = call.execute();
+
+        return response.body();
 
     }
 

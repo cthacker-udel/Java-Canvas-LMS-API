@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.AssignmentsController.Assignment.Assignment;
+import Controller.ProgressController.Progress;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -32,5 +33,8 @@ public interface assignmentsInterface {
 
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}")
     Call<Assignment> editAssignment(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/bulk_update")
+    Call<Progress> bulkUpdateAssignmentDates(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
 }
