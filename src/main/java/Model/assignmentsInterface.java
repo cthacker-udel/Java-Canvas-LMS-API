@@ -38,7 +38,10 @@ public interface assignmentsInterface {
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/bulk_update")
     Call<Progress> bulkUpdateAssignmentDates(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
-    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}/overrides/{id}")
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}/overrides")
     Call<List<AssignmentOverride>> listAssignmentOverrides(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}/overrides/{overrideId}")
+    Call<AssignmentOverride> getSingleAssignmentOverride(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Path("overrideId") String overrideId, @Header("Authorization") String auth);
 
 }

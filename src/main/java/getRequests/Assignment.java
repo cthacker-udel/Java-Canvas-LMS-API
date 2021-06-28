@@ -62,6 +62,7 @@ public class Assignment extends CanvasClient {
     private Boolean anonymousGrading;
     private Integer allowedAttempts;
     private Integer annotatableAttachmentId;
+    private String assignmentOverrideId;
 
     public Map<String,Object> generateQueries(){
 
@@ -262,6 +263,14 @@ public class Assignment extends CanvasClient {
         Integer allowedAttempts= null;
         Integer annotatableAttachmentId= null;
 
+    }
+
+    public String getAssignmentOverrideId() {
+        return assignmentOverrideId;
+    }
+
+    public void setAssignmentOverrideId(String assignmentOverrideId) {
+        this.assignmentOverrideId = assignmentOverrideId;
     }
 
     public String getName() {
