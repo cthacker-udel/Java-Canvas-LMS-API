@@ -25,6 +25,7 @@ import Controller.AppointmentGroupsController.AppointmentGroup.AppointmentGroup;
 import Controller.AssignmentExtensionController.SetExtensions.SetExtensions;
 import Controller.AssignmentGroupsController.AssignmentGroup.AssignmentGroup;
 import Controller.AssignmentsController.Assignment.Assignment;
+import Controller.AssignmentsController.AssignmentOverride;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -1577,6 +1578,27 @@ public class CanvasRestAPI{
         Response<Progress> response = call.execute();
 
         return response.body();
+
+    }
+
+    public List<AssignmentOverride> listAssignmentOverrides(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/assignments/%s/overrides/",client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentsInterface assignmentsInterface = retrofit.create(Model.assignmentsInterface.class);
+
+        Call<List<AssignmentOverride>> call = assignmentsInterface.listAssignmentOverrides(client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId(),client.getToken());
+
+        Response<List<AssignmentOverride>> response = call.execute();
+
+        return response.body();
+
+
 
     }
 
