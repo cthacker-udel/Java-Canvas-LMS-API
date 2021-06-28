@@ -44,4 +44,7 @@ public interface assignmentsInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}/overrides/{overrideId}")
     Call<AssignmentOverride> getSingleAssignmentOverride(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Path("overrideId") String overrideId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/assignments/{assignmentId}/override")
+    Call<String> getAssignmentOverrideRedirect(@Path("groupId") String groupId, @Path("assignmentId") String assignmentId, @Header("Authorization") String auth);
+
 }

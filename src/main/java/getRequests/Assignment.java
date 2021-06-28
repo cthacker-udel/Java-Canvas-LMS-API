@@ -63,6 +63,7 @@ public class Assignment extends CanvasClient {
     private Integer allowedAttempts;
     private Integer annotatableAttachmentId;
     private String assignmentOverrideId;
+    private String groupId;
 
     public Map<String,Object> generateQueries(){
 
@@ -263,6 +264,14 @@ public class Assignment extends CanvasClient {
         Integer allowedAttempts= null;
         Integer annotatableAttachmentId= null;
 
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
     public String getAssignmentOverrideId() {

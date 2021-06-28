@@ -1619,6 +1619,26 @@ public class CanvasRestAPI{
 
     }
 
+    public String getAssignmentOverrideRedirect(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/assignments/%s/override",client.getAssignment().getGroupId(),client.getAssignment().getAssignmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentsInterface assignmentsInterface = retrofit.create(Model.assignmentsInterface.class);
+
+        Call<String> call = assignmentsInterface.getAssignmentOverrideRedirect(client.getAssignment().getGroupId(),client.getAssignment().getAssignmentId(),client.getToken());
+
+        Response<String> response = call.execute();
+
+        return response.body();
+
+
+    }
+
 
 
 
