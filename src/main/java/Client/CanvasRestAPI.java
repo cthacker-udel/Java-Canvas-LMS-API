@@ -1779,7 +1779,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void addAuthenticationProvider(CanvasClient client){
+    public AuthenticationProviders addAuthenticationProvider(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/authentication_providers/",client.getAuthenticationProviders().getAccountIdAuthenticationProviders());
 
@@ -1790,7 +1790,11 @@ public class CanvasRestAPI{
 
         authenticationProvidersInterface authenticationProvidersInterface = retrofit.create(Model.authenticationProvidersInterface.class);
 
-        //Call<AuthenticationProviders> call
+        Call<AuthenticationProviders> call = authenticationProvidersInterface.addAuthenticationProvider(client.getAuthenticationProviders().getAccountIdAuthenticationProviders(),client.getToken(),client.getAuthenticationProviders().generateQueries());
+
+        Response<AuthenticationProviders> response = call.execute();
+
+        return response.body();
 
     }
 
