@@ -2,6 +2,7 @@ package getRequests;
 
 import Client.CanvasClient;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class AuthenticationProviders extends CanvasClient {
@@ -41,10 +42,136 @@ public class AuthenticationProviders extends CanvasClient {
     private String consumerKey;
     private String consumerSecret;
     private String parentRegistration;
+    private String applicationId;
+    private String applicationSecret;
+    private String authorizeUrl;
 
     public Map<String,Object> generateQueries(){
 
-        return null;
+        Map<String,Object> queries = new LinkedHashMap<>();
+
+        if(this.clientId != null){
+            queries.put("client_id",this.clientId);
+        }
+        if(this.loginAttribute != null){
+            queries.put("login_attribute",this.loginAttribute);
+        }
+        if(this.federated_attributes != null){
+            queries.put("federated_attributes",this.federated_attributes);
+        }
+        if(this.selfRegistration != null){
+            queries.put("self_registration",this.selfRegistration);
+        }
+        if(this.authBase != null){
+            queries.put("auth_base",this.authBase);
+        }
+        if(this.loginUrl != null){
+            queries.put("log_in_url",this.loginUrl);
+        }
+        if(this.clientId != null) {
+            queries.put("client_id", this.clientId);
+        }
+        if(this.clientSecret != null){
+            queries.put("client_secret",this.clientSecret);
+        }
+        if(this.districtId != null){
+            queries.put("district_id",this.districtId);
+        }
+        if(this.loginAttribute != null){
+            queries.put("login_attribute",this.loginAttribute);
+        }
+        if(this.appId != null){
+            queries.put("app_id",this.appId);
+        }
+        if(this.appSecret != null){
+            queries.put("app_secret",this.appSecret);
+        }
+        if(this.domain != null){
+            queries.put("domain",this.domain);
+        }
+        if(this.hostedDomain != null){
+            queries.put("hosted_domain",this.hostedDomain);
+        }
+        if(this.authHost != null){
+            queries.put("auth_host",this.authHost);
+        }
+        if(this.authPort != null){
+            queries.put("auth_port",this.authPort);
+        }
+        if(this.authOverTls != null){
+            queries.put("auth_over_tls",this.authOverTls);
+        }
+        if(this.authFilter != null){
+            queries.put("auth_filter",this.authFilter);
+        }
+        if(this.identifierFormat != null){
+            queries.put("identifier_format",this.identifierFormat);
+        }
+        if(this.authUsername != null){
+            queries.put("auth_username",this.authUsername);
+        }
+        if(this.authPassword != null){
+            queries.put("auth_password",this.authPassword);
+        }
+        if(this.applicationSecret != null){
+            queries.put("application_secret",this.applicationSecret);
+        }
+        if(this.applicationId != null){
+            queries.put("application_id",this.applicationId);
+        }
+        if(this.tenant != null){
+            queries.put("tenant",this.tenant);
+        }
+        if(this.authorizeUrl != null){
+            queries.put("authorize_url",this.authorizeUrl);
+        }
+        if(this.tokenUrl != null){
+            queries.put("token_url",this.tokenUrl);
+        }
+        if(this.scope != null){
+            queries.put("scope",this.scope);
+        }
+        if(this.endSessionEndpoint != null){
+            queries.put("end_session_endpoint",this.endSessionEndpoint);
+        }
+        if(this.userInfoEndpoint != null){
+            queries.put("userinfo_endpoint",this.userInfoEndpoint);
+        }
+        if(this.metadata != null){
+            queries.put("metadata",this.metadata);
+        }
+        if(this.metadataUri != null){
+            queries.put("metadata_uri",this.metadataUri);
+        }
+        if(this.idpEntityId != null){
+            queries.put("idp_entity_id",this.idpEntityId);
+        }
+        if(this.logoutUrl != null){
+            queries.put("log_out_url",this.logoutUrl);
+        }
+        if(this.ceritificateFingerprint != null){
+            queries.put("certificate_fingerprint",this.ceritificateFingerprint);
+        }
+        if(this.identifierFormat != null){
+            queries.put("identifier_format",this.identifierFormat);
+        }
+        if(this.requestedAuthnContext != null){
+            queries.put("requested_authn_context",this.requestedAuthnContext);
+        }
+        if(this.sigAlg != null){
+            queries.put("sig_alg",this.sigAlg);
+        }
+        if(this.consumerKey != null){
+            queries.put("consumer_key",this.consumerKey);
+        }
+        if(this.consumerSecret != null){
+            queries.put("consumer_secret",this.consumerSecret);
+        }
+        if(this.parentRegistration != null) {
+            queries.put("parent_registration", this.parentRegistration);
+        }
+
+        return queries;
 
     }
 
