@@ -1734,6 +1734,21 @@ public class CanvasRestAPI{
 
     }
 
+    public void batchUpdateOverrides(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/assignments/overrides/",client.getAssignmentOverride().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentsInterface assignmentsInterface = retrofit.create(Model.assignmentsInterface.class);
+
+        Call<List<AssignmentOverride>> call = assingments
+
+    }
+
 
 
 

@@ -62,4 +62,7 @@ public interface assignmentsInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/overrides")
     Call<List<AssignmentOverride>> batchCreateOverrides(@Path("courseId") Integer courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/overrides")
+    Call<List<AssignmentOverride>> batchUpdateOverrides(@Path("courseId") Integer courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }
