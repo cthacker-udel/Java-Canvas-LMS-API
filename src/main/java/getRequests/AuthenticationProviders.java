@@ -177,6 +177,43 @@ public class AuthenticationProviders extends CanvasClient {
 
     public void clearQueries(){
 
+        this.clientId = null;
+        this.loginAttribute = null;
+        this.federated_attributes = null;
+        this.selfRegistration = null;
+        this.authBase = null;
+        this.loginUrl = null;
+        this.clientSecret = null;
+        this.districtId = null;
+        this.appId = null;
+        this.appSecret = null;
+        this.domain = null;
+        this.hostedDomain = null;
+        this.authHost = null;
+        this.authPort = null;
+        this.authOverTls = null;
+        this.authFilter = null;
+        this.identifierFormat = null;
+        this.authUsername = null;
+        this.authPassword = null;
+        this.tenant = null;
+        this.tokenUrl = null;
+        this.scope = null;
+        this.endSessionEndpoint = null;
+        this.userInfoEndpoint = null;
+        this.metadata = null;
+        this.metadataUri = null;
+        this.idpEntityId = null;
+        this.logoutUrl = null;
+        this.ceritificateFingerprint = null;
+        this.requestedAuthnContext = null;
+        this.sigAlg = null;
+        this.consumerKey = null;
+        this.consumerSecret = null;
+        this.parentRegistration = null;
+        this.applicationId = null;
+        this.applicationSecret = null;
+        this.authorizeUrl = null;
 
     }
 
