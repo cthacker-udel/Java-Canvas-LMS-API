@@ -23,6 +23,7 @@ public class CanvasClient extends CanvasRestAPI {
     private AssignmentGroups assignmentGroups;
     private Assignment assignment;
     private AssignmentOverride assignmentOverride;
+    private AuthenticationProviders authenticationProviders;
 
     public CanvasClient(){
         super();
@@ -49,7 +50,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.assignmentGroups = new AssignmentGroups();
         this.assignment = new Assignment();
         this.assignmentOverride = new AssignmentOverride();
+        this.authenticationProviders = new AuthenticationProviders();
 
+    }
+
+    public AuthenticationProviders getAuthenticationProviders() {
+        return authenticationProviders;
+    }
+
+    public void setAuthenticationProviders(AuthenticationProviders authenticationProviders) {
+        this.authenticationProviders = authenticationProviders;
     }
 
     public AssignmentOverride getAssignmentOverride() {

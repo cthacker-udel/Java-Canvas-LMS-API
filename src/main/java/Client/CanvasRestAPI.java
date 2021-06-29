@@ -26,6 +26,7 @@ import Controller.AssignmentExtensionController.SetExtensions.SetExtensions;
 import Controller.AssignmentGroupsController.AssignmentGroup.AssignmentGroup;
 import Controller.AssignmentsController.Assignment.Assignment;
 import Controller.AssignmentsController.AssignmentOverride;
+import Controller.AuthenticationProvidersController.AuthenticationProviders;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -1759,7 +1760,24 @@ public class CanvasRestAPI{
 
      */
 
+    public List<AuthenticationProviders> listAuthenticationProviders(CanvasClient client) throws IOException {
 
+        String url = baseUrl + String.format("/api/v1/accounts/%s/authentication_providers/",client.getAuthenticationProviders().getAccountIdAuthenticationProviders());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        authenticationProvidersInterface authenticationProvidersInterface = retrofit.create(Model.authenticationProvidersInterface.class);
+
+        Call<List<AuthenticationProviders>> call = authenticationProvidersInterface.listAuthenticationProviders(client.getAuthenticationProviders().getAccountIdAuthenticationProviders(),client.getToken());
+
+        Response<List<AuthenticationProviders>> response = call.execute();
+
+        return response.body();
+
+    }
 
 
 
