@@ -50,4 +50,7 @@ public interface assignmentsInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}/overrides")
     Call<AssignmentOverride> createAssignmentOverride(@Path("courseId") String courseId, @Path("assignmentId") String assingmentId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}/overrides/{overrideId}")
+    Call<AssignmentOverride> updateAssignmentOverride(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Path("overrideId") String overrideId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }

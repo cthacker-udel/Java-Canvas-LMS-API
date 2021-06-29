@@ -18,6 +18,7 @@ public class AssignmentOverride extends CanvasClient {
     private ZonedDateTime lockAt;
     private Integer courseId;
     private Integer assignmentId;
+    private Integer assignmentOverrideId;
 
     public Map<String,Object> generateQueries(){
 
@@ -58,6 +59,14 @@ public class AssignmentOverride extends CanvasClient {
         this.unlockAt = null;
         this.lockAt = null;
 
+    }
+
+    public Integer getAssignmentOverrideId() {
+        return assignmentOverrideId;
+    }
+
+    public void setAssignmentOverrideId(Integer assignmentOverrideId) {
+        this.assignmentOverrideId = assignmentOverrideId;
     }
 
     public Integer getCourseId() {
