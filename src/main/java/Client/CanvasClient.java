@@ -22,6 +22,7 @@ public class CanvasClient extends CanvasRestAPI {
     private AssignmentExtensions assignmentExtensions;
     private AssignmentGroups assignmentGroups;
     private Assignment assignment;
+    private AssignmentOverride assignmentOverride;
 
     public CanvasClient(){
         super();
@@ -47,7 +48,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.assignmentExtensions = new AssignmentExtensions();
         this.assignmentGroups = new AssignmentGroups();
         this.assignment = new Assignment();
+        this.assignmentOverride = new AssignmentOverride();
 
+    }
+
+    public AssignmentOverride getAssignmentOverride() {
+        return assignmentOverride;
+    }
+
+    public void setAssignmentOverride(AssignmentOverride assignmentOverride) {
+        this.assignmentOverride = assignmentOverride;
     }
 
     public Assignment getAssignment() {

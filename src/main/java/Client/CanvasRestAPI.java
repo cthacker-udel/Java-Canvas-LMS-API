@@ -1639,6 +1639,25 @@ public class CanvasRestAPI{
 
     }
 
+    public AssignmentOverride createAssignmentOverride(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/assignments/%s/overrides/",client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        assignmentsInterface assignmentsInterface = retrofit.create(Model.assignmentsInterface.class);
+
+        Call<AssignmentOverride> call = assignmentsInterface.createAssignmentOverride(client.getAssignmentOverride().getCourseId()+"",client.getAssignmentOverride().getAssignmentId()+"",client.getToken(),client.getAssignmentOverride().generateQueries());
+
+        Response<AssignmentOverride> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
