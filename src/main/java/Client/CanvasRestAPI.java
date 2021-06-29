@@ -1734,7 +1734,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void batchUpdateOverrides(CanvasClient client){
+    public List<AssignmentOverride> batchUpdateOverrides(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/assignments/overrides/",client.getAssignmentOverride().getCourseId());
 
@@ -1745,7 +1745,11 @@ public class CanvasRestAPI{
 
         assignmentsInterface assignmentsInterface = retrofit.create(Model.assignmentsInterface.class);
 
-        Call<List<AssignmentOverride>> call = assingments
+        Call<List<AssignmentOverride>> call = assignmentsInterface.batchUpdateOverrides(client.getAssignmentOverride().getCourseId(),client.getToken(),client.getAssignmentOverride().generateBatchCreateQueries());
+
+        Response<List<AssignmentOverride>> response = call.execute();
+
+        return response.body();
 
     }
 
