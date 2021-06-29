@@ -1779,6 +1779,21 @@ public class CanvasRestAPI{
 
     }
 
+    public void addAuthenticationProvider(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/authentication_providers/",client.getAuthenticationProviders().getAccountIdAuthenticationProviders());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        authenticationProvidersInterface authenticationProvidersInterface = retrofit.create(Model.authenticationProvidersInterface.class);
+
+        //Call<AuthenticationProviders> call
+
+    }
+
 
 
 
