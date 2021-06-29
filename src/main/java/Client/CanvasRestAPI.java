@@ -1753,6 +1753,15 @@ public class CanvasRestAPI{
 
     }
 
+    /*
+
+    Authentication Providers API
+
+     */
+
+
+
+
 
 
 
