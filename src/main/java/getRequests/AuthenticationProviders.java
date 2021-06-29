@@ -45,6 +45,7 @@ public class AuthenticationProviders extends CanvasClient {
     private String applicationId;
     private String applicationSecret;
     private String authorizeUrl;
+    private String authenticationProviderId;
 
     public Map<String,Object> generateQueries(){
 
@@ -215,6 +216,38 @@ public class AuthenticationProviders extends CanvasClient {
         this.applicationSecret = null;
         this.authorizeUrl = null;
 
+    }
+
+    public String getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
+    }
+
+    public String getApplicationSecret() {
+        return applicationSecret;
+    }
+
+    public void setApplicationSecret(String applicationSecret) {
+        this.applicationSecret = applicationSecret;
+    }
+
+    public String getAuthorizeUrl() {
+        return authorizeUrl;
+    }
+
+    public void setAuthorizeUrl(String authorizeUrl) {
+        this.authorizeUrl = authorizeUrl;
+    }
+
+    public String getAuthenticationProviderId() {
+        return authenticationProviderId;
+    }
+
+    public void setAuthenticationProviderId(String authenticationProviderId) {
+        this.authenticationProviderId = authenticationProviderId;
     }
 
     @Override

@@ -15,4 +15,7 @@ public interface authenticationProvidersInterface {
     @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/authentication_providers")
     Call<AuthenticationProviders> addAuthenticationProvider(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/authentication_providers/{authId}")
+    Call<AuthenticationProviders> updateAuthenticationProviders(@Path("accountId") String accountId, @Path("authId") String authId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
+
 }
