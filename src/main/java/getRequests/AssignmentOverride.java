@@ -19,11 +19,20 @@ public class AssignmentOverride extends CanvasClient {
     private Integer courseId;
     private Integer assignmentId;
     private Integer assignmentOverrideId;
+    private ArrayList<String> overrideIds = new ArrayList<>();
+    private ArrayList<String> assignmentIds = new ArrayList<>();
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+
+        if(this.assignmentIds.size() > 0){
+            queries.put("assignment_overrides[][assignment_id]",this.assignmentIds.toArray(String[]::new));
+        }
+        if(this.overrideIds.size() > 0){
+            queries.put("assignment_overrides[][id]",this.overrideIds.toArray(String[]::new));
+        }
         if(this.studentIds.size() > 0){
             queries.put("assignment_override[student_ids][]",this.studentIds.toArray(Integer[]::new));
         }
@@ -58,7 +67,25 @@ public class AssignmentOverride extends CanvasClient {
         this.dueAt = null;
         this.unlockAt = null;
         this.lockAt = null;
+        this.overrideIds = new ArrayList<>();
+        this.assignmentIds = new ArrayList<>();
 
+    }
+
+    public ArrayList<String> getOverrideIds() {
+        return overrideIds;
+    }
+
+    public void setOverrideIds(ArrayList<String> overrideIds) {
+        this.overrideIds = overrideIds;
+    }
+
+    public ArrayList<String> getAssignmentIds() {
+        return assignmentIds;
+    }
+
+    public void setAssignmentIds(ArrayList<String> assignmentIds) {
+        this.assignmentIds = assignmentIds;
     }
 
     public Integer getAssignmentOverrideId() {

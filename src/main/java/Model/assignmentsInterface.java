@@ -56,4 +56,7 @@ public interface assignmentsInterface {
     @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/{assignmentId}/overrides/{overrideId}")
     Call<AssignmentOverride> deleteAssignmentOverride(@Path("courseId") String courseId, @Path("assignmentId") String assignmentId, @Path("overrideId") String overrideId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/assignments/overrides")
+    Call<List<AssignmentOverride>> batchRetrieveOverrides(@Path("courseId") Integer courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
