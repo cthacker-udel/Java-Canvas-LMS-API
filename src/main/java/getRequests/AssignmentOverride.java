@@ -22,6 +22,36 @@ public class AssignmentOverride extends CanvasClient {
     private ArrayList<String> overrideIds = new ArrayList<>();
     private ArrayList<String> assignmentIds = new ArrayList<>();
 
+
+    public Map<String,Object> generateBatchCreateQueries(){
+
+        Map<String,Object> queries = new LinkedHashMap<>();
+
+        if(this.studentIds.size() > 0){
+            queries.put("assignment_overrides[][student_ids][]",this.studentIds.toArray(Integer[]::new));
+        }
+        if(this.title != null){
+            queries.put("assignment_overrides[][title]",this.title);
+        }
+        if(this.groupId != null){
+            queries.put("assignment_overrides[][group_id]",this.groupId);
+        }
+        if(this.courseSectionId != null){
+            queries.put("assignment_overrides[][course_section_id]",this.courseSectionId);
+        }
+        if(this.dueAt != null){
+            queries.put("assignment_overrides[][due_at]",this.dueAt);
+        }
+        if(this.unlockAt != null){
+            queries.put("assignment_overrides[][unlock_at]",this.unlockAt);
+        }
+        if(this.lockAt != null){
+            queries.put("assignment_overrides[][lock_at]",this.lockAt);
+        }
+        return queries;
+
+    }
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
