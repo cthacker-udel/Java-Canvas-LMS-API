@@ -16,6 +16,9 @@ public interface authenticationLogInterface {
     Call<List<AuthenticationEvent>> queryByLogin(@Path("loginId") String loginId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
     @GET("https://udel.instructure.com/api/v1/audit/authentication/accounts/{accountId}")
-    Call<List<AuthenticationEvent>> queryByAccount(@Path("accountId") String loginId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<List<AuthenticationEvent>> queryByAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/audit/authentication/users/{userId}")
+    Call<List<AuthenticationEvent>> queryByUser(@Path("userId") String userId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 }
