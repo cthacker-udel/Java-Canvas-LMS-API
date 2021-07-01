@@ -1920,6 +1920,25 @@ public class CanvasRestAPI{
 
     }
 
+    public List<AuthenticationEvent> queryAuthenticationLogByAccount(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/audit/authentication/accounts/%s/",client.getAuthenticationLog().getLogAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        authenticationLogInterface authenticationLogInterface = retrofit.create(Model.authenticationLogInterface.class);
+
+        Call<List<AuthenticationEvent>> call = authenticationLogInterface.queryByAccount(client.getAuthenticationLog().getLogAccountId(),client.getToken(),client.getAuthenticationLog().generateQueries());
+
+        Response<List<AuthenticationEvent>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
