@@ -21,4 +21,7 @@ public interface authenticationProvidersInterface {
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/authentication_providers/{authId}")
     Call<AuthenticationProviders> getAuthenticationProvider(@Path("accountId") String accountID, @Path("authId") String authId, @Header("Authorization") String auth);
 
+    @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/authentication_providers/{authId}")
+    Call<Void> deleteAuthenticationProvider(@Path("accountId") String accountId, @Path("authId") String authId, @Header("Authorization") String auth);
+
 }
