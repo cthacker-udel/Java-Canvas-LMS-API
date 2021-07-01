@@ -1817,6 +1817,25 @@ public class CanvasRestAPI{
 
     }
 
+    public AuthenticationProviders getAuthenticationProvider(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/authentication_provides/%s",client.getAuthenticationProviders().getAccountIdAuthenticationProviders(),client.getAuthenticationProviders().getAuthenticationProviderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        authenticationProvidersInterface authenticationProvidersInterface = retrofit.create(Model.authenticationProvidersInterface.class);
+
+        Call<AuthenticationProviders> call = authenticationProvidersInterface.getAuthenticationProvider(client.getAuthenticationProviders().getAccountIdAuthenticationProviders(),client.getAuthenticationProviders().getAuthenticationProviderId(),client.getToken());
+
+        Response<AuthenticationProviders> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
