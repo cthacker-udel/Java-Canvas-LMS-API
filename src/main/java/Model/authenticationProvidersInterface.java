@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.AuthenticationProvidersController.AuthenticationProviders;
+import Controller.AuthenticationProvidersController.SSOSettings;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -23,5 +24,11 @@ public interface authenticationProvidersInterface {
 
     @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/authentication_providers/{authId}")
     Call<Void> deleteAuthenticationProvider(@Path("accountId") String accountId, @Path("authId") String authId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/sso_settings")
+    Call<SSOSettings> showAccountAuthSettings(@Path("accountId") String accountId, @Header("Authorization") String auth);
+
+    @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/sso_settings")
+    Call<SSOSettings> updateAuthSettings(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 }

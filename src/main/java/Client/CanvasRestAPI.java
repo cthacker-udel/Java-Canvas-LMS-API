@@ -1875,6 +1875,25 @@ public class CanvasRestAPI{
 
     }
 
+    public SSOSettings updateAccountAuthSettings(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/sso_settings/",client.getAuthenticationProviders().getAccountIdAuthenticationProviders());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        authenticationProvidersInterface authenticationProvidersInterface = retrofit.create(Model.authenticationProvidersInterface.class);
+
+        Call<SSOSettings> call = authenticationProvidersInterface.updateAuthSettings(client.getAuthenticationProviders().getAccountIdAuthenticationProviders(),client.getToken(),client.getAuthenticationProviders().generateQueries());
+
+        Response<SSOSettings> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

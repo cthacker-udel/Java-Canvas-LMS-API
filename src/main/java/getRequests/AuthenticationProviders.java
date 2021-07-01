@@ -46,11 +46,23 @@ public class AuthenticationProviders extends CanvasClient {
     private String applicationSecret;
     private String authorizeUrl;
     private String authenticationProviderId;
+    private String authDiscoveryUrl;
+    private String changePasswordUrl;
+    private String loginHandleName;
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.authDiscoveryUrl != null){
+            queries.put("sso_settings[auth_discovery_url]",this.authDiscoveryUrl);
+        }
+        if(this.changePasswordUrl != null){
+            queries.put("sso_settings[change_password_url]",this.changePasswordUrl);
+        }
+        if(this.loginHandleName != null){
+            queries.put("sso_settings[login_handle_name]",this.loginHandleName);
+        }
         if(this.clientId != null){
             queries.put("client_id",this.clientId);
         }
@@ -215,7 +227,34 @@ public class AuthenticationProviders extends CanvasClient {
         this.applicationId = null;
         this.applicationSecret = null;
         this.authorizeUrl = null;
+        this.authDiscoveryUrl = null;
+        this.changePasswordUrl = null;
+        this.loginHandleName = null;
 
+    }
+
+    public String getAuthDiscoveryUrl() {
+        return authDiscoveryUrl;
+    }
+
+    public void setAuthDiscoveryUrl(String authDiscoveryUrl) {
+        this.authDiscoveryUrl = authDiscoveryUrl;
+    }
+
+    public String getChangePasswordUrl() {
+        return changePasswordUrl;
+    }
+
+    public void setChangePasswordUrl(String changePasswordUrl) {
+        this.changePasswordUrl = changePasswordUrl;
+    }
+
+    public String getLoginHandleName() {
+        return loginHandleName;
+    }
+
+    public void setLoginHandleName(String loginHandleName) {
+        this.loginHandleName = loginHandleName;
     }
 
     public String getApplicationId() {
