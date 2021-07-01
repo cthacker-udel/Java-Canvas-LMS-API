@@ -27,6 +27,7 @@ import Controller.AssignmentGroupsController.AssignmentGroup.AssignmentGroup;
 import Controller.AssignmentsController.Assignment.Assignment;
 import Controller.AssignmentsController.AssignmentOverride;
 import Controller.AuthenticationProvidersController.AuthenticationProviders;
+import Controller.AuthenticationProvidersController.SSOSettings;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -1852,6 +1853,25 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    public SSOSettings showUserAuthSettings(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/sso_settings/",client.getAuthenticationProviders().getAccountIdAuthenticationProviders());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        authenticationProvidersInterface authenticationProvidersInterface = retrofit.create(Model.authenticationProvidersInterface.class);
+
+        Call<SSOSettings> call = authenticationProvidersInterface.showAccountAuthSettings(client.getAuthenticationProviders().getAccountIdAuthenticationProviders(),client.getToken());
+
+        Response<SSOSettings> response = call.execute();
+
+        return response.body();
 
     }
 
