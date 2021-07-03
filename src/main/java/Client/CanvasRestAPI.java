@@ -2040,7 +2040,24 @@ public class CanvasRestAPI{
 
         return response.body();
 
+    }
 
+    public boolean setOrRemoveBlueprintRestrictions(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/blueprint_templates/%s/restrict_item/",client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        blueprintCoursesInterface blueprintCoursesInterface = retrofit.create(Model.blueprintCoursesInterface.class);
+
+        Call<Void> call = blueprintCoursesInterface.setOrRemoveBlueprintRestrictions(client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId(),client.getToken(),client.getBlueprintCourses().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
 
     }
 

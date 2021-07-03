@@ -23,4 +23,7 @@ public interface blueprintCoursesInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/blueprint_templates/{templateId}/migrations")
     Call<BlueprintMigration> beginMigration(@Path("courseId") String courseId, @Path("templateId") String templateId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/blueprint_templates/{templateId}/restrict_item")
+    Call<Void> setOrRemoveBlueprintRestrictions(@Path("courseId") String courseId, @Path("templateId") String templateId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }
