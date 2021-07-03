@@ -25,6 +25,7 @@ public class CanvasClient extends CanvasRestAPI {
     private AssignmentOverride assignmentOverride;
     private AuthenticationProviders authenticationProviders;
     private AuthenticationLog authenticationLog;
+    private BlueprintCourses blueprintCourses;
 
     public CanvasClient(){
         super();
@@ -53,7 +54,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.assignmentOverride = new AssignmentOverride();
         this.authenticationProviders = new AuthenticationProviders();
         this.authenticationLog = new AuthenticationLog();
+        this.blueprintCourses = new BlueprintCourses();
 
+    }
+
+    public BlueprintCourses getBlueprintCourses() {
+        return blueprintCourses;
+    }
+
+    public void setBlueprintCourses(BlueprintCourses blueprintCourses) {
+        this.blueprintCourses = blueprintCourses;
     }
 
     public AuthenticationLog getAuthenticationLog() {

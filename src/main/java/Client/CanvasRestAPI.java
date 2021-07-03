@@ -29,6 +29,7 @@ import Controller.AssignmentsController.AssignmentOverride;
 import Controller.AuthenticationLogController.AuthenticationEvent;
 import Controller.AuthenticationProvidersController.AuthenticationProviders;
 import Controller.AuthenticationProvidersController.SSOSettings;
+import Controller.BlueprintCourseController.BlueprintTemplate;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -1963,6 +1964,44 @@ public class CanvasRestAPI{
     Blueprint Courses API
 
      */
+
+    public BlueprintTemplate getBlueprintInformation(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/blueprint_templates/%s/",client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        blueprintCoursesInterface blueprintCoursesInterface = retrofit.create(Model.blueprintCoursesInterface.class);
+
+        Call<BlueprintTemplate> call = blueprintCoursesInterface.getBlueprintInformation(client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId(),client.getToken());
+
+        Response<BlueprintTemplate> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<Course> getAssociatedCourseInformation(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/blueprint_templates/%s/associated_courses/",client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        blueprintCoursesInterface blueprintCoursesInterface = retrofit.create(Model.blueprintCoursesInterface.class);
+
+        Call<List<Course>> call = blueprintCoursesInterface.getAssociatedCourseInformation(client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId(),client.getToken());
+
+        Response<List<Course>> response = call.execute();
+
+        return response.body();
+
+    }
 
 
 
