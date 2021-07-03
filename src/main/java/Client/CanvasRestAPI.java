@@ -2081,6 +2081,25 @@ public class CanvasRestAPI{
 
     }
 
+    public List<BlueprintMigration> listBlueprintMigrations(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/blueprint_templates/%s/migrations",client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        blueprintCoursesInterface blueprintCoursesInterface = retrofit.create(Model.blueprintCoursesInterface.class);
+
+        Call<List<BlueprintMigration>> call = blueprintCoursesInterface.listBlueprintMigrations(client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId(),client.getToken());
+
+        Response<List<BlueprintMigration>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
