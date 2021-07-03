@@ -33,4 +33,7 @@ public interface blueprintCoursesInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/blueprint_templates/{templateId}/migrations")
     Call<List<BlueprintMigration>> listBlueprintMigrations(@Path("courseId") String courseId, @Path("templateId") String templateId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/blueprint_templates/{templateId}/migrations/{migrationId}")
+    Call<BlueprintMigration> showBlueprintMigration(@Path("courseId") String courseId, @Path("templateId") String templateId, @Path("migrationId") String migrationId, @Header("Authorization") String auth);
+
 }
