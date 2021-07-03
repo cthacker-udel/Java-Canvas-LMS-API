@@ -29,6 +29,7 @@ import Controller.AssignmentsController.AssignmentOverride;
 import Controller.AuthenticationLogController.AuthenticationEvent;
 import Controller.AuthenticationProvidersController.AuthenticationProviders;
 import Controller.AuthenticationProvidersController.SSOSettings;
+import Controller.BlueprintCourseController.BlueprintMigration;
 import Controller.BlueprintCourseController.BlueprintTemplate;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
@@ -2019,6 +2020,27 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    public BlueprintMigration beginMigrationToPushAssociatedCourses(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/blueprint_templates/%s/migrations/",client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        blueprintCoursesInterface blueprintCoursesInterface = retrofit.create(Model.blueprintCoursesInterface.class);
+
+        Call<BlueprintMigration> call = blueprintCoursesInterface.beginMigration(client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId(),client.getToken(),client.getBlueprintCourses().generateQueries());
+
+        Response<BlueprintMigration> response = call.execute();
+
+        return response.body();
+
+
 
     }
 
