@@ -30,6 +30,7 @@ import Controller.AuthenticationLogController.AuthenticationEvent;
 import Controller.AuthenticationProvidersController.AuthenticationProviders;
 import Controller.AuthenticationProvidersController.SSOSettings;
 import Controller.BlueprintCourseController.BlueprintMigration;
+import Controller.BlueprintCourseController.BlueprintSubscription.BlueprintSubscription;
 import Controller.BlueprintCourseController.BlueprintTemplate;
 import Controller.BlueprintCourseController.ChangeRecord.ChangeRecord;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
@@ -2135,6 +2136,26 @@ public class CanvasRestAPI{
         Response<ChangeRecord> response = call.execute();
 
         return response.body();
+
+    }
+
+    public List<BlueprintSubscription> listBLueprintSubscriptions(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/blueprint_subscriptions/",client.getBlueprintCourses().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        blueprintCoursesInterface blueprintCoursesInterface = retrofit.create(Model.blueprintCoursesInterface.class);
+
+        Call<List<BlueprintSubscription>> call = blueprintCoursesInterface.listBlueprintSubscriptions(client.getBlueprintCourses().getCourseId(),client.getToken());
+
+        Response<List<BlueprintSubscription>> response = call.execute();
+
+        return response.body();
+
 
     }
 

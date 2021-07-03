@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.BlueprintCourseController.BlueprintMigration;
+import Controller.BlueprintCourseController.BlueprintSubscription.BlueprintSubscription;
 import Controller.BlueprintCourseController.BlueprintTemplate;
 import Controller.BlueprintCourseController.ChangeRecord.ChangeRecord;
 import Controller.CourseController.Course;
@@ -38,5 +39,8 @@ public interface blueprintCoursesInterface {
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/blueprint_templates/{templateId}/migrations/{migrationId}/details")
     Call<ChangeRecord> getMigrationDetails(@Path("courseId") String courseId, @Path("templateId") String templateId, @Path("migrationId") String migrationId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/blueprint_subscriptions")
+    Call<List<BlueprintSubscription>> listBlueprintSubscriptions(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
 }
