@@ -31,6 +31,7 @@ import Controller.AuthenticationProvidersController.AuthenticationProviders;
 import Controller.AuthenticationProvidersController.SSOSettings;
 import Controller.BlueprintCourseController.BlueprintMigration;
 import Controller.BlueprintCourseController.BlueprintTemplate;
+import Controller.BlueprintCourseController.ChangeRecord.ChangeRecord;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -2058,6 +2059,25 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    public List<ChangeRecord> getUnsyncedChanges(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/blueprint_templates/%s/unsynced_changes/",client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        blueprintCoursesInterface blueprintCoursesInterface = retrofit.create(Model.blueprintCoursesInterface.class);
+
+        Call<List<ChangeRecord>> call = blueprintCoursesInterface.getUnsyncedChanges(client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId(),client.getToken());
+
+        Response<List<ChangeRecord>> response = call.execute();
+
+        return response.body();
 
     }
 

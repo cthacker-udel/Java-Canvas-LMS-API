@@ -2,6 +2,7 @@ package Model;
 
 import Controller.BlueprintCourseController.BlueprintMigration;
 import Controller.BlueprintCourseController.BlueprintTemplate;
+import Controller.BlueprintCourseController.ChangeRecord.ChangeRecord;
 import Controller.CourseController.Course;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -25,5 +26,8 @@ public interface blueprintCoursesInterface {
 
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/blueprint_templates/{templateId}/restrict_item")
     Call<Void> setOrRemoveBlueprintRestrictions(@Path("courseId") String courseId, @Path("templateId") String templateId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/blueprint_templates/{templateId}/unsynced_changes")
+    Call<List<ChangeRecord>> getUnsyncedChanges(@Path("courseId") String courseId, @Path("templateId") String templateId, @Header("Authorization") String auth);
 
 }
