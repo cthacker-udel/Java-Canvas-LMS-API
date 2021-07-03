@@ -2003,6 +2003,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean updateAssociatedCourses(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/blueprint_templates/%s/update_associations/",client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        blueprintCoursesInterface blueprintCoursesInterface = retrofit.create(Model.blueprintCoursesInterface.class);
+
+        Call<Void> call = blueprintCoursesInterface.updateAssociatedCourses(client.getBlueprintCourses().getCourseId(),client.getBlueprintCourses().getTemplateId(),client.getToken(),client.getBlueprintCourses().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
