@@ -33,6 +33,7 @@ import Controller.BlueprintCourseController.BlueprintMigration;
 import Controller.BlueprintCourseController.BlueprintSubscription.BlueprintSubscription;
 import Controller.BlueprintCourseController.BlueprintTemplate;
 import Controller.BlueprintCourseController.ChangeRecord.ChangeRecord;
+import Controller.BookmarksController.Bookmark;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -2221,6 +2222,25 @@ public class CanvasRestAPI{
     Bookmarks API
 
      */
+
+    public List<Bookmark> listBookmarks(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/users/self/bookmarks/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        bookmarksInterface bookmarksInterface = retrofit.create(Model.bookmarksInterface.class);
+
+        Call<List<Bookmark>> call = bookmarksInterface.listBookmarks(client.getToken());
+
+        Response<List<Bookmark>> response = call.execute();
+
+        return response.body();
+
+    }
 
 
 
