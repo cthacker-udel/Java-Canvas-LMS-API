@@ -2300,6 +2300,24 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean deleteBookmark(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/self/bookmarks/%s/",client.getBookmark().getBookmarkId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        bookmarksInterface bookmarksInterface = retrofit.create(Model.bookmarksInterface.class);
+
+        Call<Void> call = bookmarksInterface.deleteBookmark(client.getBookmark().getBookmarkId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+    }
+
 
 
 

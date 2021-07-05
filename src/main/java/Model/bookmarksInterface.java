@@ -22,4 +22,7 @@ public interface bookmarksInterface {
     @PUT("https://udel.instructure.com/api/v1/users/self/bookmarks/{bookmarkId}")
     Call<Folder> updateBookmark(@Path("bookmarkId") String bookmarkId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @DELETE("https://udel.instructure.com/api/v1/users/self/bookmarks/{bookmarkId}")
+    Call<Void> deleteBookmark(@Path("bookmarkId") String bookmarkId, @Header("Authorization") String auth);
+
 }
