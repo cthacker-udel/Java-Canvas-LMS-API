@@ -2385,7 +2385,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void createCalendarEvent(CanvasClient client){
+    public boolean createCalendarEvent(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/calendar_events/");
 
@@ -2395,6 +2395,12 @@ public class CanvasRestAPI{
                 .build();
 
         calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
+
+        Call<Void> call = calendarEventInterface.createCalendarEvent(client.getToken(),client.getBookmark().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
 
     }
 
