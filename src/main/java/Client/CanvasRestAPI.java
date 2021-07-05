@@ -37,6 +37,7 @@ import Controller.BookmarksController.Bookmark;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
+import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
 import Controller.UserController.User;
 import Model.*;
@@ -2275,6 +2276,25 @@ public class CanvasRestAPI{
         Call<Bookmark> call = bookmarksInterface.getBookmark(client.getBookmark().getBookmarkId(),client.getToken());
 
         Response<Bookmark> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Folder updateBookmark(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/self/bookmarks/%s/",client.getBookmark().getBookmarkId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        bookmarksInterface bookmarksInterface = retrofit.create(Model.bookmarksInterface.class);
+
+        Call<Folder> call = bookmarksInterface.updateBookmark(client.getBookmark().getBookmarkId(),client.getToken(),client.getBookmark().generateQueries());
+
+        Response<Folder> response = call.execute();
 
         return response.body();
 
