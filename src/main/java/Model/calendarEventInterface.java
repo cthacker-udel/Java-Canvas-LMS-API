@@ -24,4 +24,8 @@ public interface calendarEventInterface {
 
     @POST("https://udel.instructure.com/api/v1/calendar_events/{eventId}/reservations")
     Call<Void> reserveTimeSlotV1(@Path("eventId") String eventId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @POST("https://udel.instructure.com/api/v1/calendar_events/{eventId}/reservations/{participantId}")
+    Call<Void> reserveTimeSlotV2(@Path("eventId") String eventId, @Path("participantId") String participantId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }

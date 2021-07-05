@@ -2423,7 +2423,7 @@ public class CanvasRestAPI{
 
     }
 
-    public boolean reserveTimeSlot(CanvasClient client) throws IOException {
+    public boolean reserveTimeSlotV1(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/calendar_events/%s/reservations/",client.getCalendarEvent().getCalendarEventId());
 
@@ -2440,6 +2440,25 @@ public class CanvasRestAPI{
 
         return response.isSuccessful();
 
+
+    }
+
+    public boolean reserveTimeSlotV2(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/calendar_events/%s/reservations/%s/",client.getCalendarEvent().getCalendarEventId(),client.getCalendarEvent().getParticipantId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
+
+        Call<Void> call = calendarEventInterface.reserveTimeSlotV2(client.getCalendarEvent().getCalendarEventId(),client.getCalendarEvent().getParticipantId(),client.getToken(),client.getCalendarEvent().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
 
     }
 

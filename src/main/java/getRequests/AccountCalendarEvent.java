@@ -158,6 +158,30 @@ public class AccountCalendarEvent extends CanvasClient {
         this.calendarEventDuplicateFrequency = null;
     }
 
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public Boolean getCancelExisting() {
+        return cancelExisting;
+    }
+
+    public void setCancelExisting(Boolean cancelExisting) {
+        this.cancelExisting = cancelExisting;
+    }
+
     public String getContextCode() {
         return contextCode;
     }
