@@ -19,11 +19,73 @@ public class AccountCalendarEvent extends CanvasClient {
     private ArrayList<String> submissionTypes = new ArrayList<>();
     private ArrayList<String> excludeSubmissionTypes = new ArrayList<>();
 
+    private String contextCode;
+    private String title;
+    private String description;
+    private ZonedDateTime startAt;
+    private ZonedDateTime endAt;
+    private String locationName;
+    private String locationAddress;
+    private String timeZoneEdited;
+    private Boolean allDay;
+    private ZonedDateTime childEventDateStartAt;
+    private ZonedDateTime childEventDateEndAt;
+    private String childEventDataContextCode;
+    private String duplicateCount;
+    private String duplicateInterval;
+    private String calendarEventDuplicateFrequency;
+
+
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.contextCode != null){
+            queries.put("calendar_event[context_code]",this.contextCode);
+        }
+        if(this.title != null){
+            queries.put("calendar_event[title]",this.title);
+        }
+        if(this.description != null){
+            queries.put("calendar_event[description]",this.description);
+        }
+        if(this.startAt != null){
+            queries.put("calendar_event[start_at]",this.startAt);
+        }
+        if(this.endAt != null){
+            queries.put("calendar_event[end_at]",this.endAt);
+        }
+        if(this.locationName != null){
+            queries.put("calendar_event[location_name]",this.locationName);
+        }
+        if(this.locationAddress != null){
+            queries.put("calendar_event[location_address]",this.locationAddress);
+        }
+        if(this.timeZoneEdited != null){
+            queries.put("calendar_event[time_zone_edited]",this.timeZoneEdited);
+        }
+        if(this.allDay != null){
+            queries.put("calendar_event[all_day]",this.allDay);
+        }
+        if(this.childEventDateStartAt != null){
+            queries.put("calendar_event[child_event_data][X][start_at]",this.childEventDateStartAt);
+        }
+        if(this.childEventDateEndAt != null){
+            queries.put("calendar_event[child_event_data][X][end_at]",this.childEventDateEndAt);
+        }
+        if(this.childEventDataContextCode != null){
+            queries.put("calendar_event[child_event_data][X][context_code]",this.childEventDataContextCode);
+        }
+        if(this.duplicateCount != null){
+            queries.put("calendar_event[duplicate][count]",this.duplicateCount);
+        }
+        if(this.duplicateInterval != null){
+            queries.put("calendar_event[duplicate][interval]",this.duplicateInterval);
+        }
+        if(this.calendarEventDuplicateFrequency != null){
+            queries.put("calendar_event[duplicate][frequency]",this.calendarEventDuplicateFrequency);
+        }
         if(this.type != null){
             queries.put("type",this.type);
         }

@@ -42,6 +42,7 @@ import Controller.ProgressController.Progress;
 import Controller.UserController.User;
 import Model.*;
 
+import com.google.gson.internal.GsonBuildConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
 import org.openqa.selenium.WebDriver;
@@ -2381,6 +2382,19 @@ public class CanvasRestAPI{
         Response<List<CalendarEvent>> response = call.execute();
 
         return response.body();
+
+    }
+
+    public void createCalendarEvent(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/calendar_events/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
 
     }
 
