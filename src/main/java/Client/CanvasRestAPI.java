@@ -42,8 +42,6 @@ import Controller.ProgressController.Progress;
 import Controller.UserController.User;
 import Model.*;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
 import org.openqa.selenium.WebDriver;
@@ -61,7 +59,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Calendar;
 import java.util.List;
 
 public class CanvasRestAPI{
@@ -2318,31 +2315,29 @@ public class CanvasRestAPI{
         return response.isSuccessful();
     }
 
+    /*
 
+    Brand Configs API
 
+     */
 
+    public boolean getBrandConfig(CanvasClient client) throws IOException {
 
+        String url = baseUrl + "/api/v1/brand_variables/";
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
+        brandConfigsInterface brandConfigsInterface = retrofit.create(Model.brandConfigsInterface.class);
 
+        Call<Void> call = brandConfigsInterface.getBrandConfig(client.getToken());
 
+        Response<Void> response = call.execute();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return response.isSuccessful();
+    }
 
 
     /*
@@ -2363,6 +2358,25 @@ public class CanvasRestAPI{
         calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
 
         Call<List<CalendarEvent>> call = calendarEventInterface.getListOfCalendarEvents(client.getToken(),client.getCalendarEvent().generateQueries());
+
+        Response<List<CalendarEvent>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<CalendarEvent> listUserCalendarEvents(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/calendar_events/",client.getCalendarEvent().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
+
+        Call<List<CalendarEvent>> call = calendarEventInterface.getListOfUserCalendarEvents(client.getCalendarEvent().getUserId(),client.getToken(),client.getCalendarEvent().generateQueries());
 
         Response<List<CalendarEvent>> response = call.execute();
 

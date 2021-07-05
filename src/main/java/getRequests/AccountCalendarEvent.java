@@ -10,11 +10,14 @@ import java.util.Map;
 public class AccountCalendarEvent extends CanvasClient {
 
     private String type = "event";
+    private String userId;
     private ZonedDateTime startDate;
     private ZonedDateTime endDate;
     private Boolean undated;
     private ArrayList<String> contextCodes = new ArrayList<>();
     private ArrayList<String> excludes = new ArrayList<>();
+    private ArrayList<String> submissionTypes = new ArrayList<>();
+    private ArrayList<String> excludeSubmissionTypes = new ArrayList<>();
 
 
     public Map<String,Object> generateQueries(){
@@ -39,18 +42,57 @@ public class AccountCalendarEvent extends CanvasClient {
         if(this.excludes.size() > 0){
             queries.put("excludes[]",String.join(",",this.excludes));
         }
+        if(this.submissionTypes.size() > 0){
+            queries.put("submission_types[]",String.join(",",this.submissionTypes));
+        }
+        if (this.excludeSubmissionTypes.size() > 0) {
+            queries.put("exclude_submission_types[]",String.join(",",this.excludeSubmissionTypes));
+        }
         return queries;
     }
 
     public void clearQueries(){
 
-        String type = "event";
-        ZonedDateTime startDate;
-        ZonedDateTime endDate;
-        Boolean undated;
-        ArrayList<String> contextCodes = new ArrayList<>();
-        ArrayList<String> excludes = new ArrayList<>();
+        this.type = null;
+        this.startDate = null;
+        this.endDate = null;
+        this.undated = null;
+        this.contextCodes = new ArrayList<>();
+        this.excludes = new ArrayList<>();
+        this.submissionTypes = new ArrayList<>();
+        this.excludeSubmissionTypes = new ArrayList<>();
+    }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Boolean getUndated() {
+        return undated;
+    }
+
+    public void setUndated(Boolean undated) {
+        this.undated = undated;
+    }
+
+    public ArrayList<String> getSubmissionTypes() {
+        return submissionTypes;
+    }
+
+    public void setSubmissionTypes(ArrayList<String> submissionTypes) {
+        this.submissionTypes = submissionTypes;
+    }
+
+    public ArrayList<String> getExcludeSubmissionTypes() {
+        return excludeSubmissionTypes;
+    }
+
+    public void setExcludeSubmissionTypes(ArrayList<String> excludeSubmissionTypes) {
+        this.excludeSubmissionTypes = excludeSubmissionTypes;
     }
 
     public String getType() {
