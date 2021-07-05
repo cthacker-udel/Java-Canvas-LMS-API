@@ -2404,6 +2404,25 @@ public class CanvasRestAPI{
 
     }
 
+    public CalendarEvent getCalendarEvent(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/calendar_events/%s/",client.getCalendarEvent().getCalendarEventId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
+
+        Call<CalendarEvent> call = calendarEventInterface.getCalendarEvent(client.getCalendarEvent().getCalendarEventId(),client.getToken());
+
+        Response<CalendarEvent> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

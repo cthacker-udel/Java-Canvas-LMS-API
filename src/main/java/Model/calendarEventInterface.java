@@ -19,4 +19,7 @@ public interface calendarEventInterface {
     @POST("https://udel.instructure.com/api/v1/calendar_events")
     Call<Void> createCalendarEvent(@Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/calendar_events/{calendarEventId}")
+    Call<CalendarEvent> getCalendarEvent(@Path("calendarEventId") String calendarEventId, @Header("Authorization") String auth);
+
 }

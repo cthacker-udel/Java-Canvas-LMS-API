@@ -35,6 +35,8 @@ public class AccountCalendarEvent extends CanvasClient {
     private String duplicateInterval;
     private String calendarEventDuplicateFrequency;
 
+    private String calendarEventId;
+
 
 
     public Map<String,Object> generateQueries(){
@@ -138,6 +140,134 @@ public class AccountCalendarEvent extends CanvasClient {
         this.duplicateCount = null;
         this.duplicateInterval = null;
         this.calendarEventDuplicateFrequency = null;
+    }
+
+    public String getContextCode() {
+        return contextCode;
+    }
+
+    public void setContextCode(String contextCode) {
+        this.contextCode = contextCode;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ZonedDateTime getStartAt() {
+        return startAt;
+    }
+
+    public void setStartAt(ZonedDateTime startAt) {
+        this.startAt = startAt;
+    }
+
+    public ZonedDateTime getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(ZonedDateTime endAt) {
+        this.endAt = endAt;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public String getLocationAddress() {
+        return locationAddress;
+    }
+
+    public void setLocationAddress(String locationAddress) {
+        this.locationAddress = locationAddress;
+    }
+
+    public String getTimeZoneEdited() {
+        return timeZoneEdited;
+    }
+
+    public void setTimeZoneEdited(String timeZoneEdited) {
+        this.timeZoneEdited = timeZoneEdited;
+    }
+
+    public Boolean getAllDay() {
+        return allDay;
+    }
+
+    public void setAllDay(Boolean allDay) {
+        this.allDay = allDay;
+    }
+
+    public ZonedDateTime getChildEventDateStartAt() {
+        return childEventDateStartAt;
+    }
+
+    public void setChildEventDateStartAt(ZonedDateTime childEventDateStartAt) {
+        this.childEventDateStartAt = childEventDateStartAt;
+    }
+
+    public ZonedDateTime getChildEventDateEndAt() {
+        return childEventDateEndAt;
+    }
+
+    public void setChildEventDateEndAt(ZonedDateTime childEventDateEndAt) {
+        this.childEventDateEndAt = childEventDateEndAt;
+    }
+
+    public String getChildEventDataContextCode() {
+        return childEventDataContextCode;
+    }
+
+    public void setChildEventDataContextCode(String childEventDataContextCode) {
+        this.childEventDataContextCode = childEventDataContextCode;
+    }
+
+    public String getDuplicateCount() {
+        return duplicateCount;
+    }
+
+    public void setDuplicateCount(String duplicateCount) {
+        this.duplicateCount = duplicateCount;
+    }
+
+    public String getDuplicateInterval() {
+        return duplicateInterval;
+    }
+
+    public void setDuplicateInterval(String duplicateInterval) {
+        this.duplicateInterval = duplicateInterval;
+    }
+
+    public String getCalendarEventDuplicateFrequency() {
+        return calendarEventDuplicateFrequency;
+    }
+
+    public void setCalendarEventDuplicateFrequency(String calendarEventDuplicateFrequency) {
+        this.calendarEventDuplicateFrequency = calendarEventDuplicateFrequency;
+    }
+
+    public String getCalendarEventId() {
+        return calendarEventId;
+    }
+
+    public void setCalendarEventId(String calendarEventId) {
+        this.calendarEventId = calendarEventId;
     }
 
     public String getUserId() {
