@@ -2242,6 +2242,25 @@ public class CanvasRestAPI{
 
     }
 
+    public Bookmark createBookmark(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/users/self/bookmarks/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        bookmarksInterface bookmarksInterface = retrofit.create(Model.bookmarksInterface.class);
+
+        Call<Bookmark> call = bookmarksInterface.createBookmark(client.getToken());
+
+        Response<Bookmark> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
