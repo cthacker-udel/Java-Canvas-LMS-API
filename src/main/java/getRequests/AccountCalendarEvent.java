@@ -37,12 +37,25 @@ public class AccountCalendarEvent extends CanvasClient {
 
     private String calendarEventId;
 
+    private String participantId;
+    private String comments;
+    private Boolean cancelExisting;
+
 
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.participantId != null){
+            queries.put("participant_id",this.participantId);
+        }
+        if(this.comments != null){
+            queries.put("comments",this.comments);
+        }
+        if(this.cancelExisting != null){
+            queries.put("cancel_existing",this.cancelExisting);
+        }
         if(this.contextCode != null){
             queries.put("calendar_event[context_code]",this.contextCode);
         }
@@ -117,6 +130,9 @@ public class AccountCalendarEvent extends CanvasClient {
 
     public void clearQueries(){
 
+        this.participantId = null;
+        this.comments = null;
+        this.cancelExisting = null;
         this.type = null;
         this.startDate = null;
         this.endDate = null;

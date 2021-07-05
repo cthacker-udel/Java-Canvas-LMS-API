@@ -2423,6 +2423,26 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean reserveTimeSlot(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/calendar_events/%s/reservations/",client.getCalendarEvent().getCalendarEventId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
+
+        Call<Void> call = calendarEventInterface.reserveTimeSlotV1(client.getCalendarEvent().getCalendarEventId(),client.getToken(),client.getCalendarEvent().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+
+    }
+
 
 
 
