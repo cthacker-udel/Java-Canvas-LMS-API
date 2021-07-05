@@ -123,6 +123,21 @@ public class AccountCalendarEvent extends CanvasClient {
         this.excludes = new ArrayList<>();
         this.submissionTypes = new ArrayList<>();
         this.excludeSubmissionTypes = new ArrayList<>();
+        this.contextCode = null;
+        this.title = null;
+        this.description = null;
+        this.startAt = null;
+        this.endAt = null;
+        this.locationName = null;
+        this.locationAddress = null;
+        this.timeZoneEdited = null;
+        this.allDay = null;
+        this.childEventDateStartAt = null;
+        this.childEventDateEndAt = null;
+        this.childEventDataContextCode = null;
+        this.duplicateCount = null;
+        this.duplicateInterval = null;
+        this.calendarEventDuplicateFrequency = null;
     }
 
     public String getUserId() {
