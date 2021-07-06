@@ -2462,7 +2462,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void updateCalendarEvent(CanvasClient client){
+    public CalendarEvent updateCalendarEvent(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/calendar_events/%s",client.getCalendarEvent().getCalendarEventId());
 
