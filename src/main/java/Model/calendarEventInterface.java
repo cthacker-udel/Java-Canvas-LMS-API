@@ -37,4 +37,7 @@ public interface calendarEventInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/calendar_events/timetable")
     Call<Void> setCourseTimetable(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/calendar_events/timetable")
+    Call<Object> getCourseTimetable(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
 }
