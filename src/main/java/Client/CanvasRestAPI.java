@@ -2538,6 +2538,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean createOrUpdateCourseTimetableEvents(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/calendar_events/timetable_events/",client.getCalendarEvent().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
+
+        Call<Void> call = calendarEventInterface.createOrUpdateTimetableEvents(client.getCalendarEvent().getCourseId(),client.getToken(),client.getCalendarEvent().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 

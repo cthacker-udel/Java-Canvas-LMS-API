@@ -49,12 +49,33 @@ public class AccountCalendarEvent extends CanvasClient {
     private String timetableEndTime;
     private String timetableLocation;
 
+    private ZonedDateTime eventsStartAt;
+    private ZonedDateTime eventsEndAt;
+    private String eventsLocation;
+    private String eventsCode;
+    private String eventsTitle;
+
 
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.eventsStartAt != null){
+            queries.put("events[][start_at]",this.eventsStartAt);
+        }
+        if(this.eventsEndAt != null){
+            queries.put("events[][end_at]",this.eventsEndAt);
+        }
+        if(this.eventsLocation != null){
+            queries.put("events[][location_name]",this.eventsLocation);
+        }
+        if(this.eventsCode != null){
+            queries.put("events[][code]",this.eventsCode);
+        }
+        if(this.eventsTitle != null){
+            queries.put("events[][title]",this.eventsTitle);
+        }
         if(this.timetableDays.size() > 0){
             queries.put(String.format("timetables[%s][][weekdays]",this.courseId),this.timetableDays.toArray(String[]::new));
         }
@@ -184,6 +205,83 @@ public class AccountCalendarEvent extends CanvasClient {
         this.timetableStartTime = null;
         this.timetableEndTime = null;
         this.timetableDays = new ArrayList<>();
+        this.eventsLocation = null;
+        this.eventsCode = null;
+        this.eventsEndAt = null;
+        this.eventsStartAt = null;
+        this.eventsTitle = null;
+    }
+
+    public ArrayList<String> getTimetableDays() {
+        return timetableDays;
+    }
+
+    public void setTimetableDays(ArrayList<String> timetableDays) {
+        this.timetableDays = timetableDays;
+    }
+
+    public String getTimetableStartTime() {
+        return timetableStartTime;
+    }
+
+    public void setTimetableStartTime(String timetableStartTime) {
+        this.timetableStartTime = timetableStartTime;
+    }
+
+    public String getTimetableEndTime() {
+        return timetableEndTime;
+    }
+
+    public void setTimetableEndTime(String timetableEndTime) {
+        this.timetableEndTime = timetableEndTime;
+    }
+
+    public String getTimetableLocation() {
+        return timetableLocation;
+    }
+
+    public void setTimetableLocation(String timetableLocation) {
+        this.timetableLocation = timetableLocation;
+    }
+
+    public ZonedDateTime getEventsStartAt() {
+        return eventsStartAt;
+    }
+
+    public void setEventsStartAt(ZonedDateTime eventsStartAt) {
+        this.eventsStartAt = eventsStartAt;
+    }
+
+    public ZonedDateTime getEventsEndAt() {
+        return eventsEndAt;
+    }
+
+    public void setEventsEndAt(ZonedDateTime eventsEndAt) {
+        this.eventsEndAt = eventsEndAt;
+    }
+
+    public String getEventsLocation() {
+        return eventsLocation;
+    }
+
+    public void setEventsLocation(String eventsLocation) {
+        this.eventsLocation = eventsLocation;
+    }
+
+    public String getEventsCode() {
+        return eventsCode;
+    }
+
+    public void setEventsCode(String eventsCode) {
+        this.eventsCode = eventsCode;
+    }
+
+    public String getEventsTitle() {
+        return eventsTitle;
+    }
+
+    public void setEventsTitle(String eventsTitle) {
+        this.eventsTitle = eventsTitle;
     }
 
     public String getCourseId() {
