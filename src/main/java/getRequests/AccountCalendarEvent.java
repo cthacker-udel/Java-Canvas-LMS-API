@@ -42,6 +42,12 @@ public class AccountCalendarEvent extends CanvasClient {
     private Boolean cancelExisting;
 
     private String cancelReason;
+    private String courseId;
+
+    private ArrayList<String> timetableDays = new ArrayList<>();
+    private String timetableStartTime;
+    private String timetableEndTime;
+    private String timetableLocation;
 
 
 
@@ -49,6 +55,18 @@ public class AccountCalendarEvent extends CanvasClient {
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.timetableDays.size() > 0){
+            queries.put(String.format("timetables[%s][][weekdays]",this.courseId),this.timetableDays.toArray(String[]::new));
+        }
+        if(this.timetableEndTime != null){
+            queries.put(String.format("timetables[%s][][end_time]",this.courseId),this.timetableEndTime);
+        }
+        if(this.timetableStartTime != null){
+            queries.put(String.format("timetables[%s][][start_time]",this.courseId),this.timetableStartTime);
+        }
+        if(this.timetableLocation != null){
+            queries.put(String.format("timetables[%s][][location]",this.courseId),this.timetableLocation);
+        }
         if(this.cancelReason != null){
             queries.put("cancel_reason",this.cancelReason);
         }
@@ -162,6 +180,18 @@ public class AccountCalendarEvent extends CanvasClient {
         this.duplicateInterval = null;
         this.calendarEventDuplicateFrequency = null;
         this.cancelReason = null;
+        this.timetableLocation = null;
+        this.timetableStartTime = null;
+        this.timetableEndTime = null;
+        this.timetableDays = new ArrayList<>();
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getCancelReason() {

@@ -2500,6 +2500,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean setCourseTimetable(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/calendar_events/timetable/",client.getCalendarEvent().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
+
+        Call<Void> call = calendarEventInterface.setCourseTimetable(client.getCalendarEvent().getCourseId(),client.getToken(),client.getCalendarEvent().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 

@@ -34,4 +34,7 @@ public interface calendarEventInterface {
     @DELETE("https://udel.instructure.com/api/v1/calendar_events/{eventId}")
     Call<CalendarEvent> deleteCalendarEvent(@Path("eventId") String eventId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/calendar_events/timetable")
+    Call<Void> setCourseTimetable(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }
