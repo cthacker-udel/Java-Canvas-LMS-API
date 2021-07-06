@@ -2462,6 +2462,25 @@ public class CanvasRestAPI{
 
     }
 
+    public void updateCalendarEvent(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/calendar_events/%s",client.getCalendarEvent().getCalendarEventId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        calendarEventInterface calendarEventInterface = retrofit.create(Model.calendarEventInterface.class);
+
+        Call<CalendarEvent> call = calendarEventInterface.updateCalendarEvent(client.getCalendarEvent().getCalendarEventId(),client.getToken(),client.getCalendarEvent().generateQueries());
+
+        Response<CalendarEvent> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
