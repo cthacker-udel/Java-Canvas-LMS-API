@@ -31,4 +31,7 @@ public interface calendarEventInterface {
     @PUT("https://udel.instructure.com/api/v1/calendar_events/{eventId}")
     Call<CalendarEvent> updateCalendarEvent(@Path("eventId") String eventId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @DELETE("https://udel.instructure.com/api/v1/calendar_events/{eventId}")
+    Call<CalendarEvent> deleteCalendarEvent(@Path("eventId") String eventId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }

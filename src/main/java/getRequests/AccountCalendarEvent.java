@@ -41,12 +41,17 @@ public class AccountCalendarEvent extends CanvasClient {
     private String comments;
     private Boolean cancelExisting;
 
+    private String cancelReason;
+
 
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.cancelReason != null){
+            queries.put("cancel_reason",this.cancelReason);
+        }
         if(this.participantId != null){
             queries.put("participant_id",this.participantId);
         }
@@ -156,6 +161,15 @@ public class AccountCalendarEvent extends CanvasClient {
         this.duplicateCount = null;
         this.duplicateInterval = null;
         this.calendarEventDuplicateFrequency = null;
+        this.cancelReason = null;
+    }
+
+    public String getCancelReason() {
+        return cancelReason;
+    }
+
+    public void setCancelReason(String cancelReason) {
+        this.cancelReason = cancelReason;
     }
 
     public String getParticipantId() {
