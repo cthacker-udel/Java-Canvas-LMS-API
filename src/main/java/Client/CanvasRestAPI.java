@@ -2557,6 +2557,15 @@ public class CanvasRestAPI{
 
     }
 
+    /*
+
+    Collaborations API
+
+     */
+
+
+
+
 
 
 
