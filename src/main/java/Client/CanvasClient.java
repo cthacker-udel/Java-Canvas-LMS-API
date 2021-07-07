@@ -29,6 +29,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Bookmark bookmark;
     private Collaborations collaborations;
     private CommMessages commMessages;
+    private CommunicationChannels communicationChannels;
 
     public CanvasClient(){
         super();
@@ -61,7 +62,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.bookmark = new Bookmark();
         this.collaborations = new Collaborations();
         this.commMessages = new CommMessages();
+        this.communicationChannels = new CommunicationChannels();
 
+    }
+
+    public CommunicationChannels getCommunicationChannels() {
+        return communicationChannels;
+    }
+
+    public void setCommunicationChannels(CommunicationChannels communicationChannels) {
+        this.communicationChannels = communicationChannels;
     }
 
     public CommMessages getCommMessages() {

@@ -38,6 +38,7 @@ import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CollaborationsController.Collaboration;
 import Controller.CollaborationsController.Collaborator;
 import Controller.CommMessagesController.CommMessage;
+import Controller.CommunicationChannelsController.CommunicationChannel;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -2684,6 +2685,31 @@ public class CanvasRestAPI{
         return response.body();
 
     }
+
+    /*
+
+    Communication Channels API
+
+     */
+
+    public CommunicationChannel createCommunicationChannel(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/communication_channels/",client.getCommunicationChannels().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        communicationChannelInterface communicationChannelInterface = retrofit.create(Model.communicationChannelInterface.class);
+
+        Call<CommunicationChannel> call = communicationChannelInterface.createCommunicationChannel(client.getCommunicationChannels().getUserId(),client.getToken(),client.getCommunicationChannels().generateQueries());
+
+        Response<CommunicationChannel> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 
