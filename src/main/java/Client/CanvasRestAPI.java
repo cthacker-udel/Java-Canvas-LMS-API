@@ -2659,6 +2659,14 @@ public class CanvasRestAPI{
 
     }
 
+    /*
+
+    CommMessages API
+
+     */
+
+
+
 
 
 
