@@ -2564,7 +2564,7 @@ public class CanvasRestAPI{
 
      */
 
-    public List<Collaboration> listCollaborations(CanvasClient client) throws IOException {
+    public List<Collaboration> listCollaborationsCourseID(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/collaborations/",client.getCollaborations().getCourseId());
 
@@ -2575,11 +2575,32 @@ public class CanvasRestAPI{
 
         collaborationsInterface collaborationsInterface = retrofit.create(Model.collaborationsInterface.class);
 
-        Call<List<Collaboration>> call = collaborationsInterface.listCollaborations(client.getCollaborations().getCourseId(),client.getToken());
+        Call<List<Collaboration>> call = collaborationsInterface.listCollaborationsCourseID(client.getCollaborations().getCourseId(),client.getToken());
 
         Response<List<Collaboration>> response = call.execute();
 
         return response.body();
+
+    }
+
+    public List<Collaboration> listCollaborationsGroupID(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/collaborations/",client.getCollaborations().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        collaborationsInterface collaborationsInterface = retrofit.create(Model.collaborationsInterface.class);
+
+        Call<List<Collaboration>> call = collaborationsInterface.listCollaborationsCourseID(client.getCollaborations().getGroupId(),client.getToken());
+
+        Response<List<Collaboration>> response = call.execute();
+
+        return response.body();
+
+
 
     }
 
