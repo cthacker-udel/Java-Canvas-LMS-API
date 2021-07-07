@@ -17,4 +17,7 @@ public interface communicationChannelInterface {
     @DELETE("https://udel.instructure.com/api/v1/users/{userId}/communication_channels/{communicationChannelType}/{communicationChannelAddress}")
     Call<CommunicationChannel> deleteCommunicationChannelAddress(@Path("userId") String userId, @Path("communicationChannelType") String commChannelType, @Path("communicationChannelAddress") String commChannelAddress, @Header("Authorization") String auth);
 
+    @DELETE("https://udel.instructure.com/api/v1/users/self/communication_channels/push")
+    Call<Void> deletePushNotificationEndpoint(@Header("Authorization") String auth);
+
 }

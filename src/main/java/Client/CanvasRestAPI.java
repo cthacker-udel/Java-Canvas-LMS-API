@@ -2748,6 +2748,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean deletePushNotification(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/self/communications/push/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        communicationChannelInterface communicationChannelInterface = retrofit.create(Model.communicationChannelInterface.class);
+
+        Call<Void> call = communicationChannelInterface.deletePushNotificationEndpoint(client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
