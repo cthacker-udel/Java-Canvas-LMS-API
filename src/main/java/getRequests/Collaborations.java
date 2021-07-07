@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class Collaborations extends CanvasClient {
 
+    private String courseId;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
@@ -22,4 +24,11 @@ public class Collaborations extends CanvasClient {
 
     }
 
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
 }
