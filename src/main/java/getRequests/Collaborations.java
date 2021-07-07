@@ -9,10 +9,17 @@ public class Collaborations extends CanvasClient {
 
     private String courseId;
     private String groupId;
+    private String collaborationId;
+
+    private String include;
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
+
+        if(this.include != null){
+            queries.put("include[]",this.include);
+        }
 
 
 
@@ -21,8 +28,24 @@ public class Collaborations extends CanvasClient {
 
     }
 
-    public void clearQueries(){
+    public void clearQueries() {
+        this.include = null;
+    }
 
+    public String getInclude() {
+        return include;
+    }
+
+    public void setInclude(String include) {
+        this.include = include;
+    }
+
+    public String getCollaborationId() {
+        return collaborationId;
+    }
+
+    public void setCollaborationId(String collaborationId) {
+        this.collaborationId = collaborationId;
     }
 
     public String getGroupId() {

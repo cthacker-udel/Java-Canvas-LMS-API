@@ -36,6 +36,7 @@ import Controller.BlueprintCourseController.ChangeRecord.ChangeRecord;
 import Controller.BookmarksController.Bookmark;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CollaborationsController.Collaboration;
+import Controller.CollaborationsController.Collaborator;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -2599,8 +2600,24 @@ public class CanvasRestAPI{
         Response<List<Collaboration>> response = call.execute();
 
         return response.body();
+    }
 
+    public List<Collaborator> listCollaborationMembers(CanvasClient client) throws IOException {
 
+        String url = baseUrl + String.format("/api/v1/collaborations/%s/members/",client.getCollaborations().getCollaborationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        collaborationsInterface collaborationsInterface = retrofit.create(Model.collaborationsInterface.class);
+
+        Call<List<Collaborator>> call = collaborationsInterface.listCollaborationMembers(client.getCollaborations().getCollaborationId(),client.getToken(),client.getCollaborations().generateQueries());
+
+        Response<List<Collaborator>> response = call.execute();
+
+        return response.body();
 
     }
 
