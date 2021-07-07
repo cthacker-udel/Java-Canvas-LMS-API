@@ -2729,6 +2729,25 @@ public class CanvasRestAPI{
 
     }
 
+    public CommunicationChannel deleteCommunicationChannelAddress(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/communication_channels/%s/%s/",client.getCommunicationChannels().getUserId(),client.getCommunicationChannels().getCommunicationChannelType(),client.getCommunicationChannels().getCommunicationChannelAddress());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        communicationChannelInterface communicationChannelInterface = retrofit.create(Model.communicationChannelInterface.class);
+
+        Call<CommunicationChannel> call = communicationChannelInterface.deleteCommunicationChannelAddress(client.getCommunicationChannels().getUserId(),client.getCommunicationChannels().getCommunicationChannelType(),client.getCommunicationChannels().getCommunicationChannelAddress(), client.getToken());
+
+        Response<CommunicationChannel> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
