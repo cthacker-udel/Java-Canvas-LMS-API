@@ -23,4 +23,7 @@ public interface collaborationsInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/potential_collaborators")
     Call<List<User>> listPotentialMembersCourseID(@Path("courseId") String courseID, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/potential_collaborators")
+    Call<List<User>> listPotentialMembersGroupID(@Path("groupId") String groupId, @Header("Authorization") String auth);
+
 }

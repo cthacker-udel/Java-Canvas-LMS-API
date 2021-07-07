@@ -2640,6 +2640,25 @@ public class CanvasRestAPI{
 
     }
 
+    public List<User> listPotentialMembersGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/potential_collaborators/",client.getCollaborations().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        collaborationsInterface collaborationsInterface = retrofit.create(Model.collaborationsInterface.class);
+
+        Call<List<User>> call = collaborationsInterface.listPotentialMembersGroupID(client.getCollaborations().getGroupId(),client.getToken());
+
+        Response<List<User>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
