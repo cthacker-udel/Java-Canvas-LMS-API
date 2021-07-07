@@ -12,6 +12,7 @@ public class CommunicationChannels extends CanvasClient {
     private String token;
     private Boolean skipConfirmation;
     private String userId;
+    private String communicationChannelId;
 
     public Map<String,Object> generateQueries(){
 
@@ -39,6 +40,14 @@ public class CommunicationChannels extends CanvasClient {
         this.token = null;
         this.skipConfirmation = null;
 
+    }
+
+    public String getCommunicationChannelId() {
+        return communicationChannelId;
+    }
+
+    public void setCommunicationChannelId(String communicationChannelId) {
+        this.communicationChannelId = communicationChannelId;
     }
 
     public String getAddress() {
