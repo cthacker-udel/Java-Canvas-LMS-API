@@ -28,6 +28,7 @@ public class CanvasClient extends CanvasRestAPI {
     private BlueprintCourses blueprintCourses;
     private Bookmark bookmark;
     private Collaborations collaborations;
+    private CommMessages commMessages;
 
     public CanvasClient(){
         super();
@@ -59,6 +60,7 @@ public class CanvasClient extends CanvasRestAPI {
         this.blueprintCourses = new BlueprintCourses();
         this.bookmark = new Bookmark();
         this.collaborations = new Collaborations();
+        this.commMessages = new CommMessages();
 
     }
 
