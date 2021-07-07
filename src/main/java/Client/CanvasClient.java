@@ -64,6 +64,14 @@ public class CanvasClient extends CanvasRestAPI {
 
     }
 
+    public CommMessages getCommMessages() {
+        return commMessages;
+    }
+
+    public void setCommMessages(CommMessages commMessages) {
+        this.commMessages = commMessages;
+    }
+
     public Collaborations getCollaborations() {
         return collaborations;
     }

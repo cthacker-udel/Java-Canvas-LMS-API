@@ -37,6 +37,7 @@ import Controller.BookmarksController.Bookmark;
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.CollaborationsController.Collaboration;
 import Controller.CollaborationsController.Collaborator;
+import Controller.CommMessagesController.CommMessage;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -2664,6 +2665,25 @@ public class CanvasRestAPI{
     CommMessages API
 
      */
+
+    public List<CommMessage> listUserCommMessages(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/comm_messages/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        commMessagesInterface commMessagesInterface = retrofit.create(Model.commMessagesInterface.class);
+
+        Call<List<CommMessage>> call = commMessagesInterface.getUserCommMessages(client.getToken(),client.getCommMessages().generateQueries());
+
+        Response<List<CommMessage>> response = call.execute();
+
+        return response.body();
+
+    }
 
 
 
