@@ -2,6 +2,7 @@ package Model;
 
 import Controller.CollaborationsController.Collaboration;
 import Controller.CollaborationsController.Collaborator;
+import Controller.UserController.User;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -18,5 +19,8 @@ public interface collaborationsInterface {
 
     @GET("https://udel.instructure.com/api/v1/collaborations/{collaborationId}/members")
     Call<List<Collaborator>> listCollaborationMembers(@Path("collaborationId") String collaborationId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/potential_collaborators")
+    Call<List<User>> listPotentialMembersCourseID(@Path("courseId") String courseID, @Header("Authorization") String auth);
 
 }
