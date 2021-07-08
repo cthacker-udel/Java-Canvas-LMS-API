@@ -2793,6 +2793,25 @@ public class CanvasRestAPI{
 
     }
 
+    public List<Conference> listConferencesGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/conferences/",client.getConference().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conferenceInterface conferenceInterface = retrofit.create(Model.conferenceInterface.class);
+
+        Call<List<Conference>> call = conferenceInterface.listConferencesCourseID(client.getConference().getGroupId(),client.getToken());
+
+        Response<List<Conference>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

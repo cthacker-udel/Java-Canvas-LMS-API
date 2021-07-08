@@ -9,6 +9,8 @@ public class Conference extends CanvasClient {
 
     private String courseId;
 
+    private String groupId;
+
 
     public Map<String,Object> generateQueries(){
 
@@ -21,6 +23,14 @@ public class Conference extends CanvasClient {
 
     public void clearQueries(){
 
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
     public String getCourseId() {
