@@ -39,6 +39,7 @@ import Controller.CollaborationsController.Collaboration;
 import Controller.CollaborationsController.Collaborator;
 import Controller.CommMessagesController.CommMessage;
 import Controller.CommunicationChannelsController.CommunicationChannel;
+import Controller.ConferencesController.Conference;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -2766,6 +2767,33 @@ public class CanvasRestAPI{
         return response.isSuccessful();
 
     }
+
+    /*
+
+    Conferences API
+
+     */
+
+    public List<Conference> listConferences(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/conferences/",client.getConference().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conferenceInterface conferenceInterface = retrofit.create(Model.conferenceInterface.class);
+
+        Call<List<Conference>> call = conferenceInterface.listConferencesCourseID(client.getConference().getCourseId(),client.getToken());
+
+        Response<List<Conference>> response = call.execute();
+
+        return response.body();
+
+    }
+
+
 
 
 

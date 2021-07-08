@@ -30,6 +30,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Collaborations collaborations;
     private CommMessages commMessages;
     private CommunicationChannels communicationChannels;
+    private Conference conference;
 
     public CanvasClient(){
         super();
@@ -63,7 +64,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.collaborations = new Collaborations();
         this.commMessages = new CommMessages();
         this.communicationChannels = new CommunicationChannels();
+        this.conference = new Conference();
 
+    }
+
+    public Conference getConference() {
+        return conference;
+    }
+
+    public void setConference(Conference conference) {
+        this.conference = conference;
     }
 
     public CommunicationChannels getCommunicationChannels() {
