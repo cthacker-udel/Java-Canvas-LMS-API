@@ -31,6 +31,7 @@ public class CanvasClient extends CanvasRestAPI {
     private CommMessages commMessages;
     private CommunicationChannels communicationChannels;
     private Conference conference;
+    private ContentExport contentExport;
 
     public CanvasClient(){
         super();
@@ -65,6 +66,7 @@ public class CanvasClient extends CanvasRestAPI {
         this.commMessages = new CommMessages();
         this.communicationChannels = new CommunicationChannels();
         this.conference = new Conference();
+        this.contentExport = new ContentExport();
 
     }
 
