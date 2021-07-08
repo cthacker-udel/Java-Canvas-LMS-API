@@ -2812,7 +2812,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void listConferencesCurrUser(CanvasClient client){
+    public List<Conference> listConferencesCurrUser(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/conferences/");
 
@@ -2823,7 +2823,11 @@ public class CanvasRestAPI{
 
         conferenceInterface conferenceInterface = retrofit.create(Model.conferenceInterface.class);
 
-        Call<List<Conference>> call =
+        Call<List<Conference>> call = conferenceInterface.listCurrUserConferences(client.getToken(),client.getConference().generateQueries());
+
+        Response<List<Conference>> response = call.execute();
+
+        return response.body();
 
     }
 

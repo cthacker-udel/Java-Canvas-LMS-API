@@ -11,10 +11,16 @@ public class Conference extends CanvasClient {
 
     private String groupId;
 
+    private String state;
+
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
+
+        if(this.state != null){
+            queries.put("state",this.state);
+        }
 
         return queries;
 
@@ -22,7 +28,15 @@ public class Conference extends CanvasClient {
     }
 
     public void clearQueries(){
+        this.state = null;
+    }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getGroupId() {
