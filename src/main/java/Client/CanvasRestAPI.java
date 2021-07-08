@@ -2804,11 +2804,26 @@ public class CanvasRestAPI{
 
         conferenceInterface conferenceInterface = retrofit.create(Model.conferenceInterface.class);
 
-        Call<List<Conference>> call = conferenceInterface.listConferencesCourseID(client.getConference().getGroupId(),client.getToken());
+        Call<List<Conference>> call = conferenceInterface.listConferencesGroupId(client.getConference().getGroupId(),client.getToken());
 
         Response<List<Conference>> response = call.execute();
 
         return response.body();
+
+    }
+
+    public void listConferencesCurrUser(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/conferences/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conferenceInterface conferenceInterface = retrofit.create(Model.conferenceInterface.class);
+
+        Call<List<Conference>> call =
 
     }
 
