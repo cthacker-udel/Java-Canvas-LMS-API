@@ -70,6 +70,14 @@ public class CanvasClient extends CanvasRestAPI {
 
     }
 
+    public ContentExport getContentExport() {
+        return contentExport;
+    }
+
+    public void setContentExport(ContentExport contentExport) {
+        this.contentExport = contentExport;
+    }
+
     public Conference getConference() {
         return conference;
     }

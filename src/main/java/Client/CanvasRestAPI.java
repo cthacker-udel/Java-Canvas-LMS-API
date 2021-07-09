@@ -40,6 +40,7 @@ import Controller.CollaborationsController.Collaborator;
 import Controller.CommMessagesController.CommMessage;
 import Controller.CommunicationChannelsController.CommunicationChannel;
 import Controller.ConferencesController.Conference;
+import Controller.ContentExportsController.ContentExport;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -2836,6 +2837,26 @@ public class CanvasRestAPI{
     Content Exports API
 
      */
+
+    public List<ContentExport> listContentExportsCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/content_exports/",client.getContentExport().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentExportInterface contentExportInterface = retrofit.create(Model.contentExportInterface.class);
+
+        Call<List<ContentExport>> call = contentExportInterface.listContentExportsCourseId(client.getContentExport().getCourseId(),client.getToken());
+
+        Response<List<ContentExport>> response = call.execute();
+
+        return response.body();
+
+
+    }
 
 
 
