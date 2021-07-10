@@ -2936,7 +2936,7 @@ public class CanvasRestAPI{
 
     public ContentExport showContentExportUserId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/users/%s/content_exports/%s/",client.getContentExport().getUserId(),client.getContentExport().getContentExportId());
+        String url = baseUrl + String.format("/api/v1/users/%s/content_exports/%s/", client.getContentExport().getUserId(), client.getContentExport().getContentExportId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -2945,11 +2945,31 @@ public class CanvasRestAPI{
 
         contentExportInterface contentExportInterface = retrofit.create(Model.contentExportInterface.class);
 
-        Call<ContentExport> call = contentExportInterface.showContentExportUserId(client.getContentExport().getUserId(),client.getContentExport().getContentExportId(),client.getToken());
+        Call<ContentExport> call = contentExportInterface.showContentExportUserId(client.getContentExport().getUserId(), client.getContentExport().getContentExportId(), client.getToken());
 
         Response<ContentExport> response = call.execute();
 
         return response.body();
+
+    }
+
+    public ContentExport exportContentCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/content_exports/",client.getContentExport().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentExportInterface contentExportInterface = retrofit.create(Model.contentExportInterface.class);
+
+        Call<ContentExport> call = contentExportInterface.exportContentCourseID(client.getContentExport().getCourseId(),client.getToken(),client.getContentExport().generateQueries());
+
+        Response<ContentExport> response = call.execute();
+
+        return response.body();
+
 
     }
 
