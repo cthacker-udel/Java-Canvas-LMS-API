@@ -2934,6 +2934,25 @@ public class CanvasRestAPI{
 
     }
 
+    public ContentExport showContentExportUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/content_exports/%s/",client.getContentExport().getUserId(),client.getContentExport().getContentExportId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentExportInterface contentExportInterface = retrofit.create(Model.contentExportInterface.class);
+
+        Call<ContentExport> call = contentExportInterface.showContentExportUserId(client.getContentExport().getUserId(),client.getContentExport().getContentExportId(),client.getToken());
+
+        Response<ContentExport> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
