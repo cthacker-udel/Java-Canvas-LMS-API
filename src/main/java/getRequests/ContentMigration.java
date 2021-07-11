@@ -76,7 +76,7 @@ public class ContentMigration extends CanvasClient {
             queries.put("settings[question_bank_id]",this.questionBankId);
         }
         if(this.questionBankName != null){
-            queries.put("settings[question_bank_name]",this.questionBankName)
+            queries.put("settings[question_bank_name]",this.questionBankName);
         }
         if(this.insertIntoModuleId != null){
             queries.put("settings[insert_into_module_id]",this.insertIntoModuleId);
@@ -122,7 +122,38 @@ public class ContentMigration extends CanvasClient {
 
     public void clearQueries(){
 
-
+        this.accountId = null;
+        this.contentMigrationId = null;
+        this.courseId = null;
+        this.groupid = null;
+        this.userId = null;
+        this.migrationIssuesId = null;
+        this.workflowState = null;
+        this.migrationType = null;
+        this.preAttachmentName = null;
+        this.preAttachment = null;
+        this.settingsFileUrl = null;
+        this.settingsContentExportId = null;
+        this.sourceCourseId = null;
+        this.folderId = null;
+        this.overwriteQuizzes = null;
+        this.questionBankName = null;
+        this.questionBankId = null;
+        this.insertIntoModuleId = null;
+        this.insertIntoModuleType = null;
+        this.insertIntoModulePosition = null;
+        this.moveToAssignmentGroupId = null;
+        this.shiftDates = null;
+        this.oldStartDate = null;
+        this.oldEndDate = null;
+        this.newStartDate = null;
+        this.newEndDate = null;
+        this.daySubstitutions = null;
+        this.removeDates = null;
+        this.selectiveImport = null;
+        this.select = null;
+        this.type = null;
+        this.daySubstitutionDay = null;
 
     }
 
