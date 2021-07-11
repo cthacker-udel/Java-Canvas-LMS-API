@@ -39,6 +39,7 @@ public class ContentMigration extends CanvasClient {
     private Boolean selectiveImport;
     private String select;
     private String type;
+    private Integer daySubstitutionDay;
 
     public Map<String,Object> generateQueries(){
 
@@ -71,11 +72,57 @@ public class ContentMigration extends CanvasClient {
         if(this.overwriteQuizzes != null){
             queries.put("settings[overwrite_quizzes]",this.overwriteQuizzes);
         }
-        /*
+        if(this.questionBankId != null){
+            queries.put("settings[question_bank_id]",this.questionBankId);
+        }
+        if(this.questionBankName != null){
+            queries.put("settings[question_bank_name]",this.questionBankName)
+        }
+        if(this.insertIntoModuleId != null){
+            queries.put("settings[insert_into_module_id]",this.insertIntoModuleId);
+        }
+        if(this.insertIntoModuleType != null){
+            queries.put("settings[insert_into_module_type]",this.insertIntoModuleType);
+        }
+        if(this.insertIntoModulePosition != null){
+            queries.put("settings[insert_into_module_position]",this.insertIntoModulePosition);
+        }
+        if(this.moveToAssignmentGroupId != null){
+            queries.put("settings[move_to_assignment_group_id]",this.moveToAssignmentGroupId);
+        }
+        if(this.shiftDates != null){
+            queries.put("date_shift_options[shift_dates]",this.shiftDates);
+        }
+        if(this.oldStartDate != null){
+            queries.put("date_shift_options[old_start_date]",this.oldStartDate);
+        }
+        if(this.oldEndDate != null){
+            queries.put("date_shift_options[old_end_date]",this.oldEndDate);
+        }
+        if(this.newStartDate != null){
+            queries.put("date_shift_options[new_start_date]",this.newStartDate);
+        }
+        if(this.newEndDate != null){
+            queries.put("date_shift_options[new_end_date]",this.newEndDate);
+        }
+        if(this.daySubstitutions != null){
+            queries.put(String.format("day_shift_options[day_substitutions][%d]",this.daySubstitutionDay),this.daySubstitutions);
+        }
+        if(this.removeDates != null){
+            queries.put("date_shift_options[remove_dates]",this.removeDates);
+        }
+        if(this.selectiveImport != null){
+            queries.put("selective_import",this.selectiveImport);
+        }
+        if(this.select != null){
+            queries.put("select",this.select);
+        }
+        return queries;
+    }
 
-        add rest of queries and clear queries method
+    public void clearQueries(){
 
-         */
+
 
     }
 
