@@ -28,4 +28,10 @@ public interface contentMigrationsInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/content_migrations/{contentMigrationId}/migration_issues/{migrationIssueId}")
     Call<ContentMigration> getMigrationIssueCourseId(@Path("courseId") String courseId, @Path("contentMigrationId") String contentMigrationId, @Path("migrationIssueId") String migrationIssueId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/content_migrations/{contentMigrationId}/migration_issues/{migrationIssueId}")
+    Call<ContentMigration> getMigrationIssueGroupId(@Path("groupId") String groupId, @Path("contentMigrationId") String contentMigrationId, @Path("migrationIssueId") String migrationIssueId);
+
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/content_migrations/{contentMigrationId}/migration_issues/{migrationIssueId}")
+    Call<ContentMigration> getMigrationIssueUserId(@Path("userId") String userId, @Path("contentMigrationId") String contentMigrationId, @Path("migrationIssueId") String migrationIssueId);
+
 }
