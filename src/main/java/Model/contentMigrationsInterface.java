@@ -63,4 +63,18 @@ public interface contentMigrationsInterface {
     @GET("https://udel.instructure.com/api/v1/users/{userId}/content_migrations")
     Call<List<ContentMigration>> listContentMigrationsUserId(@Path("userId") String userId, @Header("Authorization") String auth);
 
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/content_migrations/{contentMigrationId}")
+    Call<ContentMigration> getContentMigrationAccountId(@Path("accountId") String accountId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/content_migrations/{contentMigrationId}")
+    Call<ContentMigration> getContentMigrationCourseId(@Path("courseId") String courseId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/content_migrations/{contentMigrationId}")
+    Call<ContentMigration> getContentMigrationGroupId(@Path("groupId") String groupId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/content_migrations/{contentMigrationId}")
+    Call<ContentMigration> getContentMigrationUserId(@Path("userId") String userId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth);
+
+
 }
