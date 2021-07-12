@@ -77,4 +77,17 @@ public interface contentMigrationsInterface {
     Call<ContentMigration> getContentMigrationUserId(@Path("userId") String userId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth);
 
 
+    @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/content_migrations")
+    Call<ContentMigration> createContentMigrationAccountId(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/content_migrations")
+    Call<ContentMigration> createContentMigrationCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @POST("https://udel.instructure.com/api/v1/groups/{groupId}/content_migrations")
+    Call<ContentMigration> createContentMigrationGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @POST("https://udel.instructure.com/api/v1/users/{userId}/content_migrations")
+    Call<ContentMigration> createContentMigrationUserId(@Path("userId") String userId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+
 }
