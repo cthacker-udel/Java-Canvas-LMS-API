@@ -2,6 +2,7 @@ package Model;
 
 import Controller.ContentMigrationsController.ContentMigration;
 import Controller.ContentMigrationsController.MigrationIssue;
+import Controller.ContentMigrationsController.Migrator;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -89,5 +90,32 @@ public interface contentMigrationsInterface {
     @POST("https://udel.instructure.com/api/v1/users/{userId}/content_migrations")
     Call<ContentMigration> createContentMigrationUserId(@Path("userId") String userId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+
+
+    @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/content_migrations/{contentMigrationId}")
+    Call<ContentMigration> updateContentMigrationAccountId(@Path("accountId") String accountId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/content_migrations/{contentMigrationId}")
+    Call<ContentMigration> updateContentMigrationCourseId(@Path("courseId") String courseId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @PUT("https://udel.instructure.com/api/v1/groups/{groupId}/content_migrations/{contentMigrationId}")
+    Call<ContentMigration> updateContentMigrationGroupId(@Path("groupId") String groupId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @PUT("https://udel.instructure.com/api/v1/users/{userId}/content_migrations/{contentMigrationId}")
+    Call<ContentMigration> updateContentMigrationUserId(@Path("userId") String userId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/content_migrations/migrators")
+    Call<List<Migrator>> listMigrationSystemsAccountId(@Path("accountId") String accountId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/content_migrations/migrators")
+    Call<List<Migrator>> listMigrationSystemsCourseId(@Path("courseId") String accountId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/content_migrations/migrators")
+    Call<List<Migrator>> listMigrationSystemsGroupId(@Path("groupId") String accountId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/content_migrations/migrators")
+    Call<List<Migrator>> listMigrationSystemsUserId(@Path("userId") String accountId, @Header("Authorization") String auth);
 
 }
