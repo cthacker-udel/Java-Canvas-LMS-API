@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class ContentMigration extends CanvasClient {
 
-    private String accountId;
+    private String migrationAccountId;
     private String contentMigrationId;
     private String courseId;
     private String groupid;
@@ -45,7 +45,7 @@ public class ContentMigration extends CanvasClient {
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
-        if(this.accountId != null){
+        if(this.workflowState != null){
             queries.put("workflow_state",this.workflowState);
         }
         if(this.migrationType != null){
@@ -122,7 +122,7 @@ public class ContentMigration extends CanvasClient {
 
     public void clearQueries(){
 
-        this.accountId = null;
+        this.migrationAccountId = null;
         this.contentMigrationId = null;
         this.courseId = null;
         this.groupid = null;
@@ -158,4 +158,235 @@ public class ContentMigration extends CanvasClient {
     }
 
 
+    public String getMigrationAccountId() {
+        return migrationAccountId;
+    }
+
+    public void setMigrationAccountId(String accountId) {
+        this.migrationAccountId = accountId;
+    }
+
+    public String getContentMigrationId() {
+        return contentMigrationId;
+    }
+
+    public void setContentMigrationId(String contentMigrationId) {
+        this.contentMigrationId = contentMigrationId;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getGroupid() {
+        return groupid;
+    }
+
+    public void setGroupid(String groupid) {
+        this.groupid = groupid;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getMigrationIssuesId() {
+        return migrationIssuesId;
+    }
+
+    public void setMigrationIssuesId(String migrationIssuesId) {
+        this.migrationIssuesId = migrationIssuesId;
+    }
+
+    public String getWorkflowState() {
+        return workflowState;
+    }
+
+    public void setWorkflowState(String workflowState) {
+        this.workflowState = workflowState;
+    }
+
+    public String getMigrationType() {
+        return migrationType;
+    }
+
+    public void setMigrationType(String migrationType) {
+        this.migrationType = migrationType;
+    }
+
+    public String getPreAttachmentName() {
+        return preAttachmentName;
+    }
+
+    public void setPreAttachmentName(String preAttachmentName) {
+        this.preAttachmentName = preAttachmentName;
+    }
+
+    public String getPreAttachment() {
+        return preAttachment;
+    }
+
+    public void setPreAttachment(String preAttachment) {
+        this.preAttachment = preAttachment;
+    }
+
+    public String getSettingsFileUrl() {
+        return settingsFileUrl;
+    }
+
+    public void setSettingsFileUrl(String settingsFileUrl) {
+        this.settingsFileUrl = settingsFileUrl;
+    }
+
+    public String getSettingsContentExportId() {
+        return settingsContentExportId;
+    }
+
+    public void setSettingsContentExportId(String settingsContentExportId) {
+        this.settingsContentExportId = settingsContentExportId;
+    }
+
+    public String getSourceCourseId() {
+        return sourceCourseId;
+    }
+
+    public void setSourceCourseId(String sourceCourseId) {
+        this.sourceCourseId = sourceCourseId;
+    }
+
+    public String getFolderId() {
+        return folderId;
+    }
+
+    public void setFolderId(String folderId) {
+        this.folderId = folderId;
+    }
+
+    public Boolean getOverwriteQuizzes() {
+        return overwriteQuizzes;
+    }
+
+    public void setOverwriteQuizzes(Boolean overwriteQuizzes) {
+        this.overwriteQuizzes = overwriteQuizzes;
+    }
+
+    public Integer getQuestionBankId() {
+        return questionBankId;
+    }
+
+    public void setQuestionBankId(Integer questionBankId) {
+        this.questionBankId = questionBankId;
+    }
+
+    public String getQuestionBankName() {
+        return questionBankName;
+    }
+
+    public void setQuestionBankName(String questionBankName) {
+        this.questionBankName = questionBankName;
+    }
+
+    public Integer getInsertIntoModuleId() {
+        return insertIntoModuleId;
+    }
+
+    public void setInsertIntoModuleId(Integer insertIntoModuleId) {
+        this.insertIntoModuleId = insertIntoModuleId;
+    }
+
+    public String getInsertIntoModuleType() {
+        return insertIntoModuleType;
+    }
+
+    public void setInsertIntoModuleType(String insertIntoModuleType) {
+        this.insertIntoModuleType = insertIntoModuleType;
+    }
+
+    public Integer getInsertIntoModulePosition() {
+        return insertIntoModulePosition;
+    }
+
+    public void setInsertIntoModulePosition(Integer insertIntoModulePosition) {
+        this.insertIntoModulePosition = insertIntoModulePosition;
+    }
+
+    public Integer getMoveToAssignmentGroupId() {
+        return moveToAssignmentGroupId;
+    }
+
+    public void setMoveToAssignmentGroupId(Integer moveToAssignmentGroupId) {
+        this.moveToAssignmentGroupId = moveToAssignmentGroupId;
+    }
+
+    public Boolean getShiftDates() {
+        return shiftDates;
+    }
+
+    public void setShiftDates(Boolean shiftDates) {
+        this.shiftDates = shiftDates;
+    }
+
+    public ZonedDateTime getOldStartDate() {
+        return oldStartDate;
+    }
+
+    public void setOldStartDate(ZonedDateTime oldStartDate) {
+        this.oldStartDate = oldStartDate;
+    }
+
+    public ZonedDateTime getOldEndDate() {
+        return oldEndDate;
+    }
+
+    public void setOldEndDate(ZonedDateTime oldEndDate) {
+        this.oldEndDate = oldEndDate;
+    }
+
+    public ZonedDateTime getNewStartDate() {
+        return newStartDate;
+    }
+
+    public void setNewStartDate(ZonedDateTime newStartDate) {
+        this.newStartDate = newStartDate;
+    }
+
+    public ZonedDateTime getNewEndDate() {
+        return newEndDate;
+    }
+
+    public void setNewEndDate(ZonedDateTime newEndDate) {
+        this.newEndDate = newEndDate;
+    }
+
+    public Integer getDaySubstitutions() {
+        return daySubstitutions;
+    }
+
+    public void setDaySubstitutions(Integer daySubstitutions) {
+        this.daySubstitutions = daySubstitutions;
+    }
+
+    public Boolean getRemoveDates() {
+        return removeDates;
+    }
+
+    public void setRemoveDates(Boolean removeDates) {
+        this.removeDates = removeDates;
+    }
+
+    public Boolean getSelectiveImport() {
+        return selectiveImport;
+    }
+
+    public void setSelectiveImport(Boolean selectiveImport) {
+        this.selectiveImport = selectiveImport;
+    }
 }

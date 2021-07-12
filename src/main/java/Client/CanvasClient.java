@@ -32,6 +32,7 @@ public class CanvasClient extends CanvasRestAPI {
     private CommunicationChannels communicationChannels;
     private Conference conference;
     private ContentExport contentExport;
+    private ContentMigration contentMigration;
 
     public CanvasClient(){
         super();
@@ -67,7 +68,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.communicationChannels = new CommunicationChannels();
         this.conference = new Conference();
         this.contentExport = new ContentExport();
+        this.contentMigration = new ContentMigration();
 
+    }
+
+    public ContentMigration getContentMigration() {
+        return contentMigration;
+    }
+
+    public void setContentMigration(ContentMigration contentMigration) {
+        this.contentMigration = contentMigration;
     }
 
     public ContentExport getContentExport() {
