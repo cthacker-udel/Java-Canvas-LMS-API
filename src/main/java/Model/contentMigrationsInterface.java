@@ -3,6 +3,7 @@ package Model;
 import Controller.ContentMigrationsController.ContentMigration;
 import Controller.ContentMigrationsController.MigrationIssue;
 import Controller.ContentMigrationsController.Migrator;
+import Controller.ContentMigrationsController.SelectiveData;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -117,5 +118,20 @@ public interface contentMigrationsInterface {
 
     @GET("https://udel.instructure.com/api/v1/users/{userId}/content_migrations/migrators")
     Call<List<Migrator>> listMigrationSystemsUserId(@Path("userId") String accountId, @Header("Authorization") String auth);
+
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/content_migrations/{contentMigrationId}/selective_data")
+    Call<SelectiveData> listItemsForSelectiveDataAccountId(@Path("accountId") String accountId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/content_migrations/{contentMigrationId}/selective_data")
+    Call<SelectiveData> listItemsForSelectiveDataCourseId(@Path("courseId") String accountId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/content_migrations/{contentMigrationId}/selective_data")
+    Call<SelectiveData> listItemsForSelectiveDataGroupId(@Path("groupId") String accountId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/content_migrations/{contentMigrationId}/selective_data")
+    Call<SelectiveData> listItemsForSelectiveDataUserId(@Path("userId") String accountId, @Path("contentMigrationId") String contentMigrationId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+
 
 }
