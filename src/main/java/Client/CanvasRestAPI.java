@@ -3601,6 +3601,44 @@ public class CanvasRestAPI{
 
     }
 
+    public SelectiveData listSelectiveImportItemsGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/content_migrations/%s/selective_data/",client.getContentMigration().getGroupid(),client.getContentMigration().getContentMigrationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
+
+        Call<SelectiveData> call = contentMigrationsInterface.listItemsForSelectiveDataCourseId(client.getContentMigration().getGroupid()+"",client.getContentMigration().getContentMigrationId(),client.getToken(),client.getContentMigration().generateQueries());
+
+        Response<SelectiveData> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public SelectiveData listSelectiveImportItemsUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/content_migrations/%s/selective_data/",client.getContentMigration().getUserId(),client.getContentMigration().getContentMigrationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
+
+        Call<SelectiveData> call = contentMigrationsInterface.listItemsForSelectiveDataCourseId(client.getContentMigration().getUserId()+"",client.getContentMigration().getContentMigrationId(),client.getToken(),client.getContentMigration().generateQueries());
+
+        Response<SelectiveData> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
