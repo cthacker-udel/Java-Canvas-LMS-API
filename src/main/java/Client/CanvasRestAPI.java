@@ -3216,9 +3216,9 @@ public class CanvasRestAPI{
 
     }
 
-    public MigrationIssue updateMigrationIssueAccountId(CanvasClient client) throws IOException {
+    public MigrationIssue updateMigrationIssueGroupId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/content_migrations/%s/migration_issues/%s/",client.getContentMigration().getAccountId(),client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId());
+        String url = baseUrl + String.format("/api/v1/groups/%s/content_migrations/%s/migration_issues/%s/",client.getContentMigration().getGroupid(),client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -3227,7 +3227,7 @@ public class CanvasRestAPI{
 
         contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
 
-        Call<MigrationIssue> call = contentMigrationsInterface.updateMigrationIssueAccountId(client.getContentMigration().getAccountId()+"",client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId(),client.getToken(),client.getContentMigration().generateQueries());
+        Call<MigrationIssue> call = contentMigrationsInterface.updateMigrationIssueGroupId(client.getContentMigration().getGroupid()+"",client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId(),client.getToken(),client.getContentMigration().generateQueries());
 
         Response<MigrationIssue> response = call.execute();
 
