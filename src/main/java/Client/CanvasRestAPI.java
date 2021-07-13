@@ -3524,9 +3524,9 @@ public class CanvasRestAPI{
 
     }
 
-    public List<Migrator> listMigrationSytemsAccountId(CanvasClient client) throws IOException {
+    public List<Migrator> listMigrationSytemsGroupId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/content_migrations/migrators/",client.getContentMigration().getAccountId());
+        String url = baseUrl + String.format("/api/v1/groups/%s/content_migrations/migrators/",client.getContentMigration().getGroupid());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -3535,7 +3535,7 @@ public class CanvasRestAPI{
 
         contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
 
-        Call<List<Migrator>> call = contentMigrationsInterface.listMigrationSystemsAccountId(client.getContentMigration().getAccountId()+"",client.getToken());
+        Call<List<Migrator>> call = contentMigrationsInterface.listMigrationSystemsGroupId(client.getContentMigration().getGroupid()+"",client.getToken());
 
         Response<List<Migrator>> response = call.execute();
 
