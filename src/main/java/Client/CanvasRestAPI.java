@@ -3331,6 +3331,25 @@ public class CanvasRestAPI{
 
     }
 
+    public ContentMigration getContentMigrationAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/content_migrations/%s/",client.getContentMigration().getAccountId(),client.getContentMigration().getContentMigrationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
+
+        Call<ContentMigration> call = contentMigrationsInterface.getContentMigrationAccountId(client.getContentMigration().getAccountId()+"",client.getContentMigration().getContentMigrationId(),client.getToken());
+
+        Response<ContentMigration> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
