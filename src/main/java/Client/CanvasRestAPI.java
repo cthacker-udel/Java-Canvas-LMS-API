@@ -3195,8 +3195,62 @@ public class CanvasRestAPI{
 
         return response.body();
 
+    }
 
+    public MigrationIssue updateMigrationIssueCourseId(CanvasClient client) throws IOException {
 
+        String url = baseUrl + String.format("/api/v1/courses/%s/content_migrations/%s/migration_issues/%s/",client.getContentMigration().getCourseId(),client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
+
+        Call<MigrationIssue> call = contentMigrationsInterface.updateMigrationIssueCourseId(client.getContentMigration().getCourseId()+"",client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId(),client.getToken(),client.getContentMigration().generateQueries());
+
+        Response<MigrationIssue> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public MigrationIssue updateMigrationIssueAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/content_migrations/%s/migration_issues/%s/",client.getContentMigration().getAccountId(),client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
+
+        Call<MigrationIssue> call = contentMigrationsInterface.updateMigrationIssueAccountId(client.getContentMigration().getAccountId()+"",client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId(),client.getToken(),client.getContentMigration().generateQueries());
+
+        Response<MigrationIssue> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public MigrationIssue updateMigrationIssueAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/content_migrations/%s/migration_issues/%s/",client.getContentMigration().getAccountId(),client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
+
+        Call<MigrationIssue> call = contentMigrationsInterface.updateMigrationIssueAccountId(client.getContentMigration().getAccountId()+"",client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId(),client.getToken(),client.getContentMigration().generateQueries());
+
+        Response<MigrationIssue> response = call.execute();
+
+        return response.body();
 
     }
 
