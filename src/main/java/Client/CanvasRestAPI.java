@@ -3428,6 +3428,63 @@ public class CanvasRestAPI{
 
     }
 
+    public ContentMigration createContentMigrationCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/content_migrations/",client.getContentMigration().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(contentMigrationsInterface.class);
+
+        Call<ContentMigration> call = contentMigrationsInterface.createContentMigrationCourseId(client.getContentMigration().getCourseId()+"",client.getToken(),client.getContentMigration().generateQueries());
+
+        Response<ContentMigration> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public ContentMigration createContentMigrationGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/content_migrations/",client.getContentMigration().getGroupid());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(contentMigrationsInterface.class);
+
+        Call<ContentMigration> call = contentMigrationsInterface.createContentMigrationGroupId(client.getContentMigration().getGroupid()+"",client.getToken(),client.getContentMigration().generateQueries());
+
+        Response<ContentMigration> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public ContentMigration createContentMigrationAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/content_migrations/",client.getContentMigration().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(contentMigrationsInterface.class);
+
+        Call<ContentMigration> call = contentMigrationsInterface.createContentMigrationAccountId(client.getContentMigration().getAccountId()+"",client.getToken(),client.getContentMigration().generateQueries());
+
+        Response<ContentMigration> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
