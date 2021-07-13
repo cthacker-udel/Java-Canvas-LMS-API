@@ -3235,7 +3235,7 @@ public class CanvasRestAPI{
 
     }
 
-    public MigrationIssue updateMigrationIssueAccountId(CanvasClient client) throws IOException {
+    public MigrationIssue updateMigrationIssueUserId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/users/%s/content_migrations/%s/migration_issues/%s/",client.getContentMigration().getUserId(),client.getContentMigration().getContentMigrationId(),client.getContentMigration().getMigrationIssuesId());
 
