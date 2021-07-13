@@ -3582,6 +3582,25 @@ public class CanvasRestAPI{
 
     }
 
+    public SelectiveData listSelectiveImportItemsCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/content_migrations/%s/selective_data/",client.getContentMigration().getCourseId(),client.getContentMigration().getContentMigrationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
+
+        Call<SelectiveData> call = contentMigrationsInterface.listItemsForSelectiveDataCourseId(client.getContentMigration().getCourseId()+"",client.getContentMigration().getContentMigrationId(),client.getToken(),client.getContentMigration().generateQueries());
+
+        Response<SelectiveData> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
