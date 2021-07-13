@@ -69,6 +69,7 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Objects;
 
 public class CanvasRestAPI{
 
@@ -86,7 +87,7 @@ public class CanvasRestAPI{
 
         // need access to client id
 
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl + "/login/oauth2/auth").newBuilder();
+        HttpUrl.Builder urlBuilder = Objects.requireNonNull(HttpUrl.parse(baseUrl + "/login/oauth2/auth")).newBuilder();
 
         urlBuilder.addQueryParameter("client_id",client.getClientId());
         urlBuilder.addQueryParameter("response_type","code");
@@ -130,6 +131,7 @@ public class CanvasRestAPI{
             }
         }
 
+        assert browser != null;
         browser.get(URLDecoder.decode(urlBuilder.build().url().toString(), StandardCharsets.UTF_8));
 
 
@@ -677,7 +679,7 @@ public class CanvasRestAPI{
 
     public List<Admin> listAccountAdmins(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/admins/");
+        String url = baseUrl + String.format("/api/v1/accounts/%s/admins/",client.getAdmin().getAccountId());
 
         Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
@@ -831,7 +833,7 @@ public class CanvasRestAPI{
 
     public DepartmentLevelStatistics getCurrentDeparmentLevelStatistics(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/current/statistics/",client.getAnalytics().getAccountId(),client.getToken());
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/current/statistics/",client.getAnalytics().getAccountId());
 
         Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
@@ -850,7 +852,7 @@ public class CanvasRestAPI{
 
     public DepartmentLevelStatistics getCompletedDepartmentLevelStatistics(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/completed/statistics/",client.getAnalytics().getAccountId(),client.getToken());
+        String url = baseUrl + String.format("/api/v1/accounts/%s/analytics/completed/statistics/",client.getAnalytics().getAccountId());
 
         Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
@@ -1497,7 +1499,7 @@ public class CanvasRestAPI{
 
     public Assignment duplicateAssignment(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/courses/%s/assignments/%s/duplicate/");
+        String url = baseUrl + String.format("/api/v1/courses/%s/assignments/%s/duplicate/",client.getAssignment().getCourseId(),client.getAssignment().getAssignmentId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -2395,7 +2397,7 @@ public class CanvasRestAPI{
 
     public boolean createCalendarEvent(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/calendar_events/");
+        String url = baseUrl + "/api/v1/calendar_events/";
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -2754,7 +2756,7 @@ public class CanvasRestAPI{
 
     public boolean deletePushNotification(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/users/self/communications/push/");
+        String url = baseUrl + "/api/v1/users/self/communications/push/";
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -2817,7 +2819,7 @@ public class CanvasRestAPI{
 
     public List<Conference> listConferencesCurrUser(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/conferences/");
+        String url = baseUrl + "/api/v1/conferences/";
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -3388,9 +3390,9 @@ public class CanvasRestAPI{
 
     }
 
-    public ContentMigration getContentMigrationAccountId(CanvasClient client) throws IOException {
+    public ContentMigration getContentMigrationUserId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/content_migrations/%s/",client.getContentMigration().getAccountId(),client.getContentMigration().getContentMigrationId());
+        String url = baseUrl + String.format("/api/v1/users/%s/content_migrations/%s/",client.getContentMigration().getUserId(),client.getContentMigration().getContentMigrationId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -3399,7 +3401,7 @@ public class CanvasRestAPI{
 
         contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
 
-        Call<ContentMigration> call = contentMigrationsInterface.getContentMigrationAccountId(client.getContentMigration().getAccountId()+"",client.getContentMigration().getContentMigrationId(),client.getToken());
+        Call<ContentMigration> call = contentMigrationsInterface.getContentMigrationUserId(client.getContentMigration().getUserId()+"",client.getContentMigration().getContentMigrationId(),client.getToken());
 
         Response<ContentMigration> response = call.execute();
 
