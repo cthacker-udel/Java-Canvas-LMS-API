@@ -44,6 +44,7 @@ import Controller.ContentExportsController.ContentExport;
 import Controller.ContentMigrationsController.ContentMigration;
 import Controller.ContentMigrationsController.MigrationIssue;
 import Controller.ContentMigrationsController.Migrator;
+import Controller.ContentMigrationsController.SelectiveData;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -3557,6 +3558,25 @@ public class CanvasRestAPI{
         Call<List<Migrator>> call = contentMigrationsInterface.listMigrationSystemsUserId(client.getContentMigration().getUserId()+"",client.getToken());
 
         Response<List<Migrator>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public SelectiveData listSelectiveImportItemsAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/content_migrations/%s/selective_data/",client.getContentMigration().getAccountId(),client.getContentMigration().getContentMigrationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
+
+        Call<SelectiveData> call = contentMigrationsInterface.listItemsForSelectiveDataAccountId(client.getContentMigration().getAccountId()+"",client.getContentMigration().getContentMigrationId(),client.getToken(),client.getContentMigration().generateQueries());
+
+        Response<SelectiveData> response = call.execute();
 
         return response.body();
 
