@@ -12,6 +12,8 @@ public class ContentSecurityPolicySetting extends CanvasClient {
     private Boolean settingsLocked;
     private String domain;
     private ArrayList<String> domains = new ArrayList<>();
+    private String courseId;
+    private String accountId;
 
     public Map<String,Object> generateQueries(){
 
@@ -41,4 +43,52 @@ public class ContentSecurityPolicySetting extends CanvasClient {
 
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Boolean getSettingsLocked() {
+        return settingsLocked;
+    }
+
+    public void setSettingsLocked(Boolean settingsLocked) {
+        this.settingsLocked = settingsLocked;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public ArrayList<String> getDomains() {
+        return domains;
+    }
+
+    public void setDomains(ArrayList<String> domains) {
+        this.domains = domains;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+
+    @Override
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
 }

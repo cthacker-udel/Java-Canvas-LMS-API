@@ -3639,6 +3639,50 @@ public class CanvasRestAPI{
 
     }
 
+    /*
+
+    Content Security Policy Settings API
+
+     */
+
+    public boolean getCurrentAccountOrCourseSettingsCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/csp_settings",client.getContentSecurityPolicySetting().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
+
+        Call<Void> call = contentSecurityPolicySettingsInterface.getCurrentSettingsCourseId(client.getContentSecurityPolicySetting().getCourseId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public boolean getCurrentAccountOrCourseSettingsAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/csp_settings/",client.getContentSecurityPolicySetting().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
+
+        Call<Void> call = contentSecurityPolicySettingsInterface.getCurrentSettingsAccountId(client.getContentSecurityPolicySetting().getAccountId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 

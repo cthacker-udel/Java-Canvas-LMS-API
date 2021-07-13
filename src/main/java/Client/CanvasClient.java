@@ -33,6 +33,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Conference conference;
     private ContentExport contentExport;
     private ContentMigration contentMigration;
+    private ContentSecurityPolicySetting contentSecurityPolicySetting;
 
     public CanvasClient(){
         super();
@@ -69,7 +70,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.conference = new Conference();
         this.contentExport = new ContentExport();
         this.contentMigration = new ContentMigration();
+        this.contentSecurityPolicySetting = new ContentSecurityPolicySetting();
 
+    }
+
+    public ContentSecurityPolicySetting getContentSecurityPolicySetting() {
+        return contentSecurityPolicySetting;
+    }
+
+    public void setContentSecurityPolicySetting(ContentSecurityPolicySetting contentSecurityPolicySetting) {
+        this.contentSecurityPolicySetting = contentSecurityPolicySetting;
     }
 
     public ContentMigration getContentMigration() {
