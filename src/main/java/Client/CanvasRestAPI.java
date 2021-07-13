@@ -3675,13 +3675,54 @@ public class CanvasRestAPI{
 
         contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
 
-        Call<Void> call = contentSecurityPolicySettingsInterface.getCurrentSettingsAccountId(client.getContentSecurityPolicySetting().getAccountId(),client.getToken());
+        Call<Void> call = contentSecurityPolicySettingsInterface.getCurrentSettingsAccountId(client.getContentSecurityPolicySetting().getbAccountId(),client.getToken());
 
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
 
     }
+
+    public boolean enableDisableClearCSPSettingCourseID(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/csp_settings/",client.getContentSecurityPolicySetting().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
+
+        Call<Void> call = contentSecurityPolicySettingsInterface.enableDisableOrClearCSPSettingCourseID(client.getContentSecurityPolicySetting().getCourseId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public boolean enableDisableClearCSPSettingAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/csp_settings/",client.getContentSecurityPolicySetting().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
+
+        Call<Void> call = contentSecurityPolicySettingsInterface.enableDisableOrClearCSPSettingAccountID(client.getContentSecurityPolicySetting().getbAccountId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+
+
 
 
 

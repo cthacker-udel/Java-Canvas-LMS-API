@@ -13,7 +13,7 @@ public class ContentSecurityPolicySetting extends CanvasClient {
     private String domain;
     private ArrayList<String> domains = new ArrayList<>();
     private String courseId;
-    private String accountId;
+    private String bAccountId;
 
     public Map<String,Object> generateQueries(){
 
@@ -83,12 +83,12 @@ public class ContentSecurityPolicySetting extends CanvasClient {
         this.courseId = courseId;
     }
 
-    @Override
-    public String getAccountId() {
-        return accountId;
+
+    public String getbAccountId() {
+        return bAccountId;
     }
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
+    public void setBAccountId(String accountId) {
+        this.bAccountId = accountId;
     }
 }
