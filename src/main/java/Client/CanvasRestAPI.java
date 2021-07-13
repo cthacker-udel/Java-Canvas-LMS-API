@@ -43,6 +43,7 @@ import Controller.ConferencesController.Conference;
 import Controller.ContentExportsController.ContentExport;
 import Controller.ContentMigrationsController.ContentMigration;
 import Controller.ContentMigrationsController.MigrationIssue;
+import Controller.ContentMigrationsController.Migrator;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -3480,6 +3481,25 @@ public class CanvasRestAPI{
         Call<ContentMigration> call = contentMigrationsInterface.createContentMigrationUserId(client.getContentMigration().getUserId()+"",client.getToken(),client.getContentMigration().generateQueries());
 
         Response<ContentMigration> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<Migrator> listMigrationSytemsAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/content_migrations/migrators/",client.getContentMigration().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentMigrationsInterface contentMigrationsInterface = retrofit.create(Model.contentMigrationsInterface.class);
+
+        Call<List<Migrator>> call = contentMigrationsInterface.listMigrationSystemsAccountId(client.getContentMigration().getAccountId()+"",client.getToken());
+
+        Response<List<Migrator>> response = call.execute();
 
         return response.body();
 
