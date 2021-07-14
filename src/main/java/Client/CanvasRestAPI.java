@@ -3694,7 +3694,7 @@ public class CanvasRestAPI{
 
         contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
 
-        Call<Void> call = contentSecurityPolicySettingsInterface.enableDisableOrClearCSPSettingCourseID(client.getContentSecurityPolicySetting().getCourseId(),client.getToken());
+        Call<Void> call = contentSecurityPolicySettingsInterface.enableDisableOrClearCSPSettingCourseID(client.getContentSecurityPolicySetting().getCourseId(),client.getToken(),client.getContentSecurityPolicySetting().generateQueries());
 
         Response<Void> response = call.execute();
 
@@ -3713,7 +3713,26 @@ public class CanvasRestAPI{
 
         contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
 
-        Call<Void> call = contentSecurityPolicySettingsInterface.enableDisableOrClearCSPSettingAccountID(client.getContentSecurityPolicySetting().getbAccountId(),client.getToken());
+        Call<Void> call = contentSecurityPolicySettingsInterface.enableDisableOrClearCSPSettingAccountID(client.getContentSecurityPolicySetting().getbAccountId(),client.getToken(),client.getContentSecurityPolicySetting().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public boolean lockUnlockCSPSettingsSubAccountsCourses(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/csp_settings/lock/",client.getContentSecurityPolicySetting().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
+
+        Call<Void> call = contentSecurityPolicySettingsInterface.lockOrUnlockCSPSettingsSubAccountsCourses(client.getContentSecurityPolicySetting().getAccountId()+"",client.getToken(),client.getContentSecurityPolicySetting().generateQueries());
 
         Response<Void> response = call.execute();
 
