@@ -25,4 +25,7 @@ public interface contentSecurityPolicySettingsInterface {
     @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/csp_settings/domains")
     Call<Void> addAllowedDomainToAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/csp_settings/domains/batch_create")
+    Call<Void> addMultipleAllowedDomainsToAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }
