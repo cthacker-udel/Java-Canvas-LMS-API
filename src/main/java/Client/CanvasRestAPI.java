@@ -3770,7 +3770,7 @@ public class CanvasRestAPI{
 
         contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
 
-        Call<Void> call = contentSecurityPolicySettingsInterface.addMultipleAllowedDomainsToAccount(client.getContentSecurityPolicySetting().getAccountId(),client.getToken(),client.getContentSecurityPolicySetting().generateQueries());
+        Call<Void> call = contentSecurityPolicySettingsInterface.addMultipleAllowedDomainsToAccount(client.getContentSecurityPolicySetting().getAccountId()+"",client.getToken(),client.getContentSecurityPolicySetting().generateQueries());
 
         Response<Void> response = call.execute();
 
