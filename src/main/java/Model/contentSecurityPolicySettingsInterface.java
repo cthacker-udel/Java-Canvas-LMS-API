@@ -22,4 +22,7 @@ public interface contentSecurityPolicySettingsInterface {
     @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/csp_settings/lock")
     Call<Void> lockOrUnlockCSPSettingsSubAccountsCourses(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
 
+    @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/csp_settings/domains")
+    Call<Void> addAllowedDomainToAccount(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }

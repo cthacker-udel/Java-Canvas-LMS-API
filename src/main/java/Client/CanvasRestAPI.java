@@ -3740,6 +3740,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean addAllowedDomainToAccount(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/csp_settings/domains/",client.getContentSecurityPolicySetting().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
+
+        Call<Void> call = contentSecurityPolicySettingsInterface.addAllowedDomainToAccount(client.getContentSecurityPolicySetting().getAccountId()+"",client.getToken(),client.getContentSecurityPolicySetting().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
