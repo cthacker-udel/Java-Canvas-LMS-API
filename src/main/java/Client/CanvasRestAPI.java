@@ -3815,6 +3815,15 @@ public class CanvasRestAPI{
 
     }
 
+    /*
+
+    Content Shares API
+
+     */
+
+
+
+
 
 
 
