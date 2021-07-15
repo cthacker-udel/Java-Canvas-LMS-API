@@ -3775,8 +3775,28 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+    }
+
+    public boolean retrieveReportedCSPViolations(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/csp_log/",client.getContentSecurityPolicySetting().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
+
+        Call<Void> call = contentSecurityPolicySettingsInterface.retrieveReportedCSPViolations(client.getContentSecurityPolicySetting().getAccountId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
 
     }
+
+
 
 
 
