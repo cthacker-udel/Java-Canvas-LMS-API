@@ -3914,6 +3914,25 @@ public class CanvasRestAPI{
         return response.body();
     }
 
+    public boolean removeContentShare(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/content_shares/%s/",client.getContentShare().getUserId(),client.getContentShare().getContentShareId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentShareInterface contentShareInterface = retrofit.create(Model.contentShareInterface.class);
+
+        Call<Void> call = contentShareInterface.removeContentShare(client.getContentShare().getUserId(),client.getContentShare().getContentShareId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 

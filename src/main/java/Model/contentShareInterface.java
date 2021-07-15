@@ -24,4 +24,7 @@ public interface contentShareInterface {
     @GET("https://udel.instructure.com/api/v1/users/{userId}/content_shares/{contentShareId}")
     Call<ContentShare> getContentShare(@Path("userId") Integer userId, @Path("contentShareId") Integer contentShareId, @Header("Authorization") String auth);
 
+    @DELETE("https://udel.instructure.com/api/v1/users/{userId}/content_shares/{contentShareId}")
+    Call<Void> removeContentShare(@Path("userId") Integer userId, @Path("contentShareId") Integer contentShareId, @Header("Authorization") String auth);
+
 }
