@@ -3788,7 +3788,7 @@ public class CanvasRestAPI{
 
         contentSecurityPolicySettingsInterface contentSecurityPolicySettingsInterface = retrofit.create(Model.contentSecurityPolicySettingsInterface.class);
 
-        Call<Void> call = contentSecurityPolicySettingsInterface.retrieveReportedCSPViolations(client.getContentSecurityPolicySetting().getAccountId(),client.getToken());
+        Call<Void> call = contentSecurityPolicySettingsInterface.retrieveReportedCSPViolations(client.getContentSecurityPolicySetting().getAccountId()+"",client.getToken());
 
         Response<Void> response = call.execute();
 
