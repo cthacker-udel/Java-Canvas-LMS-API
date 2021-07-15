@@ -18,4 +18,7 @@ public interface contentShareInterface {
     @GET("https://udel.instructure.com/api/v1/users/{userId}/content_shares/received")
     Call<List<ContentShare>> listContentSharesReceived(@Path("userId") Integer userId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/content_shares/unread_count")
+    Call<Integer> getUnreadSharesCount(@Path("userId") Integer userId, @Header("Authorization") String auth);
+
 }

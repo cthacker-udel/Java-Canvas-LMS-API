@@ -3877,6 +3877,25 @@ public class CanvasRestAPI{
         return response.body();
     }
 
+    public Integer getUnreadSharesCount(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/content_shares/unread_count/",client.getContentShare().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentShareInterface contentShareInterface = retrofit.create(Model.contentShareInterface.class);
+
+        Call<Integer> call = contentShareInterface.getUnreadSharesCount(client.getContentShare().getUserId(),client.getToken());
+
+        Response<Integer> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
