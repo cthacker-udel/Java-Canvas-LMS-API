@@ -3841,6 +3841,42 @@ public class CanvasRestAPI{
         return response.body();
     }
 
+    public List<ContentShare> listContentSharesSent(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/content_shares/sent/",client.getContentShare().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentShareInterface contentShareInterface = retrofit.create(Model.contentShareInterface.class);
+
+        Call<List<ContentShare>> call = contentShareInterface.listContentSharesSent(client.getContentShare().getUserId(),client.getToken());
+
+        Response<List<ContentShare>> response = call.execute();
+
+        return response.body();
+    }
+
+    public List<ContentShare> listContentSharesReceived(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/content_shares/received/",client.getContentShare().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentShareInterface contentShareInterface = retrofit.create(Model.contentShareInterface.class);
+
+        Call<List<ContentShare>> call = contentShareInterface.listContentSharesReceived(client.getContentShare().getUserId(),client.getToken());
+
+        Response<List<ContentShare>> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 
