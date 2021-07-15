@@ -45,6 +45,7 @@ import Controller.ContentMigrationsController.ContentMigration;
 import Controller.ContentMigrationsController.MigrationIssue;
 import Controller.ContentMigrationsController.Migrator;
 import Controller.ContentMigrationsController.SelectiveData;
+import Controller.ContentSharesController.ContentShare;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -3822,7 +3823,23 @@ public class CanvasRestAPI{
      */
 
 
+    public ContentShare createContentShare(CanvasClient client) throws IOException {
 
+        String url = baseUrl + String.format("/api/v1/users/%s/content_shares/",client.getContentShare().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentShareInterface contentShareInterface = retrofit.create(Model.contentShareInterface.class);
+
+        Call<ContentShare> call = contentShareInterface.createContentShare(client.getContentShare().getUserId(),client.getToken(),client.getContentShare().generateQueries());
+
+        Response<ContentShare> response = call.execute();
+
+        return response.body();
+    }
 
 
 

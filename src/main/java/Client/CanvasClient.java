@@ -34,6 +34,7 @@ public class CanvasClient extends CanvasRestAPI {
     private ContentExport contentExport;
     private ContentMigration contentMigration;
     private ContentSecurityPolicySetting contentSecurityPolicySetting;
+    private ContentShare contentShare;
 
     public CanvasClient(){
         super();
@@ -71,7 +72,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.contentExport = new ContentExport();
         this.contentMigration = new ContentMigration();
         this.contentSecurityPolicySetting = new ContentSecurityPolicySetting();
+        this.contentShare = new ContentShare();
 
+    }
+
+    public ContentShare getContentShare() {
+        return contentShare;
+    }
+
+    public void setContentShare(ContentShare contentShare) {
+        this.contentShare = contentShare;
     }
 
     public ContentSecurityPolicySetting getContentSecurityPolicySetting() {
