@@ -31,4 +31,7 @@ public interface contentSecurityPolicySettingsInterface {
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/csp_log")
     Call<Void> retrieveReportedCSPViolations(@Path("accountId") String accountId, @Header("Authorization") String auth);
 
+    @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/csp_settings/domains")
+    Call<Void> removeAccountDomain(@Path("accountId") String accountId, @Header("Authorization") String auth);
+
 }
