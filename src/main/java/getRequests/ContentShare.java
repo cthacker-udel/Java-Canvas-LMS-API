@@ -12,6 +12,7 @@ public class ContentShare extends CanvasClient {
     private String contentType;
     private Integer contentId;
     private Integer userId;
+    private Integer contentShareId;
 
 
     public Map<String,Object> generateQueries(){
@@ -37,6 +38,14 @@ public class ContentShare extends CanvasClient {
         this.contentType = null;
         this.contentId = null;
 
+    }
+
+    public Integer getContentShareId() {
+        return contentShareId;
+    }
+
+    public void setContentShareId(Integer contentShareId) {
+        this.contentShareId = contentShareId;
     }
 
     public ArrayList<String> getReceiverIds() {
