@@ -3997,6 +3997,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean createConversation(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/conversations/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<Void> call = conversationInterface.createConversation(client.getToken(),client.getConversations().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
