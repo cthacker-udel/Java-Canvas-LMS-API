@@ -46,6 +46,7 @@ import Controller.ContentMigrationsController.MigrationIssue;
 import Controller.ContentMigrationsController.Migrator;
 import Controller.ContentMigrationsController.SelectiveData;
 import Controller.ContentSharesController.ContentShare;
+import Controller.ConversationController.Conversation;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -3977,7 +3978,24 @@ public class CanvasRestAPI{
 
      */
 
+    public List<Conversation> listConversations(CanvasClient client) throws IOException {
 
+        String url = baseUrl + "/api/v1/conversations/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<List<Conversation>> call = conversationInterface.listConversations(client.getToken(),client.getConversations().generateQueries());
+
+        Response<List<Conversation>> response = call.execute();
+
+        return response.body();
+
+    }
 
 
 

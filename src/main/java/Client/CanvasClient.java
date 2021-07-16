@@ -35,6 +35,7 @@ public class CanvasClient extends CanvasRestAPI {
     private ContentMigration contentMigration;
     private ContentSecurityPolicySetting contentSecurityPolicySetting;
     private ContentShare contentShare;
+    private Conversation conversations;
 
     public CanvasClient(){
         super();
@@ -73,7 +74,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.contentMigration = new ContentMigration();
         this.contentSecurityPolicySetting = new ContentSecurityPolicySetting();
         this.contentShare = new ContentShare();
+        this.conversations = new Conversation();
 
+    }
+
+    public Conversation getConversations() {
+        return conversations;
+    }
+
+    public void setConversations(Conversation conversations) {
+        this.conversations = conversations;
     }
 
     public ContentShare getContentShare() {
