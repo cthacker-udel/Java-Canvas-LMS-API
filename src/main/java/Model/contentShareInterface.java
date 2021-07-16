@@ -4,6 +4,7 @@ import Controller.ContentSharesController.ContentShare;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import javax.swing.text.AbstractDocument;
 import java.util.List;
 import java.util.Map;
 
@@ -26,5 +27,8 @@ public interface contentShareInterface {
 
     @DELETE("https://udel.instructure.com/api/v1/users/{userId}/content_shares/{contentShareId}")
     Call<Void> removeContentShare(@Path("userId") Integer userId, @Path("contentShareId") Integer contentShareId, @Header("Authorization") String auth);
+
+    @POST("https://udel.instructure.com/api/api/v1/users/{userId}/content_shares/{contentShareId}/add_users")
+    Call<ContentShare> addUserToContentShare(@Path("userId") String userId, @Path("contentShareId") String contentShareId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 }

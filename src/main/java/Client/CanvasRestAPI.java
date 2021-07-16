@@ -3933,6 +3933,25 @@ public class CanvasRestAPI{
 
     }
 
+    public ContentShare addContentShareUser(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/content_shares/%s/add_users/",client.getContentShare().getUserId(),client.getContentShare().getContentShareId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        contentShareInterface contentShareInterface = retrofit.create(Model.contentShareInterface.class);
+
+        Call<ContentShare> call = contentShareInterface.addUserToContentShare(client.getContentShare().getUserId()+"",client.getContentShare().getContentShareId()+"",client.getToken(),client.getContentShare().generateQueries());
+
+        Response<ContentShare> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
