@@ -31,4 +31,7 @@ public interface contentShareInterface {
     @POST("https://udel.instructure.com/api/api/v1/users/{userId}/content_shares/{contentShareId}/add_users")
     Call<ContentShare> addUserToContentShare(@Path("userId") String userId, @Path("contentShareId") String contentShareId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @PUT("https://udel.instructure.com/api/v1/users/{userId}/content_shares/{contentShareId}")
+    Call<ContentShare> updateContentShare(@Path("userId") Integer userId, @Path("contentShareId") Integer contentShareId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }

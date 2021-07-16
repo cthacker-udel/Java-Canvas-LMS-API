@@ -13,12 +13,16 @@ public class ContentShare extends CanvasClient {
     private Integer contentId;
     private Integer userId;
     private Integer contentShareId;
+    private String readState;
 
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.readState != null){
+            queries.put("read_state",this.readState);
+        }
         if(this.receiverIds.size() > 0){
             queries.put("receiver_ids",this.receiverIds.toArray(String[]::new));
         }
@@ -37,7 +41,16 @@ public class ContentShare extends CanvasClient {
         this.receiverIds = new ArrayList<>();
         this.contentType = null;
         this.contentId = null;
+        this.readState = null;
 
+    }
+
+    public String getReadState() {
+        return readState;
+    }
+
+    public void setReadState(String readState) {
+        this.readState = readState;
     }
 
     public Integer getContentShareId() {
