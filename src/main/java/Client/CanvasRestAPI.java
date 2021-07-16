@@ -3971,6 +3971,14 @@ public class CanvasRestAPI{
 
     }
 
+    /*
+
+    Conversations API
+
+     */
+
+
+
 
 
 
