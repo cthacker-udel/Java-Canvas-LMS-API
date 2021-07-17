@@ -4074,6 +4074,19 @@ public class CanvasRestAPI{
 
     }
 
+    public void markAllRead(CanvasClient client){
+
+        String url = baseUrl + "/api/v1/conversations/mark_all_as_read/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+    }
+
 
 
 

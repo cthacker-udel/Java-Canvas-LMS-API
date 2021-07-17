@@ -25,4 +25,7 @@ public interface conversationInterface {
     @PUT("https://udel.instructure.com/api/v1/conversations/{conversationId}")
     Call<Void> editConversation(@Path("conversationId") String conversationId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @POST("https://udel.instructure.com/api/v1/conversations/mark_all_as_read")
+    Call<Void> markAllConversationsRead(@Header("Authorization") String auth);
+
 }
