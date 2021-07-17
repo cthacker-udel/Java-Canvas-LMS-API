@@ -32,11 +32,16 @@ public class Conversation extends CanvasClient {
     private Boolean conversationSubscribed;
     private Boolean conversationStarred;
 
+    private String includedMessages;
+
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.includedMessages != null){
+            queries.put("included_messages[]",this.includedMessages);
+        }
         if(this.conversationWorkflowState != null){
             queries.put("conversation[workflow_state]",this.conversationWorkflowState);
         }

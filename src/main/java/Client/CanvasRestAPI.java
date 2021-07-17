@@ -4134,6 +4134,24 @@ public class CanvasRestAPI{
 
     }
 
+    public Recipient addMessage(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/conversations/%s/add_message/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<Recipient> call = conversationInterface.addMessage(client.getConversations().getConversationId(), client.getToken(),client.getConversations().generateQueries());
+
+        Response<Recipient> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 

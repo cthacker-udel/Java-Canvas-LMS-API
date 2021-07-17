@@ -36,4 +36,7 @@ public interface conversationInterface {
     @POST("https://udel.instructure.com/api/v1/conversations/{conversationId}/add_recipients")
     Call<Recipient> addRecipients(@Path("conversationId") String conversationId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @POST("https://udel.instructure.com/api/v1/conversations/{conversationId}/add_message")
+    Call<Recipient> addMessage(@Path("conversationId") String conversationId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }
