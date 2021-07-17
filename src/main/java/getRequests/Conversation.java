@@ -34,11 +34,16 @@ public class Conversation extends CanvasClient {
 
     private String includedMessages;
 
+    private ArrayList<String> remove = new ArrayList<>();
+
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.remove.size() > 0){
+            queries.put("remove[]",this.remove.toArray(String[]::new));
+        }
         if(this.includedMessages != null){
             queries.put("included_messages[]",this.includedMessages);
         }

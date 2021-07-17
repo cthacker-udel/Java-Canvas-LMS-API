@@ -46,10 +46,7 @@ import Controller.ContentMigrationsController.MigrationIssue;
 import Controller.ContentMigrationsController.Migrator;
 import Controller.ContentMigrationsController.SelectiveData;
 import Controller.ContentSharesController.ContentShare;
-import Controller.ConversationController.Conversation;
-import Controller.ConversationController.DeletedConversation;
-import Controller.ConversationController.Recipient;
-import Controller.ConversationController.RunningBatch;
+import Controller.ConversationController.*;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -4148,6 +4145,24 @@ public class CanvasRestAPI{
         Call<Recipient> call = conversationInterface.addMessage(client.getConversations().getConversationId(), client.getToken(),client.getConversations().generateQueries());
 
         Response<Recipient> response = call.execute();
+
+        return response.body();
+    }
+
+    public Message deleteMessage(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/conversations/%s/remove_message",client.getConversations().getConversationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<Message> call = conversationInterface.deleteMessage(client.getConversations().getConversationId(),client.getToken(),client.getConversations().generateQueries());
+
+        Response<Message> response = call.execute();
 
         return response.body();
     }
