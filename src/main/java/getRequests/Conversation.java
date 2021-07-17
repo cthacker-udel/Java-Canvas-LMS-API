@@ -26,6 +26,7 @@ public class Conversation extends CanvasClient {
     private Boolean userNote;
     private String mode;
     private String contextCode;
+    private String conversationId;
 
 
     public Map<String,Object> generateQueries(){
@@ -108,5 +109,147 @@ public class Conversation extends CanvasClient {
 
     }
 
+    public String getScope() {
+        return scope;
+    }
 
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    public String getFilter() {
+        return filter;
+    }
+
+    public void setFilter(String filter) {
+        this.filter = filter;
+    }
+
+    public String getFilterMode() {
+        return filterMode;
+    }
+
+    public void setFilterMode(String filterMode) {
+        this.filterMode = filterMode;
+    }
+
+    public Boolean getInterleaveSubmissions() {
+        return interleaveSubmissions;
+    }
+
+    public void setInterleaveSubmissions(Boolean interleaveSubmissions) {
+        this.interleaveSubmissions = interleaveSubmissions;
+    }
+
+    public Boolean getIncludeAllConversationIds() {
+        return includeAllConversationIds;
+    }
+
+    public void setIncludeAllConversationIds(Boolean includeAllConversationIds) {
+        this.includeAllConversationIds = includeAllConversationIds;
+    }
+
+    public String getInclude() {
+        return include;
+    }
+
+    public void setInclude(String include) {
+        this.include = include;
+    }
+
+    public ArrayList<String> getRecipients() {
+        return recipients;
+    }
+
+    public void setRecipients(ArrayList<String> recipients) {
+        this.recipients = recipients;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public Boolean getForceNew() {
+        return forceNew;
+    }
+
+    public void setForceNew(Boolean forceNew) {
+        this.forceNew = forceNew;
+    }
+
+    public Boolean getGroupConversation() {
+        return groupConversation;
+    }
+
+    public void setGroupConversation(Boolean groupConversation) {
+        this.groupConversation = groupConversation;
+    }
+
+    public ArrayList<String> getAttachmentIds() {
+        return attachmentIds;
+    }
+
+    public void setAttachmentIds(ArrayList<String> attachmentIds) {
+        this.attachmentIds = attachmentIds;
+    }
+
+    public String getMediaCommentId() {
+        return mediaCommentId;
+    }
+
+    public void setMediaCommentId(String mediaCommentId) {
+        this.mediaCommentId = mediaCommentId;
+    }
+
+    public String getMediaCommentType() {
+        return mediaCommentType;
+    }
+
+    public void setMediaCommentType(String mediaCommentType) {
+        this.mediaCommentType = mediaCommentType;
+    }
+
+    public Boolean getUserNote() {
+        return userNote;
+    }
+
+    public void setUserNote(Boolean userNote) {
+        this.userNote = userNote;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    public String getContextCode() {
+        return contextCode;
+    }
+
+    public void setContextCode(String contextCode) {
+        this.contextCode = contextCode;
+    }
+
+    public String getConversationId() {
+        return conversationId;
+    }
+
+    public void setConversationId(String conversationId) {
+        this.conversationId = conversationId;
+    }
 }
