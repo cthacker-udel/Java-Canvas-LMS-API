@@ -48,6 +48,7 @@ import Controller.ContentMigrationsController.SelectiveData;
 import Controller.ContentSharesController.ContentShare;
 import Controller.ConversationController.Conversation;
 import Controller.ConversationController.DeletedConversation;
+import Controller.ConversationController.Recipient;
 import Controller.ConversationController.RunningBatch;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -4109,6 +4110,25 @@ public class CanvasRestAPI{
         Call<DeletedConversation> call = conversationInterface.deleteConversation(client.getConversations().getConversationId(),client.getToken());
 
         Response<DeletedConversation> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Recipient addRecipients(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/conversations/%s/add_recipients/",client.getConversations().getConversationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<Recipient> call = conversationInterface.addRecipients(client.getConversations().getConversationId(),client.getToken(),client.getConversations().generateQueries());
+
+        Response<Recipient> response = call.execute();
 
         return response.body();
 
