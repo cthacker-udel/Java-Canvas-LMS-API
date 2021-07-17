@@ -47,6 +47,7 @@ import Controller.ContentMigrationsController.Migrator;
 import Controller.ContentMigrationsController.SelectiveData;
 import Controller.ContentSharesController.ContentShare;
 import Controller.ConversationController.Conversation;
+import Controller.ConversationController.DeletedConversation;
 import Controller.ConversationController.RunningBatch;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -55,6 +56,7 @@ import Controller.ProgressController.Progress;
 import Controller.UserController.User;
 import Model.*;
 
+import com.google.gson.Gson;
 import com.google.gson.internal.GsonBuildConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
@@ -4074,7 +4076,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void markAllRead(CanvasClient client){
+    public boolean markAllRead(CanvasClient client) throws IOException {
 
         String url = baseUrl + "/api/v1/conversations/mark_all_as_read/";
 
@@ -4084,6 +4086,31 @@ public class CanvasRestAPI{
                 .build();
 
         conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<Void> call = conversationInterface.markAllConversationsRead(client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public DeletedConversation deleteConversation(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/conversations/%s/",client.getConversations().getConversationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<DeletedConversation> call = conversationInterface.deleteConversation(client.getConversations().getConversationId(),client.getToken());
+
+        Response<DeletedConversation> response = call.execute();
+
+        return response.body();
 
     }
 

@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.ConversationController.Conversation;
+import Controller.ConversationController.DeletedConversation;
 import Controller.ConversationController.RunningBatch;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -27,5 +28,8 @@ public interface conversationInterface {
 
     @POST("https://udel.instructure.com/api/v1/conversations/mark_all_as_read")
     Call<Void> markAllConversationsRead(@Header("Authorization") String auth);
+
+    @DELETE("https://udel.instructure.com/api/v1/conversations/{conversationId}")
+    Call<DeletedConversation> deleteConversation(@Path("conversationId") String conversation, @Header("Authorization") String auth);
 
 }
