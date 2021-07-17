@@ -22,4 +22,7 @@ public interface conversationInterface {
     @GET("https://udel.instructure.com/api/v1/conversations/{conversationId}")
     Call<Conversation> getConversation(@Path("conversationId") String conversationId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @PUT("https://udel.instructure.com/api/v1/conversations/{conversationId}")
+    Call<Void> editConversation(@Path("conversationId") String conversationId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }

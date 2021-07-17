@@ -4055,6 +4055,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean editConversation(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/conversations/%s/",client.getConversations().getConversationId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<Void> call = conversationInterface.editConversation(client.getConversations().getConversationId(), client.getToken(),client.getConversations().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 

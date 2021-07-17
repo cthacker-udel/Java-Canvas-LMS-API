@@ -28,11 +28,24 @@ public class Conversation extends CanvasClient {
     private String contextCode;
     private String conversationId;
 
+    private String conversationWorkflowState;
+    private Boolean conversationSubscribed;
+    private Boolean conversationStarred;
+
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.conversationWorkflowState != null){
+            queries.put("conversation[workflow_state]",this.conversationWorkflowState);
+        }
+        if(this.conversationSubscribed != null){
+            queries.put("conversation[subscribed]",this.conversationSubscribed);
+        }
+        if(this.conversationStarred != null){
+            queries.put("conversation[starred]",this.conversationStarred);
+        }
         if(this.recipients.size() > 0){
             queries.put("recipients[]",String.join(",",this.recipients));
         }
@@ -87,8 +100,13 @@ public class Conversation extends CanvasClient {
         return queries;
     }
 
+
+
     public void clearQueries(){
 
+        this.conversationStarred = null;
+        this.conversationSubscribed = null;
+        this.conversationWorkflowState = null;
         this.scope = null;
         this.filter = null;
         this.filterMode = null;
@@ -107,6 +125,30 @@ public class Conversation extends CanvasClient {
         this.mode = null;
         this.contextCode = null;
 
+    }
+
+    public String getConversationWorkflowState() {
+        return conversationWorkflowState;
+    }
+
+    public void setConversationWorkflowState(String conversationWorkflowState) {
+        this.conversationWorkflowState = conversationWorkflowState;
+    }
+
+    public Boolean getConversationSubscribed() {
+        return conversationSubscribed;
+    }
+
+    public void setConversationSubscribed(Boolean conversationSubscribed) {
+        this.conversationSubscribed = conversationSubscribed;
+    }
+
+    public Boolean getConversationStarred() {
+        return conversationStarred;
+    }
+
+    public void setConversationStarred(Boolean conversationStarred) {
+        this.conversationStarred = conversationStarred;
     }
 
     public String getScope() {
