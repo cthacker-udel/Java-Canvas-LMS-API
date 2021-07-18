@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.ConversationController.*;
+import Controller.ProgressController.Progress;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -38,5 +39,8 @@ public interface conversationInterface {
 
     @POST("https://udel.instructure.com/api/v1/conversations/{conversationId}/remove_messages")
     Call<Message> deleteMessage(@Path("conversationId") String conversationId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @PUT("https://udel.instructure.com/api/v1/conversations")
+    Call<Progress> batchUpdateConversations(@Header("Authorization") String auth, @Body Map<String,Object> body);
 
 }

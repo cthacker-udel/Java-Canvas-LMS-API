@@ -4165,6 +4165,26 @@ public class CanvasRestAPI{
         Response<Message> response = call.execute();
 
         return response.body();
+
+    }
+
+    public Progress batchUpdateConversations(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/conversations/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<Progress> call = conversationInterface.batchUpdateConversations(client.getToken(),client.getConversations().generateQueries());
+
+        Response<Progress> response = call.execute();
+
+        return response.body();
+
     }
 
 

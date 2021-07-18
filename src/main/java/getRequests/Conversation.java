@@ -34,6 +34,9 @@ public class Conversation extends CanvasClient {
 
     private String includedMessages;
 
+    private String event;
+
+
     private ArrayList<String> remove = new ArrayList<>();
 
 
@@ -41,6 +44,9 @@ public class Conversation extends CanvasClient {
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.event != null){
+            queries.put("event",this.event);
+        }
         if(this.remove.size() > 0){
             queries.put("remove[]",this.remove.toArray(String[]::new));
         }
@@ -114,6 +120,7 @@ public class Conversation extends CanvasClient {
 
     public void clearQueries(){
 
+        this.event = null;
         this.conversationStarred = null;
         this.conversationSubscribed = null;
         this.conversationWorkflowState = null;
