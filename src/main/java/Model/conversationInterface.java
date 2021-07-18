@@ -43,4 +43,10 @@ public interface conversationInterface {
     @PUT("https://udel.instructure.com/api/v1/conversations")
     Call<Progress> batchUpdateConversations(@Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @GET("https://udel.instructure.com/api/v1/conversations/find_recipients")
+    Call<Void> findRecipients(@Header("Authorization") String auth);
+
+
+
+
 }

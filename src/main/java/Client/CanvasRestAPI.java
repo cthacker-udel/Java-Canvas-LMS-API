@@ -4187,6 +4187,24 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean findRecipents(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/conversations/find_recipients/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<Void> call = conversationInterface.findRecipients(client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+    }
+
 
 
 
