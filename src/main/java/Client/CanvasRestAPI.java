@@ -4203,6 +4203,25 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    public boolean getUnreadCount(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/conversations/unread_count/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        conversationInterface conversationInterface = retrofit.create(Model.conversationInterface.class);
+
+        Call<Void> call = conversationInterface.getNumberOfUnreadConversations(client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
     }
 
 

@@ -46,7 +46,8 @@ public interface conversationInterface {
     @GET("https://udel.instructure.com/api/v1/conversations/find_recipients")
     Call<Void> findRecipients(@Header("Authorization") String auth);
 
-
+    @GET("https://udel.instructure.com/api/v1/conversations/unread_count/")
+    Call<Void> getNumberOfUnreadConversations(@Header("Authorization") String auth);
 
 
 }
