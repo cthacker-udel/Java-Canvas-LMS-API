@@ -4249,6 +4249,24 @@ public class CanvasRestAPI{
 
         return response.body();
 
+    }
+
+    public List<CourseEvent> queryByAccount(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/audit/course/account/%s/",client.getCourseAudit().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseAuditInterface courseAuditInterface = retrofit.create(Model.courseAuditInterface.class);
+
+        Call<List<CourseEvent>> call = courseAuditInterface.queryByAccount(client.getCourseAudit().getAccountId(), client.getToken(),client.getCourseAudit().generateQueries());
+
+        Response<List<CourseEvent>> response = call.execute();
+
+        return response.body();
 
     }
 
