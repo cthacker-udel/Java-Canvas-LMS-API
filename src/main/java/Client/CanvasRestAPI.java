@@ -47,6 +47,7 @@ import Controller.ContentMigrationsController.Migrator;
 import Controller.ContentMigrationsController.SelectiveData;
 import Controller.ContentSharesController.ContentShare;
 import Controller.ConversationController.*;
+import Controller.CourseAuditController.CourseEvent;
 import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -4222,6 +4223,33 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+    }
+
+
+    /*
+
+    Course Audit API
+
+     */
+
+    public List<CourseEvent> queryCourse(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/audit/course/courses/%s/",client.getCourseAudit().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseAuditInterface courseAuditInterface = retrofit.create(Model.courseAuditInterface.class);
+
+        Call<List<CourseEvent>> call = courseAuditInterface.queryByCourse(client.getCourseAudit().getCourseId(),client.getToken(),client.getCourseAudit().generateQueries());
+
+        Response<List<CourseEvent>> response = call.execute();
+
+        return response.body();
+
+
     }
 
 

@@ -1,6 +1,7 @@
 package Client;
 
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
+import Controller.CourseController.Course;
 import getRequests.*;
 
 public class CanvasClient extends CanvasRestAPI {
@@ -36,6 +37,7 @@ public class CanvasClient extends CanvasRestAPI {
     private ContentSecurityPolicySetting contentSecurityPolicySetting;
     private ContentShare contentShare;
     private Conversation conversations;
+    private CourseAudit courseAudit;
 
     public CanvasClient(){
         super();
@@ -75,7 +77,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.contentSecurityPolicySetting = new ContentSecurityPolicySetting();
         this.contentShare = new ContentShare();
         this.conversations = new Conversation();
+        this.courseAudit = new CourseAudit();
 
+    }
+
+    public CourseAudit getCourseAudit() {
+        return courseAudit;
+    }
+
+    public void setCourseAudit(CourseAudit courseAudit) {
+        this.courseAudit = courseAudit;
     }
 
     public Conversation getConversations() {
