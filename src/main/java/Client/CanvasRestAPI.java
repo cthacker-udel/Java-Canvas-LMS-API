@@ -4262,7 +4262,7 @@ public class CanvasRestAPI{
 
         courseAuditInterface courseAuditInterface = retrofit.create(Model.courseAuditInterface.class);
 
-        Call<List<CourseEvent>> call = courseAuditInterface.queryByAccount(client.getCourseAudit().getAccountId(), client.getToken(),client.getCourseAudit().generateQueries());
+        Call<List<CourseEvent>> call = courseAuditInterface.queryByAccount(client.getCourseAudit().getCourseAuditAccountId(), client.getToken(),client.getCourseAudit().generateQueries());
 
         Response<List<CourseEvent>> response = call.execute();
 

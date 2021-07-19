@@ -11,6 +11,7 @@ public class CourseAudit extends CanvasClient {
     private ZonedDateTime startTime;
     private ZonedDateTime endTime;
     private String courseId;
+    private String courseAuditAccountId;
 
     public Map<String,Object> generateQueries(){
 
@@ -30,6 +31,14 @@ public class CourseAudit extends CanvasClient {
         this.startTime = null;
         this.endTime = null;
 
+    }
+
+    public String getCourseAuditAccountId() {
+        return courseAuditAccountId;
+    }
+
+    public void setCourseAuditAccountId(String courseAuditAccountId) {
+        this.courseAuditAccountId = courseAuditAccountId;
     }
 
     public ZonedDateTime getStartTime() {
