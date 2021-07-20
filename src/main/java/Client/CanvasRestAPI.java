@@ -4303,7 +4303,7 @@ public class CanvasRestAPI{
      */
 
 
-    public List<Course> listUserCourses(CanvasClient client) throws IOException {
+    public List<Course> listCurrUserCourses(CanvasClient client) throws IOException {
 
         String url = baseUrl + "/api/v1/courses/";
 
@@ -4314,11 +4314,27 @@ public class CanvasRestAPI{
 
         courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
 
-        Call<List<Course>> call = courseInterface.listUserCourses(client.getToken(),client.getCourse().generateQueries());
+        Call<List<Course>> call = courseInterface.listCurrUserCourses(client.getToken(),client.getCourse().generateQueries());
 
         Response<List<Course>> response = call.execute();
 
         return response.body();
+    }
+
+
+    public void listUserCourses(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/users/%s/courses/",client.getCourse().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<List<Course>> call = courseInterface.listUserCourses(client.getCourse().getUserId(),client.getToken(),client.getCourse().generateQueries());
+
     }
 
 
