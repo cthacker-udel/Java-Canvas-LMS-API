@@ -16,6 +16,7 @@ public class Course extends CanvasClient {
     private String state;
     private String userId;
     private Boolean homeroom;
+    private String courseId;
 
     public Map<String,Object> generateQueries(){
 
@@ -61,6 +62,22 @@ public class Course extends CanvasClient {
         this.homeroom = null;
         this.userId = null;
 
+    }
+
+    public Boolean getHomeroom() {
+        return homeroom;
+    }
+
+    public void setHomeroom(Boolean homeroom) {
+        this.homeroom = homeroom;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getEnrollmentType() {

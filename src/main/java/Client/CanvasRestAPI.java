@@ -49,6 +49,7 @@ import Controller.ContentSharesController.ContentShare;
 import Controller.ConversationController.*;
 import Controller.CourseAuditController.CourseEvent;
 import Controller.CourseController.Course;
+import Controller.CourseController.CourseProgress;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
@@ -4322,7 +4323,7 @@ public class CanvasRestAPI{
     }
 
 
-    public void listUserCourses(CanvasClient client){
+    public List<Course> listUserCourses(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/users/%s/courses/",client.getCourse().getUserId());
 
@@ -4334,6 +4335,29 @@ public class CanvasRestAPI{
         courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
 
         Call<List<Course>> call = courseInterface.listUserCourses(client.getCourse().getUserId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<List<Course>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public CourseProgress getUserProgress(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/users/%s/progress/",client.getCourse().getCourseId(),client.getCourse().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<CourseProgress> call = courseInterface.getUserProgress(client.getCourse().getCourseId(),client.getCourse().getUserId(),client.getToken());
+
+        Response<CourseProgress> response = call.execute();
+
+        return response.body();
 
     }
 
