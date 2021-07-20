@@ -1,7 +1,6 @@
 package Client;
 
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
-import Controller.CourseController.Course;
 import getRequests.*;
 
 public class CanvasClient extends CanvasRestAPI {

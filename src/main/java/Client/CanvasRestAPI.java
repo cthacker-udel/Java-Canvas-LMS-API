@@ -4296,6 +4296,31 @@ public class CanvasRestAPI{
 
     }
 
+    /*
+
+    Course API
+
+     */
+
+
+    public List<Course> listUserCourses(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/courses/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<List<Course>> call = courseInterface.listUserCourses(client.getToken(),client.getCourse().generateQueries());
+
+        Response<List<Course>> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 
