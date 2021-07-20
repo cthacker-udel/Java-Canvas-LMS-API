@@ -38,6 +38,7 @@ public class CanvasClient extends CanvasRestAPI {
     private ContentShare contentShare;
     private Conversation conversations;
     private CourseAudit courseAudit;
+    private QuizExtension quizExtension;
 
     public CanvasClient(){
         super();
@@ -78,7 +79,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.contentShare = new ContentShare();
         this.conversations = new Conversation();
         this.courseAudit = new CourseAudit();
+        this.quizExtension = new QuizExtension();
 
+    }
+
+    public QuizExtension getQuizExtension() {
+        return quizExtension;
+    }
+
+    public void setQuizExtension(QuizExtension quizExtension) {
+        this.quizExtension = quizExtension;
     }
 
     public CourseAudit getCourseAudit() {

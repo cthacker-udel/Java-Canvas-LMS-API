@@ -52,6 +52,7 @@ import Controller.CourseController.Course;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
+import Controller.QuizExtensionsController.QuizExtensions;
 import Controller.UserController.User;
 import Model.*;
 
@@ -4265,6 +4266,31 @@ public class CanvasRestAPI{
         Call<List<CourseEvent>> call = courseAuditInterface.queryByAccount(client.getCourseAudit().getCourseAuditAccountId(), client.getToken(),client.getCourseAudit().generateQueries());
 
         Response<List<CourseEvent>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    /*
+
+    Course Quiz Extensions API
+
+     */
+
+    public QuizExtensions setExtensionsForStudentQuizSubmissions(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/quiz_extensions/",client.getQuizExtension().getQuizExtensionCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        quizExtensionInterface quizExtensionInterface = retrofit.create(Model.quizExtensionInterface.class);
+
+        Call<QuizExtensions> call = quizExtensionInterface.setExtensionsForStudentQuizSubmissions(client.getQuizExtension().getQuizExtensionCourseId(),client.getToken(),client.getQuizExtension().generateQueries());
+
+        Response<QuizExtensions> response = call.execute();
 
         return response.body();
 
