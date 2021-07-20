@@ -4361,6 +4361,19 @@ public class CanvasRestAPI{
 
     }
 
+    public void createNewCourse(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/accounts/%s/courses/",client.getCourse().getCourseAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+    }
+
 
 
 
