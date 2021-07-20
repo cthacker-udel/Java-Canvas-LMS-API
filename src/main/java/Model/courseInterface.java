@@ -19,4 +19,7 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/users/{userId}/progress")
     Call<CourseProgress> getUserProgress(@Path("courseId") String courseId, @Path("userId") String userId, @Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/courses")
+    Call<Course> createCourse(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
