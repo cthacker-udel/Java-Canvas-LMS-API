@@ -32,5 +32,8 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/users")
     Call<List<User>> listCourseUsers(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/search_users")
+    Call<List<User>> listCourseUsersSearch(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 
 }
