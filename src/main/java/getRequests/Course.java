@@ -3,6 +3,7 @@ package getRequests;
 import Client.CanvasClient;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -51,11 +52,27 @@ public class Course extends CanvasClient {
     private String courseFormat;
     private Boolean enableSisReactivation;
 
+    private String searchTerm;
+    private String sort;
+    private String enrollmentTypeArr;
+    private ArrayList<Integer> userIds = new ArrayList<>();
+
+
+
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.enrollmentTypeArr != null){
+            queries.put("enrollment_type[]",this.enrollmentTypeArr);
+        }
+        if(this.userIds.size() > 0){
+            queries.put("user_ids[]",this.userIds.toArray(Integer[]::new));
+        }
+        if(this.userId != null){
+            queries.put("user_id",this.userId);
+        }
         if(this.enrollmentType != null){
             queries.put("enrollment_type",this.enrollmentType);
         }
@@ -220,6 +237,12 @@ public class Course extends CanvasClient {
         this.gradePassbackSetting= null;
         this.courseFormat= null;
         this.enableSisReactivation= null;
+
+        this.userId = null;
+        this.userIds = new ArrayList<>();
+        this.searchTerm = null;
+        this.sort = null;
+        this.enrollmentTypeArr = null;
 
     }
 

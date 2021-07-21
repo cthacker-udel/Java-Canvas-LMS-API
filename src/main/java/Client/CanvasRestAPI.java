@@ -4418,6 +4418,20 @@ public class CanvasRestAPI{
 
     }
 
+    public void listCourseUsers(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/users/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+
+    }
+
 
 
 
