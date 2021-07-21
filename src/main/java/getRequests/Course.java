@@ -223,6 +223,46 @@ public class Course extends CanvasClient {
 
     }
 
+    public String getSyllabusBody() {
+        return syllabusBody;
+    }
+
+    public void setSyllabusBody(String syllabusBody) {
+        this.syllabusBody = syllabusBody;
+    }
+
+    public Integer getGradingStandardId() {
+        return gradingStandardId;
+    }
+
+    public void setGradingStandardId(Integer gradingStandardId) {
+        this.gradingStandardId = gradingStandardId;
+    }
+
+    public String getGradePassbackSetting() {
+        return gradePassbackSetting;
+    }
+
+    public void setGradePassbackSetting(String gradePassbackSetting) {
+        this.gradePassbackSetting = gradePassbackSetting;
+    }
+
+    public String getCourseFormat() {
+        return courseFormat;
+    }
+
+    public void setCourseFormat(String courseFormat) {
+        this.courseFormat = courseFormat;
+    }
+
+    public Boolean getEnableSisReactivation() {
+        return enableSisReactivation;
+    }
+
+    public void setEnableSisReactivation(Boolean enableSisReactivation) {
+        this.enableSisReactivation = enableSisReactivation;
+    }
+
     public String getCourseName() {
         return courseName;
     }

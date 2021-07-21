@@ -22,4 +22,8 @@ public interface courseInterface {
     @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/courses")
     Call<Course> createCourse(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/files")
+    Call<Void> uploadFile(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
+
 }
