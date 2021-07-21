@@ -21,13 +21,16 @@ public interface courseInterface {
     Call<CourseProgress> getUserProgress(@Path("courseId") String courseId, @Path("userId") String userId, @Header("Authorization") String auth);
 
     @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/courses")
-    Call<Course> createCourse(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<Course> createCourse(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
 
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/files")
     Call<Void> uploadFile(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/students")
     Call<List<User>> listStudents(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/users")
+    Call<List<User>> listCourseUsers(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 
 }

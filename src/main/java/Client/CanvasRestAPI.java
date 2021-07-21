@@ -4418,7 +4418,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void listCourseUsers(CanvasClient client){
+    public List<User> listCourseUsers(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/users/",client.getCourse().getCourseId());
 
@@ -4429,6 +4429,11 @@ public class CanvasRestAPI{
 
         courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
 
+        Call<List<User>> call = courseInterface.listCourseUsers(client.getCourse().getCourseId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<List<User>> response = call.execute();
+
+        return response.body();
 
     }
 
