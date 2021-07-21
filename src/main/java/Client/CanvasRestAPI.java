@@ -4361,7 +4361,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void createNewCourse(CanvasClient client){
+    public Course createNewCourse(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/accounts/%s/courses/",client.getCourse().getCourseAccountId());
 
@@ -4371,6 +4371,12 @@ public class CanvasRestAPI{
                 .build();
 
         courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<Course> call = courseInterface.createCourse(client.getCourse().getCourseAccountId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<Course> response = call.execute();
+
+        return response.body();
 
     }
 
