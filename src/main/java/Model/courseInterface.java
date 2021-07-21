@@ -2,6 +2,7 @@ package Model;
 
 import Controller.CourseController.Course;
 import Controller.CourseController.CourseProgress;
+import Controller.UserController.User;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -24,6 +25,9 @@ public interface courseInterface {
 
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/files")
     Call<Void> uploadFile(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/students")
+    Call<List<User>> listStudents(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
 
 }
