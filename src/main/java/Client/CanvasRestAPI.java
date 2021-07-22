@@ -4511,8 +4511,6 @@ public class CanvasRestAPI{
         Response<List<User>> response = call.execute();
 
         return response.body();
-
-
     }
 
 

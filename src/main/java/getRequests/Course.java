@@ -57,6 +57,7 @@ public class Course extends CanvasClient {
     private String enrollmentTypeArr;
     private ArrayList<Integer> userIds = new ArrayList<>();
 
+    private String html;
 
 
 
@@ -65,6 +66,9 @@ public class Course extends CanvasClient {
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.html != null){
+            queries.put("html",this.html);
+        }
         if(this.enrollmentTypeArr != null){
             queries.put("enrollment_type[]",this.enrollmentTypeArr);
         }
@@ -245,6 +249,48 @@ public class Course extends CanvasClient {
         this.sort = null;
         this.enrollmentTypeArr = null;
 
+        this.html = null;
+
+    }
+
+    public String getSearchTerm() {
+        return searchTerm;
+    }
+
+    public void setSearchTerm(String searchTerm) {
+        this.searchTerm = searchTerm;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
+    public String getEnrollmentTypeArr() {
+        return enrollmentTypeArr;
+    }
+
+    public void setEnrollmentTypeArr(String enrollmentTypeArr) {
+        this.enrollmentTypeArr = enrollmentTypeArr;
+    }
+
+    public ArrayList<Integer> getUserIds() {
+        return userIds;
+    }
+
+    public void setUserIds(ArrayList<Integer> userIds) {
+        this.userIds = userIds;
+    }
+
+    public String getHtml() {
+        return html;
+    }
+
+    public void setHtml(String html) {
+        this.html = html;
     }
 
     public String getSyllabusBody() {
