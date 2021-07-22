@@ -50,6 +50,7 @@ import Controller.ConversationController.*;
 import Controller.CourseAuditController.CourseEvent;
 import Controller.CourseController.Course;
 import Controller.CourseController.CourseProgress;
+import Controller.CourseController.HTML;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
@@ -4511,6 +4512,25 @@ public class CanvasRestAPI{
         Response<List<User>> response = call.execute();
 
         return response.body();
+    }
+
+    public HTML previewProcessedHTML(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/preview_html/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<HTML> call = courseInterface.previewProcessedHTML(client.getCourse().getCourseId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<HTML> response = call.execute();
+
+        return response.body();
+
     }
 
 

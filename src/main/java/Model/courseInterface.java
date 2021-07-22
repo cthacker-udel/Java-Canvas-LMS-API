@@ -2,6 +2,7 @@ package Model;
 
 import Controller.CourseController.Course;
 import Controller.CourseController.CourseProgress;
+import Controller.CourseController.HTML;
 import Controller.UserController.User;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -43,6 +44,9 @@ public interface courseInterface {
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/content_share_users")
     Call<List<User>> searchForContentShareUsers(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/preview_html")
+    Call<HTML> previewProcessedHTML(@Path("courseId") String courseID, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 
 }
