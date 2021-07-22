@@ -4476,6 +4476,25 @@ public class CanvasRestAPI{
 
     }
 
+    public User getUser(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/users/%s/",client.getCourse().getCourseId(),client.getCourse().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<User> call = courseInterface.getSingleUser(client.getCourse().getCourseId(),client.getCourse().getUserId(),client.getToken());
+
+        Response<User> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

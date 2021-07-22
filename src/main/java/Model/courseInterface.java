@@ -38,5 +38,8 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/recent_students")
     Call<List<User>> listRecentlyLoggedStudents(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/users/{userId}")
+    Call<User> getSingleUser(@Path("courseId") String courseId, @Path("userId") String userId, @Header("Authorization") String auth);
+
 
 }
