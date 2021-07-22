@@ -4495,6 +4495,26 @@ public class CanvasRestAPI{
 
     }
 
+    public List<User> searchForContentShareUsers(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/content_share_users/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<List<User>> call = courseInterface.searchForContentShareUsers(client.getCourse().getCourseId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<List<User>> response = call.execute();
+
+        return response.body();
+
+
+    }
+
 
 
 

@@ -60,6 +60,7 @@ public class Course extends CanvasClient {
 
 
 
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();

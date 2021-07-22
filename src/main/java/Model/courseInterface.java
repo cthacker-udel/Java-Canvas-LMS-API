@@ -41,5 +41,8 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/users/{userId}")
     Call<User> getSingleUser(@Path("courseId") String courseId, @Path("userId") String userId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/content_share_users")
+    Call<List<User>> searchForContentShareUsers(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 
 }
