@@ -48,5 +48,9 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/preview_html")
     Call<HTML> previewProcessedHTML(@Path("courseId") String courseID, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @Streaming
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/activity_stream")
+    Call<Object> getCourseActivityStream(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
 
 }
