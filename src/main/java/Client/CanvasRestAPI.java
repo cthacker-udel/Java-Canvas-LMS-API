@@ -4571,6 +4571,25 @@ public class CanvasRestAPI{
 
     }
 
+    public Object getCourseTODOItems(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/todo/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<Object> call = courseInterface.getTODOItems(client.getCourse().getCourseId(),client.getToken());
+
+        Response<Object> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

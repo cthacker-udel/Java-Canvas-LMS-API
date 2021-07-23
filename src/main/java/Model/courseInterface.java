@@ -55,5 +55,8 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/activity_stream/summary")
     Call<Object> getCourseActivityStreamSummary(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/todo")
+    Call<Object> getTODOItems(@Path("courseId") String courseID, @Header("Authorization") String auth);
+
 
 }
