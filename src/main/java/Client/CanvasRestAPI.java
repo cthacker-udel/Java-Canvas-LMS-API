@@ -51,6 +51,7 @@ import Controller.CourseAuditController.CourseEvent;
 import Controller.CourseController.Course;
 import Controller.CourseController.CourseProgress;
 import Controller.CourseController.HTML;
+import Controller.CourseController.Settings;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
@@ -4606,6 +4607,25 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    public Settings getCourseSettings(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/settings/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<Settings> call = courseInterface.getCourseSettings(client.getCourse().getCourseId(),client.getToken());
+
+        Response<Settings> response = call.execute();
+
+        return response.body();
 
     }
 

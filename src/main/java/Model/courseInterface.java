@@ -3,6 +3,7 @@ package Model;
 import Controller.CourseController.Course;
 import Controller.CourseController.CourseProgress;
 import Controller.CourseController.HTML;
+import Controller.CourseController.Settings;
 import Controller.UserController.User;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -60,6 +61,9 @@ public interface courseInterface {
 
     @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}")
     Call<Void> deleteCourse(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/settings")
+    Call<Settings> getCourseSettings(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
 
 }
