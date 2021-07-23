@@ -59,6 +59,8 @@ public class Course extends CanvasClient {
 
     private String html;
 
+    private String event;
+
 
 
 
@@ -66,6 +68,9 @@ public class Course extends CanvasClient {
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.event != null){
+            queries.put("event",this.event);
+        }
         if(this.html != null){
             queries.put("html",this.html);
         }

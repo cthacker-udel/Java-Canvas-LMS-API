@@ -58,5 +58,8 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/todo")
     Call<Object> getTODOItems(@Path("courseId") String courseID, @Header("Authorization") String auth);
 
+    @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}")
+    Call<Void> deleteCourse(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
+
 
 }
