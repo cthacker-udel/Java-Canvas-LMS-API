@@ -65,5 +65,8 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/settings")
     Call<Settings> getCourseSettings(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/settings")
+    Call<Void> updateCourseSettings(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 
 }

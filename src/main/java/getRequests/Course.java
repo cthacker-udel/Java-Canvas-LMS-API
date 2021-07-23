@@ -61,13 +61,63 @@ public class Course extends CanvasClient {
 
     private String event;
 
-
-
+    private Boolean allowStudentDiscussionTopics;
+    private Boolean allowStudentDiscussionEditing;
+    private Boolean allowStudentOrganizedGroups;
+    private Boolean filterSpeedGraderByStudentGroup;
+    private Boolean hideDistributionGraphs;
+    private Boolean hideSectionsOnCourseUsersPage;
+    private Boolean lockAllAnnouncements;
+    private Boolean usageRightsRequired;
+    private Boolean restrictStudentPastView;
+    private Boolean restrictStudentFutureView;
+    private Boolean showAnnouncementsOnHomePage;
+    private Integer homePageAnnouncementLimit;
+    private Boolean syllabusCourseSummary;
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.allowStudentDiscussionTopics != null){
+            queries.put("allow_student_discussion_topics",this.allowStudentDiscussionTopics);
+        }
+        if(this.allowStudentDiscussionEditing != null){
+            queries.put("allow_student_discussion_editing",this.allowStudentDiscussionEditing);
+        }
+        if(this.allowStudentOrganizedGroups != null){
+            queries.put("allow_student_organized_groups",this.allowStudentOrganizedGroups);
+        }
+        if(this.filterSpeedGraderByStudentGroup != null){
+            queries.put("filter_speed_grader_by_student_group",this.filterSpeedGraderByStudentGroup);
+        }
+        if(this.hideDistributionGraphs != null){
+            queries.put("hide_distribution_graphs",this.hideDistributionGraphs);
+        }
+        if(this.hideSectionsOnCourseUsersPage != null){
+            queries.put("hide_sections_on_course_users_page",this.hideSectionsOnCourseUsersPage);
+        }
+        if(this.lockAllAnnouncements != null){
+            queries.put("lock_all_announcements",this.lockAllAnnouncements);
+        }
+        if(this.usageRightsRequired != null){
+            queries.put("usage_rights_required",this.usageRightsRequired);
+        }
+        if(this.restrictStudentPastView != null){
+            queries.put("restrict_student_past_view",this.restrictStudentPastView);
+        }
+        if(this.restrictStudentFutureView != null){
+            queries.put("restrict_student_future_view",this.restrictStudentFutureView);
+        }
+        if(this.showAnnouncementsOnHomePage != null){
+            queries.put("show_announcements_on_home_page",this.showAnnouncementsOnHomePage);
+        }
+        if(this.homePageAnnouncementLimit != null){
+            queries.put("home_page_announcement_list",this.homePageAnnouncementLimit);
+        }
+        if(this.syllabusCourseSummary != null){
+            queries.put("syllabus_course_summary",this.syllabusCourseSummary);
+        }
         if(this.event != null){
             queries.put("event",this.event);
         }

@@ -4629,7 +4629,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void updateCourseSettings(CanvasClient client){
+    public boolean updateCourseSettings(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/settings/",client.getCourse().getCourseId());
 
@@ -4639,6 +4639,12 @@ public class CanvasRestAPI{
                 .build();
 
         courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<Void> call = courseInterface.updateCourseSettings(client.getCourse().getCourseId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
 
 
 
