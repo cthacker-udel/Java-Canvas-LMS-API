@@ -4533,7 +4533,7 @@ public class CanvasRestAPI{
 
     }
 
-    public Object courseActivityStream(CanvasClient client) throws IOException {
+    public Object getCourseActivityStream(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/activity_stream/",client.getCourse().getCourseId());
 
@@ -4545,6 +4545,25 @@ public class CanvasRestAPI{
         courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
 
         Call<Object> call = courseInterface.getCourseActivityStream(client.getCourse().getCourseId(),client.getToken());
+
+        Response<Object> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Object getCourseActivityStreamSummary(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/activity_stream/summary/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<Object> call = courseInterface.getCourseActivityStreamSummary(client.getCourse().getCourseId(),client.getToken());
 
         Response<Object> response = call.execute();
 
