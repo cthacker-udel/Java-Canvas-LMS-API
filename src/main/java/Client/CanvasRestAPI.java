@@ -4673,6 +4673,44 @@ public class CanvasRestAPI{
 
     }
 
+    public Course getSingleCourse(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<Course> call = courseInterface.getSingleCourse(client.getCourse().getCourseId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<Course> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Course getSingleCourseAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/courses/%s/",client.getCourse().getAccountId(),client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<Course> call = courseInterface.getSingleCourseAccountId(client.getCourse().getAccountId()+"",client.getCourse().getCourseId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<Course> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

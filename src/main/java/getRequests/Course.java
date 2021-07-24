@@ -75,10 +75,15 @@ public class Course extends CanvasClient {
     private Integer homePageAnnouncementLimit;
     private Boolean syllabusCourseSummary;
 
+    private Integer teacher_limit;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.teacher_limit != null){
+            queries.put("teacher_limit",this.teacher_limit);
+        }
         if(this.allowStudentDiscussionTopics != null){
             queries.put("allow_student_discussion_topics",this.allowStudentDiscussionTopics);
         }
@@ -305,6 +310,7 @@ public class Course extends CanvasClient {
         this.enrollmentTypeArr = null;
 
         this.html = null;
+        this.teacher_limit = null;
 
     }
 

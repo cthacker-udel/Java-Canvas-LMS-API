@@ -71,5 +71,11 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/student_view_student")
     Call<User> getCourseTestStudent(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}")
+    Call<Course> getSingleCourse(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/courses/{courseId}")
+    Call<Course> getSingleCourseAccountId(@Path("accountId") String accountId, @Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 
 }
