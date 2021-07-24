@@ -78,8 +78,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Objects;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.*;
 
 public class CanvasRestAPI{
 
@@ -4649,6 +4652,28 @@ public class CanvasRestAPI{
 
 
     }
+
+    public User getCourseTestStudent(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/student_view_student/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<User> call = courseInterface.getCourseTestStudent(client.getCourse().getCourseId(),client.getToken());
+
+        Response<User> response = call.execute();
+
+        return response.body();
+
+
+    }
+
+
 
 
 
