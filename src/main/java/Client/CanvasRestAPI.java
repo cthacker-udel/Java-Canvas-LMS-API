@@ -4730,7 +4730,7 @@ public class CanvasRestAPI{
 
     }
 
-    public void updateCourses(CanvasClient client){
+    public Progress updateCourses(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/courses/",client.getCourse().getCourseId());
 
@@ -4741,7 +4741,30 @@ public class CanvasRestAPI{
 
         courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
 
-        Call<Progress> call = course
+        Call<Progress> call = courseInterface.updateCourses(client.getCourse().getAccountId()+"",client.getToken(),client.getCourse().generateQueries());
+
+        Response<Progress> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Course resetCourse(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/reset_content/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<Course> call = courseInterface.resetCourse(client.getCourse().getCourseId(),client.getToken());
+
+        Response<Course> response = call.execute();
+
+        return response.body();
 
     }
 

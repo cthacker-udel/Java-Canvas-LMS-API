@@ -84,5 +84,8 @@ public interface courseInterface {
     @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/courses")
     Call<Progress> updateCourses(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/reset_content")
+    Call<Course> resetCourse(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
 
 }
