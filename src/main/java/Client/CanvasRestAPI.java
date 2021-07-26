@@ -4730,6 +4730,21 @@ public class CanvasRestAPI{
 
     }
 
+    public void updateCourses(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/courses/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<Progress> call = course
+
+    }
+
 
 
 

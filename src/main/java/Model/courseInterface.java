@@ -4,6 +4,7 @@ import Controller.CourseController.Course;
 import Controller.CourseController.CourseProgress;
 import Controller.CourseController.HTML;
 import Controller.CourseController.Settings;
+import Controller.ProgressController.Progress;
 import Controller.UserController.User;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -78,7 +79,10 @@ public interface courseInterface {
     Call<Course> getSingleCourseAccountId(@Path("accountId") String accountId, @Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}")
-    Call<Course> updateCourse(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<Course> updateCourse(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
+
+    @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/courses")
+    Call<Progress> updateCourses(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
 
 }
