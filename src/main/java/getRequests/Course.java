@@ -85,6 +85,8 @@ public class Course extends CanvasClient {
 
     private ArrayList<String> permissions = new ArrayList<>();
 
+    private String courseCopyId;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
@@ -337,6 +339,16 @@ public class Course extends CanvasClient {
 
         this.permissions = new ArrayList<>();
 
+        this.courseCopyId = null;
+
+    }
+
+    public String getCourseCopyId() {
+        return courseCopyId;
+    }
+
+    public void setCourseCopyId(String courseCopyId) {
+        this.courseCopyId = courseCopyId;
     }
 
     public Integer getCourseAccountIdUpdate() {

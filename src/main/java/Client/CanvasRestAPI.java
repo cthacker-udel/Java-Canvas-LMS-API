@@ -49,6 +49,7 @@ import Controller.ContentSharesController.ContentShare;
 import Controller.ConversationController.*;
 import Controller.CourseAuditController.CourseEvent;
 import Controller.CourseController.Course;
+import Controller.CourseController.CourseCopyStatus.CourseCopyStatus;
 import Controller.CourseController.CoursePermissions.CoursePermissions;
 import Controller.CourseController.CourseProgress;
 import Controller.CourseController.EffectiveDueDates.EffectiveDueDates;
@@ -4803,6 +4804,25 @@ public class CanvasRestAPI{
         Call<CoursePermissions> call = courseInterface.getUserCoursePermissions(client.getCourse().getCourseId(),client.getToken(),client.getCourse().generateQueries());
 
         Response<CoursePermissions> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public CourseCopyStatus getCourseCopyStatus(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/course_copy/%s/",client.getCourse().getCourseId(),client.getCourse().getCourseCopyId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<CourseCopyStatus> call = courseInterface.getCourseCopyStatus(client.getCourse().getCourseId(),client.getCourse().getCourseCopyId());
+
+        Response<CourseCopyStatus> response = call.execute();
 
         return response.body();
 
