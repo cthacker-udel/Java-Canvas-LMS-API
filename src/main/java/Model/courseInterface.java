@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.CourseController.Course;
+import Controller.CourseController.CoursePermissions.CoursePermissions;
 import Controller.CourseController.CourseProgress;
 import Controller.CourseController.EffectiveDueDates.EffectiveDueDates;
 import Controller.CourseController.HTML;
@@ -90,6 +91,9 @@ public interface courseInterface {
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/effective_due_dates")
     Call<EffectiveDueDates> getEffectiveDueDates(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/permissions")
+    Call<CoursePermissions> getUserCoursePermissions(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
 
 

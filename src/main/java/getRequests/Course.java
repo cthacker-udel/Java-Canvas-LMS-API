@@ -83,10 +83,15 @@ public class Course extends CanvasClient {
 
     private ArrayList<String> assignmentIds = new ArrayList<>();
 
+    private ArrayList<String> permissions = new ArrayList<>();
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.permissions.size() > 0){
+            queries.put("permissions[]",this.permissions.toArray(String[]::new));
+        }
         if(this.assignmentIds.size() > 0){
             queries.put("assignment_ids[]",this.assignmentIds.toArray(String[]::new));
         }
@@ -330,6 +335,160 @@ public class Course extends CanvasClient {
 
         this.assignmentIds = new ArrayList<>();
 
+        this.permissions = new ArrayList<>();
+
+    }
+
+    public Integer getCourseAccountIdUpdate() {
+        return courseAccountIdUpdate;
+    }
+
+    public void setCourseAccountIdUpdate(Integer courseAccountIdUpdate) {
+        this.courseAccountIdUpdate = courseAccountIdUpdate;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+
+    public Boolean getAllowStudentDiscussionTopics() {
+        return allowStudentDiscussionTopics;
+    }
+
+    public void setAllowStudentDiscussionTopics(Boolean allowStudentDiscussionTopics) {
+        this.allowStudentDiscussionTopics = allowStudentDiscussionTopics;
+    }
+
+    public Boolean getAllowStudentDiscussionEditing() {
+        return allowStudentDiscussionEditing;
+    }
+
+    public void setAllowStudentDiscussionEditing(Boolean allowStudentDiscussionEditing) {
+        this.allowStudentDiscussionEditing = allowStudentDiscussionEditing;
+    }
+
+    public Boolean getAllowStudentOrganizedGroups() {
+        return allowStudentOrganizedGroups;
+    }
+
+    public void setAllowStudentOrganizedGroups(Boolean allowStudentOrganizedGroups) {
+        this.allowStudentOrganizedGroups = allowStudentOrganizedGroups;
+    }
+
+    public Boolean getFilterSpeedGraderByStudentGroup() {
+        return filterSpeedGraderByStudentGroup;
+    }
+
+    public void setFilterSpeedGraderByStudentGroup(Boolean filterSpeedGraderByStudentGroup) {
+        this.filterSpeedGraderByStudentGroup = filterSpeedGraderByStudentGroup;
+    }
+
+    public Boolean getHideDistributionGraphs() {
+        return hideDistributionGraphs;
+    }
+
+    public void setHideDistributionGraphs(Boolean hideDistributionGraphs) {
+        this.hideDistributionGraphs = hideDistributionGraphs;
+    }
+
+    public Boolean getHideSectionsOnCourseUsersPage() {
+        return hideSectionsOnCourseUsersPage;
+    }
+
+    public void setHideSectionsOnCourseUsersPage(Boolean hideSectionsOnCourseUsersPage) {
+        this.hideSectionsOnCourseUsersPage = hideSectionsOnCourseUsersPage;
+    }
+
+    public Boolean getLockAllAnnouncements() {
+        return lockAllAnnouncements;
+    }
+
+    public void setLockAllAnnouncements(Boolean lockAllAnnouncements) {
+        this.lockAllAnnouncements = lockAllAnnouncements;
+    }
+
+    public Boolean getUsageRightsRequired() {
+        return usageRightsRequired;
+    }
+
+    public void setUsageRightsRequired(Boolean usageRightsRequired) {
+        this.usageRightsRequired = usageRightsRequired;
+    }
+
+    public Boolean getRestrictStudentPastView() {
+        return restrictStudentPastView;
+    }
+
+    public void setRestrictStudentPastView(Boolean restrictStudentPastView) {
+        this.restrictStudentPastView = restrictStudentPastView;
+    }
+
+    public Boolean getRestrictStudentFutureView() {
+        return restrictStudentFutureView;
+    }
+
+    public void setRestrictStudentFutureView(Boolean restrictStudentFutureView) {
+        this.restrictStudentFutureView = restrictStudentFutureView;
+    }
+
+    public Boolean getShowAnnouncementsOnHomePage() {
+        return showAnnouncementsOnHomePage;
+    }
+
+    public void setShowAnnouncementsOnHomePage(Boolean showAnnouncementsOnHomePage) {
+        this.showAnnouncementsOnHomePage = showAnnouncementsOnHomePage;
+    }
+
+    public Integer getHomePageAnnouncementLimit() {
+        return homePageAnnouncementLimit;
+    }
+
+    public void setHomePageAnnouncementLimit(Integer homePageAnnouncementLimit) {
+        this.homePageAnnouncementLimit = homePageAnnouncementLimit;
+    }
+
+    public Boolean getSyllabusCourseSummary() {
+        return syllabusCourseSummary;
+    }
+
+    public void setSyllabusCourseSummary(Boolean syllabusCourseSummary) {
+        this.syllabusCourseSummary = syllabusCourseSummary;
+    }
+
+    public ArrayList<String> getCourseIds() {
+        return courseIds;
+    }
+
+    public void setCourseIds(ArrayList<String> courseIds) {
+        this.courseIds = courseIds;
+    }
+
+    public Integer getTeacher_limit() {
+        return teacher_limit;
+    }
+
+    public void setTeacher_limit(Integer teacher_limit) {
+        this.teacher_limit = teacher_limit;
+    }
+
+    public ArrayList<String> getAssignmentIds() {
+        return assignmentIds;
+    }
+
+    public void setAssignmentIds(ArrayList<String> assignmentIds) {
+        this.assignmentIds = assignmentIds;
+    }
+
+    public ArrayList<String> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(ArrayList<String> permissions) {
+        this.permissions = permissions;
     }
 
     public String getSearchTerm() {
