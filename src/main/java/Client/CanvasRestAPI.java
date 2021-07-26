@@ -50,6 +50,7 @@ import Controller.ConversationController.*;
 import Controller.CourseAuditController.CourseEvent;
 import Controller.CourseController.Course;
 import Controller.CourseController.CourseProgress;
+import Controller.CourseController.EffectiveDueDates.EffectiveDueDates;
 import Controller.CourseController.HTML;
 import Controller.CourseController.Settings;
 import Controller.ExternalFeedController.ExternalFeed;
@@ -4763,6 +4764,25 @@ public class CanvasRestAPI{
         Call<Course> call = courseInterface.resetCourse(client.getCourse().getCourseId(),client.getToken());
 
         Response<Course> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public EffectiveDueDates getEffectiveDueDates(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/effective_due_dates/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<EffectiveDueDates> call = courseInterface.getEffectiveDueDates(client.getCourse().getCourseId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<EffectiveDueDates> response = call.execute();
 
         return response.body();
 

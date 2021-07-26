@@ -2,6 +2,7 @@ package Model;
 
 import Controller.CourseController.Course;
 import Controller.CourseController.CourseProgress;
+import Controller.CourseController.EffectiveDueDates.EffectiveDueDates;
 import Controller.CourseController.HTML;
 import Controller.CourseController.Settings;
 import Controller.ProgressController.Progress;
@@ -86,6 +87,10 @@ public interface courseInterface {
 
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/reset_content")
     Call<Course> resetCourse(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/effective_due_dates")
+    Call<EffectiveDueDates> getEffectiveDueDates(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 
 
 }

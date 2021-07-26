@@ -81,10 +81,15 @@ public class Course extends CanvasClient {
 
     private Integer teacher_limit;
 
+    private ArrayList<String> assignmentIds = new ArrayList<>();
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.assignmentIds.size() > 0){
+            queries.put("assignment_ids[]",this.assignmentIds.toArray(String[]::new));
+        }
         if(this.courseIds.size() > 0){
             queries.put("course_ids[]",this.courseIds.toArray(String[]::new));
         }
@@ -322,6 +327,8 @@ public class Course extends CanvasClient {
         this.html = null;
         this.teacher_limit = null;
         this.courseIds = new ArrayList<>();
+
+        this.assignmentIds = new ArrayList<>();
 
     }
 
