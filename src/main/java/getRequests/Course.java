@@ -87,10 +87,15 @@ public class Course extends CanvasClient {
 
     private String courseCopyId;
 
+    private String only;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.only != null){
+            queries.put("only[]",this.only);
+        }
         if(this.permissions.size() > 0){
             queries.put("permissions[]",this.permissions.toArray(String[]::new));
         }
@@ -330,6 +335,8 @@ public class Course extends CanvasClient {
         this.searchTerm = null;
         this.sort = null;
         this.enrollmentTypeArr = null;
+
+        this.only = null;
 
         this.html = null;
         this.teacher_limit = null;

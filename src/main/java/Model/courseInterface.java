@@ -99,6 +99,9 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/course_copy/{courseCopyId}")
     Call<CourseCopyStatus> getCourseCopyStatus(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/course_copy")
+    Call<Void> copyCourseContent(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 
 
 }

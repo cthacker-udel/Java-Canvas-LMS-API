@@ -4828,6 +4828,26 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean copyCourseContent(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/course_copy/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+
+        Call<Void> call = courseInterface.copyCourseContent(client.getCourse().getCourseId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
