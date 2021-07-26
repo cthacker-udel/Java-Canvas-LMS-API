@@ -57,6 +57,8 @@ public class Course extends CanvasClient {
     private String enrollmentTypeArr;
     private ArrayList<Integer> userIds = new ArrayList<>();
 
+    private Integer courseAccountIdUpdate;
+
     private String html;
 
     private String event;
@@ -81,6 +83,9 @@ public class Course extends CanvasClient {
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.courseAccountIdUpdate != null){
+            queries.put("course[account_id]",this.courseAccountIdUpdate);
+        }
         if(this.teacher_limit != null){
             queries.put("teacher_limit",this.teacher_limit);
         }

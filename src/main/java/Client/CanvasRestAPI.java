@@ -4711,6 +4711,25 @@ public class CanvasRestAPI{
 
     }
 
+    public Course updateCourse(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/",client.getCourse().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        courseInterface courseInterface = retrofit.create(Model.courseInterface.class);
+
+        Call<Course> call = courseInterface.updateCourse(client.getCourse().getCourseId(),client.getToken(),client.getCourse().generateQueries());
+
+        Response<Course> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

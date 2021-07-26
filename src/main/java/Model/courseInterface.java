@@ -77,5 +77,8 @@ public interface courseInterface {
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/courses/{courseId}")
     Call<Course> getSingleCourseAccountId(@Path("accountId") String accountId, @Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}")
+    Call<Course> updateCourse(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 
 }
