@@ -39,6 +39,7 @@ public class CanvasClient extends CanvasRestAPI {
     private CourseAudit courseAudit;
     private QuizExtension quizExtension;
     private Course course;
+    private CustomGradebookColumns customGradebookColumns;
 
     public CanvasClient(){
         super();
@@ -81,7 +82,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.courseAudit = new CourseAudit();
         this.quizExtension = new QuizExtension();
         this.course = new Course();
+        this.customGradebookColumns = new CustomGradebookColumns();
 
+    }
+
+    public CustomGradebookColumns getCustomGradebookColumns() {
+        return customGradebookColumns;
+    }
+
+    public void setCustomGradebookColumns(CustomGradebookColumns customGradebookColumns) {
+        this.customGradebookColumns = customGradebookColumns;
     }
 
     public Course getCourse() {
