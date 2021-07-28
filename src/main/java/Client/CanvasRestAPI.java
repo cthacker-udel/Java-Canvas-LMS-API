@@ -4876,6 +4876,25 @@ public class CanvasRestAPI{
 
     }
 
+    public CustomColumn createCustomGradebookColumn(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/custom_gradebook_columns/",client.getCustomGradebookColumns().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        customGradebookColumnInterface customGradebookColumnInterface = retrofit.create(Model.customGradebookColumnInterface.class);
+
+        Call<CustomColumn> call = customGradebookColumnInterface.createCustomGradebookColumns(client.getCustomGradebookColumns().getCourseId(),client.getToken(),client.getCustomGradebookColumns().generateQueries());
+
+        Response<CustomColumn> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
