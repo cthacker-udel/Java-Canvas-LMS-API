@@ -15,6 +15,7 @@ public class CustomGradebookColumns extends CanvasClient {
     private Boolean hidden;
     private Boolean teacherNotes;
     private Boolean readOnly;
+    private String customGradebookColumnId;
 
     public Map<String,Object> generateQueries(){
 
@@ -50,7 +51,56 @@ public class CustomGradebookColumns extends CanvasClient {
         this.hidden = null;
         this.teacherNotes = null;
         this.readOnly = null;
+        this.customGradebookColumnId = null;
 
+    }
+
+    public String getColumnTitle() {
+        return columnTitle;
+    }
+
+    public void setColumnTitle(String columnTitle) {
+        this.columnTitle = columnTitle;
+    }
+
+    public Integer getColumnPosition() {
+        return columnPosition;
+    }
+
+    public void setColumnPosition(Integer columnPosition) {
+        this.columnPosition = columnPosition;
+    }
+
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public Boolean getTeacherNotes() {
+        return teacherNotes;
+    }
+
+    public void setTeacherNotes(Boolean teacherNotes) {
+        this.teacherNotes = teacherNotes;
+    }
+
+    public Boolean getReadOnly() {
+        return readOnly;
+    }
+
+    public void setReadOnly(Boolean readOnly) {
+        this.readOnly = readOnly;
+    }
+
+    public String getCustomGradebookColumnId() {
+        return customGradebookColumnId;
+    }
+
+    public void setCustomGradebookColumnId(String customGradebookColumnId) {
+        this.customGradebookColumnId = customGradebookColumnId;
     }
 
     public String getCourseId() {

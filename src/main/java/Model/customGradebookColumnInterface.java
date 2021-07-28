@@ -15,4 +15,8 @@ public interface customGradebookColumnInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/custom_gradebook_columns")
     Call<CustomColumn> createCustomGradebookColumns(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/custom_gradebook_columns/{customGradebookColumnId}")
+    Call<CustomColumn> updateCustomGradebookColumns(@Path("courseId") String courseID, @Path("customGradebookColumnId") String customGradebookColumnId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+
 }
