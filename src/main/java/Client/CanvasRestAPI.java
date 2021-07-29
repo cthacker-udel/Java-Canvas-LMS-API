@@ -55,6 +55,7 @@ import Controller.CourseController.CourseProgress;
 import Controller.CourseController.EffectiveDueDates.EffectiveDueDates;
 import Controller.CourseController.HTML;
 import Controller.CourseController.Settings;
+import Controller.CustomGradebookColumsController.ColumnDatum;
 import Controller.CustomGradebookColumsController.CustomColumn;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -4948,6 +4949,25 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    public List<ColumnDatum> listEntriesForColumn(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/custom_gradebook_columns/%s/data/",client.getCustomGradebookColumns().getCourseId(),client.getCustomGradebookColumns().getCustomGradebookColumnId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        customGradebookColumnInterface customGradebookColumnInterface = retrofit.create(Model.customGradebookColumnInterface.class);
+
+        Call<List<ColumnDatum>> call = customGradebookColumnInterface.listEntriesForColumn(client.getCustomGradebookColumns().getCourseId(),client.getCustomGradebookColumns().getCustomGradebookColumnId(),client.getToken(),client.getCustomGradebookColumns().generateQueries());
+
+        Response<List<ColumnDatum>> response = call.execute();
+
+        return response.body();
 
     }
 
