@@ -16,6 +16,7 @@ public class CustomGradebookColumns extends CanvasClient {
     private Boolean teacherNotes;
     private Boolean readOnly;
     private String customGradebookColumnId;
+    private String userId;
 
     private Integer order;
 
@@ -59,6 +60,22 @@ public class CustomGradebookColumns extends CanvasClient {
         this.customGradebookColumnId = null;
         this.order = null;
 
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 
     public String getColumnTitle() {
