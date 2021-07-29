@@ -4913,6 +4913,25 @@ public class CanvasRestAPI{
         return response.body();
     }
 
+    public CustomColumn deleteCustomGradebookColumn(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/custom_gradebook_columns/%s/",client.getCustomGradebookColumns().getCourseId(),client.getCustomGradebookColumns().getCustomGradebookColumnId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        customGradebookColumnInterface customGradebookColumnInterface = retrofit.create(Model.customGradebookColumnInterface.class);
+
+        Call<CustomColumn> call = customGradebookColumnInterface.deleteCustomGradebookColumns(client.getCustomGradebookColumns().getCourseId(),client.getCustomGradebookColumns().getCustomGradebookColumnId(),client.getToken());
+
+        Response<CustomColumn> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

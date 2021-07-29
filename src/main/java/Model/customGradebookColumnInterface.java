@@ -18,5 +18,8 @@ public interface customGradebookColumnInterface {
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/custom_gradebook_columns/{customGradebookColumnId}")
     Call<CustomColumn> updateCustomGradebookColumns(@Path("courseId") String courseID, @Path("customGradebookColumnId") String customGradebookColumnId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/custom_gradebook_columns/{customGradebookColumnId}")
+    Call<CustomColumn> deleteCustomGradebookColumns(@Path("courseId") String courseID, @Path("customGradebookColumnId") String customGradebookColumnId, @Header("Authorization") String auth);
+
 
 }
