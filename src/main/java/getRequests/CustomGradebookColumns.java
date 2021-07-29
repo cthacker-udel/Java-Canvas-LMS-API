@@ -17,10 +17,15 @@ public class CustomGradebookColumns extends CanvasClient {
     private Boolean readOnly;
     private String customGradebookColumnId;
 
+    private Integer order;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.order != null){
+            queries.put("order[]",this.order);
+        }
         if(this.columnTitle != null){
             queries.put("column[title]",this.columnTitle);
         }
@@ -52,6 +57,7 @@ public class CustomGradebookColumns extends CanvasClient {
         this.teacherNotes = null;
         this.readOnly = null;
         this.customGradebookColumnId = null;
+        this.order = null;
 
     }
 

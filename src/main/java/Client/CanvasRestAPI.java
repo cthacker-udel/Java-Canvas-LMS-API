@@ -4932,6 +4932,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean reorderCustomColumns(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/custom_gradebook_columns/reorder/",client.getCustomGradebookColumns().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        customGradebookColumnInterface customGradebookColumnInterface = retrofit.create(Model.customGradebookColumnInterface.class);
+
+        Call<Void> call = customGradebookColumnInterface.reorderCustomColumns(client.getCustomGradebookColumns().getCourseId(),client.getToken(),client.getCustomGradebookColumns().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
