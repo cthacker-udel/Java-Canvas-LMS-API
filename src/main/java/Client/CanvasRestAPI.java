@@ -4971,6 +4971,25 @@ public class CanvasRestAPI{
 
     }
 
+    public ColumnDatum updateColumnData(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/custom_gradebook_columns/%s/data/%s/",client.getCustomGradebookColumns().getCourseId(),client.getCustomGradebookColumns().getCustomGradebookColumnId(),client.getCustomGradebookColumns().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        customGradebookColumnInterface customGradebookColumnInterface = retrofit.create(Model.customGradebookColumnInterface.class);
+
+        Call<ColumnDatum> call = customGradebookColumnInterface.updateColumnData(client.getCustomGradebookColumns().getCourseId(),client.getCustomGradebookColumns().getCustomGradebookColumnId(),client.getCustomGradebookColumns().getUserId(),client.getToken(),client.getCustomGradebookColumns().generateQueries());
+
+        Response<ColumnDatum> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
