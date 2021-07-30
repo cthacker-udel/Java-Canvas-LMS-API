@@ -5035,6 +5035,25 @@ public class CanvasRestAPI{
 
     }
 
+    public List<DiscussionTopic> listDiscussionTopicsGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/discussion_topics/",client.getDiscussionTopic().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<List<DiscussionTopic>> call = discussionTopicInterface.listDiscussionTopicsGroupId(client.getDiscussionTopic().getGroupId(),client.getToken(),client.getDiscussionTopic().generateQueries());
+
+        Response<List<DiscussionTopic>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
