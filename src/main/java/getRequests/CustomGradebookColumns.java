@@ -2,6 +2,7 @@ package getRequests;
 
 import Client.CanvasClient;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -20,10 +21,15 @@ public class CustomGradebookColumns extends CanvasClient {
 
     private Integer order;
 
+    private ArrayList<Map<String,Object>> columnData = new ArrayList<>();
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.columnData.size() > 0){
+            queries.put("column_data",this.columnData.toArray(Object[]::new));
+        }
         if(this.order != null){
             queries.put("order[]",this.order);
         }
@@ -59,7 +65,16 @@ public class CustomGradebookColumns extends CanvasClient {
         this.readOnly = null;
         this.customGradebookColumnId = null;
         this.order = null;
+        this.columnData = null;
 
+    }
+
+    public ArrayList<Map<String, Object>> getColumnData() {
+        return columnData;
+    }
+
+    public void setColumnData(ArrayList<Map<String, Object>> columnData) {
+        this.columnData = columnData;
     }
 
     public String getUserId() {

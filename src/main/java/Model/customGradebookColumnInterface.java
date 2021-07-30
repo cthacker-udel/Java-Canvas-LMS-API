@@ -31,6 +31,8 @@ public interface customGradebookColumnInterface {
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/custom_gradebook_columns/{customGradebookColumn}/data/{userId}")
     Call<ColumnDatum> updateColumnData(@Path("courseId") String courseId, @Path("customGradebookColumn") String customGradebookColumnId, @Path("userId") String userId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/custom_gradebook_column_data")
+    Call<Void> bulkUpdateColumnData(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
 
 

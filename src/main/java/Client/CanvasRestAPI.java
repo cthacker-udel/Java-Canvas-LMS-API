@@ -4990,6 +4990,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean bulkUpdateColumnData(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/custom_gradebook_column_data/",client.getCustomGradebookColumns().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        customGradebookColumnInterface customGradebookColumnInterface = retrofit.create(Model.customGradebookColumnInterface.class);
+
+        Call<Void> call = customGradebookColumnInterface.bulkUpdateColumnData(client.getCustomGradebookColumns().getCourseId(),client.getToken(),client.getCustomGradebookColumns().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();\
+
+    }
+
 
 
 
