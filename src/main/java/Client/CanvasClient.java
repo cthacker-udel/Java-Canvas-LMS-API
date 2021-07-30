@@ -40,6 +40,7 @@ public class CanvasClient extends CanvasRestAPI {
     private QuizExtension quizExtension;
     private Course course;
     private CustomGradebookColumns customGradebookColumns;
+    private DiscussionTopic discussionTopic;
 
     public CanvasClient(){
         super();
@@ -83,7 +84,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.quizExtension = new QuizExtension();
         this.course = new Course();
         this.customGradebookColumns = new CustomGradebookColumns();
+        this.discussionTopic = new DiscussionTopic();
 
+    }
+
+    public DiscussionTopic getDiscussionTopic() {
+        return discussionTopic;
+    }
+
+    public void setDiscussionTopic(DiscussionTopic discussionTopic) {
+        this.discussionTopic = discussionTopic;
     }
 
     public CustomGradebookColumns getCustomGradebookColumns() {
