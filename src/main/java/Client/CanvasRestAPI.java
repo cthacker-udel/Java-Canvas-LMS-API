@@ -5005,7 +5005,7 @@ public class CanvasRestAPI{
 
         Response<Void> response = call.execute();
 
-        return response.isSuccessful();\
+        return response.isSuccessful();
 
     }
 
