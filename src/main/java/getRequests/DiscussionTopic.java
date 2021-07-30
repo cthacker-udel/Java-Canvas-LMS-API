@@ -15,6 +15,7 @@ public class DiscussionTopic extends CanvasClient {
     private String filterBy;
     private String searchTerm;
     private Boolean excludeContextModuleLockedTopics;
+    private String groupId;
 
     public Map<String,Object> generateQueries(){
 
@@ -53,6 +54,14 @@ public class DiscussionTopic extends CanvasClient {
         this.filterBy = null;
         this.searchTerm = null;
         this.excludeContextModuleLockedTopics = null;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
     public String getCourseId() {
