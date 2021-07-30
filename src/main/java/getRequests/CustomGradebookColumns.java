@@ -23,6 +23,25 @@ public class CustomGradebookColumns extends CanvasClient {
 
     private ArrayList<Map<String,Object>> columnData = new ArrayList<>();
 
+    private Integer columnId;
+    private String content;
+
+    public Map<String,Object> generateColumnDatum(){
+
+        Map<String,Object> datum = new LinkedHashMap<>();
+        if(this.columnId != null){
+            datum.put("column_id",this.columnId);
+        }
+        if(this.content != null){
+            datum.put("content",this.content);
+        }
+        if(this.userId != null){
+            datum.put("user_id",this.userId);
+        }
+        return datum;
+
+    }
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
@@ -66,7 +85,26 @@ public class CustomGradebookColumns extends CanvasClient {
         this.customGradebookColumnId = null;
         this.order = null;
         this.columnData = null;
+        this.columnId = null;
+        this.content = null;
+        this.userId = null;
 
+    }
+
+    public Integer getColumnId() {
+        return columnId;
+    }
+
+    public void setColumnId(Integer columnId) {
+        this.columnId = columnId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public ArrayList<Map<String, Object>> getColumnData() {

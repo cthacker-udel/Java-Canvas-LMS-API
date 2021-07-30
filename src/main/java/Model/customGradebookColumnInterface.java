@@ -2,6 +2,7 @@ package Model;
 
 import Controller.CustomGradebookColumsController.ColumnDatum;
 import Controller.CustomGradebookColumsController.CustomColumn;
+import Controller.ProgressController.Progress;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -32,7 +33,7 @@ public interface customGradebookColumnInterface {
     Call<ColumnDatum> updateColumnData(@Path("courseId") String courseId, @Path("customGradebookColumn") String customGradebookColumnId, @Path("userId") String userId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
 
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/custom_gradebook_column_data")
-    Call<Void> bulkUpdateColumnData(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+    Call<Progress> bulkUpdateColumnData(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
 
 
