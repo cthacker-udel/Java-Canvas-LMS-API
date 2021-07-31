@@ -5054,6 +5054,44 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean createDiscussionTopic(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/discussion_topics/",client.getDiscussionTopic().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<Void> call = discussionTopicInterface.createDiscussionTopicCourseId(client.getDiscussionTopic().getClientId(),client.getToken(),client.getDiscussionTopic().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public boolean createDiscussionTopicGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/discussion_topics/",client.getDiscussionTopic().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<Void> call = discussionTopicInterface.createDiscussionTopicGroupId(client.getDiscussionTopic().getGroupId(),client.getToken(),client.getDiscussionTopic().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
