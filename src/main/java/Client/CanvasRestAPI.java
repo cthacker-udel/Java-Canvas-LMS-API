@@ -81,6 +81,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -89,6 +90,7 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
+import java.util.List;
 
 public class CanvasRestAPI{
 
@@ -5104,6 +5106,25 @@ public class CanvasRestAPI{
         discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
 
         Call<Void> call = discussionTopicInterface.updateTopicCourseId(client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(), client.getToken(),client.getDiscussionTopic().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public boolean updateTopicGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/discussion_topics/%s/",client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<Void> call = discussionTopicInterface.updateTopicGroupId(client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getToken(),client.getDiscussionTopic().generateQueries());
 
         Response<Void> response = call.execute();
 
