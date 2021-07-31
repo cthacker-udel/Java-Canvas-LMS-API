@@ -38,6 +38,7 @@ public class DiscussionTopic extends CanvasClient {
     private Boolean sortByRating;
     private File attachment;
     private String specificSections;
+    private String discussionTopicId;
 
     public Map<String,Object> generateQueries(){
 
@@ -153,6 +154,14 @@ public class DiscussionTopic extends CanvasClient {
         this.filterBy = null;
         this.searchTerm = null;
         this.excludeContextModuleLockedTopics = null;
+    }
+
+    public String getDiscussionTopicId() {
+        return discussionTopicId;
+    }
+
+    public void setDiscussionTopicId(String discussionTopicId) {
+        this.discussionTopicId = discussionTopicId;
     }
 
     public String getTitle() {
