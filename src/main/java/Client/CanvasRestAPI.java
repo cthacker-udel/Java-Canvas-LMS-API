@@ -5246,6 +5246,43 @@ public class CanvasRestAPI{
         return response.isSuccessful();
     }
 
+    public boolean deleteEntryCourseID(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/discussion_topics/%s/entries/%s/",client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<Void> call = discussionTopicInterface.deleteEntryCourseId(client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public boolean deleteEntryGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/discussion_topics/%s/entries/%s/",client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<Void> call = discussionTopicInterface.deleteEntryGroupId(client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
 
 
 
