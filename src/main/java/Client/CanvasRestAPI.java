@@ -5303,6 +5303,25 @@ public class CanvasRestAPI{
 
     }
 
+    public DiscussionTopic getSingleTopicGroupId(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/discussion_topics/%s/",client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<DiscussionTopic> call = discussionTopicInterface.getSingleTopicGroupId(client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getToken(),client.getDiscussionTopic().generateQueries());
+
+        Response<DiscussionTopic> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
