@@ -51,7 +51,11 @@ public interface discussionTopicInterface {
     @DELETE("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topic/{topicId}/entries/{entryId}")
     Call<Void> deleteEntryGroupId(@Path("groupId") String groupId, @Path("topicId") String topicID, @Path("entryId") String entryId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/discussion_topics/{topicId}")
+    Call<DiscussionTopic> getSingleTopicCourseId(@Path("courseId") String courseID, @Path("topicId") String topicId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}")
+    Call<DiscussionTopic> getSingleTopicGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 
 }

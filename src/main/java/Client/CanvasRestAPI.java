@@ -5284,6 +5284,27 @@ public class CanvasRestAPI{
 
     }
 
+    public DiscussionTopic getSingleTopicCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/discussion_topics/%s/",client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<DiscussionTopic> call = discussionTopicInterface.getSingleTopicCourseId(client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getToken(),client.getDiscussionTopic().generateQueries());
+
+        Response<DiscussionTopic> response = call.execute();
+
+        return response.body();
+
+    }
+
+
+
 
 
 
