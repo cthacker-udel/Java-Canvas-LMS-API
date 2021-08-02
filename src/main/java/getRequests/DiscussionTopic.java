@@ -42,6 +42,7 @@ public class DiscussionTopic extends CanvasClient {
     private String specificSections;
     private String discussionTopicId;
     private ArrayList<Integer> order = new ArrayList<>();
+    private String entryId;
 
     public Map<String,Object> generateQueries(){
 
@@ -161,6 +162,15 @@ public class DiscussionTopic extends CanvasClient {
         this.searchTerm = null;
         this.excludeContextModuleLockedTopics = null;
         this.order = new ArrayList<>();
+        this.entryId = null;
+    }
+
+    public String getEntryId() {
+        return entryId;
+    }
+
+    public void setEntryId(String entryId) {
+        this.entryId = entryId;
     }
 
     public ArrayList<Integer> getOrder() {

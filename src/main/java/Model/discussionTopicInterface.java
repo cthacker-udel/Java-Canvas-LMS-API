@@ -39,6 +39,9 @@ public interface discussionTopicInterface {
     @POST("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/reorder")
     Call<Void> reorderPinnedTopicsGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/discussion_topics/{topicId}/entries/{entryId}")
+    Call<Void> updateEntryCourseId(@Path("courseId") String courseID, @Path("topicId") String topicID, @Path("entryId") String entryId, @Header("Authorization") String auth);
+
 
 
 }
