@@ -33,4 +33,9 @@ public interface discussionTopicInterface {
     @DELETE("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}")
     Call<Void> deleteTopicGroupId(@Path("groupId") String groupId, @Path("topicId") String topicID, @Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/discussion_topics/reorder")
+    Call<Void> reorderPinnedTopicsCourse(@Path("courseId") String courseID, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+
+
 }

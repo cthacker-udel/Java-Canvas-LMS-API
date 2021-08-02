@@ -5170,6 +5170,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean reorderPinnedTopics(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/discussion_topics/reorder/",client.getDiscussionTopic().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<Void> call = discussionTopicInterface.reorderPinnedTopicsCourse(client.getDiscussionTopic().getCourseId(),client.getToken(),client.getDiscussionTopic().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 

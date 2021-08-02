@@ -4,8 +4,10 @@ import Client.CanvasClient;
 import Controller.FilesController.File;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DiscussionTopic extends CanvasClient {
 
@@ -39,11 +41,15 @@ public class DiscussionTopic extends CanvasClient {
     private File attachment;
     private String specificSections;
     private String discussionTopicId;
+    private ArrayList<Integer> order = new ArrayList<>();
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.order.size() > 0){
+            queries.put("order[]",this.order.stream().map(String::valueOf).collect(Collectors.joining(",")).toString());
+        }
         if(this.title != null){
             queries.put("title",this.title);
         }
@@ -154,6 +160,15 @@ public class DiscussionTopic extends CanvasClient {
         this.filterBy = null;
         this.searchTerm = null;
         this.excludeContextModuleLockedTopics = null;
+        this.order = new ArrayList<>();
+    }
+
+    public ArrayList<Integer> getOrder() {
+        return order;
+    }
+
+    public void setOrder(ArrayList<Integer> order) {
+        this.order = order;
     }
 
     public String getDiscussionTopicId() {
