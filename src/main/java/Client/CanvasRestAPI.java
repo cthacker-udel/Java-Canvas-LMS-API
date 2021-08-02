@@ -5303,7 +5303,7 @@ public class CanvasRestAPI{
 
     }
 
-    public DiscussionTopic getSingleTopicGroupId(CanvasClient client){
+    public DiscussionTopic getSingleTopicGroupId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/groups/%s/discussion_topics/%s/",client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId());
 
