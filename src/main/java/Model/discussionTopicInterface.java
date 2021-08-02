@@ -27,4 +27,10 @@ public interface discussionTopicInterface {
     @PUT("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}")
     Call<Void> updateTopicGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/discussion_topics/{topicId}")
+    Call<Void> deleteTopicCourseId(@Path("courseId") String courseID, @Path("topicId") String topicID, @Header("Authorization") String auth);
+
+    @DELETE("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}")
+    Call<Void> deleteTopicGroupId(@Path("groupId") String groupId, @Path("topicId") String topicID, @Header("Authorization") String auth);
+
 }
