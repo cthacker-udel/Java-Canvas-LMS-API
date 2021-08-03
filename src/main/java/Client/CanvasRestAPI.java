@@ -58,6 +58,7 @@ import Controller.CourseController.Settings;
 import Controller.CustomGradebookColumsController.ColumnDatum;
 import Controller.CustomGradebookColumsController.CustomColumn;
 import Controller.DiscussionTopicController.DiscussionTopic;
+import Controller.DiscussionTopicController.FullTopic;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
@@ -5317,6 +5318,25 @@ public class CanvasRestAPI{
         Call<DiscussionTopic> call = discussionTopicInterface.getSingleTopicGroupId(client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getToken(),client.getDiscussionTopic().generateQueries());
 
         Response<DiscussionTopic> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public FullTopic getFullTopicCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/discussion_topics/%s/view/",client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<FullTopic> call = discussionTopicInterface.getFullTopicCourseId(client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getToken());
+
+        Response<FullTopic> response = call.execute();
 
         return response.body();
 
