@@ -5342,6 +5342,24 @@ public class CanvasRestAPI{
 
     }
 
+    public FullTopic getFullTopicGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/discussion_topics/%s/view",client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<FullTopic> call = discussionTopicInterface.getFullTopicGroupId(client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getToken());
+
+        Response<FullTopic> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 
