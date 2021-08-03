@@ -64,4 +64,10 @@ public interface discussionTopicInterface {
     @GET("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/view")
     Call<FullTopic> getFullTopicGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/discussion_topics/{topicId}/entries")
+    Call<Void> postEntryCourseId(@Path("courseId") String courseId, @Path("topicId") String topicId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @POST("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/entries")
+    Call<Void> postEntryGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }
