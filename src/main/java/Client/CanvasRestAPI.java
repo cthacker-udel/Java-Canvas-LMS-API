@@ -5513,6 +5513,25 @@ public class CanvasRestAPI{
         return response.body();
 
     }
+    
+    public List<EntryReply> listEntriesCourseId(CanvasClient client) throws IOException {
+        
+        String url = baseUrl + String.format("/api/v1/courses/%s/discussion_topics/%s/entry_list",client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<List<EntryReply>> call = discussionTopicInterface.listEntriesCourseId(client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getToken(),client.getDiscussionTopic().generateQueries());
+
+        Response<List<EntryReply>> response = call.execute();
+
+        return response.body();
+        
+    }
 
 
 
