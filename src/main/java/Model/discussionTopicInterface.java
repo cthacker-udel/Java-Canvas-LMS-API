@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.DiscussionTopicController.DiscussionTopic;
+import Controller.DiscussionTopicController.EntryReply;
 import Controller.DiscussionTopicController.FullTopic;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -81,5 +82,11 @@ public interface discussionTopicInterface {
 
     @POST("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/entries/{entryId}/replies")
     Call<Void> postReplyGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Path("entryId") String entryId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/dicussion_topics/{topicId}/entries/{entryId}/replies")
+    Call<List<EntryReply>> listEntryRepliesCourseId(@Path("courseId") String courseID, @Path("topicId") String topicId, @Path("entryId") String entryId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/entries/{entryId}/replies")
+    Call<List<EntryReply>> listEntryRepliesGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Path("entryId") String entryId, @Header("Authorization") String auth);
 
 }

@@ -58,7 +58,9 @@ import Controller.CourseController.Settings;
 import Controller.CustomGradebookColumsController.ColumnDatum;
 import Controller.CustomGradebookColumsController.CustomColumn;
 import Controller.DiscussionTopicController.DiscussionTopic;
+import Controller.DiscussionTopicController.EntryReply;
 import Controller.DiscussionTopicController.FullTopic;
+import Controller.DiscussionTopicController.Reply;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
@@ -5471,6 +5473,44 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    public List<EntryReply> listEntryRepliesCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/discussion_topics/%s/entries/%s/replies/",client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<List<EntryReply>> call = discussionTopicInterface.listEntryRepliesCourseId(client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId(), client.getToken());
+
+        Response<List<EntryReply>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<EntryReply> listEntryRepliesGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/discussion_topics/%s/entries/%s/replies/",client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<List<EntryReply>> call = discussionTopicInterface.listEntryRepliesGroupId(client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId(), client.getToken());
+
+        Response<List<EntryReply>> response = call.execute();
+
+        return response.body();
 
     }
 
