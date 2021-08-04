@@ -95,5 +95,10 @@ public interface discussionTopicInterface {
     @GET("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/entry_list")
     Call<List<EntryReply>> listEntriesGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/discussion_topics/{topicId}/read")
+    Call<Void> markTopicReadCourseId(@Path("courseId") String courseId, @Path("topicId") String topicId, @Header("Authorization") String auth);
+
+    @PUT("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/read")
+    Call<Void> markTopicReadGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Header("Authorization") String auth);
 
 }
