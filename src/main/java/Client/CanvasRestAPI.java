@@ -5590,7 +5590,7 @@ public class CanvasRestAPI{
 
     }
 
-    public boolean markTopicAsUnread(CanvasClient client) throws IOException {
+    public boolean markTopicAsUnreadCourseId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/discussion_topics/%s/read/",client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId());
 
@@ -5602,6 +5602,25 @@ public class CanvasRestAPI{
         discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
 
         Call<Void> call = discussionTopicInterface.markTopicUnreadCourseId(client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public boolean markTopicAsUnreadGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/discussion_topics/%s/read/",client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<Void> call = discussionTopicInterface.markTopicUnreadGroupId(client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId(), client.getToken());
 
         Response<Void> response = call.execute();
 
