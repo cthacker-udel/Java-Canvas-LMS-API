@@ -113,4 +113,10 @@ public interface discussionTopicInterface {
     @PUT("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/read_all")
     Call<Void> markAllEntriesAsReadGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @DELETE("https://udel.instructure.com/api/v1/course/{courseId}/discussion_topics/{topicId}/read_all")
+    Call<Void> markAllEntriesAsUnreadCourseId(@Path("courseId") String courseId, @Path("topicId") String topicId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @DELETE("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/read_all")
+    Call<Void> markAllEntriesAsUnreadGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }
