@@ -44,10 +44,15 @@ public class DiscussionTopic extends CanvasClient {
     private ArrayList<Integer> order = new ArrayList<>();
     private String entryId;
 
+    private Boolean forcedReadState;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.forcedReadState != null){
+            queries.put("forced_read_state",this.forcedReadState);
+        }
         if(this.order.size() > 0){
             queries.put("order[]",this.order.stream().map(String::valueOf).collect(Collectors.joining(",")).toString());
         }
@@ -163,6 +168,15 @@ public class DiscussionTopic extends CanvasClient {
         this.excludeContextModuleLockedTopics = null;
         this.order = new ArrayList<>();
         this.entryId = null;
+        this.forcedReadState = null;
+    }
+
+    public Boolean getForcedReadState() {
+        return forcedReadState;
+    }
+
+    public void setForcedReadState(Boolean forcedReadState) {
+        this.forcedReadState = forcedReadState;
     }
 
     public String getEntryId() {
