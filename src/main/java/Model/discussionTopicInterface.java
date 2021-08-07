@@ -131,5 +131,10 @@ public interface discussionTopicInterface {
     @DELETE("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/entries/{entryId}/read")
     Call<Void> markEntryAsUnreadGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Path("entryId") String entryId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/discussion_topics/{topicId}/entries/{entryId}/rating")
+    Call<Void> rateEntryCourseId(@Path("courseId") String courseId, @Path("topicId") String topicId, @Path("entryId") String entryId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+
+
 
 }

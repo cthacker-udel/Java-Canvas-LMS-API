@@ -46,10 +46,14 @@ public class DiscussionTopic extends CanvasClient {
 
     private Boolean forcedReadState;
 
+    private Integer rating;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
-
+        if(this.rating != null){
+            queries.put("rating",this.rating);
+        }
         if(this.forcedReadState != null){
             queries.put("forced_read_state",this.forcedReadState);
         }
@@ -169,6 +173,7 @@ public class DiscussionTopic extends CanvasClient {
         this.order = new ArrayList<>();
         this.entryId = null;
         this.forcedReadState = null;
+        this.rating = null;
     }
 
     public Boolean getForcedReadState() {

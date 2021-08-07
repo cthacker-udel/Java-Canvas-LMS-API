@@ -5772,7 +5772,26 @@ public class CanvasRestAPI{
 
         discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
 
-        Call<Void> call = discussionTopicInterface.markEntryAsUnreadGroupId(client.getDiscussionTopic().getGroupId(), client.getDiscussionTopic().getDiscussionTopicId(), client.getDiscussionTopic().getEntryId(), client.Token(),client.getDiscussionTopic().generateQueries());
+        Call<Void> call = discussionTopicInterface.markEntryAsUnreadGroupId(client.getDiscussionTopic().getGroupId(), client.getDiscussionTopic().getDiscussionTopicId(), client.getDiscussionTopic().getEntryId(), client.getToken(),client.getDiscussionTopic().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public boolean rateEntryCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/discussion_topics/%s/topicId/entries/%s/rating/",client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<Void> call = discussionTopicInterface.rateEntryCourseId(client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId(),client.getToken(),client.getDiscussionTopic().generateQueries());
 
         Response<Void> response = call.execute();
 
