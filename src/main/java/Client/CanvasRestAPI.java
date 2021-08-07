@@ -5761,6 +5761,25 @@ public class CanvasRestAPI{
         return response.isSuccessful();
     }
 
+    public boolean markEntryAsUnreadGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/dicussion_topics/%s/entries/%s/read/",client.getDiscussionTopic().getGroupId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getDiscussionTopic().getEntryId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<Void> call = discussionTopicInterface.markEntryAsUnreadGroupId(client.getDiscussionTopic().getGroupId(), client.getDiscussionTopic().getDiscussionTopicId(), client.getDiscussionTopic().getEntryId(), client.Token(),client.getDiscussionTopic().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
