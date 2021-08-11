@@ -140,8 +140,14 @@ public interface discussionTopicInterface {
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/discussion_topics/{topicId}/subscribed")
     Call<Void> subscribeToTopicCourseId(@Path("courseId") String courseId, @Path("topicId") String topicId, @Header("Authorization") String auth);
 
-    @PUT("https://udel.instructure.coma/api/v1/groups/{groupId}/discussion_topics/{topicId}/subscribed")
+    @PUT("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/subscribed")
     Call<Void> subscribeToTopicGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Header("Authorization") String auth);
+
+    @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/discussion_topics/{topicId}/subscribed")
+    Call<Void> unsubscribeFromTopicCourseId(@Path("courseId") String courseId, @Path("topicId") String topicId, @Header("Authorization") String auth);
+
+    @DELETE("https://udel.instructure.com/api/v1/groups/{groupId}/discussion_topics/{topicId}/subscribed")
+    Call<Void> unsubscribeFromTopicGroupId(@Path("groupId") String groupId, @Path("topicId") String topicId, @Header("Authorization") String auth);
 
 
 

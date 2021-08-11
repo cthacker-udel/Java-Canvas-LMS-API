@@ -5856,6 +5856,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean unsubscribeFromTopicCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/discussion_topics/%s/subscribed/",client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        discussionTopicInterface discussionTopicInterface = retrofit.create(Model.discussionTopicInterface.class);
+
+        Call<Void> call = discussionTopicInterface.unsubscribeFromTopicCourseId(client.getDiscussionTopic().getCourseId(),client.getDiscussionTopic().getDiscussionTopicId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
