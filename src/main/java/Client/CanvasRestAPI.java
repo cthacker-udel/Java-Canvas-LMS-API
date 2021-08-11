@@ -61,6 +61,7 @@ import Controller.DiscussionTopicController.DiscussionTopic;
 import Controller.DiscussionTopicController.EntryReply;
 import Controller.DiscussionTopicController.FullTopic;
 import Controller.DiscussionTopicController.Reply;
+import Controller.EnrollmentTermsController.EnrollmentTerm;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
@@ -5891,6 +5892,32 @@ public class CanvasRestAPI{
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    /*
+
+    Enrollment Term API
+
+     */
+
+
+    public EnrollmentTerm createEnrollmentTerm(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/terms/",client.getEnrollmentTerm().getEnrollmentAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentTermsInterface enrollmentTermsInterface = retrofit.create(Model.enrollmentTermsInterface.class);
+
+        Call<EnrollmentTerm> call = enrollmentTermsInterface.createEnrollmentTerm(client.getEnrollmentTerm().getEnrollmentAccountId(),client.getToken(),client.getEnrollmentTerm().generateQueries());
+
+        Response<EnrollmentTerm> response = call.execute();
+
+        return response.body();
 
     }
 

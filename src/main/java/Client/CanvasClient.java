@@ -41,6 +41,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Course course;
     private CustomGradebookColumns customGradebookColumns;
     private DiscussionTopic discussionTopic;
+    private EnrollmentTerms enrollmentTerm;
 
     public CanvasClient(){
         super();
@@ -86,6 +87,14 @@ public class CanvasClient extends CanvasRestAPI {
         this.customGradebookColumns = new CustomGradebookColumns();
         this.discussionTopic = new DiscussionTopic();
 
+    }
+
+    public EnrollmentTerms getEnrollmentTerm() {
+        return enrollmentTerm;
+    }
+
+    public void setEnrollmentTerm(EnrollmentTerms enrollmentTerm) {
+        this.enrollmentTerm = enrollmentTerm;
     }
 
     public DiscussionTopic getDiscussionTopic() {
