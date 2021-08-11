@@ -5921,6 +5921,25 @@ public class CanvasRestAPI{
 
     }
 
+    public EnrollmentTerm updateEnrollmentTerm(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/terms/%s/",client.getEnrollmentTerm().getEnrollmentAccountId(),client.getEnrollmentTerm(),client.getEnrollmentTerm().getTermId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentTermsInterface enrollmentTermsInterface = retrofit.create(Model.enrollmentTermsInterface.class);
+
+        Call<EnrollmentTerm> call = enrollmentTermsInterface.updateEnrollmentTerm(client.getEnrollmentTerm().getEnrollmentAccountId(),client.getEnrollmentTerm().getTermId(), client.getToken(),client.getEnrollmentTerm().generateQueries());
+
+        Response<EnrollmentTerm> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

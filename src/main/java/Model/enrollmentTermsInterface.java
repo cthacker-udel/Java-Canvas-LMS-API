@@ -13,4 +13,7 @@ public interface enrollmentTermsInterface {
     @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/terms")
     Call<EnrollmentTerm> createEnrollmentTerm(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/terms/{termId}")
+    Call<EnrollmentTerm> updateEnrollmentTerm(@Path("accountId") String accountId, @Path("termId") String termId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }

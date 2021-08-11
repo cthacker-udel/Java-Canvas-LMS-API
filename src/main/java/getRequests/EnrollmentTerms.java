@@ -17,6 +17,7 @@ public class EnrollmentTerms extends CanvasClient {
     private String enrollmentAccountId;
     private String courseId;
     private String enrollmentTermId;
+    private String termId;
 
     public Map<String,Object> generateQueries(){
 
@@ -53,6 +54,14 @@ public class EnrollmentTerms extends CanvasClient {
         this.overrideEnrollmentEndAt = null;
         this.overrideEnrollmentStartAt = null;
 
+    }
+
+    public String getTermId() {
+        return termId;
+    }
+
+    public void setTermId(String termId) {
+        this.termId = termId;
     }
 
     public String getEnrollmentAccountId() {
