@@ -71,6 +71,7 @@ import Model.*;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.GsonBuildConfig;
+import getRequests.EnrollmentTerms;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
 import org.openqa.selenium.WebDriver;
@@ -5954,6 +5955,25 @@ public class CanvasRestAPI{
         Call<EnrollmentTerm> call = enrollmentTermsInterface.deleteEnrollmentTerm(client.getEnrollmentTerm().getEnrollmentAccountId(),client.getEnrollmentTerm().getEnrollmentTermId(), client.getToken());
 
         Response<EnrollmentTerm> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<EnrollmentTerms> listEnrollmentTerms(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/terms/",client.getEnrollmentTerm().getEnrollmentAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentTermsInterface enrollmentTermsInterface = retrofit.create(Model.enrollmentTermsInterface.class);
+
+        Call<List<EnrollmentTerms>> call = enrollmentTermsInterface.listEnrollmentTerms(client.getEnrollmentTerm().getEnrollmentAccountId(),client.getToken(),client.getEnrollmentTerm().generateQueries());
+
+        Response<List<EnrollmentTerms>> response = call.execute();
 
         return response.body();
 
