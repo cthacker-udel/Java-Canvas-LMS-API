@@ -16,4 +16,7 @@ public interface enrollmentTermsInterface {
     @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/terms/{termId}")
     Call<EnrollmentTerm> updateEnrollmentTerm(@Path("accountId") String accountId, @Path("termId") String termId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/terms/{termId}")
+    Call<EnrollmentTerm> deleteEnrollmentTerm(@Path("accountId") String accountId, @Path("termId") String termId, @Header("Authorization") String auth);
+
 }

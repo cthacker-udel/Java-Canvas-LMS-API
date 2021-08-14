@@ -5940,6 +5940,25 @@ public class CanvasRestAPI{
 
     }
 
+    public EnrollmentTerm deleteEnrollmentTerm(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/terms/%s/",client.getEnrollmentTerm().getEnrollmentAccountId(),client.getEnrollmentTerm().getEnrollmentTermId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentTermsInterface enrollmentTermsInterface = retrofit.create(Model.enrollmentTermsInterface.class);
+
+        Call<EnrollmentTerm> call = enrollmentTermsInterface.deleteEnrollmentTerm(client.getEnrollmentTerm().getEnrollmentAccountId(),client.getEnrollmentTerm().getEnrollmentTermId(), client.getToken());
+
+        Response<EnrollmentTerm> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
