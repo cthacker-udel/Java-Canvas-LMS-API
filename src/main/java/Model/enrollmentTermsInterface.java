@@ -23,4 +23,9 @@ public interface enrollmentTermsInterface {
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/terms")
     Call<List<EnrollmentTerms>> listEnrollmentTerms(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/terms/{termId}")
+    Call<EnrollmentTerm> retrieveEnrollmentTerm(@Path("accountId") String accountId, @Path("termId") String termId, @Header("Authorization") String auth);
+
+
+
 }
