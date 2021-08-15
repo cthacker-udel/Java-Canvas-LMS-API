@@ -3511,7 +3511,7 @@ public class CanvasRestAPI{
 
     }
 
-    public List<Migrator> listMigrationSytemsAccountId(CanvasClient client) throws IOException {
+    public List<Migrator> listMigrationSystemsAccountId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/accounts/%s/content_migrations/migrators/",client.getContentMigration().getAccountId());
 
@@ -3530,7 +3530,7 @@ public class CanvasRestAPI{
 
     }
 
-    public List<Migrator> listMigrationSytemsCourseId(CanvasClient client) throws IOException {
+    public List<Migrator> listMigrationSystemsCourseId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/content_migrations/migrators/",client.getContentMigration().getCourseId());
 
@@ -3549,7 +3549,7 @@ public class CanvasRestAPI{
 
     }
 
-    public List<Migrator> listMigrationSytemsGroupId(CanvasClient client) throws IOException {
+    public List<Migrator> listMigrationSystemsGroupId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/groups/%s/content_migrations/migrators/",client.getContentMigration().getGroupid());
 
@@ -3568,7 +3568,7 @@ public class CanvasRestAPI{
 
     }
 
-    public List<Migrator> listMigrationSytemsUserId(CanvasClient client) throws IOException {
+    public List<Migrator> listMigrationSystemsUserId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/users/%s/content_migrations/migrators/",client.getContentMigration().getUserId());
 
@@ -5997,6 +5997,14 @@ public class CanvasRestAPI{
         return response.body();
 
     }
+
+    /*
+
+    Enrollment API
+
+     */
+
+
 
 
 
