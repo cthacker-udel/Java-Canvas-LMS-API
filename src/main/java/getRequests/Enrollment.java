@@ -1,9 +1,11 @@
 package getRequests;
 
+import Client.CanvasClient;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Enrollment {
+public class Enrollment extends CanvasClient {
 
     private String courseId;
     private String userId;

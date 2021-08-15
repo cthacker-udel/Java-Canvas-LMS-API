@@ -71,6 +71,7 @@ import Model.*;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.GsonBuildConfig;
+import getRequests.Enrollment;
 import getRequests.EnrollmentTerms;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
@@ -6004,7 +6005,24 @@ public class CanvasRestAPI{
 
      */
 
+    public List<Controller.EnrollmentController.Enrollment> listEnrollmentsCourseId(CanvasClient client) throws IOException {
 
+        String url = baseUrl + String.format("/api/v1/courses/%s/enrollments/",client.getEnrollment().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentInterface enrollmentInterface = retrofit.create(Model.enrollmentInterface.class);
+
+        Call<List<Controller.EnrollmentController.Enrollment>> call = enrollmentInterface.listEnrollmentsCourseId(client.getEnrollment().getCourseId(),client.getToken(),client.getEnrollment().generateQueries());
+
+        Response<List<Controller.EnrollmentController.Enrollment>> response = call.execute();
+
+        return response.body();
+
+    }
 
 
 
