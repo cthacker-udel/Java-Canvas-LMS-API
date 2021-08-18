@@ -61,6 +61,7 @@ import Controller.DiscussionTopicController.DiscussionTopic;
 import Controller.DiscussionTopicController.EntryReply;
 import Controller.DiscussionTopicController.FullTopic;
 import Controller.DiscussionTopicController.Reply;
+import Controller.EnrollmentController.Enrollment;
 import Controller.EnrollmentTermsController.EnrollmentTerm;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
@@ -71,7 +72,6 @@ import Model.*;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.GsonBuildConfig;
-import getRequests.Enrollment;
 import getRequests.EnrollmentTerms;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
@@ -6021,6 +6021,27 @@ public class CanvasRestAPI{
         Response<List<Controller.EnrollmentController.Enrollment>> response = call.execute();
 
         return response.body();
+
+    }
+
+    public List<Controller.EnrollmentController.Enrollment> listEnrollmentSectionId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/sections/%s/enrollments/",client.getEnrollment().getSectionId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentInterface enrollmentInterface = retrofit.create(Model.enrollmentInterface.class);
+
+        Call<List<Controller.EnrollmentController.Enrollment>> call = enrollmentInterface.listEnrollmentsSectionId(client.getEnrollment().getSectionId(),client.getToken(),client.getEnrollment().generateQueries());
+
+        Response<List<Enrollment>> response = call.execute();
+
+        return response.body();
+
+
 
     }
 

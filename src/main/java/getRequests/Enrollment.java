@@ -11,6 +11,7 @@ public class Enrollment extends CanvasClient {
     private String userId;
     private String enrollmentAccountId;
     private String enrollmentId;
+    private String sectionId;
 
     private String type;
     private String role;
@@ -82,6 +83,14 @@ public class Enrollment extends CanvasClient {
           sisUserId= null;
           createdForSisId= null;
 
+    }
+
+    public String getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(String sectionId) {
+        this.sectionId = sectionId;
     }
 
     public String getEnrollmentAccountId() {
