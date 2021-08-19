@@ -21,4 +21,10 @@ public interface enrollmentInterface {
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/enrollments/{enrollmentId}")
     Call<Enrollment> getEnrollmentById(@Path("accountId") String accountId, @Path("enrollmentId") String enrollment, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/enrollments")
+    Call<Void> enrollUserCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @POST("https://udel.instructure.com/api/sections/{sectionId}/enrollments")
+    Call<Void> enrollUserSectionId(@Path("sectionId") String sectionId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }
