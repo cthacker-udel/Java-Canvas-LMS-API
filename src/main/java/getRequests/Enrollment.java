@@ -2,6 +2,7 @@ package getRequests;
 
 import Client.CanvasClient;
 
+import java.time.ZonedDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -25,9 +26,58 @@ public class Enrollment extends CanvasClient {
     private String sisUserId;
     private Boolean createdForSisId;
 
+    private ZonedDateTime enrollmentStartAt;
+    private ZonedDateTime enrollmentEndAt;
+    private String enrollmentUserId;
+    private String enrollmentType;
+    private Integer enrollmentRoleId;
+    private String enrollmentState;
+    private Integer enrollmentCourseSectionId;
+    private Boolean enrollmentLimitPrivilegesToCourseSection;
+    private Boolean notify;
+    private String enrollmentSelfEnrollmentCode;
+    private Boolean enrollmentSelfEnrolled;
+    private Integer enrollmentAssociatedUserId;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
+        if(this.enrollmentStartAt != null){
+            queries.put("enrollment[start_at]",this.enrollmentStartAt);
+        }
+        if(this.enrollmentEndAt != null){
+            queries.put("enrollment[end_at]",this.enrollmentEndAt);
+        }
+        if(this.enrollmentUserId != null){
+            queries.put("enrollment[user_id]",this.enrollmentUserId);
+        }
+        if(this.enrollmentType != null){
+            queries.put("enrollment[type]",this.enrollmentType);
+        }
+        if(this.enrollmentRoleId != null){
+            queries.put("enrollment[role_id]",this.enrollmentRoleId);
+        }
+        if(this.enrollmentState != null){
+            queries.put("enrollment[enrollment_state]",this.enrollmentState);
+        }
+        if(this.enrollmentCourseSectionId != null){
+            queries.put("enrollment[course_section_id]",this.enrollmentCourseSectionId);
+        }
+        if(this.enrollmentLimitPrivilegesToCourseSection != null){
+            queries.put("enrollment[limit_privileges_to_course_section]",this.enrollmentLimitPrivilegesToCourseSection);
+        }
+        if(this.notify != null){
+            queries.put("enrollment[notify]",this.notify);
+        }
+        if(this.enrollmentSelfEnrollmentCode != null){
+            queries.put("enrollment[self_enrollment_code]",this.enrollmentSelfEnrollmentCode);
+        }
+        if(this.enrollmentSelfEnrolled != null){
+            queries.put("enrollment[self_enrolled]",this.enrollmentSelfEnrolled);
+        }
+        if(this.enrollmentAssociatedUserId != null){
+            queries.put("enrollment[associated_user_id]",this.enrollmentAssociatedUserId);
+        }
 
         if(this.type != null){
             queries.put("type[]",this.type);
@@ -82,7 +132,115 @@ public class Enrollment extends CanvasClient {
           sisSectionId= null;
           sisUserId= null;
           createdForSisId= null;
+          enrollmentStartAt = null;
+          enrollmentEndAt = null;
+          enrollmentUserId = null;
+          enrollmentType = null;
+          enrollmentRoleId = null;
+          enrollmentState = null;
+          enrollmentCourseSectionId = null;
+          enrollmentLimitPrivilegesToCourseSection = null;
+          notify = null;
+          enrollmentSelfEnrollmentCode = null;
+          enrollmentSelfEnrolled = null;
+          enrollmentAssociatedUserId = null;
 
+    }
+
+    public ZonedDateTime getEnrollmentStartAt() {
+        return enrollmentStartAt;
+    }
+
+    public void setEnrollmentStartAt(ZonedDateTime enrollmentStartAt) {
+        this.enrollmentStartAt = enrollmentStartAt;
+    }
+
+    public ZonedDateTime getEnrollmentEndAt() {
+        return enrollmentEndAt;
+    }
+
+    public void setEnrollmentEndAt(ZonedDateTime enrollmentEndAt) {
+        this.enrollmentEndAt = enrollmentEndAt;
+    }
+
+    public String getEnrollmentUserId() {
+        return enrollmentUserId;
+    }
+
+    public void setEnrollmentUserId(String enrollmentUserId) {
+        this.enrollmentUserId = enrollmentUserId;
+    }
+
+    public String getEnrollmentType() {
+        return enrollmentType;
+    }
+
+    public void setEnrollmentType(String enrollmentType) {
+        this.enrollmentType = enrollmentType;
+    }
+
+    public Integer getEnrollmentRoleId() {
+        return enrollmentRoleId;
+    }
+
+    public void setEnrollmentRoleId(Integer enrollmentRoleId) {
+        this.enrollmentRoleId = enrollmentRoleId;
+    }
+
+    public String getEnrollmentState() {
+        return enrollmentState;
+    }
+
+    public void setEnrollmentState(String enrollmentState) {
+        this.enrollmentState = enrollmentState;
+    }
+
+    public Integer getEnrollmentCourseSectionId() {
+        return enrollmentCourseSectionId;
+    }
+
+    public void setEnrollmentCourseSectionId(Integer enrollmentCourseSectionId) {
+        this.enrollmentCourseSectionId = enrollmentCourseSectionId;
+    }
+
+    public Boolean getEnrollmentLimitPrivilegesToCourseSection() {
+        return enrollmentLimitPrivilegesToCourseSection;
+    }
+
+    public void setEnrollmentLimitPrivilegesToCourseSection(Boolean enrollmentLimitPrivilegesToCourseSection) {
+        this.enrollmentLimitPrivilegesToCourseSection = enrollmentLimitPrivilegesToCourseSection;
+    }
+
+    public Boolean getNotify() {
+        return notify;
+    }
+
+    public void setNotify(Boolean notify) {
+        this.notify = notify;
+    }
+
+    public String getEnrollmentSelfEnrollmentCode() {
+        return enrollmentSelfEnrollmentCode;
+    }
+
+    public void setEnrollmentSelfEnrollmentCode(String enrollmentSelfEnrollmentCode) {
+        this.enrollmentSelfEnrollmentCode = enrollmentSelfEnrollmentCode;
+    }
+
+    public Boolean getEnrollmentSelfEnrolled() {
+        return enrollmentSelfEnrolled;
+    }
+
+    public void setEnrollmentSelfEnrolled(Boolean enrollmentSelfEnrolled) {
+        this.enrollmentSelfEnrolled = enrollmentSelfEnrolled;
+    }
+
+    public Integer getEnrollmentAssociatedUserId() {
+        return enrollmentAssociatedUserId;
+    }
+
+    public void setEnrollmentAssociatedUserId(Integer enrollmentAssociatedUserId) {
+        this.enrollmentAssociatedUserId = enrollmentAssociatedUserId;
     }
 
     public String getSectionId() {
