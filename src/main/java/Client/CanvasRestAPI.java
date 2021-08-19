@@ -6083,7 +6083,7 @@ public class CanvasRestAPI{
 
     public boolean enrollUserCourseId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/courses/%s/enrollments",client.getEnrollment().getCourseId());
+        String url = baseUrl + String.format("/api/v1/courses/%s/enrollments/",client.getEnrollment().getCourseId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -6098,6 +6098,24 @@ public class CanvasRestAPI{
 
         return response.isSuccessful();
 
+    }
+
+    public boolean enrollUserSectionId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/sections/%s/enrollments/",client.getEnrollment().getSectionId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentInterface enrollmentInterface = retrofit.create(Model.enrollmentInterface.class);
+
+        Call<Void> call = enrollmentInterface.enrollUserSectionId(client.getEnrollment().getSectionId(),client.getToken(),client.getEnrollment().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
     }
 
 
