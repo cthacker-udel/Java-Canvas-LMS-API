@@ -6043,6 +6043,25 @@ public class CanvasRestAPI{
 
     }
 
+    public List<Enrollment> listEnrollmentUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/enrollments/",client.getEnrollment().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentInterface enrollmentInterface = retrofit.create(Model.enrollmentInterface.class);
+
+        Call<List<Enrollment>> call = enrollmentInterface.listEnrollmentsUserId(client.getEnrollment().getUserId(),client.getToken(),client.getEnrollment().generateQueries());
+
+        Response<List<Enrollment>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
