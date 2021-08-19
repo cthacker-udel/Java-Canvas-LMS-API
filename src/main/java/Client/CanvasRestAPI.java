@@ -6062,6 +6062,25 @@ public class CanvasRestAPI{
 
     }
 
+    public Enrollment getEnrollmentById(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/enrollments/%s/",client.getEnrollment().getEnrollmentAccountId(),client.getEnrollment().getEnrollmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentInterface enrollmentInterface = retrofit.create(Model.enrollmentInterface.class);
+
+        Call<Enrollment> call = enrollmentInterface.getEnrollmentById(client.getEnrollment().getEnrollmentAccountId(),client.getEnrollment().getEnrollmentId(),client.getToken(),client.getEnrollment().generateQueries());
+
+        Response<Enrollment> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

@@ -18,4 +18,7 @@ public interface enrollmentInterface {
     @GET("https://udel.instructure.com/api/v1/users/{userId}/enrollments")
     Call<List<Enrollment>> listEnrollmentsUserId(@Path("userId") String userId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/enrollments/{enrollmentId}")
+    Call<Enrollment> getEnrollmentById(@Path("accountId") String accountId, @Path("enrollmentId") String enrollment, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
