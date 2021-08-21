@@ -39,9 +39,15 @@ public class Enrollment extends CanvasClient {
     private Boolean enrollmentSelfEnrolled;
     private Integer enrollmentAssociatedUserId;
 
+    private String task;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
+
+        if(this.task != null) {
+            queries.put("task", this.task);
+        }
         if(this.enrollmentStartAt != null){
             queries.put("enrollment[start_at]",this.enrollmentStartAt);
         }
@@ -144,7 +150,16 @@ public class Enrollment extends CanvasClient {
           enrollmentSelfEnrollmentCode = null;
           enrollmentSelfEnrolled = null;
           enrollmentAssociatedUserId = null;
+          task = null;
 
+    }
+
+    public String getTask() {
+        return task;
+    }
+
+    public void setTask(String task) {
+        this.task = task;
     }
 
     public ZonedDateTime getEnrollmentStartAt() {

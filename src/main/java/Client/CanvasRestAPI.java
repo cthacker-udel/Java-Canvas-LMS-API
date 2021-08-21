@@ -6118,6 +6118,25 @@ public class CanvasRestAPI{
         return response.isSuccessful();
     }
 
+    public Enrollment concludeDeactivateDeleteEnrollment(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/enrollments/%s/",client.getEnrollment().getCourseId(),client.getEnrollment().getEnrollmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentInterface enrollmentInterface = retrofit.create(Model.enrollmentInterface.class);
+
+        Call<Enrollment> call = enrollmentInterface.concludeOrDeactivateOrDeleteEnrollment(client.getEnrollment().getCourseId(),client.getEnrollment().getEnrollmentId(),client.getToken(),client.getEnrollment().generateQueries());
+
+        Response<Enrollment> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
