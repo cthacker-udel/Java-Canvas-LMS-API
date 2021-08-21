@@ -65,6 +65,7 @@ import Controller.EnrollmentController.Enrollment;
 import Controller.EnrollmentTermsController.EnrollmentTerm;
 import Controller.ErrorReportController.ErrorReport;
 import Controller.ExternalFeedController.ExternalFeed;
+import Controller.ExternalToolsController.ExternalTool;
 import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
 import Controller.QuizExtensionsController.QuizExtensions;
@@ -6237,6 +6238,32 @@ Error Reports API
 
         return response.body();
 
+
+    }
+
+
+/*
+
+External Tools API
+
+ */
+
+    public List<ExternalTool> listExternalTools(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/external_tools/",client.getExternalTool().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<List<ExternalTool>> call = externalToolsInterface.listExternalToolsCourseId(client.getExternalTool().getCourseId(),client.getToken(),client.getExternalTool().generateQueries());
+
+        Response<List<ExternalTool>> response = call.execute();
+
+        return response.body();
 
     }
 
