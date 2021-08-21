@@ -6156,6 +6156,24 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean rejectCourseInvitation(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/enrollments/%s/reject/",client.getEnrollment().getCourseId(),client.getEnrollment().getEnrollmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentInterface enrollmentInterface = retrofit.create(Model.enrollmentInterface.class);
+
+        Call<Void> call = enrollmentInterface.rejectCourseInvitation(client.getEnrollment().getCourseId(),client.getEnrollment().getEnrollmentId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+    }
+
 
 
 

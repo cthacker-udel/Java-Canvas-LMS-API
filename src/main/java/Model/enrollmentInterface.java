@@ -33,4 +33,7 @@ public interface enrollmentInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/enrollments/{enrollmentId}/accept")
     Call<Void> acceptCourseInvitation(@Path("courseId") String courseId, @Path("enrollmentId") String enrollmentId, @Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/enrollments/{enrollmentId}/reject")
+    Call<Void> rejectCourseInvitation(@Path("courseId") String courseId, @Path("enrollmentId") String enrollmentId, @Header("Authorization") String auth);
+
 }
