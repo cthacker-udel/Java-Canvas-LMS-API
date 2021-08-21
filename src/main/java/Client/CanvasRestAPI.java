@@ -6213,6 +6213,33 @@ public class CanvasRestAPI{
     }
 
 
+/*
+
+Error Reports API
+
+ */
+
+    public boolean createErrorReport(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/error_reports/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        errorReportInterface errorReportInterface = retrofit.create(Model.errorReportInterface.class);
+
+        Call<Void> call = errorReportInterface.createErrorReport(client.getToken(),client.getErrorReport().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+
+    }
+
+
 
 
 

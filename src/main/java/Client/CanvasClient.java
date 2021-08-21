@@ -43,6 +43,7 @@ public class CanvasClient extends CanvasRestAPI {
     private DiscussionTopic discussionTopic;
     private EnrollmentTerms enrollmentTerm;
     private Enrollment enrollment;
+    private ErrorReport errorReport;
 
     public CanvasClient(){
         super();
@@ -88,7 +89,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.customGradebookColumns = new CustomGradebookColumns();
         this.discussionTopic = new DiscussionTopic();
         this.enrollment = new Enrollment();
+        this.errorReport = new ErrorReport();
 
+    }
+
+    public ErrorReport getErrorReport() {
+        return errorReport;
+    }
+
+    public void setErrorReport(ErrorReport errorReport) {
+        this.errorReport = errorReport;
     }
 
     public Enrollment getEnrollment() {
