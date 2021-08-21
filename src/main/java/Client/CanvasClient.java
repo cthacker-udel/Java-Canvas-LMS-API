@@ -44,6 +44,7 @@ public class CanvasClient extends CanvasRestAPI {
     private EnrollmentTerms enrollmentTerm;
     private Enrollment enrollment;
     private ErrorReport errorReport;
+    private ExternalTool externalTool;
 
     public CanvasClient(){
         super();
@@ -90,7 +91,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.discussionTopic = new DiscussionTopic();
         this.enrollment = new Enrollment();
         this.errorReport = new ErrorReport();
+        this.externalTool = new ExternalTool();
 
+    }
+
+    public ExternalTool getExternalTool() {
+        return externalTool;
+    }
+
+    public void setExternalTool(ExternalTool externalTool) {
+        this.externalTool = externalTool;
     }
 
     public ErrorReport getErrorReport() {
