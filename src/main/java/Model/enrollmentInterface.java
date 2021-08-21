@@ -36,4 +36,7 @@ public interface enrollmentInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/enrollments/{enrollmentId}/reject")
     Call<Void> rejectCourseInvitation(@Path("courseId") String courseId, @Path("enrollmentId") String enrollmentId, @Header("Authorization") String auth);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/enrollments/{enrollmentId}/reactivate")
+    Call<Enrollment> reactivateEnrollment(@Path("courseId") String courseId, @Path("enrollmentId") String enrollmentId, @Header("Authorization") String auth);
+
 }

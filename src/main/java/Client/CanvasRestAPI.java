@@ -6174,6 +6174,25 @@ public class CanvasRestAPI{
         return response.isSuccessful();
     }
 
+    public Enrollment reactivateEnrollment(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/enrollments/%s/reactivate/",client.getEnrollment().getCourseId(),client.getEnrollment().getEnrollmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentInterface enrollmentInterface = retrofit.create(Model.enrollmentInterface.class);
+
+        Call<Enrollment> call = enrollmentInterface.reactivateEnrollment(client.getEnrollment().getCourseId(),client.getEnrollment().getEnrollmentId(),client.getToken());
+
+        Response<Enrollment> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
