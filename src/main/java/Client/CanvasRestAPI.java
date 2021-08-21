@@ -63,6 +63,7 @@ import Controller.DiscussionTopicController.FullTopic;
 import Controller.DiscussionTopicController.Reply;
 import Controller.EnrollmentController.Enrollment;
 import Controller.EnrollmentTermsController.EnrollmentTerm;
+import Controller.ErrorReportController.ErrorReport;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
@@ -6219,7 +6220,7 @@ Error Reports API
 
  */
 
-    public boolean createErrorReport(CanvasClient client) throws IOException {
+    public ErrorReport createErrorReport(CanvasClient client) throws IOException {
 
         String url = baseUrl + "/api/v1/error_reports/";
 
@@ -6230,11 +6231,11 @@ Error Reports API
 
         errorReportInterface errorReportInterface = retrofit.create(Model.errorReportInterface.class);
 
-        Call<Void> call = errorReportInterface.createErrorReport(client.getToken(),client.getErrorReport().generateQueries());
+        Call<ErrorReport> call = errorReportInterface.createErrorReport(client.getToken(),client.getErrorReport().generateQueries());
 
-        Response<Void> response = call.execute();
+        Response<ErrorReport> response = call.execute();
 
-        return response.isSuccessful();
+        return response.body();
 
 
     }
