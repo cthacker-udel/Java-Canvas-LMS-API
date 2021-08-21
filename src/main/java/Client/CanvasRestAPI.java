@@ -6193,6 +6193,25 @@ public class CanvasRestAPI{
 
     }
 
+    public boolean addLastAttendedDateToStudentEnrollment(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/users/%s/last_attended/",client.getEnrollment().getCourseId(),client.getEnrollment().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        enrollmentInterface enrollmentInterface = retrofit.create(Model.enrollmentInterface.class);
+
+        Call<Void> call = enrollmentInterface.addLastAttendedDateToStudentEnrollment(client.getEnrollment().getCourseId(),client.getEnrollment().getUserId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 

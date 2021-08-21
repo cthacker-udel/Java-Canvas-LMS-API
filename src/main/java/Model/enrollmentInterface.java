@@ -39,4 +39,7 @@ public interface enrollmentInterface {
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/enrollments/{enrollmentId}/reactivate")
     Call<Enrollment> reactivateEnrollment(@Path("courseId") String courseId, @Path("enrollmentId") String enrollmentId, @Header("Authorization") String auth);
 
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/users/{userId}/last_attended")
+    Call<Void> addLastAttendedDateToStudentEnrollment(@Path("courseId") String courseId, @Path("userId") String userId, @Header("Authorization") String auth);
+
 }
