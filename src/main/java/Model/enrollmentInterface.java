@@ -30,4 +30,7 @@ public interface enrollmentInterface {
     @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/enrollments/{enrollmentId}")
     Call<Enrollment> concludeOrDeactivateOrDeleteEnrollment(@Path("courseId") String courseid, @Path("enrollmentId") String enrollmentId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/enrollments/{enrollmentId}/accept")
+    Call<Void> acceptCourseInvitation(@Path("courseId") String courseId, @Path("enrollmentId") String enrollmentId, @Header("Authorization") String auth);
+
 }
