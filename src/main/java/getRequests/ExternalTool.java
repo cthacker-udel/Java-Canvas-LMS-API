@@ -15,10 +15,31 @@ public class ExternalTool extends CanvasClient {
     private Boolean selectable;
     private Boolean include_parents;
 
+    private String id;
+    private String url;
+    private String assignmentId;
+    private String moduleItemId;
+    private String launchType;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.id != null){
+            queries.put("id",this.id);
+        }
+        if(this.url != null){
+            queries.put("url",this.url);
+        }
+        if(this.assignmentId != null){
+            queries.put("assignment_id",this.assignmentId);
+        }
+        if(this.moduleItemId != null){
+            queries.put("module_item_id",this.moduleItemId);
+        }
+        if(this.launchType != null){
+            queries.put("launch_type",this.launchType);
+        }
         if(this.searchTerm != null){
             queries.put("search_term",this.searchTerm);
         }
