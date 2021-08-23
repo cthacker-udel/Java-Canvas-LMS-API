@@ -6269,7 +6269,7 @@ External Tools API
 
     public List<ExternalTool> listExternalToolsAccountId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/accounts/%s/external_tools",client.getExternalTool().getCourseId());
+        String url = baseUrl + String.format("/api/v1/accounts/%s/external_tools/",client.getExternalTool().getCourseId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -6279,6 +6279,25 @@ External Tools API
         externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
 
         Call<List<ExternalTool>> call = externalToolsInterface.listExternalToolsAccountId(client.getExternalTool().getExToolAccountId(),client.getToken(),client.getExternalTool().generateQueries());
+
+        Response<List<ExternalTool>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<ExternalTool> listExternalToolsGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/external_tools/",client.getExternalTool().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<List<ExternalTool>> call = externalToolsInterface.listExternalToolsGroupId(client.getExternalTool().getGroupId(),client.getToken(),client.getExternalTool().generateQueries());
 
         Response<List<ExternalTool>> response = call.execute();
 

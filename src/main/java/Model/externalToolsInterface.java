@@ -15,4 +15,7 @@ public interface externalToolsInterface {
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools")
     Call<List<ExternalTool>> listExternalToolsAccountId(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/external_tools")
+    Call<List<ExternalTool>> listExternalToolsGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
