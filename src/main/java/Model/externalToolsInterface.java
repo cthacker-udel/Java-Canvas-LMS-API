@@ -12,4 +12,7 @@ public interface externalToolsInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/external_tools")
     Call<List<ExternalTool>> listExternalToolsCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools")
+    Call<List<ExternalTool>> listExternalToolsAccountId(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
