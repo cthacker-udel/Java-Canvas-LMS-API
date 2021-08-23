@@ -19,6 +19,9 @@ public interface externalToolsInterface {
     Call<List<ExternalTool>> listExternalToolsGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/external_tools/sessionless_launch")
-    Call<String> getSessionlessLaunchURLCourseId(@Path("courseId") String path, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<String> getSessionlessLaunchURLCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools/sessionless_launch")
+    Call<String> getSessionlessLaunchURLAccountId(@Path("accountId") String accountId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 }

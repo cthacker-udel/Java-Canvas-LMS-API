@@ -6324,6 +6324,25 @@ External Tools API
 
     }
 
+    public String getSessionlessLaunchURLAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/external_tools/sessionless_launch/",client.getExternalTool().getExToolAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<String> call = externalToolsInterface.getSessionlessLaunchURLAccountId(client.getExternalTool().getExToolAccountId(),client.getToken(),client.getExternalTool().generateQueries());
+
+        Response<String> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
