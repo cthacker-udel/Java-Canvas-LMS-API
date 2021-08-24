@@ -6362,6 +6362,25 @@ External Tools API
 
     }
 
+    public ExternalTool getSingleExternalToolAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/external_tools/%s/",client.getExternalTool().getExToolAccountId(),client.getExternalTool().getExternalToolId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<ExternalTool> call = externalToolsInterface.getSingleExternalToolAccountId(client.getExternalTool().getExToolAccountId(),client.getExternalTool().getExternalToolId(),client.getToken());
+
+        Response<ExternalTool> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
