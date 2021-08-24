@@ -10,6 +10,7 @@ public class ExternalTool extends CanvasClient {
     private String courseId;
     private String exToolAccountId;
     private String groupId;
+    private String externalToolId;
 
     private String searchTerm;
     private Boolean selectable;
@@ -59,6 +60,54 @@ public class ExternalTool extends CanvasClient {
         this.selectable = null;
         this.include_parents = null;
 
+    }
+
+    public String getExternalToolId() {
+        return externalToolId;
+    }
+
+    public void setExternalToolId(String externalToolId) {
+        this.externalToolId = externalToolId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getAssignmentId() {
+        return assignmentId;
+    }
+
+    public void setAssignmentId(String assignmentId) {
+        this.assignmentId = assignmentId;
+    }
+
+    public String getModuleItemId() {
+        return moduleItemId;
+    }
+
+    public void setModuleItemId(String moduleItemId) {
+        this.moduleItemId = moduleItemId;
+    }
+
+    public String getLaunchType() {
+        return launchType;
+    }
+
+    public void setLaunchType(String launchType) {
+        this.launchType = launchType;
     }
 
     public String getCourseId() {

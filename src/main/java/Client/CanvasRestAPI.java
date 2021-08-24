@@ -6343,6 +6343,25 @@ External Tools API
 
     }
 
+    public ExternalTool getSingleExternalToolCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/external_tools/%s/",client.getExternalTool().getCourseId(),client.getExternalTool().getExternalToolId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(externalToolsInterface.class);
+
+        Call<ExternalTool> call = externalToolsInterface.getSingleExternalToolCourseId(client.getExternalTool().getCourseId(),client.getExternalTool().getExternalToolId(),client.getToken());
+
+        Response<ExternalTool> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
