@@ -22,6 +22,82 @@ public class ExternalTool extends CanvasClient {
     private String moduleItemId;
     private String launchType;
 
+    private String clientId;
+    private String name;
+    private String privacyLevel;
+    private String consumerKey;
+    private String sharedSecret;
+    private String description;
+    private String domain;
+    private String iconUrl;
+    private String text;
+    private String customFieldsFieldName;
+    private Boolean isRceFavorite;
+
+    private String accountNavigationUrl;
+    private Boolean accountNavigationEnabled;
+    private String accountNavigationText;
+    private String accountNavigationSelectionWidth;
+    private String accountNavigationSelectionHeight;
+    private String accountNavigationDisplayType;
+
+    private String userNavigationUrl;
+    private Boolean userNavigationEnabled;
+    private String userNavigationText;
+    private String userNavigationVisibility;
+
+    private String courseHomeSubNavigationUrl;
+    private String courseHomeSubNavigationEnabled;
+    private String courseHomeSubNavigationText;
+    private String courseHomeSubNavigationIconUrl;
+
+    private Boolean courseNavigationEnabled;
+    private String courseNavigationText;
+    private String courseNavigationVisibility;
+    private String courseNavigationWindowTarget;
+    private String courseNavigationDefault;
+    private String courseNavigationDisplayType;
+
+    private String editorButtonUrl;
+    private Boolean editorButtonEnabled;
+    private String editorButtonIconUrl;
+    private String editorButtonSelectionWidth;
+    private String editorButtonSelectionHeight;
+    private String editorButtonMessageType;
+
+    private String homeworkSubmissionUrl;
+    private Boolean homeworkSubmissionEnabled;
+    private String homeworkSubmissionText;
+    private String homeworkSubmissionMessageType;
+
+    private String linkSelectionUrl;
+    private Boolean linkSelectionEnabled;
+    private String linkSelectionText;
+    private String linkSelectionMessageType;
+
+    private String migrationSelectionUrl;
+    private Boolean migrationSelectionEnabled;
+    private String migrationSelectionMessageType;
+
+    private String toolConfigurationUrl;
+    private Boolean toolConfigurationEnabled;
+    private String toolConfigurationMessageType;
+    private Boolean toolConfigurationPreferSisEmail;
+
+    private String resourceSelectionUrl;
+    private Boolean resourceSelectionEnabled;
+    private String resourceSelectionIconUrl;
+    private String resourceSelectionSelectionWidth;
+    private String resourceSelectionSelectionHeight;
+
+    private String configType;
+    private String configXml;
+    private String configUrl;
+
+    private Boolean notSelectable;
+    private Boolean oAuthCompliant;
+
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
