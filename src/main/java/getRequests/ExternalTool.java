@@ -102,6 +102,118 @@ public class ExternalTool extends CanvasClient {
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.clientId != null){
+            queries.put("client_id",this.clientId);
+        }
+        if(this.name != null){
+            queries.put("name",this.name);
+        }
+        if(this.privacyLevel != null){
+            queries.put("privacy_level",this.privacyLevel);
+        }
+        if(this.consumerKey != null){
+            queries.put("consumer_key",this.consumerKey);
+        }
+        if(this.sharedSecret != null){
+            queries.put("shared_secret",this.sharedSecret);
+        }
+        if(this.description != null){
+            queries.put("description",this.description);
+        }
+        if(this.domain != null){
+            queries.put("domain",this.domain);
+        }
+        if(this.iconUrl != null){
+            queries.put("icon_url",this.iconUrl);
+        }
+        if(this.text != null){
+            queries.put("text",this.text);
+        }
+        if(this.customFieldsFieldName != null){
+            queries.put("custom_fields[field_name]",this.customFieldsFieldName);
+        }
+        if(this.isRceFavorite != null){
+            queries.put("is_rce_favorite",this.isRceFavorite);
+        }
+        if(this.accountNavigationUrl != null){
+            queries.put("account_navigation[url]",this.accountNavigationUrl);
+        }
+        if(this.accountNavigationEnabled != null){
+            queries.put("account_navigation[enabled]",this.accountNavigationEnabled);
+        }
+        if(this.accountNavigationText != null){
+            queries.put("account_navigation[text]",this.accountNavigationText);
+        }
+        if(this.accountNavigationSelectionWidth != null){
+            queries.put("account_navigation[selection_width]",this.accountNavigationSelectionWidth);
+        }
+        if(this.accountNavigationSelectionHeight != null){
+            queries.put("account_navigation[selection_height]",this.accountNavigationSelectionHeight);
+        }
+        if(this.accountNavigationDisplayType != null){
+            queries.put("account_navigation[display_type]",this.accountNavigationDisplayType);
+        }
+        if(this.userNavigationUrl != null){
+            queries.put("user_navigation[url]",this.userNavigationUrl);
+        }
+        if(this.userNavigationEnabled != null){
+            queries.put("user_navigation[enabled]",this.userNavigationEnabled);
+        }
+        if(this.userNavigationText != null){
+            queries.put("user_navigation[text]",this.userNavigationText);
+        }
+        if(this.userNavigationVisibility != null){
+            queries.put("user_navigation[visibility]",this.userNavigationVisibility);
+        }
+        if(this.courseHomeSubNavigationUrl != null){
+            queries.put("course_home_sub_navigation[url]",this.courseHomeSubNavigationUrl);
+        }
+        if(this.courseHomeSubNavigationEnabled != null){
+            queries.put("course_home_sub_navigation[enabled]",this.courseHomeSubNavigationEnabled);
+        }
+        if(this.courseHomeSubNavigationText != null){
+            queries.put("course_home_sub_navigation[text]",this.courseHomeSubNavigationText);
+        }
+        if(this.courseHomeSubNavigationIconUrl != null){
+            queries.put("course_home_sub_navigation[icon_url]",this.courseHomeSubNavigationIconUrl);
+        }
+        if(this.courseNavigationEnabled != null){
+            queries.put("course_navigation[enabled]",this.courseNavigationEnabled);
+        }
+        if(this.courseNavigationText != null){
+            queries.put("course_navigation[text]",this.courseNavigationText);
+        }
+        if(this.courseNavigationVisibility != null){
+            queries.put("course_navigation[visibility]",this.courseNavigationVisibility);
+        }
+        if(this.courseNavigationWindowTarget != null){
+            queries.put("course_navigation[windowTarget]",this.courseNavigationWindowTarget);
+        }
+        if(this.courseNavigationDefault != null){
+            queries.put("course_navigation[default]",this.courseNavigationDefault);
+        }
+        if(this.courseNavigationDisplayType != null){
+            queries.put("course_navigation[display_type]",this.courseNavigationDisplayType);
+        }
+        if(this.editorButtonUrl != null){
+            queries.put("editor_button[url]",this.editorButtonUrl);
+        }
+        if(this.editorButtonEnabled != null){
+            queries.put("editor_button[enabled]",this.editorButtonEnabled);
+        }
+        if(this.editorButtonIconUrl != null){
+            queries.put("editor_button[icon_url]",this.editorButtonIconUrl);
+        }
+        if(this.editorButtonSelectionWidth != null){
+            queries.put("editor_button[selection_width]",this.editorButtonSelectionWidth);
+        }
+        if(this.editorButtonSelectionHeight != null){
+            queries.put("editor_button[selection_height]",this.editorButtonSelectionHeight);
+        }
+        if(this.editorButtonMessageType != null){
+            queries.put("editor_button[message_type]",this.editorButtonMessageType);
+        }
+        // continue rest of queries
         if(this.id != null){
             queries.put("id",this.id);
         }
