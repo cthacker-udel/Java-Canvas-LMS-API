@@ -321,7 +321,587 @@ public class ExternalTool extends CanvasClient {
         this.searchTerm = null;
         this.selectable = null;
         this.include_parents = null;
+          id= null;
+          url= null;
+          assignmentId= null;
+          moduleItemId= null;
+          launchType= null;
 
+          clientId= null;
+          name= null;
+          privacyLevel= null;
+          consumerKey= null;
+          sharedSecret= null;
+          description= null;
+          domain= null;
+          iconUrl= null;
+          text= null;
+          customFieldsFieldName= null;
+          isRceFavorite= null;
+
+          accountNavigationUrl = null;
+          accountNavigationEnabled= null;
+          accountNavigationText= null;
+          accountNavigationSelectionWidth= null;
+          accountNavigationSelectionHeight= null;
+          accountNavigationDisplayType= null;
+
+          userNavigationUrl= null;
+          userNavigationEnabled= null;
+          userNavigationText= null;
+          userNavigationVisibility= null;
+
+          courseHomeSubNavigationUrl= null;
+          courseHomeSubNavigationEnabled= null;
+          courseHomeSubNavigationText= null;
+          courseHomeSubNavigationIconUrl= null;
+
+          courseNavigationEnabled= null;
+          courseNavigationText= null;
+          courseNavigationVisibility= null;
+          courseNavigationWindowTarget= null;
+          courseNavigationDefault= null;
+          courseNavigationDisplayType= null;
+
+          editorButtonUrl= null;
+          editorButtonEnabled= null;
+          editorButtonIconUrl= null;
+          editorButtonSelectionWidth= null;
+          editorButtonSelectionHeight= null;
+          editorButtonMessageType= null;
+
+          homeworkSubmissionUrl= null;
+          homeworkSubmissionEnabled= null;
+          homeworkSubmissionText= null;
+          homeworkSubmissionMessageType= null;
+
+          linkSelectionUrl= null;
+          linkSelectionEnabled= null;
+          linkSelectionText= null;
+          linkSelectionMessageType= null;
+
+          migrationSelectionUrl= null;
+          migrationSelectionEnabled= null;
+          migrationSelectionMessageType= null;
+
+          toolConfigurationUrl= null;
+          toolConfigurationEnabled= null;
+          toolConfigurationMessageType= null;
+          toolConfigurationPreferSisEmail= null;
+
+          resourceSelectionUrl= null;
+          resourceSelectionEnabled= null;
+          resourceSelectionIconUrl= null;
+          resourceSelectionSelectionWidth= null;
+          resourceSelectionSelectionHeight= null;
+
+          configType= null;
+          configXml= null;
+          configUrl= null;
+
+          notSelectable= null;
+          oAuthCompliant= null;
+
+
+
+    }
+
+    @Override
+    public String getClientId() {
+        return clientId;
+    }
+
+    @Override
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPrivacyLevel() {
+        return privacyLevel;
+    }
+
+    public void setPrivacyLevel(String privacyLevel) {
+        this.privacyLevel = privacyLevel;
+    }
+
+    public String getConsumerKey() {
+        return consumerKey;
+    }
+
+    public void setConsumerKey(String consumerKey) {
+        this.consumerKey = consumerKey;
+    }
+
+    public String getSharedSecret() {
+        return sharedSecret;
+    }
+
+    public void setSharedSecret(String sharedSecret) {
+        this.sharedSecret = sharedSecret;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getCustomFieldsFieldName() {
+        return customFieldsFieldName;
+    }
+
+    public void setCustomFieldsFieldName(String customFieldsFieldName) {
+        this.customFieldsFieldName = customFieldsFieldName;
+    }
+
+    public Boolean getRceFavorite() {
+        return isRceFavorite;
+    }
+
+    public void setRceFavorite(Boolean rceFavorite) {
+        isRceFavorite = rceFavorite;
+    }
+
+    public String getAccountNavigationUrl() {
+        return accountNavigationUrl;
+    }
+
+    public void setAccountNavigationUrl(String accountNavigationUrl) {
+        this.accountNavigationUrl = accountNavigationUrl;
+    }
+
+    public Boolean getAccountNavigationEnabled() {
+        return accountNavigationEnabled;
+    }
+
+    public void setAccountNavigationEnabled(Boolean accountNavigationEnabled) {
+        this.accountNavigationEnabled = accountNavigationEnabled;
+    }
+
+    public String getAccountNavigationText() {
+        return accountNavigationText;
+    }
+
+    public void setAccountNavigationText(String accountNavigationText) {
+        this.accountNavigationText = accountNavigationText;
+    }
+
+    public String getAccountNavigationSelectionWidth() {
+        return accountNavigationSelectionWidth;
+    }
+
+    public void setAccountNavigationSelectionWidth(String accountNavigationSelectionWidth) {
+        this.accountNavigationSelectionWidth = accountNavigationSelectionWidth;
+    }
+
+    public String getAccountNavigationSelectionHeight() {
+        return accountNavigationSelectionHeight;
+    }
+
+    public void setAccountNavigationSelectionHeight(String accountNavigationSelectionHeight) {
+        this.accountNavigationSelectionHeight = accountNavigationSelectionHeight;
+    }
+
+    public String getAccountNavigationDisplayType() {
+        return accountNavigationDisplayType;
+    }
+
+    public void setAccountNavigationDisplayType(String accountNavigationDisplayType) {
+        this.accountNavigationDisplayType = accountNavigationDisplayType;
+    }
+
+    public String getUserNavigationUrl() {
+        return userNavigationUrl;
+    }
+
+    public void setUserNavigationUrl(String userNavigationUrl) {
+        this.userNavigationUrl = userNavigationUrl;
+    }
+
+    public Boolean getUserNavigationEnabled() {
+        return userNavigationEnabled;
+    }
+
+    public void setUserNavigationEnabled(Boolean userNavigationEnabled) {
+        this.userNavigationEnabled = userNavigationEnabled;
+    }
+
+    public String getUserNavigationText() {
+        return userNavigationText;
+    }
+
+    public void setUserNavigationText(String userNavigationText) {
+        this.userNavigationText = userNavigationText;
+    }
+
+    public String getUserNavigationVisibility() {
+        return userNavigationVisibility;
+    }
+
+    public void setUserNavigationVisibility(String userNavigationVisibility) {
+        this.userNavigationVisibility = userNavigationVisibility;
+    }
+
+    public String getCourseHomeSubNavigationUrl() {
+        return courseHomeSubNavigationUrl;
+    }
+
+    public void setCourseHomeSubNavigationUrl(String courseHomeSubNavigationUrl) {
+        this.courseHomeSubNavigationUrl = courseHomeSubNavigationUrl;
+    }
+
+    public String getCourseHomeSubNavigationEnabled() {
+        return courseHomeSubNavigationEnabled;
+    }
+
+    public void setCourseHomeSubNavigationEnabled(String courseHomeSubNavigationEnabled) {
+        this.courseHomeSubNavigationEnabled = courseHomeSubNavigationEnabled;
+    }
+
+    public String getCourseHomeSubNavigationText() {
+        return courseHomeSubNavigationText;
+    }
+
+    public void setCourseHomeSubNavigationText(String courseHomeSubNavigationText) {
+        this.courseHomeSubNavigationText = courseHomeSubNavigationText;
+    }
+
+    public String getCourseHomeSubNavigationIconUrl() {
+        return courseHomeSubNavigationIconUrl;
+    }
+
+    public void setCourseHomeSubNavigationIconUrl(String courseHomeSubNavigationIconUrl) {
+        this.courseHomeSubNavigationIconUrl = courseHomeSubNavigationIconUrl;
+    }
+
+    public Boolean getCourseNavigationEnabled() {
+        return courseNavigationEnabled;
+    }
+
+    public void setCourseNavigationEnabled(Boolean courseNavigationEnabled) {
+        this.courseNavigationEnabled = courseNavigationEnabled;
+    }
+
+    public String getCourseNavigationText() {
+        return courseNavigationText;
+    }
+
+    public void setCourseNavigationText(String courseNavigationText) {
+        this.courseNavigationText = courseNavigationText;
+    }
+
+    public String getCourseNavigationVisibility() {
+        return courseNavigationVisibility;
+    }
+
+    public void setCourseNavigationVisibility(String courseNavigationVisibility) {
+        this.courseNavigationVisibility = courseNavigationVisibility;
+    }
+
+    public String getCourseNavigationWindowTarget() {
+        return courseNavigationWindowTarget;
+    }
+
+    public void setCourseNavigationWindowTarget(String courseNavigationWindowTarget) {
+        this.courseNavigationWindowTarget = courseNavigationWindowTarget;
+    }
+
+    public String getCourseNavigationDefault() {
+        return courseNavigationDefault;
+    }
+
+    public void setCourseNavigationDefault(String courseNavigationDefault) {
+        this.courseNavigationDefault = courseNavigationDefault;
+    }
+
+    public String getCourseNavigationDisplayType() {
+        return courseNavigationDisplayType;
+    }
+
+    public void setCourseNavigationDisplayType(String courseNavigationDisplayType) {
+        this.courseNavigationDisplayType = courseNavigationDisplayType;
+    }
+
+    public String getEditorButtonUrl() {
+        return editorButtonUrl;
+    }
+
+    public void setEditorButtonUrl(String editorButtonUrl) {
+        this.editorButtonUrl = editorButtonUrl;
+    }
+
+    public Boolean getEditorButtonEnabled() {
+        return editorButtonEnabled;
+    }
+
+    public void setEditorButtonEnabled(Boolean editorButtonEnabled) {
+        this.editorButtonEnabled = editorButtonEnabled;
+    }
+
+    public String getEditorButtonIconUrl() {
+        return editorButtonIconUrl;
+    }
+
+    public void setEditorButtonIconUrl(String editorButtonIconUrl) {
+        this.editorButtonIconUrl = editorButtonIconUrl;
+    }
+
+    public String getEditorButtonSelectionWidth() {
+        return editorButtonSelectionWidth;
+    }
+
+    public void setEditorButtonSelectionWidth(String editorButtonSelectionWidth) {
+        this.editorButtonSelectionWidth = editorButtonSelectionWidth;
+    }
+
+    public String getEditorButtonSelectionHeight() {
+        return editorButtonSelectionHeight;
+    }
+
+    public void setEditorButtonSelectionHeight(String editorButtonSelectionHeight) {
+        this.editorButtonSelectionHeight = editorButtonSelectionHeight;
+    }
+
+    public String getEditorButtonMessageType() {
+        return editorButtonMessageType;
+    }
+
+    public void setEditorButtonMessageType(String editorButtonMessageType) {
+        this.editorButtonMessageType = editorButtonMessageType;
+    }
+
+    public String getHomeworkSubmissionUrl() {
+        return homeworkSubmissionUrl;
+    }
+
+    public void setHomeworkSubmissionUrl(String homeworkSubmissionUrl) {
+        this.homeworkSubmissionUrl = homeworkSubmissionUrl;
+    }
+
+    public Boolean getHomeworkSubmissionEnabled() {
+        return homeworkSubmissionEnabled;
+    }
+
+    public void setHomeworkSubmissionEnabled(Boolean homeworkSubmissionEnabled) {
+        this.homeworkSubmissionEnabled = homeworkSubmissionEnabled;
+    }
+
+    public String getHomeworkSubmissionText() {
+        return homeworkSubmissionText;
+    }
+
+    public void setHomeworkSubmissionText(String homeworkSubmissionText) {
+        this.homeworkSubmissionText = homeworkSubmissionText;
+    }
+
+    public String getHomeworkSubmissionMessageType() {
+        return homeworkSubmissionMessageType;
+    }
+
+    public void setHomeworkSubmissionMessageType(String homeworkSubmissionMessageType) {
+        this.homeworkSubmissionMessageType = homeworkSubmissionMessageType;
+    }
+
+    public String getLinkSelectionUrl() {
+        return linkSelectionUrl;
+    }
+
+    public void setLinkSelectionUrl(String linkSelectionUrl) {
+        this.linkSelectionUrl = linkSelectionUrl;
+    }
+
+    public Boolean getLinkSelectionEnabled() {
+        return linkSelectionEnabled;
+    }
+
+    public void setLinkSelectionEnabled(Boolean linkSelectionEnabled) {
+        this.linkSelectionEnabled = linkSelectionEnabled;
+    }
+
+    public String getLinkSelectionText() {
+        return linkSelectionText;
+    }
+
+    public void setLinkSelectionText(String linkSelectionText) {
+        this.linkSelectionText = linkSelectionText;
+    }
+
+    public String getLinkSelectionMessageType() {
+        return linkSelectionMessageType;
+    }
+
+    public void setLinkSelectionMessageType(String linkSelectionMessageType) {
+        this.linkSelectionMessageType = linkSelectionMessageType;
+    }
+
+    public String getMigrationSelectionUrl() {
+        return migrationSelectionUrl;
+    }
+
+    public void setMigrationSelectionUrl(String migrationSelectionUrl) {
+        this.migrationSelectionUrl = migrationSelectionUrl;
+    }
+
+    public Boolean getMigrationSelectionEnabled() {
+        return migrationSelectionEnabled;
+    }
+
+    public void setMigrationSelectionEnabled(Boolean migrationSelectionEnabled) {
+        this.migrationSelectionEnabled = migrationSelectionEnabled;
+    }
+
+    public String getMigrationSelectionMessageType() {
+        return migrationSelectionMessageType;
+    }
+
+    public void setMigrationSelectionMessageType(String migrationSelectionMessageType) {
+        this.migrationSelectionMessageType = migrationSelectionMessageType;
+    }
+
+    public String getToolConfigurationUrl() {
+        return toolConfigurationUrl;
+    }
+
+    public void setToolConfigurationUrl(String toolConfigurationUrl) {
+        this.toolConfigurationUrl = toolConfigurationUrl;
+    }
+
+    public Boolean getToolConfigurationEnabled() {
+        return toolConfigurationEnabled;
+    }
+
+    public void setToolConfigurationEnabled(Boolean toolConfigurationEnabled) {
+        this.toolConfigurationEnabled = toolConfigurationEnabled;
+    }
+
+    public String getToolConfigurationMessageType() {
+        return toolConfigurationMessageType;
+    }
+
+    public void setToolConfigurationMessageType(String toolConfigurationMessageType) {
+        this.toolConfigurationMessageType = toolConfigurationMessageType;
+    }
+
+    public Boolean getToolConfigurationPreferSisEmail() {
+        return toolConfigurationPreferSisEmail;
+    }
+
+    public void setToolConfigurationPreferSisEmail(Boolean toolConfigurationPreferSisEmail) {
+        this.toolConfigurationPreferSisEmail = toolConfigurationPreferSisEmail;
+    }
+
+    public String getResourceSelectionUrl() {
+        return resourceSelectionUrl;
+    }
+
+    public void setResourceSelectionUrl(String resourceSelectionUrl) {
+        this.resourceSelectionUrl = resourceSelectionUrl;
+    }
+
+    public Boolean getResourceSelectionEnabled() {
+        return resourceSelectionEnabled;
+    }
+
+    public void setResourceSelectionEnabled(Boolean resourceSelectionEnabled) {
+        this.resourceSelectionEnabled = resourceSelectionEnabled;
+    }
+
+    public String getResourceSelectionIconUrl() {
+        return resourceSelectionIconUrl;
+    }
+
+    public void setResourceSelectionIconUrl(String resourceSelectionIconUrl) {
+        this.resourceSelectionIconUrl = resourceSelectionIconUrl;
+    }
+
+    public String getResourceSelectionSelectionWidth() {
+        return resourceSelectionSelectionWidth;
+    }
+
+    public void setResourceSelectionSelectionWidth(String resourceSelectionSelectionWidth) {
+        this.resourceSelectionSelectionWidth = resourceSelectionSelectionWidth;
+    }
+
+    public String getResourceSelectionSelectionHeight() {
+        return resourceSelectionSelectionHeight;
+    }
+
+    public void setResourceSelectionSelectionHeight(String resourceSelectionSelectionHeight) {
+        this.resourceSelectionSelectionHeight = resourceSelectionSelectionHeight;
+    }
+
+    public String getConfigType() {
+        return configType;
+    }
+
+    public void setConfigType(String configType) {
+        this.configType = configType;
+    }
+
+    public String getConfigXml() {
+        return configXml;
+    }
+
+    public void setConfigXml(String configXml) {
+        this.configXml = configXml;
+    }
+
+    public String getConfigUrl() {
+        return configUrl;
+    }
+
+    public void setConfigUrl(String configUrl) {
+        this.configUrl = configUrl;
+    }
+
+    public Boolean getNotSelectable() {
+        return notSelectable;
+    }
+
+    public void setNotSelectable(Boolean notSelectable) {
+        this.notSelectable = notSelectable;
+    }
+
+    public Boolean getoAuthCompliant() {
+        return oAuthCompliant;
+    }
+
+    public void setoAuthCompliant(Boolean oAuthCompliant) {
+        this.oAuthCompliant = oAuthCompliant;
     }
 
     public String getExternalToolId() {
