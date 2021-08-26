@@ -213,7 +213,30 @@ public class ExternalTool extends CanvasClient {
         if(this.editorButtonMessageType != null){
             queries.put("editor_button[message_type]",this.editorButtonMessageType);
         }
-        // continue rest of queries
+        if(this.homeworkSubmissionUrl != null){
+            queries.put("homework_submission[url]",this.homeworkSubmissionUrl);
+        }
+        if(this.homeworkSubmissionEnabled != null){
+            queries.put("homework_submission[enabled]",this.homeworkSubmissionEnabled);
+        }
+        if(this.homeworkSubmissionText != null){
+            queries.put("homework_submission[text]",this.homeworkSubmissionText);
+        }
+        if(this.homeworkSubmissionMessageType != null){
+            queries.put("homework_submission[message_type]",this.homeworkSubmissionMessageType);
+        }
+        if(this.linkSelectionUrl != null){
+            queries.put("link_selection[url]",this.linkSelectionUrl);
+        }
+        if(this.linkSelectionEnabled != null){
+            queries.put("link_selection[enabled]",this.linkSelectionEnabled);
+        }
+        if(this.linkSelectionText != null){
+            queries.put("link_selection[text]",this.linkSelectionText);
+        }
+        if(this.linkSelectionMessageType != null){
+            queries.put("link_selection[message_type]",this.linkSelectionMessageType);
+        }
         if(this.id != null){
             queries.put("id",this.id);
         }
