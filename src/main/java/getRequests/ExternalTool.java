@@ -237,6 +237,57 @@ public class ExternalTool extends CanvasClient {
         if(this.linkSelectionMessageType != null){
             queries.put("link_selection[message_type]",this.linkSelectionMessageType);
         }
+        if(this.migrationSelectionUrl != null){
+            queries.put("migration_selection[url]",this.migrationSelectionUrl);
+        }
+        if(this.migrationSelectionEnabled != null){
+            queries.put("migration_selection[enabled]",this.migrationSelectionEnabled);
+        }
+        if(this.migrationSelectionMessageType != null){
+            queries.put("migration_selection[message_type]",this.migrationSelectionMessageType);
+        }
+        if(this.toolConfigurationUrl != null){
+            queries.put("tool_configuration[url]",this.toolConfigurationUrl);
+        }
+        if(this.toolConfigurationEnabled != null){
+            queries.put("tool_configuration[enabled]",this.toolConfigurationEnabled);
+        }
+        if(this.toolConfigurationMessageType != null){
+            queries.put("tool_configuration[message_type]",this.toolConfigurationMessageType);
+        }
+        if(this.toolConfigurationPreferSisEmail != null){
+            queries.put("tool_configuration[prefer_sis_email]",this.toolConfigurationPreferSisEmail);
+        }
+        if(this.resourceSelectionUrl != null){
+            queries.put("resource_selection[url]",this.resourceSelectionUrl);
+        }
+        if(this.resourceSelectionEnabled != null){
+            queries.put("resource_selection[enabled]",this.resourceSelectionEnabled);
+        }
+        if(this.resourceSelectionIconUrl != null){
+            queries.put("resource_selection[icon_url]",this.resourceSelectionIconUrl);
+        }
+        if(this.resourceSelectionSelectionWidth != null){
+            queries.put("resource_selection[selection_width]",this.resourceSelectionSelectionWidth);
+        }
+        if(this.resourceSelectionSelectionHeight != null){
+            queries.put("resource_selection[selection_height]",this.resourceSelectionSelectionHeight);
+        }
+        if(this.configType != null){
+            queries.put("config_type",this.configType);
+        }
+        if(this.configXml != null){
+            queries.put("config_xml",this.configXml);
+        }
+        if(this.configUrl != null){
+            queries.put("config_url",this.configUrl);
+        }
+        if(this.notSelectable != null){
+            queries.put("not_selectable",this.notSelectable);
+        }
+        if(this.oAuthCompliant != null){
+            queries.put("oauth_compliant",this.oAuthCompliant);
+        }
         if(this.id != null){
             queries.put("id",this.id);
         }
