@@ -30,6 +30,8 @@ public interface externalToolsInterface {
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools/{externalToolId}")
     Call<ExternalTool> getSingleExternalToolAccountId(@Path("accountId") String accountId, @Path("externalToolId") String externalToolId, @Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/external_tools")
+    Call<ExternalTool> createExternalToolCourseId(@Path("courseId") String courseID, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
 
 }

@@ -6381,6 +6381,26 @@ External Tools API
 
     }
 
+    public ExternalTool createExternalTool(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/external_tools/",client.getExternalTool().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<ExternalTool> call = externalToolsInterface.createExternalToolCourseId(client.getExternalTool().getCourseId(),client.getToken(),client.getExternalTool().generateQueries());
+
+        Response<ExternalTool> response = call.execute();
+
+        return response.body();
+
+
+    }
+
 
 
 
