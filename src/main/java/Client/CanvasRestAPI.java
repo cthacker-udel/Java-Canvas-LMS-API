@@ -6381,7 +6381,7 @@ External Tools API
 
     }
 
-    public ExternalTool createExternalTool(CanvasClient client){
+    public ExternalTool createExternalTool(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/external_tools/",client.getExternalTool().getCourseId());
 
