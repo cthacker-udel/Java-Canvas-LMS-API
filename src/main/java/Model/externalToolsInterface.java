@@ -33,5 +33,8 @@ public interface externalToolsInterface {
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/external_tools")
     Call<ExternalTool> createExternalToolCourseId(@Path("courseId") String courseID, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools")
+    Call<ExternalTool> createExternalToolAccountId(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 
 }
