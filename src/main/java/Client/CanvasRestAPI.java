@@ -6554,7 +6554,7 @@ External Tools API
 
     }
 
-    public VisibleCourseNavTools getVisibleCourseNavigationToolForCourse(CanvasClient client){
+    public VisibleCourseNavTools getVisibleCourseNavigationToolForCourse(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/external_tools/visible_course_nav_tools/",client.getExternalTool().getCourseId());
 
