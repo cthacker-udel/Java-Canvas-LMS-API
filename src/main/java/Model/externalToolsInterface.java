@@ -43,9 +43,11 @@ public interface externalToolsInterface {
     Call<Void> editExternalToolAccountId(@Path("accountId") String accountId, @Path("external_tool_id") String externalToolId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
     @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/external_tools/{externalToolId}")
-    Call<Void> deleteExternalToolCourseId(@Path("courseId") String courseID, @Path("externalToolId") String externalToolId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+    Call<Void> deleteExternalToolCourseId(@Path("courseId") String courseID, @Path("externalToolId") String externalToolId, @Header("Authorization") String auth);
 
     @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools/{externalToolId}")
-    Call<Void> deleteExternalToolAccountId(@Path("accountId") String accountId, @Path("externalToolId") String externalToolId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+    Call<Void> deleteExternalToolAccountId(@Path("accountId") String accountId, @Path("externalToolId") String externalToolId, @Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools/rce_favorites/{rceFavoriteId}")
+    Call<Void> addToolToRCEFavorites(@Path("accountId") String accountId, @Path("rceFavoriteId") String rceFavoriteId, @Header("Authorization") String auth);
 }

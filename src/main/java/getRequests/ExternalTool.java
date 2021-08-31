@@ -97,6 +97,8 @@ public class ExternalTool extends CanvasClient {
     private Boolean notSelectable;
     private Boolean oAuthCompliant;
 
+    private String rceFavoriteId;
+
 
     public Map<String,Object> generateQueries(){
 
@@ -404,6 +406,14 @@ public class ExternalTool extends CanvasClient {
 
 
 
+    }
+
+    public String getRceFavoriteId() {
+        return rceFavoriteId;
+    }
+
+    public void setRceFavoriteId(String rceFavoriteId) {
+        this.rceFavoriteId = rceFavoriteId;
     }
 
     @Override

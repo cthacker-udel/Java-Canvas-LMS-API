@@ -6470,7 +6470,7 @@ External Tools API
 
         externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
 
-        Call<Void> call = externalToolsInterface.deleteExternalToolCourseId(client.getExternalTool().getCourseId(),client.getExternalTool().getExternalToolId(),client.getToken(),client.getExternalTool().generateQueries());
+        Call<Void> call = externalToolsInterface.deleteExternalToolCourseId(client.getExternalTool().getCourseId(),client.getExternalTool().getExternalToolId(),client.getToken());
 
         Response<Void> response = call.execute();
 
@@ -6489,7 +6489,26 @@ External Tools API
 
         externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
 
-        Call<Void> call = externalToolsInterface.deleteExternalToolAccountId(client.getExternalTool().getExToolAccountId(),client.getExternalTool().getExternalToolId(),client.getToken(),client.getExternalTool().generateQueries());
+        Call<Void> call = externalToolsInterface.deleteExternalToolAccountId(client.getExternalTool().getExToolAccountId(),client.getExternalTool().getExternalToolId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public boolean addToolToRCEFavorites(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/external_tools/rce_favorites/%s/",client.getExternalTool().getExToolAccountId(),client.getExternalTool().getRceFavoriteId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<Void> call = externalToolsInterface.addToolToRCEFavorites(client.getExternalTool().getExToolAccountId(),client.getExternalTool().getRceFavoriteId(),client.getToken());
 
         Response<Void> response = call.execute();
 
