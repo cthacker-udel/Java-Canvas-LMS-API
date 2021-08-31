@@ -57,4 +57,7 @@ public interface externalToolsInterface {
 
     @GET("https://udel.instructure.com/api/v1/external_tools/visible_course_nav_tools")
     Call<List<VisibleCourseNavTools>> getVisibleCourseNavTools(@Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/external_tools/visible_course_nav_tools")
+    Call<VisibleCourseNavTools> getVisibleCourseNavigationToolsForCourse(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 }

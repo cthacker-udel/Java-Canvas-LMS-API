@@ -6554,6 +6554,25 @@ External Tools API
 
     }
 
+    public VisibleCourseNavTools getVisibleCourseNavigationToolForCourse(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/external_tools/visible_course_nav_tools/",client.getExternalTool().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<VisibleCourseNavTools> call = externalToolsInterface.getVisibleCourseNavigationToolsForCourse(client.getExternalTool().getCourseId(),client.getToken(),client.getExternalTool().generateQueries());
+
+        Response<VisibleCourseNavTools> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
