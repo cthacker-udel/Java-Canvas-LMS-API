@@ -6422,7 +6422,7 @@ External Tools API
 
     public Object editExternalToolCourseId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/courses/%s/external_tools/%s/",client.getExternalTool().getExToolAccountId(),client.getExternalTool().getExternalToolId());
+        String url = baseUrl + String.format("/api/v1/courses/%s/external_tools/%s/",client.getExternalTool().getCourseId(),client.getExternalTool().getExternalToolId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -6437,6 +6437,25 @@ External Tools API
 
         return response.isSuccessful();
 
+
+    }
+
+    public Object editExternalToolAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/external_tools/%s/",client.getExternalTool().getExToolAccountId(),client.getExternalTool().getExternalToolId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<Void> call = externalToolsInterface.editExternalToolAccountId(client.getExternalTool().getExToolAccountId(),client.getExternalTool().getExternalToolId(),client.getToken(),client.getExternalTool().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
 
     }
 
