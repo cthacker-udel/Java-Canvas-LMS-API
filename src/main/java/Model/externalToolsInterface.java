@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.ExternalToolsController.ExternalTool;
+import Controller.ExternalToolsController.VisibleCourseNavTools;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -53,4 +54,7 @@ public interface externalToolsInterface {
 
     @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools/rce_favorites/{rceFavoriteId}")
     Call<Void> removeToolRCEFavorites(@Path("accountId") String accountId, @Path("rceFavoriteId") String rceFavoriteId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/external_tools/visible_course_nav_tools")
+    Call<List<VisibleCourseNavTools>> getVisibleCourseNavTools(@Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 }

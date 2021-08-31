@@ -2,8 +2,10 @@ package getRequests;
 
 import Client.CanvasClient;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ExternalTool extends CanvasClient {
 
@@ -99,11 +101,16 @@ public class ExternalTool extends CanvasClient {
 
     private String rceFavoriteId;
 
+    private ArrayList<String> contextCodes = new ArrayList<>();
+
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
 
+        if(this.contextCodes.size() > 0){
+            queries.put("context_codes[]",String.join(",",this.contextCodes.stream().toArray(String[]::new)));
+        }
         if(this.clientId != null){
             queries.put("client_id",this.clientId);
         }
@@ -403,6 +410,9 @@ public class ExternalTool extends CanvasClient {
 
           notSelectable= null;
           oAuthCompliant= null;
+
+          rceFavoriteId = null;
+          contextCodes = new ArrayList<String>();
 
 
 

@@ -66,6 +66,7 @@ import Controller.EnrollmentTermsController.EnrollmentTerm;
 import Controller.ErrorReportController.ErrorReport;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.ExternalToolsController.ExternalTool;
+import Controller.ExternalToolsController.VisibleCourseNavTools;
 import Controller.FilesController.Folder;
 import Controller.ProgressController.Progress;
 import Controller.QuizExtensionsController.QuizExtensions;
@@ -6533,6 +6534,27 @@ External Tools API
 
         return response.isSuccessful();
     }
+
+    public List<VisibleCourseNavTools> getVisibleCourseNavigationTools(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/external_tools/visible_course_nav_tools/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<List<VisibleCourseNavTools>> call = externalToolsInterface.getVisibleCourseNavTools(client.getToken(),client.getExternalTool().generateQueries());
+
+        Response<List<VisibleCourseNavTools>> response = call.execute();
+
+        return response.body();
+
+    }
+
+
 
 
 
