@@ -42,4 +42,7 @@ public interface externalToolsInterface {
     @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools/{external_tool_id}")
     Call<Void> editExternalToolAccountId(@Path("accountId") String accountId, @Path("external_tool_id") String externalToolId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/external_tools/{externalToolId}")
+    Call<Void> deleteExternalToolCourseId(@Path("courseId") String courseID, @Path("externalToolId") String externalToolId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }

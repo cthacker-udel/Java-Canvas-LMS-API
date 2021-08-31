@@ -6459,6 +6459,25 @@ External Tools API
 
     }
 
+    public boolean deleteExternalTool(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/external_tools/%s/",client.getExternalTool().getCourseId(),client.getExternalTool().getExternalToolId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<Void> call = externalToolsInterface.deleteExternalToolCourseId(client.getExternalTool().getCourseId(),client.getExternalTool().getExternalToolId(),client.getToken(),client.getExternalTool().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
