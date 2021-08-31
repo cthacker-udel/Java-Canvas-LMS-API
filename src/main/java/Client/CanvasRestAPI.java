@@ -6516,6 +6516,26 @@ External Tools API
 
     }
 
+    public boolean removeToolFromRCEFavorites(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/external_tools/rce_favorites/%s/",client.getExternalTool().getExToolAccountId(),client.getExternalTool().getRceFavoriteId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        externalToolsInterface externalToolsInterface = retrofit.create(Model.externalToolsInterface.class);
+
+        Call<Void> call = externalToolsInterface.removeToolRCEFavorites(client.getExternalTool().getExToolAccountId(),client.getExternalTool().getRceFavoriteId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+    }
+
+
+
 
 
 

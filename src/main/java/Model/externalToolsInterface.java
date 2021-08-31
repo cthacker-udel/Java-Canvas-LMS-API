@@ -50,4 +50,7 @@ public interface externalToolsInterface {
 
     @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools/rce_favorites/{rceFavoriteId}")
     Call<Void> addToolToRCEFavorites(@Path("accountId") String accountId, @Path("rceFavoriteId") String rceFavoriteId, @Header("Authorization") String auth);
+
+    @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/external_tools/rce_favorites/{rceFavoriteId}")
+    Call<Void> removeToolRCEFavorites(@Path("accountId") String accountId, @Path("rceFavoriteId") String rceFavoriteId, @Header("Authorization") String auth);
 }
