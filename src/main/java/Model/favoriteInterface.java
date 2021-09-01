@@ -17,4 +17,7 @@ public interface favoriteInterface {
     @GET("https://udel.instructure.com/api/v1/users/self/favorites/groups")
     Call<List<Group>> listFavoriteGroups(@Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/users/self/favorites/courses/{courseId}")
+    Call<Favorite> addCourseToFavorites(@Path("courseId") String courseId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 }
