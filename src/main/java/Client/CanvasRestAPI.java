@@ -6573,6 +6573,34 @@ External Tools API
 
     }
 
+    /*
+
+    Favorite API Methods
+
+     */
+
+
+    public List<Course> listFavoriteCourses(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/users/self/favorites/courses/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        favoriteInterface favoriteInterface = retrofit.create(Model.favoriteInterface.class);
+
+        Call<List<Course>> call = favoriteInterface.listFavoriteCourses(client.getToken(),client.getFavorite().generateQueries());
+
+        Response<List<Course>> response = call.execute();
+
+        return response.body();
+
+    }
+
+
+
 
 
 

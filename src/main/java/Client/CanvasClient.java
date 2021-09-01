@@ -45,6 +45,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Enrollment enrollment;
     private ErrorReport errorReport;
     private ExternalTool externalTool;
+    private Favorite favorite;
 
     public CanvasClient(){
         super();
@@ -92,7 +93,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.enrollment = new Enrollment();
         this.errorReport = new ErrorReport();
         this.externalTool = new ExternalTool();
+        this.favorite = new Favorite();
 
+    }
+
+    public Favorite getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Favorite favorite) {
+        this.favorite = favorite;
     }
 
     public ExternalTool getExternalTool() {
