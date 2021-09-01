@@ -11,10 +11,18 @@ public class Favorite extends CanvasClient {
     private String id;
     private String courseId;
 
+    private Boolean excludeBlueprintCourses;
+
 
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
+
+        if(this.excludeBlueprintCourses != null){
+
+            queries.put("exclude_blueprint_courses",this.excludeBlueprintCourses);
+
+        }
 
         if(this.id != null){
 
@@ -30,7 +38,16 @@ public class Favorite extends CanvasClient {
         this.groupId = null;
         this.id = null;
         this.courseId = null;
+        this.excludeBlueprintCourses = null;
 
+    }
+
+    public Boolean getExcludeBlueprintCourses() {
+        return excludeBlueprintCourses;
+    }
+
+    public void setExcludeBlueprintCourses(Boolean excludeBlueprintCourses) {
+        this.excludeBlueprintCourses = excludeBlueprintCourses;
     }
 
     public String getGroupId() {
