@@ -67,7 +67,9 @@ import Controller.ErrorReportController.ErrorReport;
 import Controller.ExternalFeedController.ExternalFeed;
 import Controller.ExternalToolsController.ExternalTool;
 import Controller.ExternalToolsController.VisibleCourseNavTools;
+import Controller.FavoriteController.Favorite;
 import Controller.FilesController.Folder;
+import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
 import Controller.QuizExtensionsController.QuizExtensions;
 import Controller.UserController.User;
@@ -6597,6 +6599,24 @@ External Tools API
 
         return response.body();
 
+    }
+
+    public List<Group> listFavoriteGroups(CanvasClient client) throws IOException {
+
+        String url = baseUrl + "/api/v1/users/self/favorites/groups/";
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        favoriteInterface favoriteInterface = retrofit.create(Model.favoriteInterface.class);
+
+        Call<List<Group>> call = favoriteInterface.listFavoriteGroups(client.getToken());
+
+        Response<List<Group>> response = call.execute();
+
+        return response.body();
     }
 
 
