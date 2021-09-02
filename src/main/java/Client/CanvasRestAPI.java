@@ -6657,6 +6657,25 @@ External Tools API
 
     }
 
+    public Favorite removeCourseFromFavorites(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/self/favorites/courses/%s/",client.getFavorite().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        favoriteInterface favoriteInterface = retrofit.create(Model.favoriteInterface.class);
+
+        Call<Favorite> call = favoriteInterface.removeCourseFromFavorites(client.getFavorite().getCourseId(),client.getToken(),client.getFavorite().generateQueries());
+
+        Response<Favorite> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
