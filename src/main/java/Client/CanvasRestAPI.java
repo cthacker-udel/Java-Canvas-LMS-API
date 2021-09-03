@@ -6710,6 +6710,24 @@ External Tools API
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+    }
+
+    public boolean resetGroupFavorites(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/self/favorites/groups/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        favoriteInterface favoriteInterface = retrofit.create(Model.favoriteInterface.class);
+
+        Call<Void> call = favoriteInterface.resetGroupFavorites(client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
 
     }
 

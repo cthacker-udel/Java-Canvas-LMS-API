@@ -32,4 +32,7 @@ public interface favoriteInterface {
     @DELETE("https://udel.instructure.com/api/v1/users/self/favorites/courses")
     Call<Void> resetCourseFavorites(@Header("Authorization") String auth);
 
+    @DELETE("https://udel.instructure.com/api/v1/users/self/favorites/groups")
+    Call<Void> resetGroupFavorites(@Header("Authorization") String auth);
+
 }
