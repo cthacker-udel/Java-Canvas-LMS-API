@@ -29,4 +29,7 @@ public interface favoriteInterface {
     @DELETE("https://udel.instructure.com/api/v1/users/self/favorite/groups/{groupId}")
     Call<Favorite> removeGroupFromFavorites(@Path("groupId") String groupId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @DELETE("https://udel.instructure.com/api/v1/users/self/favorites/courses")
+    Call<Void> resetCourseFavorites(@Header("Authorization") String auth);
+
 }

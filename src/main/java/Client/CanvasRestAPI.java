@@ -6694,6 +6694,25 @@ External Tools API
         return response.body();
     }
 
+    public boolean resetCourseFavorites(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/self/favorites/courses/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        favoriteInterface favoriteInterface = retrofit.create(Model.favoriteInterface.class);
+
+        Call<Void> call = favoriteInterface.resetCourseFavorites(client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 
