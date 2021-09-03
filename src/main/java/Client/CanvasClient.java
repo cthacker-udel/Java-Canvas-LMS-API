@@ -46,6 +46,7 @@ public class CanvasClient extends CanvasRestAPI {
     private ErrorReport errorReport;
     private ExternalTool externalTool;
     private Favorite favorite;
+    private FeatureFlag featureFlag;
 
     public CanvasClient(){
         super();
@@ -94,7 +95,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.errorReport = new ErrorReport();
         this.externalTool = new ExternalTool();
         this.favorite = new Favorite();
+        this.featureFlag = new FeatureFlag();
 
+    }
+
+    public FeatureFlag getFeatureFlag() {
+        return featureFlag;
+    }
+
+    public void setFeatureFlag(FeatureFlag featureFlag) {
+        this.featureFlag = featureFlag;
     }
 
     public Favorite getFavorite() {
