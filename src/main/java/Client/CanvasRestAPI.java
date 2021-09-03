@@ -6676,6 +6676,24 @@ External Tools API
 
     }
 
+    public Favorite removeGroupFromFavorites(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/self/favorites/groups/%s/",client.getFavorite().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        favoriteInterface favoriteInterface = retrofit.create(Model.favoriteInterface.class);
+
+        Call<Favorite> call = favoriteInterface.removeGroupFromFavorites(client.getFavorite().getGroupId(),client.getToken(),client.getFavorite().generateQueries());
+
+        Response<Favorite> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 
