@@ -68,6 +68,7 @@ import Controller.ExternalFeedController.ExternalFeed;
 import Controller.ExternalToolsController.ExternalTool;
 import Controller.ExternalToolsController.VisibleCourseNavTools;
 import Controller.FavoriteController.Favorite;
+import Controller.FeatureFlagsController.Feature;
 import Controller.FilesController.Folder;
 import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
@@ -6728,6 +6729,31 @@ External Tools API
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    /*
+
+    Feature Flag API
+
+     */
+
+    public List<Feature> listFeaturesCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/features/",client.getFeatureFlag().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
+
+        Call<List<Feature>> call = featureFlagInterface.listFeaturesCourseId(client.getFeatureFlag().getCourseId(),client.getToken());
+
+        Response<List<Feature>> response = call.execute();
+
+        return response.body();
 
     }
 
