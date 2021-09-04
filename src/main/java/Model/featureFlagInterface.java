@@ -12,4 +12,7 @@ public interface featureFlagInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/features")
     Call<List<Feature>> listFeaturesCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/features")
+    Call<List<Feature>> listFeaturesAccountId(@Path("accountId") String accountId, @Header("Authorization") String auth);
+
 }
