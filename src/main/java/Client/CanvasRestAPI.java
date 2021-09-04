@@ -79,6 +79,7 @@ import Model.*;
 import com.google.gson.Gson;
 import com.google.gson.internal.GsonBuildConfig;
 import getRequests.EnrollmentTerms;
+import getRequests.FeatureFlag;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
 import org.openqa.selenium.WebDriver;
@@ -6769,6 +6770,25 @@ External Tools API
         featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
 
         Call<List<Feature>> call = featureFlagInterface.listFeaturesAccountId(client.getFeatureFlag().getAccountId()+"",client.getToken());
+
+        Response<List<Feature>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<Feature> listFeaturesUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/features/",client.getFeatureFlag().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
+
+        Call<List<Feature>> call = featureFlagInterface.listFeaturesUserId(client.getFeatureFlag().getUserId(),client.getToken());
 
         Response<List<Feature>> response = call.execute();
 

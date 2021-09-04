@@ -15,4 +15,7 @@ public interface featureFlagInterface {
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/features")
     Call<List<Feature>> listFeaturesAccountId(@Path("accountId") String accountId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/features/enabled")
+    Call<List<Feature>> listFeaturesUserId(@Path("userId") String userId, @Header("Authorization") String auth);
+
 }
