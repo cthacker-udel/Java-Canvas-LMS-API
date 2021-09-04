@@ -6815,6 +6815,25 @@ External Tools API
 
     }
 
+    public List<Feature> listEnabledFeaturesAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/features/enabled/",client.getFeatureFlag().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
+
+        Call<List<Feature>> call = featureFlagInterface.listEnabledFeaturesAccountId(client.getFeatureFlag().getAccountId()+"",client.getToken());
+
+        Response<List<Feature>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
