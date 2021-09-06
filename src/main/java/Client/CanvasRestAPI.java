@@ -6986,6 +6986,63 @@ External Tools API
 
     }
 
+    public FeatureFlag removeFeatureFlagCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/features/flags/%s/",client.getFeatureFlag().getCourseId(),client.getFeatureFlag().getFeatureFlagId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
+
+        Call<FeatureFlag> call = featureFlagInterface.removeFeatureFlagCourseId(client.getFeatureFlag().getCourseId(),client.getFeatureFlag().getFeatureFlagId(),client.getToken());
+
+        Response<FeatureFlag> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public FeatureFlag removeFeatureFlagAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/features/flags/%s/",client.getFeatureFlag().getFeatureFlagAccountId(),client.getFeatureFlag().getFeatureFlagId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
+
+        Call<FeatureFlag> call = featureFlagInterface.removeFeatureFlagAccountId(client.getFeatureFlag().getFeatureFlagAccountId(),client.getFeatureFlag().getFeatureFlagId(),client.getToken());
+
+        Response<FeatureFlag> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public FeatureFlag removeFeatureFlagUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/features/flags/%s/",client.getFeatureFlag().getUserId(),client.getFeatureFlag().getFeatureFlagId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
+
+        Call<FeatureFlag> call = featureFlagInterface.removeFeatureFlagUserId(client.getFeatureFlag().getUserId(),client.getFeatureFlag().getFeatureFlagId(),client.getToken());
+
+        Response<FeatureFlag> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
