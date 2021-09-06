@@ -6928,6 +6928,25 @@ External Tools API
         return response.body();
 
     }
+    
+    public FeatureFlag setFeatureFlagCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/features/flags/%s/",client.getFeatureFlag().getCourseId(),client.getFeatureFlag().getFeatureFlagId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(url)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+        featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
+
+        Call<FeatureFlag> call = featureFlagInterface.setFeatureFlagCourseId(client.getFeatureFlag().getCourseId(),client.getFeatureFlag().getFeatureFlagId(),client.getToken());
+
+        Response<FeatureFlag> response = call.execute();
+
+        return response.body();
+
+    }
 
 
 
