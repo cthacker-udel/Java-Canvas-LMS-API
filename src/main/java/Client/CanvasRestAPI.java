@@ -6967,6 +6967,25 @@ External Tools API
 
     }
 
+    public FeatureFlag setFeatureFlagUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/features/flags/%s/",client.getFeatureFlag().getUserId(),client.getFeatureFlag().getFeatureFlagAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
+
+        Call<FeatureFlag> call = featureFlagInterface.setFeatureFlagAccountId(client.getFeatureFlag().getUserId()+"",client.getFeatureFlag().getFeatureFlagId(),client.getToken());
+
+        Response<FeatureFlag> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
