@@ -12,6 +12,7 @@ public class FeatureFlag extends CanvasClient {
     private String userId;
     private String feature;
     private String state;
+    private String featureFlagId;
 
 
     public Map<String,Object> generateQueries(){
@@ -32,6 +33,14 @@ public class FeatureFlag extends CanvasClient {
         this.feature = null;
         this.state = null;
 
+    }
+
+    public String getFeatureFlagId() {
+        return featureFlagId;
+    }
+
+    public void setFeatureFlagId(String featureFlagId) {
+        this.featureFlagId = featureFlagId;
     }
 
     public String getCourseId() {

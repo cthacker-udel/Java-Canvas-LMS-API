@@ -75,12 +75,12 @@ import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
 import Controller.QuizExtensionsController.QuizExtensions;
 import Controller.UserController.User;
+import Controller.FeatureFlagsController.FeatureFlag;
 import Model.*;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.GsonBuildConfig;
 import getRequests.EnrollmentTerms;
-import getRequests.FeatureFlag;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
 import org.openqa.selenium.WebDriver;
@@ -6870,7 +6870,24 @@ External Tools API
         Response<List<EnvironmentalFeature>> response = call.execute();
 
         return response.body();
+    }
 
+    public Controller.FeatureFlagsController.FeatureFlag getFeatureFlagCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/features/flags/%s/",client.getFeatureFlag().getCourseId(),client.getFeatureFlag().getFeatureFlagId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
+
+        Call<Controller.FeatureFlagsController.FeatureFlag> call = featureFlagInterface.getFeatureFlagCourseId(client.getFeatureFlag().getCourseId(),client.getFeatureFlag().getFeatureFlagId(),client.getToken());
+
+        Response<Controller.FeatureFlagsController.FeatureFlag> response = call.execute();
+
+        return response.body();
 
     }
 
