@@ -68,6 +68,7 @@ import Controller.ExternalFeedController.ExternalFeed;
 import Controller.ExternalToolsController.ExternalTool;
 import Controller.ExternalToolsController.VisibleCourseNavTools;
 import Controller.FavoriteController.Favorite;
+import Controller.FeatureFlagsController.EnvironmentalFeature;
 import Controller.FeatureFlagsController.Feature;
 import Controller.FilesController.Folder;
 import Controller.GroupController.Group;
@@ -6850,6 +6851,27 @@ External Tools API
         Response<List<Feature>> response = call.execute();
 
         return response.body();
+
+    }
+
+    public List<EnvironmentalFeature> listEnvironmentalFeatures(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/features/environment/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
+
+        Call<List<EnvironmentalFeature>> call = featureFlagInterface.listEnvironmentFeatures(client.getToken());
+
+        Response<List<EnvironmentalFeature>> response = call.execute();
+
+        return response.body();
+
+
     }
 
 

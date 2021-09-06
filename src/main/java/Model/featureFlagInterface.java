@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.FeatureFlagsController.EnvironmentalFeature;
 import Controller.FeatureFlagsController.Feature;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -26,5 +27,8 @@ public interface featureFlagInterface {
 
     @GET("https://udel.instructure.com/api/v1/users/{userId}/enabled")
     Call<List<Feature>> listEnabledFeaturesUserId(@Path("userId") String userId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/features/environment")
+    Call<List<EnvironmentalFeature>> listEnvironmentFeatures(@Header("Authorization") String auth);
 
 }
