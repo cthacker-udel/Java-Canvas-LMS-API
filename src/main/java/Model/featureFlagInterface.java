@@ -53,6 +53,12 @@ public interface featureFlagInterface {
     @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/features/flags/{featureFlagId}")
     Call<FeatureFlag> removeFeatureFlagCourseId(@Path("courseId") String courseId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth);
 
+    @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/features/flags/{featureFlagId}")
+    Call<FeatureFlag> removeFeatureFlagAccountId(@Path("accountId") String accountId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth);
+
+    @DELETE("https://udel.instructure.com/api/v1/users/{userId}/features/flags/{featureFlagId}")
+    Call<FeatureFlag> removeFeatureFlagUserId(@Path("userId") String userId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth);
+
 
 
 }
