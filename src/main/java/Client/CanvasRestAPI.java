@@ -6940,7 +6940,7 @@ External Tools API
 
         featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
 
-        Call<FeatureFlag> call = featureFlagInterface.setFeatureFlagCourseId(client.getFeatureFlag().getCourseId(),client.getFeatureFlag().getFeatureFlagId(),client.getToken());
+        Call<FeatureFlag> call = featureFlagInterface.setFeatureFlagCourseId(client.getFeatureFlag().getCourseId(),client.getFeatureFlag().getFeatureFlagId(),client.getToken(),client.getFeatureFlag().generateQueries());
 
         Response<FeatureFlag> response = call.execute();
 
@@ -6959,7 +6959,7 @@ External Tools API
 
         featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
 
-        Call<FeatureFlag> call = featureFlagInterface.setFeatureFlagAccountId(client.getFeatureFlag().getAccountId()+"",client.getFeatureFlag().getFeatureFlagId(),client.getToken());
+        Call<FeatureFlag> call = featureFlagInterface.setFeatureFlagAccountId(client.getFeatureFlag().getAccountId()+"",client.getFeatureFlag().getFeatureFlagId(),client.getToken(),client.getFeatureFlag().generateQueries());
 
         Response<FeatureFlag> response = call.execute();
 
@@ -6978,7 +6978,7 @@ External Tools API
 
         featureFlagInterface featureFlagInterface = retrofit.create(Model.featureFlagInterface.class);
 
-        Call<FeatureFlag> call = featureFlagInterface.setFeatureFlagAccountId(client.getFeatureFlag().getUserId()+"",client.getFeatureFlag().getFeatureFlagId(),client.getToken());
+        Call<FeatureFlag> call = featureFlagInterface.setFeatureFlagUserId(client.getFeatureFlag().getUserId()+"",client.getFeatureFlag().getFeatureFlagId(),client.getToken(),client.getFeatureFlag().generateQueries());
 
         Response<FeatureFlag> response = call.execute();
 

@@ -42,13 +42,16 @@ public interface featureFlagInterface {
     Call<FeatureFlag> getFeatureFlagUserId(@Path("userId") String userId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth);
 
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/features/flags/{featureFlagId}")
-    Call<FeatureFlag> setFeatureFlagCourseId(@Path("courseId") String courseId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth);
+    Call<FeatureFlag> setFeatureFlagCourseId(@Path("courseId") String courseId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth,@Body Map<String,Object> body);
 
     @PUT("https://udel.instructure.com/api/v1/accounts/{accountId}/features/flags/{featureFlagId}")
-    Call<FeatureFlag> setFeatureFlagAccountId(@Path("accountId") String accountId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth);
+    Call<FeatureFlag> setFeatureFlagAccountId(@Path("accountId") String accountId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth,@Body Map<String,Object> body);
 
     @PUT("https://udel.instructure.com/api/v1/users/{userId}/features/flags/{featureFlagId}")
-    Call<FeatureFlag> setFeatureFlag(@Path("userId") String userId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth);
+    Call<FeatureFlag> setFeatureFlagUserId(@Path("userId") String userId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/features/flags/{featureFlagId}")
+    Call<FeatureFlag> removeFeatureFlagCourseId(@Path("courseId") String courseId, @Path("featureFlagId") String featureFlagId, @Header("Authorization") String auth);
 
 
 
