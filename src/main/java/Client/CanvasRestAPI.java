@@ -7043,6 +7043,13 @@ External Tools API
 
     }
 
+    /*
+
+    File API : https://canvas.instructure.com/doc/api/files.html
+
+
+     */
+
 
 
 
