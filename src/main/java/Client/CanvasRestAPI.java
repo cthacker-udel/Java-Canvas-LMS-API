@@ -57,10 +57,7 @@ import Controller.CourseController.HTML;
 import Controller.CourseController.Settings;
 import Controller.CustomGradebookColumsController.ColumnDatum;
 import Controller.CustomGradebookColumsController.CustomColumn;
-import Controller.DiscussionTopicController.DiscussionTopic;
-import Controller.DiscussionTopicController.EntryReply;
-import Controller.DiscussionTopicController.FullTopic;
-import Controller.DiscussionTopicController.Reply;
+import Controller.DiscussionTopicController.*;
 import Controller.EnrollmentController.Enrollment;
 import Controller.EnrollmentTermsController.EnrollmentTerm;
 import Controller.ErrorReportController.ErrorReport;
@@ -70,6 +67,7 @@ import Controller.ExternalToolsController.VisibleCourseNavTools;
 import Controller.FavoriteController.Favorite;
 import Controller.FeatureFlagsController.EnvironmentalFeature;
 import Controller.FeatureFlagsController.Feature;
+import Controller.FilesController.File;
 import Controller.FilesController.Folder;
 import Controller.FilesController.Quota;
 import Controller.GroupController.Group;
@@ -7104,6 +7102,24 @@ External Tools API
         Call<Quota> call = fileInterface.getQuotaInformationUserId(client.getFile().getUserId(),client.getToken());
 
         Response<Quota> response = call.execute();
+
+        return response.body();
+    }
+
+    public List<File> listFilesCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/files/",client.getFile().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<File>> call = fileInterface.listFileCourseId(client.getFile().getCourseId(),client.getToken());
+
+        Response<List<File>> response = call.execute();
 
         return response.body();
 

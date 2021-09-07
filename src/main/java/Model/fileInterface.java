@@ -1,5 +1,7 @@
 package Model;
 
+
+import Controller.FilesController.File;
 import Controller.FilesController.Quota;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -17,5 +19,9 @@ public interface fileInterface {
 
     @GET("https://udel.instructure.com/api/v1/users/{userId}/files/quota")
     Call<Quota> getQuotaInformationUserId(@Path("userId") String userId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/file")
+    Call<List<File>> listFileCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
 
 }
