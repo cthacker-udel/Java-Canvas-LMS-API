@@ -174,4 +174,251 @@ public class File extends CanvasClient {
 
     }
 
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getFolderId() {
+        return folderId;
+    }
+
+    public void setFolderId(String folderId) {
+        this.folderId = folderId;
+    }
+
+    public String getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
+    }
+
+    public String getContentTypes() {
+        return contentTypes;
+    }
+
+    public void setContentTypes(String contentTypes) {
+        this.contentTypes = contentTypes;
+    }
+
+    public String getExcludeContentTypes() {
+        return excludeContentTypes;
+    }
+
+    public void setExcludeContentTypes(String excludeContentTypes) {
+        this.excludeContentTypes = excludeContentTypes;
+    }
+
+    public String getSearchTerm() {
+        return searchTerm;
+    }
+
+    public void setSearchTerm(String searchTerm) {
+        this.searchTerm = searchTerm;
+    }
+
+    public String getInclude() {
+        return include;
+    }
+
+    public void setInclude(String include) {
+        this.include = include;
+    }
+
+    public ArrayList<String> getOnly() {
+        return only;
+    }
+
+    public void setOnly(ArrayList<String> only) {
+        this.only = only;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
+    }
+
+    public String getSubmissionId() {
+        return submissionId;
+    }
+
+    public void setSubmissionId(String submissionId) {
+        this.submissionId = submissionId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getParentFolderId() {
+        return parentFolderId;
+    }
+
+    public void setParentFolderId(String parentFolderId) {
+        this.parentFolderId = parentFolderId;
+    }
+
+    public String getParentFolderPath() {
+        return parentFolderPath;
+    }
+
+    public void setParentFolderPath(String parentFolderPath) {
+        this.parentFolderPath = parentFolderPath;
+    }
+
+    public String getSourceFileId() {
+        return sourceFileId;
+    }
+
+    public void setSourceFileId(String sourceFileId) {
+        this.sourceFileId = sourceFileId;
+    }
+
+    public String getOnDuplicate() {
+        return onDuplicate;
+    }
+
+    public void setOnDuplicate(String onDuplicate) {
+        this.onDuplicate = onDuplicate;
+    }
+
+    public ZonedDateTime getLockAt() {
+        return lockAt;
+    }
+
+    public void setLockAt(ZonedDateTime lockAt) {
+        this.lockAt = lockAt;
+    }
+
+    public ZonedDateTime getUnlockAt() {
+        return unlockAt;
+    }
+
+    public void setUnlockAt(ZonedDateTime unlockAt) {
+        this.unlockAt = unlockAt;
+    }
+
+    public Boolean getLocked() {
+        return locked;
+    }
+
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public Boolean getReplace() {
+        return replace;
+    }
+
+    public void setReplace(Boolean replace) {
+        this.replace = replace;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    public String getFileIds() {
+        return fileIds;
+    }
+
+    public void setFileIds(String fileIds) {
+        this.fileIds = fileIds;
+    }
+
+    public String getFolderIds() {
+        return folderIds;
+    }
+
+    public void setFolderIds(String folderIds) {
+        this.folderIds = folderIds;
+    }
+
+    public Boolean getPublish() {
+        return publish;
+    }
+
+    public void setPublish(Boolean publish) {
+        this.publish = publish;
+    }
+
+    public String getUsageRightsUseJustification() {
+        return usageRightsUseJustification;
+    }
+
+    public void setUsageRightsUseJustification(String usageRightsUseJustification) {
+        this.usageRightsUseJustification = usageRightsUseJustification;
+    }
+
+    public String getUsageRightsLegalCopyright() {
+        return usageRightsLegalCopyright;
+    }
+
+    public void setUsageRightsLegalCopyright(String usageRightsLegalCopyright) {
+        this.usageRightsLegalCopyright = usageRightsLegalCopyright;
+    }
+
+    public String getUsageRightsLicense() {
+        return usageRightsLicense;
+    }
+
+    public void setUsageRightsLicense(String usageRightsLicense) {
+        this.usageRightsLicense = usageRightsLicense;
+    }
+
+    public Boolean getForce() {
+        return force;
+    }
+
+    public void setForce(Boolean force) {
+        this.force = force;
+    }
 }

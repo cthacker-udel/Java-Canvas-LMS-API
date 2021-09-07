@@ -71,6 +71,7 @@ import Controller.FavoriteController.Favorite;
 import Controller.FeatureFlagsController.EnvironmentalFeature;
 import Controller.FeatureFlagsController.Feature;
 import Controller.FilesController.Folder;
+import Controller.FilesController.Quota;
 import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
 import Controller.QuizExtensionsController.QuizExtensions;
@@ -7049,6 +7050,26 @@ External Tools API
 
 
      */
+
+    public Quota getQuotaInformationCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/files/quota/",client.getFile().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Quota> call = fileInterface.getQuotaInformationCourseId(client.getFile().getCourseId(),client.getToken());
+
+        Response<Quota> response = call.execute();
+
+        return response.body();
+
+
+    }
 
 
 
