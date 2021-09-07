@@ -47,6 +47,7 @@ public class CanvasClient extends CanvasRestAPI {
     private ExternalTool externalTool;
     private Favorite favorite;
     private FeatureFlag featureFlag;
+    private File file;
 
     public CanvasClient(){
         super();
@@ -96,7 +97,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.externalTool = new ExternalTool();
         this.favorite = new Favorite();
         this.featureFlag = new FeatureFlag();
+        this.file = new File();
 
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
     }
 
     public FeatureFlag getFeatureFlag() {
