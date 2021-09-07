@@ -7090,6 +7090,25 @@ External Tools API
 
     }
 
+    public Quota getQuotaInformationUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/files/quota/",client.getFile().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Quota> call = fileInterface.getQuotaInformationUserId(client.getFile().getUserId(),client.getToken());
+
+        Response<Quota> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
