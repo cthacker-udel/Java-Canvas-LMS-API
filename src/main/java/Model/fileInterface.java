@@ -12,4 +12,7 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/files/quota")
     Call<Quota> getQuotaInformationCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/files/quota")
+    Call<Quota> getQuotaInformationGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth);
+
 }

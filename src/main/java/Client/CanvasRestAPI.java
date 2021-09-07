@@ -7071,6 +7071,25 @@ External Tools API
 
     }
 
+    public Quota getQuotaInformationGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/files/quota/",client.getFile().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Quota> call = fileInterface.getQuotaInformationGroupId(client.getFile().getGroupId(),client.getToken());
+
+        Response<Quota> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
