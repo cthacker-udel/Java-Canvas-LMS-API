@@ -29,6 +29,9 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/groups/{groupId}/files")
     Call<List<File>> listFileGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/folders/{folderId}/files")
+    Call<List<File>> listFileFolderId(@Path("folderId") String folderId, @Header("Authorization") String auth);
+
 
 
 

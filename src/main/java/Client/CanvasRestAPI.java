@@ -7160,6 +7160,24 @@ External Tools API
         Response<List<File>> response = call.execute();
 
         return response.body();
+    }
+
+    public List<File> listFileFolderId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/folders/%s/files/",client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<File>> call = fileInterface.listFileFolderId(client.getFile().getFolderId(),client.getToken());
+
+        Response<List<File>> response = call.execute();
+
+        return response.body();
 
     }
 
