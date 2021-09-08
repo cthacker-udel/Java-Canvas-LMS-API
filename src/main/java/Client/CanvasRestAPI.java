@@ -69,6 +69,7 @@ import Controller.FeatureFlagsController.EnvironmentalFeature;
 import Controller.FeatureFlagsController.Feature;
 import Controller.FilesController.File;
 import Controller.FilesController.Folder;
+import Controller.FilesController.PublicInlinePreviewURL;
 import Controller.FilesController.Quota;
 import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
@@ -7176,6 +7177,25 @@ External Tools API
         Call<List<File>> call = fileInterface.listFileFolderId(client.getFile().getFolderId(),client.getToken(),client.getFile().generateQueries());
 
         Response<List<File>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public PublicInlinePreviewURL getPublicInlinePreviewHTML(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/files/%s/public_url/",client.getFile().getFileId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<PublicInlinePreviewURL> call = fileInterface.getPublicInlinePreviewHTMLLink(client.getFile().getFileId(),client.getToken());
+
+        Response<PublicInlinePreviewURL> response = call.execute();
 
         return response.body();
 

@@ -2,6 +2,7 @@ package Model;
 
 
 import Controller.FilesController.File;
+import Controller.FilesController.PublicInlinePreviewURL;
 import Controller.FilesController.Quota;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -31,6 +32,9 @@ public interface fileInterface {
 
     @GET("https://udel.instructure.com/api/v1/folders/{folderId}/files")
     Call<List<File>> listFileFolderId(@Path("folderId") String folderId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @GET("https://udel.instructure.com/api/v1/files/{fileId}/public_url")
+    Call<PublicInlinePreviewURL> getPublicInlinePreviewHTMLLink(@Path("fileId") String fileId, @Header("Authorization") String auth);
 
 
 
