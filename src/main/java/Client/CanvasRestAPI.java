@@ -7117,7 +7117,7 @@ External Tools API
 
         fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
 
-        Call<List<File>> call = fileInterface.listFileCourseId(client.getFile().getCourseId(),client.getToken());
+        Call<List<File>> call = fileInterface.listFileCourseId(client.getFile().getCourseId(),client.getToken(),client.getFile().generateQueries());
 
         Response<List<File>> response = call.execute();
 
@@ -7136,7 +7136,7 @@ External Tools API
 
         fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
 
-        Call<List<File>> call = fileInterface.listFileUserId(client.getFile().getUserId(),client.getToken());
+        Call<List<File>> call = fileInterface.listFileUserId(client.getFile().getUserId(),client.getToken(),client.getFile().generateQueries());
 
         Response<List<File>> response = call.execute();
 
@@ -7155,7 +7155,7 @@ External Tools API
 
         fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
 
-        Call<List<File>> call = fileInterface.listFileGroupId(client.getFile().getGroupId(),client.getToken());
+        Call<List<File>> call = fileInterface.listFileGroupId(client.getFile().getGroupId(),client.getToken(),client.getFile().generateQueries());
 
         Response<List<File>> response = call.execute();
 
@@ -7173,7 +7173,7 @@ External Tools API
 
         fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
 
-        Call<List<File>> call = fileInterface.listFileFolderId(client.getFile().getFolderId(),client.getToken());
+        Call<List<File>> call = fileInterface.listFileFolderId(client.getFile().getFolderId(),client.getToken(),client.getFile().generateQueries());
 
         Response<List<File>> response = call.execute();
 
