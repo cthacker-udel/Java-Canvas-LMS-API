@@ -7277,6 +7277,25 @@ External Tools API
 
     }
 
+    public File getFileUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/files/%s/",client.getFile().getUserId(),client.getFile().getFileId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<File> call = fileInterface.getFileUserId(client.getFile().getUserId(),client.getFile().getFileId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<File> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
