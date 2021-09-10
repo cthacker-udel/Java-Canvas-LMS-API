@@ -51,5 +51,7 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/users/{userId}/files/{fileId}")
     Call<File> getFileUserId(@Path("userId") String userId, @Path("fileId") String fileId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @PUT("https://udel.instructure.com/api/v1/files/{fileId}")
+    Call<File> updateFile(@Path("fileId") String fileId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
 }
