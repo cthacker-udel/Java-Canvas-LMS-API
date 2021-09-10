@@ -42,6 +42,9 @@ public interface fileInterface {
     @POST("https://udel.instructure.com/api/v1/files/{fileId}")
     Call<File> getFileFileIdPOST(@Path("fileId") String fileId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/files/{fileId}")
+    Call<File> getFileCourseId(@Path("courseId") String courseId, @Path("fileId") String fileId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 
 
 
