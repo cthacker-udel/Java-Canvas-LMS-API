@@ -7201,6 +7201,44 @@ External Tools API
 
     }
 
+    public File getFileFileIdGET(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/files/%s/",client.getFile().getFileId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<File> call = fileInterface.getFileFileIdGET(client.getFile().getFileId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<File> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public File getFileFileIdPOST(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/files/%s/",client.getFile().getFileId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<File> call = fileInterface.getFileFileIdPOST(client.getFile().getFileId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<File> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

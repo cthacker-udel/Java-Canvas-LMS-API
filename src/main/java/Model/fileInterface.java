@@ -36,6 +36,12 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/files/{fileId}/public_url")
     Call<PublicInlinePreviewURL> getPublicInlinePreviewHTMLLink(@Path("fileId") String fileId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/files/{fileId}")
+    Call<File> getFileFileIdGET(@Path("fileId") String fileId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
+    @POST("https://udel.instructure.com/api/v1/files/{fileId}")
+    Call<File> getFileFileIdPOST(@Path("fileId") String fileId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 
 
 
