@@ -45,7 +45,11 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/files/{fileId}")
     Call<File> getFileCourseId(@Path("courseId") String courseId, @Path("fileId") String fileId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/files/{fileId}")
+    Call<File> getFileGroupId(@Path("groupId") String groupId, @Path("fileId") String fileId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/files/{fileId}")
+    Call<File> getFileUserId(@Path("userId") String userId, @Path("fileId") String fileId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 
 }

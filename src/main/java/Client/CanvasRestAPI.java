@@ -7258,6 +7258,25 @@ External Tools API
 
     }
 
+    public File getFileGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/files/%s/",client.getFile().getGroupId(),client.getFile().getFileId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<File> call = fileInterface.getFileGroupId(client.getFile().getGroupId(),client.getFile().getFileId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<File> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
