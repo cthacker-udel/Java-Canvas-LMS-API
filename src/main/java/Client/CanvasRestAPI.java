@@ -7427,6 +7427,25 @@ External Tools API
 
     }
 
+    public List<Folder> resolvePathCourseIdFullPath(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/folders/by_path/%s/",client.getFile().getCourseId(),client.getFile().getFullFilePath());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<Folder>> call = fileInterface.resolvePathCourseIdFullPath(client.getFile().getCourseId(),client.getFile().getFullFilePath(),client.getToken());
+
+        Response<List<Folder>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

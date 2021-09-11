@@ -73,4 +73,23 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/groups/{groupId}/folders")
     Call<List<Folder>> listAllFoldersGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/folders/by_path/{fullFilePath}")
+    Call<List<Folder>> resolvePathCourseIdFullPath(@Path("courseId") String courseId, @Path("fullFilePath") String fullFilePath, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/folders/by_path/{fullFilePath}")
+    Call<List<Folder>> resolvePathUserIdFullPath(@Path("userId") String userId, @Path("fullFilePath") String fullFilePath, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/folders/by_path/{fullFilePath}")
+    Call<List<Folder>> resolvePathGroupIdFullPath(@Path("groupId") String groupId, @Path("fullFilePath") String fullFilePath, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/folders/by_path")
+    Call<List<Folder>> resolvePathCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/folders/by_path")
+    Call<List<Folder>> resolvePathUserId(@Path("userId") String userId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/folders/by_path")
+    Call<List<Folder>> resolvePathGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth);
+
+
 }
