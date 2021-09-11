@@ -2,6 +2,7 @@ package Model;
 
 
 import Controller.FilesController.File;
+import Controller.FilesController.Folder;
 import Controller.FilesController.PublicInlinePreviewURL;
 import Controller.FilesController.Quota;
 import retrofit2.Call;
@@ -59,5 +60,8 @@ public interface fileInterface {
 
     @POST("https://udel.instructure.com/api/v1/files/{fileId}/reset_verifier")
     Call<File> resetLinkVerifier(@Path("fileId") String fileId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/folders/{folderId}/folders")
+    Call<List<Folder>> listFolders(@Path("folderId") String folderId, @Header("Authorization") String auth);
 
 }

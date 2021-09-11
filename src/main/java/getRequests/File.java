@@ -171,8 +171,12 @@ public class File extends CanvasClient {
         this.usageRightsLegalCopyright = null;
         this.usageRightsUseJustification = null;
         this.usageRightsLicense = null;
+        this.folderId = null;
+        this.force = null;
 
     }
+
+
 
     public String getCourseId() {
         return courseId;

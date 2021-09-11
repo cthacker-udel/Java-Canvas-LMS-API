@@ -7352,6 +7352,24 @@ External Tools API
         return response.body();
     }
 
+    public List<Folder> listFolders(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/folders/%s/folders/",client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<Folder>> call = fileInterface.listFolders(client.getFile().getFolderId(),client.getToken());
+
+        Response<List<Folder>> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 
