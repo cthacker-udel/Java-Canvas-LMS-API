@@ -7370,6 +7370,63 @@ External Tools API
         return response.body();
     }
 
+    public List<Folder> listAllFoldersCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/folders/",client.getFile().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<Folder>> call = fileInterface.listAllFoldersCourseId(client.getFile().getCourseId(),client.getToken());
+
+        Response<List<Folder>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<Folder> listAllFolderUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/folders/",client.getFile().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<Folder>> call = fileInterface.listAllFoldersUserId(client.getFile().getUserId(),client.getToken());
+
+        Response<List<Folder>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<Folder> listAllFoldersGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/folders/",client.getFile().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<Folder>> call = fileInterface.listAllFoldersCourseId(client.getFile().getGroupId(),client.getToken());
+
+        Response<List<Folder>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 

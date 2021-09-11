@@ -64,4 +64,13 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/folders/{folderId}/folders")
     Call<List<Folder>> listFolders(@Path("folderId") String folderId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/folders")
+    Call<List<Folder>> listAllFoldersCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/folders")
+    Call<List<Folder>> listAllFoldersUserId(@Path("userId") String userId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/folders")
+    Call<List<Folder>> listAllFoldersGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth);
+
 }
