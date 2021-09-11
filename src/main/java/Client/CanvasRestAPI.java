@@ -7334,6 +7334,24 @@ External Tools API
 
     }
 
+    public File resetLinkVerifier(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/files/%s/reset_verifier/",client.getFile().getFileId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<File> call = fileInterface.resetLinkVerifier(client.getFile().getFileId(),client.getToken());
+
+        Response<File> response = call.execute();
+
+        return response.body();
+    }
+
 
 
 

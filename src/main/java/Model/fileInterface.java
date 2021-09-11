@@ -57,4 +57,7 @@ public interface fileInterface {
     @DELETE("https://udel.instructure.com/api/v1/files/{fileId}")
     Call<File> deleteFile(@Path("fileId") String fileId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @POST("https://udel.instructure.com/api/v1/files/{fileId}/reset_verifier")
+    Call<File> resetLinkVerifier(@Path("fileId") String fileId, @Header("Authorization") String auth);
+
 }
