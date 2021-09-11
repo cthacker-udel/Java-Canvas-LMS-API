@@ -47,6 +47,8 @@ public class File extends CanvasClient {
 
     private Boolean force;
 
+    private String fullFilePath;
+
     public Map<String,Object> generateQueries(){
 
         Map<String,Object> queries = new LinkedHashMap<>();
@@ -176,7 +178,13 @@ public class File extends CanvasClient {
 
     }
 
+    public String getFullFilePath() {
+        return fullFilePath;
+    }
 
+    public void setFullFilePath(String fullFilePath) {
+        this.fullFilePath = fullFilePath;
+    }
 
     public String getCourseId() {
         return courseId;
