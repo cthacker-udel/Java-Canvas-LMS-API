@@ -54,4 +54,7 @@ public interface fileInterface {
     @PUT("https://udel.instructure.com/api/v1/files/{fileId}")
     Call<File> updateFile(@Path("fileId") String fileId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @DELETE("https://udel.instructure.com/api/v1/files/{fileId}")
+    Call<File> deleteFile(@Path("fileId") String fileId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }

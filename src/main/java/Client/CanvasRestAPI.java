@@ -7315,6 +7315,25 @@ External Tools API
 
     }
 
+    public File deleteFile(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/files/%s/",client.getFile().getFileId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<File> call = fileInterface.deleteFile(client.getFile().getFileId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<File> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
