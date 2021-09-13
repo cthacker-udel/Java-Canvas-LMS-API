@@ -7486,7 +7486,7 @@ External Tools API
 
     public List<Folder> resolvePathCourseId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/courses/%s/folders/by_path",client.getFile().getCourseId());
+        String url = baseUrl + String.format("/api/v1/courses/%s/folders/by_path/",client.getFile().getCourseId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -7504,7 +7504,7 @@ External Tools API
     }
     public List<Folder> resolvePathGroupId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/groups/%s/folders/by_path",client.getFile().getGroupId());
+        String url = baseUrl + String.format("/api/v1/groups/%s/folders/by_path/",client.getFile().getGroupId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -7522,7 +7522,7 @@ External Tools API
     }
     public List<Folder> resolvePathUserId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/users/%s/folders/by_path",client.getFile().getUserId());
+        String url = baseUrl + String.format("/api/v1/users/%s/folders/by_path/",client.getFile().getUserId());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -7534,6 +7534,82 @@ External Tools API
         Call<List<Folder>> call = fileInterface.resolvePathUserId(client.getFile().getUserId(),client.getToken());
 
         Response<List<Folder>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Folder getFolderCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/folders/%s/",client.getFile().getCourseId(),client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.getFolderCourseId(client.getFile().getCourseId(),client.getFile().getFolderId(),client.getToken());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Folder getFolderUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/folders/%s/",client.getFile().getCourseId(),client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.getFolderUserId(client.getFile().getUserId(),client.getFile().getFolderId(),client.getToken());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Folder getFolderGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/folders/%s/",client.getFile().getGroupId(),client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.getFolderGroupId(client.getFile().getCourseId(),client.getFile().getFolderId(),client.getToken());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Folder getFolderFolderId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/folders/%s/",client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.getFolderFolderId(client.getFile().getFolderId(),client.getToken());
+
+        Response<Folder> response = call.execute();
 
         return response.body();
 

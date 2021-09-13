@@ -91,5 +91,17 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/groups/{groupId}/folders/by_path")
     Call<List<Folder>> resolvePathGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/folders/{folderId}")
+    Call<Folder> getFolderCourseId(@Path("courseId") String courseId, @Path("folderId") String folderId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/folders/{folderId}")
+    Call<Folder> getFolderUserId(@Path("userId") String userId, @Path("folderId") String folderId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/folders/{folderId}")
+    Call<Folder> getFolderGroupId(@Path("groupId") String groupId, @Path("folderId") String folderId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/folders/{folderId}")
+    Call<Folder> getFolderFolderId(@Path("folderId") String folderId, @Header("Authorization") String auth);
+
 
 }
