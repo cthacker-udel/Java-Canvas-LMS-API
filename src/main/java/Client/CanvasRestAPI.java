@@ -7484,7 +7484,7 @@ External Tools API
 
     }
 
-    public List<Folder> resolvePathCourseId(CanvasClient client){
+    public List<Folder> resolvePathCourseId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/folders/by_path",client.getFile().getCourseId());
 
@@ -7496,6 +7496,42 @@ External Tools API
         fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
 
         Call<List<Folder>> call = fileInterface.resolvePathCourseId(client.getFile().getCourseId(),client.getToken());
+
+        Response<List<Folder>> response = call.execute();
+
+        return response.body();
+
+    }
+    public List<Folder> resolvePathGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/folders/by_path",client.getFile().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<Folder>> call = fileInterface.resolvePathGroupId(client.getFile().getGroupId(),client.getToken());
+
+        Response<List<Folder>> response = call.execute();
+
+        return response.body();
+
+    }
+    public List<Folder> resolvePathUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/folders/by_path",client.getFile().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<Folder>> call = fileInterface.resolvePathUserId(client.getFile().getUserId(),client.getToken());
 
         Response<List<Folder>> response = call.execute();
 
