@@ -104,7 +104,19 @@ public interface fileInterface {
     Call<Folder> getFolderFolderId(@Path("folderId") String folderId, @Header("Authorization") String auth);
 
     @PUT("https://udel.instructure.com/api/v1/folders/{folderId}")
-    Call<Folder> updateFolder(@Path("folderId") String folderId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+    Call<Folder> updateFolder(@Path("folderId") String folderId, @Header("Authorization") String auth, @Body Map<String,Object> queries);
+
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/folders")
+    Call<Folder> createFolderCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @POST("https://udel.instructure.com/api/v1/users/{userId}/folders")
+    Call<Folder> createFolderUserId(@Path("userId") String userId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @POST("https://udel.instructure.com/api/v1/groups/{groupId}/folders")
+    Call<Folder> createFolderGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @POST("https://udel.instructure.com/api/v1/folders/{folderId}/folders")
+    Call<Folder> createFolderFolderId(@Path("folderId") String folderId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
 
 }

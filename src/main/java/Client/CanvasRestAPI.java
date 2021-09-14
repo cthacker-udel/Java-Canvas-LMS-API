@@ -7615,7 +7615,7 @@ External Tools API
 
     }
 
-    public Folder updateFolderFolderId(CanvasClient client){
+    public Folder updateFolderFolderId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/folders/%s/",client.getFile().getFolderId());
 
@@ -7632,6 +7632,20 @@ External Tools API
 
         return response.body();
 
+    }
+
+    public Folder createFolderCourseId(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/folders/",client.getFile().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface
 
     }
 
