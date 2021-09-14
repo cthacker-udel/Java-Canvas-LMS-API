@@ -7653,6 +7653,63 @@ External Tools API
 
     }
 
+    public Folder createFolderUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/folders/",client.getFile().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.createFolderUserId(client.getFile().getUserId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Folder createFolderGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/folders/",client.getFile().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.createFolderGroupId(client.getFile().getCourseId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Folder createFolderFolderId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/folders/%s/folders/",client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.createFolderFolderId(client.getFile().getCourseId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 }
