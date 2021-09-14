@@ -7634,7 +7634,7 @@ External Tools API
 
     }
 
-    public Folder createFolderCourseId(CanvasClient client){
+    public Folder createFolderCourseId(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/folders/",client.getFile().getCourseId());
 
@@ -7645,7 +7645,11 @@ External Tools API
 
         fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
 
-        Call<Folder> call = fileInterface
+        Call<Folder> call = fileInterface.createFolderCourseId(client.getFile().getCourseId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
 
     }
 
