@@ -118,5 +118,8 @@ public interface fileInterface {
     @POST("https://udel.instructure.com/api/v1/folders/{folderId}/folders")
     Call<Folder> createFolderFolderId(@Path("folderId") String folderId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @DELETE("https://udel.instructure.com/api/v1/folders/{folderId}")
+    Call<Void> deleteFolder(@Path("folderId") String folderId, @Header("Authorization") String auth);
+
 
 }

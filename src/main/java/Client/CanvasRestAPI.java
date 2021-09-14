@@ -7710,6 +7710,25 @@ External Tools API
 
     }
 
+    public boolean deleteFolder(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/folders/%s/",client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Void> call = fileInterface.deleteFolder(client.getFile().getFolderId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 }
