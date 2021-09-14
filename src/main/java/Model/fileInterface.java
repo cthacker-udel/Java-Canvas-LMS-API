@@ -103,5 +103,8 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/folders/{folderId}")
     Call<Folder> getFolderFolderId(@Path("folderId") String folderId, @Header("Authorization") String auth);
 
+    @PUT("https://udel.instructure.com/api/v1/folders/{folderId}")
+    Call<Folder> updateFolder(@Path("folderId") String folderId, @Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
+
 
 }

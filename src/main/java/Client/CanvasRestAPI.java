@@ -7615,6 +7615,26 @@ External Tools API
 
     }
 
+    public Folder updateFolderFolderId(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/folders/%s/",client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.updateFolder(client.getFile().getFolderId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
+
+
+    }
+
 
 
 }
