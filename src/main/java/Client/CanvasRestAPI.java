@@ -4407,7 +4407,7 @@ public class CanvasRestAPI{
 
     }
 
-    public boolean uploadFile(CanvasClient client) throws IOException {
+    public boolean uploadCourseFile(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/files/",client.getCourse().getCourseId());
 
@@ -7745,6 +7745,25 @@ External Tools API
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    public File copyFile(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/folders/%s/copy_file/",client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<File> call = fileInterface.copyFile(client.getFile().getFolderId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<File> response = call.execute();
+
+        return response.body();
 
     }
 

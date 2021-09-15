@@ -124,5 +124,8 @@ public interface fileInterface {
     @POST("https://udel.instructure.com/api/v1/folders/{folderId}/files")
     Call<Void> uploadFile(@Path("folderId") String folderId, @Header("Authorization") String auth);
 
+    @POST("https://udel.instructure.com/api/v1/folders/{destFolderId}/copy_file")
+    Call<File> copyFile(@Path("destFolderId") String destFolderId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 
 }
