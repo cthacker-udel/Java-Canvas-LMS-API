@@ -7767,6 +7767,25 @@ External Tools API
 
     }
 
+    public Folder copyFolder(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/folders/%s/copy_folder/",client.getFile().getFolderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.copyFolder(client.getFile().getFolderId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 }
