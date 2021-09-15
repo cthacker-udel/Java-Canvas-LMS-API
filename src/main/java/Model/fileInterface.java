@@ -136,5 +136,4 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/groups/{groupId}/folders/media")
     Call<Folder> getUploadedMediaFolderGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth);
 
-
 }
