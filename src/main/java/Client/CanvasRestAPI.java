@@ -7786,6 +7786,44 @@ External Tools API
 
     }
 
+    public Folder getUploadedMediaFolderForUserCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/folders/media/",client.getFile().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.getUploadedMediaFolder(client.getFile().getCourseId(),client.getToken());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public Folder getUploadedMediaFolderForUserGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/folders/media/",client.getFile().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Folder> call = fileInterface.getUploadedMediaFolderGroupId(client.getFile().getGroupId(),client.getToken());
+
+        Response<Folder> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 }

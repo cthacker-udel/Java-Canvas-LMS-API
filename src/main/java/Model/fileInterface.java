@@ -130,5 +130,11 @@ public interface fileInterface {
     @POST("https://udel.instructure.com/api/v1/folders/{destFolderId}/copy_folder")
     Call<Folder> copyFolder(@Path("destFolderId") String destFolderId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @GET("https://udel.instructure.com/api/v1/course/{courseId}/folders/media")
+    Call<Folder> getUploadedMediaFolder(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/groups/{groupId}/folders/media")
+    Call<Folder> getUploadedMediaFolderGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth);
+
 
 }
