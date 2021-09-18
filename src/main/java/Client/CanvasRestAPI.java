@@ -7824,7 +7824,8 @@ External Tools API
 
     public UsageRights setUsageRightsCourseId(CanvasClient client) throws IOException {
 
-        String url = baseUrl + String.format("/api/v1/courses/{}/usage_rights/",client.getFile().getCourseId());
+        String url = baseUrl + String.format("/api/v1/courses/%s/usage_rights/",client.getFile().getCourseId());
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
@@ -7834,6 +7835,25 @@ External Tools API
         fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
 
         Call<UsageRights> call = fileInterface.setUsageRightsCourseId(client.getFile().getCourseId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<UsageRights> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public UsageRights setUsageRightsGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/usage_rights/",client.getFile().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<UsageRights> call = fileInterface.setUsageRightsGroupId(client.getFile().getGroupId(),client.getToken(),client.getFile().generateQueries());
 
         Response<UsageRights> response = call.execute();
 

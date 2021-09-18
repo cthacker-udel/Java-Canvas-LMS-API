@@ -127,6 +127,9 @@ public interface fileInterface {
     @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/usage_rights")
     Call<UsageRights> setUsageRightsCourseId(@Path("courseId") String courseid, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @PUT("https://udel.instructure.com/api/v1/groups/{groupId}/usage_rights")
+    Call<UsageRights> setUsageRightsGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
     @POST("https://udel.instructure.com/api/v1/folders/{destFolderId}/copy_folder")
     Call<Folder> copyFolder(@Path("destFolderId") String destFolderId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
