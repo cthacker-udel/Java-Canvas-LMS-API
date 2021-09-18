@@ -7938,6 +7938,25 @@ External Tools API
 
     }
 
+    public List<License> listLicensesCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/content_licenses/",client.getFile().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<License>> call = fileInterface.listLicensesCourseId(client.getFile().getCourseId(),client.getToken());
+
+        Response<List<License>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 }

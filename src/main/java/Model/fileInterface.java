@@ -151,4 +151,7 @@ public interface fileInterface {
     @DELETE("https://udel.instructure.com/api/v1/users/{userId}/usage_rights")
     Call<Void> removeUsageRightsUserId(@Path("userId") String userId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/content_licenses")
+    Call<List<License>> listLicensesCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
 }
