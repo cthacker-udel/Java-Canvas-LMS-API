@@ -7861,6 +7861,25 @@ External Tools API
 
     }
 
+    public UsageRights setUsageRightsUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/usage_rights/",client.getFile().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(fileInterface.class);
+
+        Call<UsageRights> call = fileInterface.setUsageRightsUserId(client.getFile().getUserId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<UsageRights> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 }
