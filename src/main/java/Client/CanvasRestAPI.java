@@ -7919,5 +7919,25 @@ External Tools API
     }
 
 
+    public boolean removeUsageRightsUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/usage_rights/",client.getFile().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Void> call = fileInterface.removeUsageRightsUserId(client.getFile().getUserId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+
 
 }
