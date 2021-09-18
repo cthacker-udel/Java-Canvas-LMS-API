@@ -1,10 +1,7 @@
 package Model;
 
 
-import Controller.FilesController.File;
-import Controller.FilesController.Folder;
-import Controller.FilesController.PublicInlinePreviewURL;
-import Controller.FilesController.Quota;
+import Controller.FilesController.*;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -126,6 +123,9 @@ public interface fileInterface {
 
     @POST("https://udel.instructure.com/api/v1/folders/{destFolderId}/copy_file")
     Call<File> copyFile(@Path("destFolderId") String destFolderId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/usage_rights")
+    Call<UsageRights> setUsageRightsCourseId(@Path("courseId") String courseid, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
     @POST("https://udel.instructure.com/api/v1/folders/{destFolderId}/copy_folder")
     Call<Folder> copyFolder(@Path("destFolderId") String destFolderId, @Header("Authorization") String auth, @Body Map<String,Object> body);

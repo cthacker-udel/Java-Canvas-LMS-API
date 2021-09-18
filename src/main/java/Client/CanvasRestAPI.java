@@ -67,10 +67,8 @@ import Controller.ExternalToolsController.VisibleCourseNavTools;
 import Controller.FavoriteController.Favorite;
 import Controller.FeatureFlagsController.EnvironmentalFeature;
 import Controller.FeatureFlagsController.Feature;
+import Controller.FilesController.*;
 import Controller.FilesController.File;
-import Controller.FilesController.Folder;
-import Controller.FilesController.PublicInlinePreviewURL;
-import Controller.FilesController.Quota;
 import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
 import Controller.QuizExtensionsController.QuizExtensions;
@@ -7819,6 +7817,25 @@ External Tools API
         Call<Folder> call = fileInterface.getUploadedMediaFolderGroupId(client.getFile().getGroupId(),client.getToken());
 
         Response<Folder> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public UsageRights setUsageRightsCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/{}/usage_rights/",client.getFile().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<UsageRights> call = fileInterface.setUsageRightsCourseId(client.getFile().getCourseId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<UsageRights> response = call.execute();
 
         return response.body();
 
