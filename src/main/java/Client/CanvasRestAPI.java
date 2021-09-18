@@ -69,6 +69,7 @@ import Controller.FeatureFlagsController.EnvironmentalFeature;
 import Controller.FeatureFlagsController.Feature;
 import Controller.FilesController.*;
 import Controller.FilesController.File;
+import Controller.GradeChangeLogController.GradeChangeEvent;
 import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
 import Controller.QuizExtensionsController.QuizExtensions;
@@ -7990,6 +7991,32 @@ External Tools API
         Call<List<License>> call = fileInterface.listLicensesUserId(client.getFile().getUserId(),client.getToken());
 
         Response<List<License>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    /*
+
+    Grade Change Log API
+
+     */
+
+
+    public List<GradeChangeEvent> queryByAssignment(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/audit/grade_change/assignments/%s/",client.getGradeChangeLog().getAssignmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradeChangeLogInterface gradeChangeLogInterface = retrofit.create(Model.gradeChangeLogInterface.class);
+
+        Call<List<GradeChangeEvent>> call = gradeChangeLogInterface.queryByAssignment(client.getGradeChangeLog().getAssignmentId(), client.getToken(),client.getGradeChangeLog().getStartTime(), client.getGradeChangeLog().getEndTime());
+
+        Response<List<GradeChangeEvent>> response = call.execute();
 
         return response.body();
 
