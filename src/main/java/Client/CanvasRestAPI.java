@@ -7880,6 +7880,25 @@ External Tools API
 
     }
 
+    public boolean removeUsageRightsCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/usage_rights/",client.getFile().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<Void> call = fileInterface.removeUsageRightsCourseId(client.getFile().getCourseId(),client.getToken(),client.getFile().generateQueries());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 
 
 }

@@ -142,4 +142,7 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/groups/{groupId}/folders/media")
     Call<Folder> getUploadedMediaFolderGroupId(@Path("groupId") String groupId, @Header("Authorization") String auth);
 
+    @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/usage_rights")
+    Call<Void> removeUsageRightsCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }
