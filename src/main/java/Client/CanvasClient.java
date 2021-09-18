@@ -1,6 +1,7 @@
 package Client;
 
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
+import Controller.EnrollmentController.Grade;
 import getRequests.*;
 
 public class CanvasClient extends CanvasRestAPI {
@@ -48,6 +49,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Favorite favorite;
     private FeatureFlag featureFlag;
     private File file;
+    private GradeChangeLog gradeChangeLog;
 
     public CanvasClient(){
         super();
@@ -98,7 +100,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.favorite = new Favorite();
         this.featureFlag = new FeatureFlag();
         this.file = new File();
+        this.gradeChangeLog = new GradeChangeLog();
 
+    }
+
+    public void setGradeChangeLog(GradeChangeLog changeLog){
+        this.gradeChangeLog = changeLog;
+    }
+
+    public GradeChangeLog getGradeChangeLog(){
+        return this.gradeChangeLog;
     }
 
     public File getFile() {
