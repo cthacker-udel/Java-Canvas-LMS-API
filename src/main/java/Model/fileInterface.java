@@ -154,4 +154,10 @@ public interface fileInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/content_licenses")
     Call<List<License>> listLicensesCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/groups/{groupID}/content_licenses")
+    Call<List<License>> listLicensesGroupId(@Path("groupID") String groupID, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/users/{userId}/content_licenses")
+    Call<List<License>> listLicensesUserId(@Path("userId") String userId, @Header("Authorization") String auth);
+
 }

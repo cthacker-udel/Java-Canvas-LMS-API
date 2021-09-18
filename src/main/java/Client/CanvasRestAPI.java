@@ -7957,6 +7957,44 @@ External Tools API
 
     }
 
+    public List<License> listLicensesGroupId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/groups/%s/content_licenses/",client.getFile().getGroupId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<License>> call = fileInterface.listLicensesGroupId(client.getFile().getGroupId(),client.getToken());
+
+        Response<List<License>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<License> listLicensesUserId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/users/%s/content_licenses/",client.getFile().getUserId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        fileInterface fileInterface = retrofit.create(Model.fileInterface.class);
+
+        Call<List<License>> call = fileInterface.listLicensesUserId(client.getFile().getUserId(),client.getToken());
+
+        Response<List<License>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 }
