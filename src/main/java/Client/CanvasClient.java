@@ -50,6 +50,7 @@ public class CanvasClient extends CanvasRestAPI {
     private FeatureFlag featureFlag;
     private File file;
     private GradeChangeLog gradeChangeLog;
+    private Gradebook gradebook;
 
     public CanvasClient(){
         super();
@@ -101,7 +102,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.featureFlag = new FeatureFlag();
         this.file = new File();
         this.gradeChangeLog = new GradeChangeLog();
+        this.gradebook = new Gradebook();
 
+    }
+
+    public Gradebook getGradebook() {
+        return gradebook;
+    }
+
+    public void setGradebook(Gradebook gradebook) {
+        this.gradebook = gradebook;
     }
 
     public void setGradeChangeLog(GradeChangeLog changeLog){
