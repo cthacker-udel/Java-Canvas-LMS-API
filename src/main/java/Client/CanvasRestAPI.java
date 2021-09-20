@@ -8022,6 +8022,25 @@ External Tools API
 
     }
 
+    public List<GradeChangeEvent> queryByCourse(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/audit/grade_change_courses/%s/",client.getGradeChangeLog().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradeChangeLogInterface gradeChangeLogInterface = retrofit.create(Model.gradeChangeLogInterface.class);
+
+        Call<List<GradeChangeEvent>> call = gradeChangeLogInterface.queryByCourse(client.getGradeChangeLog().getCourseId(),client.getToken(),client.getGradeChangeLog().generateQueries());
+
+        Response<List<GradeChangeEvent>> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 }
