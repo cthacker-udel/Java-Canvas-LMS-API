@@ -99,7 +99,7 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
-rade change import java.text.SimpleDateFormat;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
@@ -8056,6 +8056,26 @@ External Tools API
         Response<List<GradeChangeEvent>> response = call.execute();
 
         return response.body();
+
+    }
+
+    public List<GradeChangeEvent> advancedQuery(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/audit/grade_change/");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradeChangeLogInterface gradeChangeLogInterface = retrofit.create(Model.gradeChangeLogInterface.class);
+
+        Call<List<GradeChangeEvent>> call = gradeChangeLogInterface.advancedQuery(client.getToken(),client.getGradeChangeLog().generateQueries());
+
+        Response<List<GradeChangeEvent>> response = call.execute();
+
+        return response.body();
+
 
     }
 

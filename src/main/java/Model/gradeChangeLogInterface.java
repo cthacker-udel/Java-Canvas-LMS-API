@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.EnrollmentController.Grade;
 import Controller.GradeChangeLogController.GradeChangeEvent;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -18,5 +19,8 @@ public interface gradeChangeLogInterface {
 
     @GET("https://udel.instructure.com/api/v1/audit/grade_change/graders/{graderId}")
     Call<List<GradeChangeEvent>> queryByGrader(@Path("graderId") String graderId, @Header("Authorization") String auth, @Field("start_time") ZonedDateTime startTime, @Field("end_time") ZonedDateTime endTime);
+
+    @GET("https://udel.instructure.com/api/v1/audit/grade_change")
+    Call<List<GradeChangeEvent>> advancedQuery(@Header("Authorization") String auth, @QueryMap Map<String,Object> queries);
 
 }
