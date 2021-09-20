@@ -99,7 +99,7 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+rade change import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
@@ -8022,7 +8022,7 @@ External Tools API
 
     }
 
-    public List<GradeChangeEvent> queryByCourse(CanvasClient client){
+    public List<GradeChangeEvent> queryByCourse(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/audit/grade_change_courses/%s/",client.getGradeChangeLog().getCourseId());
 
@@ -8033,7 +8033,25 @@ External Tools API
 
         gradeChangeLogInterface gradeChangeLogInterface = retrofit.create(Model.gradeChangeLogInterface.class);
 
-        Call<List<GradeChangeEvent>> call = gradeChangeLogInterface.queryByCourse(client.getGradeChangeLog().getCourseId(),client.getToken(),client.getGradeChangeLog().generateQueries());
+        Call<List<GradeChangeEvent>> call = gradeChangeLogInterface.queryByCourse(client.getGradeChangeLog().getCourseId(),client.getToken(),client.getGradeChangeLog().getStartTime(),client.getGradeChangeLog().getEndTime());
+
+        Response<List<GradeChangeEvent>> response = call.execute();
+
+        return response.body();
+    }
+
+    public List<GradeChangeEvent> queryByGrader(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/audit/grade_change/graders/%s/",client.getGradeChangeLog().getGraderId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradeChangeLogInterface gradeChangeLogInterface = retrofit.create(Model.gradeChangeLogInterface.class);
+
+        Call<List<GradeChangeEvent>> call = gradeChangeLogInterface.queryByGrader(client.getGradeChangeLog().getGraderId(), client.getToken(),client.getGradeChangeLog().getStartTime(), client.getGradeChangeLog().getEndTime());
 
         Response<List<GradeChangeEvent>> response = call.execute();
 

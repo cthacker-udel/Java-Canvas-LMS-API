@@ -16,4 +16,7 @@ public interface gradeChangeLogInterface {
     @GET("https://udel.instructure.com/api/v1/audit/grade/courses/{courseId}")
     Call<List<GradeChangeEvent>> queryByCourse(@Path("courseId") String courseId, @Header("Authorization") String auth, @Field("start_time") ZonedDateTime startTime, @Field("end_time") ZonedDateTime endTime);
 
+    @GET("https://udel.instructure.com/api/v1/audit/grade_change/graders/{graderId}")
+    Call<List<GradeChangeEvent>> queryByGrader(@Path("graderId") String graderId, @Header("Authorization") String auth, @Field("start_time") ZonedDateTime startTime, @Field("end_time") ZonedDateTime endTime);
+
 }
