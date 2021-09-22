@@ -76,6 +76,7 @@ import Controller.QuizExtensionsController.QuizExtensions;
 import Controller.UserController.User;
 import Controller.FeatureFlagsController.FeatureFlag;
 import Controller.gradebookController.Day;
+import Controller.gradebookController.Grader;
 import Model.*;
 
 import com.google.gson.Gson;
@@ -8104,6 +8105,25 @@ External Tools API
 
         return response.body();
 
+
+    }
+
+    public List<Grader> detailsForGivenGradebookDate(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/gradebook_history/%s/",client.getGradebook().getCourseId(),client.getGradebook().getGradebookDate());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradebookInterface gradebookInterface = retrofit.create(Model.gradebookInterface.class);
+
+        Call<List<Grader>> call = gradebookInterface.detailsForGivenDate(client.getGradebook().getCourseId(),client.getGradebook().getGradebookDate(),client.getToken(),client.getGradebook().generateQueries());
+
+        Response<List<Grader>> response = call.execute();
+
+        return response.body();
 
     }
 
