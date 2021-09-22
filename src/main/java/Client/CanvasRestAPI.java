@@ -17,6 +17,7 @@ import Controller.AnalyticsController.CourseLevelStudentSummaryData.CourseLevelS
 import Controller.AnalyticsController.DepartmentLevelGrades.DepartmentLevelGrades;
 import Controller.AnalyticsController.DepartmentLevelParticipation.DepartmentLevelParticipation;
 import Controller.AnalyticsController.DepartmentLevelStatistics.DepartmentLevelStatistics;
+import Controller.AnalyticsController.UserInCourseAssignmentData.Submission;
 import Controller.AnalyticsController.UserInCourseAssignmentData.UserInCourseAssignmentData;
 import Controller.AnalyticsController.UserInCourseMessagingData.UserInCourseMessagingData;
 import Controller.AnalyticsController.UserInCourseParticipationData.UserInCourseParticipationData;
@@ -77,6 +78,7 @@ import Controller.UserController.User;
 import Controller.FeatureFlagsController.FeatureFlag;
 import Controller.gradebookController.Day;
 import Controller.gradebookController.Grader;
+import Controller.gradebookController.SubmissionHistory;
 import Model.*;
 
 import com.google.gson.Gson;
@@ -8122,6 +8124,25 @@ External Tools API
         Call<List<Grader>> call = gradebookInterface.detailsForGivenDate(client.getGradebook().getCourseId(),client.getGradebook().getGradebookDate(),client.getToken(),client.getGradebook().generateQueries());
 
         Response<List<Grader>> response = call.execute();
+
+        return response.body();
+
+    }
+
+    public List<SubmissionHistory> listSubmissions(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/gradebook_history/%s/graders/%s/assignments/%s/submissions",client.getGradebook().getCourseId(),client.getGradebook().getGradebookDate(),client.getGradebook().getGraderId(),client.getGradebook().getAssignmentId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradebookInterface gradebookInterface = retrofit.create(Model.gradebookInterface.class);
+
+        Call<List<SubmissionHistory>> call = gradebookInterface.listSubmissions(client.getGradebook().getCourseId(),client.getGradebook().getGradebookDate(),client.getGradebook().getGraderId(),client.getGradebook().getAssignmentId(),client.getToken(),client.getGradebook().generateQueries());
+
+        Response<List<SubmissionHistory>> response = call.execute();
 
         return response.body();
 
