@@ -79,6 +79,7 @@ import Controller.FeatureFlagsController.FeatureFlag;
 import Controller.gradebookController.Day;
 import Controller.gradebookController.Grader;
 import Controller.gradebookController.SubmissionHistory;
+import Controller.gradebookController.SubmissionVersion;
 import Model.*;
 
 import com.google.gson.Gson;
@@ -8145,8 +8146,27 @@ External Tools API
         Response<List<SubmissionHistory>> response = call.execute();
 
         return response.body();
-
     }
+
+    public List<SubmissionVersion> listUncollatedSubmissionVersions(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/gradebook_history/feed/",client.getGradebook().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradebookInterface gradebookInterface = retrofit.create(Model.gradebookInterface.class);
+
+        Call<List<SubmissionVersion>> call = gradebookInterface.listUncollatedSubmissionVersions(client.getGradebook().getCourseId(),client.getToken(),client.getGradebook().generateQueries());
+
+        Response<List<SubmissionVersion>> response = call.execute();
+
+        return response.body();
+    }
+
+
 
 
 
