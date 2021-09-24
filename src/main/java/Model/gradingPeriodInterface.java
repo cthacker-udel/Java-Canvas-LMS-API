@@ -2,11 +2,10 @@ package Model;
 
 import Controller.GradingPeriodController.GradingPeriod;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.Path;
+import retrofit2.http.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface gradingPeriodInterface {
 
@@ -18,5 +17,8 @@ public interface gradingPeriodInterface {
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/grading_periods/{gradingPeriodId}")
     Call<GradingPeriod> getSingleGradingPeriod(@Path("courseId") String courseId, @Path("gradingPeriodId") String gradingPeriodId, @Header("Authorization") String auth);
+
+    @PUT("https://udel.instructure.com/api/v1/courses/{courseId}/grading_periods/{gradingPeriodId}")
+    Call<Void> updateSingleGradingPeriod(@Path("courseId") String courseId, @Path("gradingPeriodId") String gradingPeriodId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
 }
