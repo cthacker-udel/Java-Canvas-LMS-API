@@ -71,6 +71,7 @@ import Controller.FeatureFlagsController.Feature;
 import Controller.FilesController.*;
 import Controller.FilesController.File;
 import Controller.GradeChangeLogController.GradeChangeEvent;
+import Controller.GradingPeriodController.GradingPeriod;
 import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
 import Controller.QuizExtensionsController.QuizExtensions;
@@ -8164,6 +8165,43 @@ External Tools API
         Response<List<SubmissionVersion>> response = call.execute();
 
         return response.body();
+    }
+
+    public List<GradingPeriod> listGradingPeriodsAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/grading_periods/",client.getGradingPeriod().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradingPeriodInterface gradingPeriodInterface = retrofit.create(Model.gradingPeriodInterface.class);
+
+        Call<List<GradingPeriod>> call = gradingPeriodInterface.listGradingPeriodsAccountId(client.getGradingPeriod().getAccountId(),client.getToken());
+
+        Response<List<GradingPeriod>> response = call.execute();
+
+        return response.body();
+    }
+
+    public List<GradingPeriod> listGradingPeriodsCourseId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/grading_periods/",client.getGradingPeriod().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradingPeriodInterface gradingPeriodInterface = retrofit.create(Model.gradingPeriodInterface.class);
+
+        Call<List<GradingPeriod>> call = gradingPeriodInterface.listGradingPeriodsCourseId(client.getGradingPeriod().getCourseId(), client.getToken());
+
+        Response<List<GradingPeriod>> response = call.execute();
+
+        return response.body();
+
     }
 
 

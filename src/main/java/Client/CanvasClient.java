@@ -51,6 +51,7 @@ public class CanvasClient extends CanvasRestAPI {
     private File file;
     private GradeChangeLog gradeChangeLog;
     private Gradebook gradebook;
+    private GradingPeriod gradingPeriod;
 
     public CanvasClient(){
         super();
@@ -103,7 +104,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.file = new File();
         this.gradeChangeLog = new GradeChangeLog();
         this.gradebook = new Gradebook();
+        this.gradingPeriod = new GradingPeriod();
 
+    }
+
+    public GradingPeriod getGradingPeriod() {
+        return gradingPeriod;
+    }
+
+    public void setGradingPeriod(GradingPeriod gradingPeriod) {
+        this.gradingPeriod = gradingPeriod;
     }
 
     public Gradebook getGradebook() {
