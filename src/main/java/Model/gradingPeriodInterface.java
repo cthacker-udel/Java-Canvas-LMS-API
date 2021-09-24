@@ -16,4 +16,7 @@ public interface gradingPeriodInterface {
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/grading_periods")
     Call<List<GradingPeriod>> listGradingPeriodsCourseId(@Path("courseId") String courseID, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/grading_periods/{gradingPeriodId}")
+    Call<GradingPeriod> getSingleGradingPeriod(@Path("courseId") String courseId, @Path("gradingPeriodId") String gradingPeriodId, @Header("Authorization") String auth);
+
 }
