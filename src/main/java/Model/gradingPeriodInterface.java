@@ -24,4 +24,7 @@ public interface gradingPeriodInterface {
     @DELETE("https://udel.instructure.com/api/v1/courses/{courseId}/grading_periods/{gradingPeriodId}")
     Call<Void> deleteGradingPeriodCourseId(@Path("courseId") String courseID, @Path("gradingPeriodId") String gradingPeriodId, @Header("Authorization") String auth);
 
+    @DELETE("https://udel.instructure.com/api/v1/accounts/{accountId}/grading_periods/{gradingPeriodId}")
+    Call<Void> deleteGradingPeriodAccountId(@Path("accountId") Integer accountId, @Path("gradingPeriodId") String gradingPeriodId, @Header("Authorization") String auth);
+
 }

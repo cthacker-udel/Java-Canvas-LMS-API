@@ -8242,7 +8242,7 @@ External Tools API
 
     }
 
-    public boolean deleteGradingPeriod(CanvasClient client) throws IOException {
+    public boolean deleteGradingPeriodCourseID(CanvasClient client) throws IOException {
 
         String url = baseUrl + String.format("/api/v1/courses/%s/grading_periods/%s/",client.getGradingPeriod().getCourseId(),client.getGradingPeriod().getGradingPeriodId());
 
@@ -8254,6 +8254,25 @@ External Tools API
         gradingPeriodInterface gradingPeriodInterface = retrofit.create(Model.gradingPeriodInterface.class);
 
         Call<Void> call = gradingPeriodInterface.deleteGradingPeriodCourseId(client.getGradingPeriod().getCourseId(),client.getGradingPeriod().getGradingPeriodId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
+    public boolean deleteGradingPeriodAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/grading_periods/%s/",client.getGradingPeriod().getAccountId(),client.getGradingPeriod().getGradingPeriodId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradingPeriodInterface gradingPeriodInterface = retrofit.create(Model.gradingPeriodInterface.class);
+
+        Call<Void> call = gradingPeriodInterface.deleteGradingPeriodAccountId(client.getGradingPeriod().getAccountId(),client.getGradingPeriod().getGradingPeriodId(),client.getToken());
 
         Response<Void> response = call.execute();
 
