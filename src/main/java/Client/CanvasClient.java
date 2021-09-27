@@ -52,6 +52,7 @@ public class CanvasClient extends CanvasRestAPI {
     private GradeChangeLog gradeChangeLog;
     private Gradebook gradebook;
     private GradingPeriod gradingPeriod;
+    private GradingStandard gradingStandard;
 
     public CanvasClient(){
         super();
@@ -105,7 +106,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.gradeChangeLog = new GradeChangeLog();
         this.gradebook = new Gradebook();
         this.gradingPeriod = new GradingPeriod();
+        this.gradingStandard = new GradingStandard();
 
+    }
+
+    public GradingStandard getGradingStandard() {
+        return gradingStandard;
+    }
+
+    public void setGradingStandard(GradingStandard gradingStandard) {
+        this.gradingStandard = gradingStandard;
     }
 
     public GradingPeriod getGradingPeriod() {

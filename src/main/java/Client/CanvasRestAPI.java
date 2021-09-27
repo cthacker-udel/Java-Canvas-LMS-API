@@ -72,6 +72,7 @@ import Controller.FilesController.*;
 import Controller.FilesController.File;
 import Controller.GradeChangeLogController.GradeChangeEvent;
 import Controller.GradingPeriodController.GradingPeriod;
+import Controller.GradingStandardController.GradingStandard;
 import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
 import Controller.QuizExtensionsController.QuizExtensions;
@@ -8277,6 +8278,18 @@ External Tools API
         Response<Void> response = call.execute();
 
         return response.isSuccessful();
+
+    }
+
+    /*
+
+    Grading Standard API
+
+     */
+
+    public GradingStandard createNewGradingStandard(CanvasClient client){
+
+            String url = baseUrl + String.format("/api/v1/accounts/%s/grading_standards/",client.getGradingStandard().)
 
     }
 
