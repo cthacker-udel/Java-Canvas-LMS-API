@@ -8287,9 +8287,22 @@ External Tools API
 
      */
 
-    public GradingStandard createNewGradingStandard(CanvasClient client){
+    public GradingStandard createNewGradingStandard(CanvasClient client) throws IOException {
 
-            String url = baseUrl + String.format("/api/v1/accounts/%s/grading_standards/",client.getGradingStandard().)
+            String url = baseUrl + String.format("/api/v1/accounts/%s/grading_standards/",client.getGradingStandard().getAccountId());
+
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(url)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            gradingStandardInterface gradingStandardInterface = retrofit.create(Model.gradingStandardInterface.class);
+
+            Call<GradingStandard> call = gradingStandardInterface.createNewGradingStandard(client.getGradingStandard().getAccountId(),client.getToken(),client.getGradingStandard().generateQueries());
+
+            Response<GradingStandard> response = call.execute();
+
+            return response.body();
 
     }
 
