@@ -40,4 +40,52 @@ public class GradingStandard extends CanvasClient {
 
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getGradingSchemeEntryName() {
+        return gradingSchemeEntryName;
+    }
+
+    public void setGradingSchemeEntryName(String gradingSchemeEntryName) {
+        this.gradingSchemeEntryName = gradingSchemeEntryName;
+    }
+
+    public Integer getGradingSchemeEntryValue() {
+        return gradingSchemeEntryValue;
+    }
+
+    public void setGradingSchemeEntryValue(Integer gradingSchemeEntryValue) {
+        this.gradingSchemeEntryValue = gradingSchemeEntryValue;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+
+    @Override
+    public Integer getAccountId() {
+        return Integer.parseInt(accountId);
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+
+    public String getGradingStandardId() {
+        return gradingStandardId;
+    }
+
+    public void setGradingStandardId(String gradingStandardId) {
+        this.gradingStandardId = gradingStandardId;
+    }
 }
