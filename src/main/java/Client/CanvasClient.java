@@ -2,6 +2,7 @@ package Client;
 
 import Controller.CalendarEventController.CalendarEvent.CalendarEvent;
 import Controller.EnrollmentController.Grade;
+import Controller.GroupController.Group;
 import getRequests.*;
 
 public class CanvasClient extends CanvasRestAPI {
@@ -53,6 +54,7 @@ public class CanvasClient extends CanvasRestAPI {
     private Gradebook gradebook;
     private GradingPeriod gradingPeriod;
     private GradingStandard gradingStandard;
+    private GroupCategories groupCategories;
 
     public CanvasClient(){
         super();
@@ -107,7 +109,16 @@ public class CanvasClient extends CanvasRestAPI {
         this.gradebook = new Gradebook();
         this.gradingPeriod = new GradingPeriod();
         this.gradingStandard = new GradingStandard();
+        this.groupCategories = new GroupCategories();
 
+    }
+
+    public GroupCategories getGroupCategories() {
+        return groupCategories;
+    }
+
+    public void setGroupCategories(GroupCategories groupCategories) {
+        this.groupCategories = groupCategories;
     }
 
     public GradingStandard getGradingStandard() {

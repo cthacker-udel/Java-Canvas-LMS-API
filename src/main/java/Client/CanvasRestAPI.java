@@ -73,6 +73,7 @@ import Controller.FilesController.File;
 import Controller.GradeChangeLogController.GradeChangeEvent;
 import Controller.GradingPeriodController.GradingPeriod;
 import Controller.GradingStandardController.GradingStandard;
+import Controller.GroupCategoriesController.GroupCategory;
 import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
 import Controller.QuizExtensionsController.QuizExtensions;
@@ -87,6 +88,7 @@ import Model.*;
 import com.google.gson.Gson;
 import com.google.gson.internal.GsonBuildConfig;
 import getRequests.EnrollmentTerms;
+import getRequests.GroupCategories;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.HttpUrl;
 import org.openqa.selenium.WebDriver;
@@ -8379,6 +8381,33 @@ External Tools API
         Response<GradingStandard> response = call.execute();
 
         return response.body();
+    }
+
+
+    /*
+
+    Group Categories API
+
+     */
+
+
+    public List<GroupCategory> listGroupCategoriesAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/group_categories/",client.getGroupCategories().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        groupCategoriesInterface groupCategoriesInterface = retrofit.create(Model.groupCategoriesInterface.class);
+
+        Call<List<GroupCategory>> call = groupCategoriesInterface.listGroupCategoriesAccountId(client.getGroupCategories().getAccountId()+"",client.getToken());
+
+        Response<List<GroupCategory>> response = call.execute();
+
+        return response.body();
+
     }
 
 
