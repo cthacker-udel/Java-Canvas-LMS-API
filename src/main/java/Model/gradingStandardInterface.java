@@ -17,4 +17,10 @@ public interface gradingStandardInterface {
     @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/grading_standards")
     Call<List<GradingStandard>> listGradingStandardAccountId(@Path("accountId") String accountId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/courses/{courseId}/grading_standards/{gradingStandardId}")
+    Call<GradingStandard> getSingleGradingStandard(@Path("courseId") String courseId, @Path("gradingStandardId") String gradingStandardId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/accounts/{accountId}/grading_standards/{gradingStandardId}")
+    Call<GradingStandard> getSingleGradingStandardAccountId(@Path("accountId") String accountId, @Path("gradingStandardId") String gradingStandardId, @Header("Authorization") String auth);
+
 }
