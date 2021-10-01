@@ -8363,6 +8363,25 @@ External Tools API
 
     }
 
+    public GradingStandard getSingleGradingStandardAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/grading_standards/%s/",client.getGradingStandard().getAccountId(),client.getGradingStandard().getGradingStandardId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        gradingStandardInterface gradingStandardInterface = retrofit.create(Model.gradingStandardInterface.class);
+
+        Call<GradingStandard> call = gradingStandardInterface.getSingleGradingStandardAccountId(client.getGradingStandard().getAccountId()+"",client.getGradingStandard().getGradingStandardId(),client.getToken());
+
+        Response<GradingStandard> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
