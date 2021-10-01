@@ -8379,7 +8379,6 @@ External Tools API
         Response<GradingStandard> response = call.execute();
 
         return response.body();
-
     }
 
 
