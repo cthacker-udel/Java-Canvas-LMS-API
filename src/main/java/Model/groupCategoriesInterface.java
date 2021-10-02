@@ -3,11 +3,10 @@ package Model;
 
 import Controller.GroupCategoriesController.GroupCategory;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.Path;
+import retrofit2.http.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface groupCategoriesInterface {
 
@@ -16,5 +15,11 @@ public interface groupCategoriesInterface {
 
     @GET("https://udel.instructure.com/api/v1/courses/{courseId}/group_categories")
     Call<List<GroupCategory>> listGroupCategoriesCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/group_categories/{groupCategoryId}")
+    Call<GroupCategory> getSingleGroupCategory(@Path("groupCategoryId") String groupCategoryId, @Header("Authorization") String auth);
+
+    @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/group_categories")
+    Call<GroupCategory> createGroupCategory(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
 }
