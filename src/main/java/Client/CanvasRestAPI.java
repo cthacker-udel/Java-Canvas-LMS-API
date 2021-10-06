@@ -8463,6 +8463,24 @@ External Tools API
         Response<GroupCategory> response = call.execute();
 
         return response.body();
+    }
+
+    public GroupCategory createGroupCategoryCourseId(CanvasClient client){
+
+        String url = baseUrl + String.format("/api/v1/courses/%s/group_categories/",client.getGroupCategories().getCourseId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        groupCategoriesInterface groupCategoriesInterface = retrofit.create(Model.groupCategoriesInterface.class);
+
+        Call<GroupCategory> call = groupCategoriesInterface.createGroupCategoryCourseId(client.getGroupCategories().getCourseId(), client.getToken(),client.getGroupCategories().generateQueries());
+
+        Response<GroupCategory> response = call.execute();
+
+        return response.body();
 
     }
 
