@@ -2,6 +2,7 @@ package Model;
 
 
 import Controller.GroupCategoriesController.GroupCategory;
+import Controller.ProgressController.Progress;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -24,5 +25,8 @@ public interface groupCategoriesInterface {
 
     @POST("https://udel.instructure.com/api/v1/courses/{courseId}/group_categories")
     Call<GroupCategory> createGroupCategoryCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
+    @POST("https://udel.instructure.com/api/v1/group_categories/{groupCategoryId}/import")
+    Call<Progress> importCategoryGroups(@Path("groupCategoryId") String groupCategoryId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
 }
