@@ -22,4 +22,7 @@ public interface groupCategoriesInterface {
     @POST("https://udel.instructure.com/api/v1/accounts/{accountId}/group_categories")
     Call<GroupCategory> createGroupCategory(@Path("accountId") String accountId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @POST("https://udel.instructure.com/api/v1/courses/{courseId}/group_categories")
+    Call<GroupCategory> createGroupCategoryCourseId(@Path("courseId") String courseId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }

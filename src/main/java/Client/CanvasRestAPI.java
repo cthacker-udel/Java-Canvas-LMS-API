@@ -8447,6 +8447,25 @@ External Tools API
 
     }
 
+    public GroupCategory createGroupCategoryAccountId(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/accounts/%s/group_categories/",client.getGroupCategories().getAccountId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        groupCategoriesInterface groupCategoriesInterface = retrofit.create(Model.groupCategoriesInterface.class);
+
+        Call<GroupCategory> call = groupCategoriesInterface.createGroupCategory(client.getGroupCategories().getAccountId()+"",client.getToken(),client.getGroupCategories().generateQueries());
+
+        Response<GroupCategory> response = call.execute();
+
+        return response.body();
+
+    }
+
 
 
 
