@@ -32,4 +32,7 @@ public interface groupCategoriesInterface {
     @PUT("https://udel.instructure.com/api/v1/group_categories/{groupCategoryId}")
     Call<GroupCategory> updateGroupCategory(@Path("groupCategoryId") String groupCategoryId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @DELETE("https://udel.instructure.com/api/v1/group_categories/{groupCategoryId}")
+    Call<Void> deleteGroupCategory(@Path("groupCategoryId") String groupCategoryId, @Header("Authorization") String auth);
+
 }

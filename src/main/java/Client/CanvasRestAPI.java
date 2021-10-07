@@ -8521,4 +8521,23 @@ External Tools API
 
     }
 
+    public boolean deleteGroupCategory(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/group_categories/%s/",client.getGroupCategories().getGroupCategoryId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        groupCategoriesInterface groupCategoriesInterface = retrofit.create(Model.groupCategoriesInterface.class);
+
+        Call<Void> call = groupCategoriesInterface.deleteGroupCategory(client.getGroupCategories().getGroupCategoryId(),client.getToken());
+
+        Response<Void> response = call.execute();
+
+        return response.isSuccessful();
+
+    }
+
 }
