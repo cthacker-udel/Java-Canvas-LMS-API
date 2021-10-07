@@ -29,4 +29,7 @@ public interface groupCategoriesInterface {
     @POST("https://udel.instructure.com/api/v1/group_categories/{groupCategoryId}/import")
     Call<Progress> importCategoryGroups(@Path("groupCategoryId") String groupCategoryId, @Header("Authorization") String auth, @Body Map<String,Object> body);
 
+    @PUT("https://udel.instructure.com/api/v1/group_categories/{groupCategoryId}")
+    Call<GroupCategory> updateGroupCategory(@Path("groupCategoryId") String groupCategoryId, @Header("Authorization") String auth, @Body Map<String,Object> body);
+
 }

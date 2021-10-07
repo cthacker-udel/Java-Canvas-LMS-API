@@ -8502,4 +8502,23 @@ External Tools API
         return response.body();
     }
 
+    public GroupCategory updateGroupCateogory(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/group_categories/%s/",client.getGroupCategories().getGroupCategoryId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        groupCategoriesInterface groupCategoriesInterface = retrofit.create(Model.groupCategoriesInterface.class);
+
+        Call<GroupCategory> call = groupCategoriesInterface.updateGroupCategory(client.getGroupCategories().getGroupCategoryId(),client.getToken(),client.getGroupCategories().generateQueries());
+
+        Response<GroupCategory> response = call.execute();
+
+        return response.body();
+
+    }
+
 }
