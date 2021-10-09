@@ -39,4 +39,7 @@ public interface groupCategoriesInterface {
     @GET("https://udel.instructure.com/api/v1/group_categories/{groupCategoryId}/groups")
     Call<List<Group>> listGroupsInGroupCategory(@Path("groupCategoryId") String groupCategoryId, @Header("Authorization") String auth);
 
+    @GET("https://udel.instructure.com/api/v1/group_categories/{groupCategoryId}/export")
+    Call<Void> exportGroupsInAndUsersInCategory(@Path("groupCategoryId") String groupCategoryId, @Header("Authorization") String auth);
+
 }
