@@ -8540,4 +8540,22 @@ External Tools API
 
     }
 
+    public List<Group> listGroupsInGroupCategory(CanvasClient client) throws IOException {
+
+        String url = baseUrl + String.format("/api/v1/group_categories/%s/groups/",client.getGroupCategories().getGroupCategoryId());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        groupCategoriesInterface groupCategoriesInterface = retrofit.create(Model.groupCategoriesInterface.class);
+
+        Call<List<Group>> call = groupCategoriesInterface.listGroupsInGroupCategory(client.getGroupCategories().getGroupCategoryId(),client.getToken());
+
+        Response<List<Group>> response = call.execute();
+
+        return response.body();
+    }
+
 }

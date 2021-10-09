@@ -2,6 +2,7 @@ package Model;
 
 
 import Controller.GroupCategoriesController.GroupCategory;
+import Controller.GroupController.Group;
 import Controller.ProgressController.Progress;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -34,5 +35,8 @@ public interface groupCategoriesInterface {
 
     @DELETE("https://udel.instructure.com/api/v1/group_categories/{groupCategoryId}")
     Call<Void> deleteGroupCategory(@Path("groupCategoryId") String groupCategoryId, @Header("Authorization") String auth);
+
+    @GET("https://udel.instructure.com/api/v1/group_categories/{groupCategoryId}/groups")
+    Call<List<Group>> listGroupsInGroupCategory(@Path("groupCategoryId") String groupCategoryId, @Header("Authorization") String auth);
 
 }
